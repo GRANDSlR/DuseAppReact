@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "xxhu6iLziq6W+GJClsGHxYFLKhASVbl0THry94AKUk8=",
+  "Source": "DuseAppReact.Server",
+  "BasePath": "_content/DuseAppReact.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\GitReps\\DuseAppTest\\DuseAppReact\\duseappreact.client\\duseappreact.client.esproj",
+      "Version": 2,
+      "Source": "duseappreact.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
