@@ -22,3 +22,15 @@ C:\GitReps\DuseAppTest\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseA
 C:\GitReps\DuseAppTest\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\refint\DuseAppReact.Services.dll
 C:\GitReps\DuseAppTest\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.pdb
 C:\GitReps\DuseAppTest\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\ref\DuseAppReact.Services.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Services\bin\Debug\net8.0\DuseAppReact.Services.deps.json
+C:\GitReps\DuseAppReact\DuseAppReact.Services\bin\Debug\net8.0\DuseAppReact.Services.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Services\bin\Debug\net8.0\DuseAppReact.Services.pdb
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.AssemblyInfoInputs.cache
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.AssemblyInfo.cs
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.csproj.CoreCompileInputs.cache
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.sourcelink.json
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\refint\DuseAppReact.Services.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\DuseAppReact.Services.pdb
+C:\GitReps\DuseAppReact\DuseAppReact.Services\obj\Debug\net8.0\ref\DuseAppReact.Services.dll

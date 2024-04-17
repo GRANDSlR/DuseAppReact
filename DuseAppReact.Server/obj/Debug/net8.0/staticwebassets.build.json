@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "xxhu6iLziq6W+GJClsGHxYFLKhASVbl0THry94AKUk8=",
+  "Hash": "x7GUWto3L+zCwfV+lP/WVf8Z1+ow303HBToJhGbB6W0=",
   "Source": "DuseAppReact.Server",
   "BasePath": "_content/DuseAppReact.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\GitReps\\DuseAppTest\\DuseAppReact\\duseappreact.client\\duseappreact.client.esproj",
+      "Identity": "C:\\GitReps\\DuseAppReact\\duseappreact.client\\duseappreact.client.esproj",
       "Version": 2,
       "Source": "duseappreact.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

@@ -1,1 +1,2 @@
 C:\GitReps\DuseAppTest\DuseAppReact\duseappreact.client\obj\Debug\duseappreact.client.esproj.CoreCompileInputs.cache
+C:\GitReps\DuseAppReact\duseappreact.client\obj\Debug\duseappreact.client.esproj.CoreCompileInputs.cache

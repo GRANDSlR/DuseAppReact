@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:5173",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\GitReps\\DuseAppTest\\DuseAppReact\\DuseAppReact.Server\\..\\duseappreact.client",
+"WorkingDirectory": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Server\\..\\duseappreact.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

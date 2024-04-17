@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { getAllColleges } from '../services/Colleges.js';
+
 
 function App() {
     const [forecasts, setForecasts] = useState();
 
     useEffect(() => {
-        populateWeatherData();
+        const getColleges = async () => {
+            const data = await getAllColleges();
+            setForecasts(data);
+        }
+
+        getColleges();
+        
     }, []);
 
     const contents = forecasts === undefined

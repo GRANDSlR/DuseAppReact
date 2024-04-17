@@ -33,4 +33,11 @@ app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
 
+app.UseCors(x =>
+{
+    x.WithHeaders().AllowAnyHeader();
+    x.WithOrigins("https://localhost:5173");
+    x.WithMethods().AllowAnyMethod();
+});
+
 app.Run();
