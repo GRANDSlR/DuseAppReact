@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getAllColleges } from '../services/Colleges.js';
-import { Colleges } from '../components/Colleges.jsx';
+import { getAllColleges } from '../../services/Colleges.js';
+import { Colleges } from '../../components/CollegeHandler/Colleges.jsx';
 
 export default function CollegePage() {
 
-    const [colleges, setColleges] = useState();
+    const [collegeData, setColleges] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function CollegePage() {
 
     return (
         <div>
-            { loading ? <div className="LoadingBlock"><p>Loading...</p></div> : <Colleges colleges={colleges} />}
+            {loading ? <div className="LoadingBlock"><p>Loading...</p></div> : <Colleges collegeObjects={collegeData} />}
         </div>
     );
 }
