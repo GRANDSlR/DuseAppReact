@@ -1,9 +1,8 @@
-import Header from '../Header/Header.jsx'
 
 const Home = () => {
   return (
     <div>
-      <Header title='Cr Menu' />
+      <p>Main</p>
     </div>
   );
 }
