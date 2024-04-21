@@ -1,5 +1,11 @@
-:root {
+*{
+  /* font-family: 'Helvetica', sans-serif; */
   font-family: "Inter", sans-serif;
+  user-select: none;
+}
+
+:root {
+  /* font-family: "Inter", sans-serif; */
   /* , system-ui, Avenir, Helvetica, Arial, sans-serif */
   line-height: 1.5;
   font-weight: 400;

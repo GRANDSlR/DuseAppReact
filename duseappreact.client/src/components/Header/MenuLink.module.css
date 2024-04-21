@@ -1,0 +1,40 @@
+
+.MenuLink {
+    font-weight: 600;
+    font-size: 15px;
+    color: #242424;
+    text-decoration: inherit;
+    position: relative;
+    padding: 28px 0;
+} 
+
+ .MenuLink.active:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 15px 15px 0 0;
+    background-color: #2864FF;
+    transition: height 0.3s;
+}
+
+ .MenuLink:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 4px;
+    left: 0px;
+    width: 100%;
+    height: 0;
+    border-radius: 15px 15px 0 0;
+    background-color: black;
+    transition: height 0.3s;
+}
+
+ .MenuLink:hover:after {
+    height: 4px;
+    background-color: #2864FF;
+}

@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import * as style from "./Header.module.css";
+import style from "./Header.module.css";
+import menuLinkStyle from "../Header/MenuLink.module.css";
 import CompanyIcon from "./img/CompanyIcon.png";
-import NewLogo from "./img/NewLogo.png";
-import Circumflexus from "./img/CircumflexusInvert.svg";
+import NewLogo from "./img/NewLogo.svg";
+import FallingList from "../FallingList/FallingList.jsx";
+import useIsActiveButton from "./HeaderViewRouter.js";
+import SearchPanel from "../SearchPanel/SearchPanel.jsx";
+import UserIcon from "./img/DefaultUserIcon.svg"
+import DuseAppIcon from './img/DuseApp.svg'
 
 const data = [
 	
@@ -27,19 +32,27 @@ const Header = () => {
   return (
     <div className={style.HeaderBar}>
       <div className={style.IconBar}>
-        <img alt='logo' src={NewLogo} id={style.appLogo}/>
-        <img alt='companyTitle' src={CompanyIcon} id={style.appTitle}/>
+        {/* <img alt='logo' src={NewLogo} id={style.appLogo}/> */}
+        {/* <img alt='companyTitle' src={CompanyIcon} id={style.appTitle}/> */}
+        <img alt='companyTitle' src={DuseAppIcon} id={style.duseAppTitle}/>
       </div>
       <ul className={style.HeaderMenu}>
-        {navs.map((nav, index) => (
-          <li key={index}>
-            <NavLink to={nav.link} className={style.MenuLink}>
-              {nav.title}
+          <li >
+            <NavLink to={'/'} className={ useIsActiveButton('') ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink}>
+              {'Главная'}
             </NavLink>
-            <img alt='Circumflexus' src={Circumflexus} className={style.Circumflexus}/>
           </li>
-        ))}
-      </ul> 
+          <li>
+            <NavLink to={'/college'} className={ useIsActiveButton('college') ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink}>
+              {'Колледжи'}
+            </NavLink>
+          </li>
+          <li>
+            <FallingList title='Тесты' link='test' data={data} />
+          </li>
+      </ul>
+      <SearchPanel title='поиск по названию'/> 
+      <img alt='userIcon' src={UserIcon} id={style.UserIcon}/>
     </div>
   );
 }
