@@ -1,4 +1,18 @@
 
+.HeaderMenu{
+    display: flex;
+    height: 70px;
+    margin: 0;
+    padding: 0 35px;
+}
+
+.HeaderMenu li{
+    list-style-type: none;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
 .MenuLink {
     font-weight: 600;
     font-size: 15px;
@@ -7,6 +21,14 @@
     position: relative;
     padding: 28px 0;
 } 
+
+.MenuFooter{
+    color: #799FFF;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: inherit;
+    padding: 28px 0;
+}
 
  .MenuLink.active:after {
     content: "";

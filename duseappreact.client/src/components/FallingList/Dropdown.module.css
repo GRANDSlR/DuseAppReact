@@ -4,16 +4,15 @@
 
 .DropdownMenu {
     position: absolute;
-    top: 74px;
+    top: 50px;
     /* top: 50px; */
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: white;
-    border: 1px solid #EDEFF4;
-    border-radius: 5px;
+    border-top: 2px solid #2864FF; 
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
     padding: 20px;
-    box-shadow: 0 0.25rem 1rem 0 #282e3e14;
     transition: 0.3s ease;
 }
 
@@ -26,6 +25,6 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    color: #5e5e5e;
+    color: #eaeaea;
 
 }

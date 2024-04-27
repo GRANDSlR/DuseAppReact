@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import style from "./Dropdown.module.css";
 import Circumflexus from "./img/CircumflexusInvert.svg";
-import menuLinkStyle from "../Header/MenuLink.module.css";
-import useIsActiveButton from "../Header/HeaderViewRouter.js"
+import CircumflexusBlue from "./img/CircumflexusInvert.svg";
+import menuLinkStyle from "../Menu/MenuLink.module.css";
+import useIsActiveButton from "../Menu/HeaderViewRouter.js"
 
-
-const FallingList = ({title, link, data}) => {
+const FallingList = ({type, title, link, data}) => {
 
   const [dropdownState, setDropdownState] = useState({ open: false });
 
@@ -17,18 +17,28 @@ const FallingList = ({title, link, data}) => {
   return (
     <div className={style.MainBox} >
       <div className={style.ParentLink} >
-        <span className={ useIsActiveButton(link) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink} onClick={handleDropdownClick} >{title}</span>
-        <img alt='Circumflexus' src={Circumflexus} className={style.Circumflexus}/>
+        <span 
+        className={ 
+          type == 'header' ?
+          (useIsActiveButton(link) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink)
+        : menuLinkStyle.MenuFooter} 
+        onClick={handleDropdownClick} >{title}</span>
+        <img alt='Circumflexus' src={type == 'header' ? Circumflexus : CircumflexusBlue} className={style.Circumflexus}/>
       </div>
       {dropdownState.open && (
       <ul className={style.DropdownMenu} onMouseLeave={handleDropdownClick}>
-        {data.map((nav, index) => (
-          <li key={index}>
-            <NavLink to={nav.link} className={style.DropdownMenuLink}>
-              {nav.title}
-            </NavLink>
-          </li>
-        ))}
+        {
+          Array.isArray(data) ? 
+          data.map((nav, index) => {
+            return (
+            <li key={index}>
+              <NavLink to={nav.link} className={style.DropdownMenuLink}>
+                {nav.title}
+              </NavLink>
+            </li>
+            );
+          })
+        : null}
       </ul> 
       )}
     </div>

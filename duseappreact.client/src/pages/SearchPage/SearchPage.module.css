@@ -1,0 +1,47 @@
+
+.SearchBox{
+    margin-top: 1px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 99vw;
+    height: 280px;
+    background-color: #799FFF;
+}
+
+#SearchBoxImgTop{
+    position: absolute;
+    width: 18%;
+    top: 0;
+}
+
+#SearchBoxImgBottom{
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+}
+
+.ContentPanel{
+    display: table;
+    width: 100%;
+}
+
+.FilterPanel{
+    display: table-cell;
+    background-color: white;
+    width: 30%;
+}
+
+.InfoPanel{
+    display: flex;
+    background-color: #eaeaea;
+    width: 100%;
+
+}
+
+.ResultPanel{
+    display: inline-block;
+    width: 100%;
+    background-color: #f6f6f6;
+}

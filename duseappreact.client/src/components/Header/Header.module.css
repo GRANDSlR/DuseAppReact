@@ -14,20 +14,6 @@
     border-bottom: 1px solid #EDEFF4;
 }
 
-.HeaderMenu{
-    display: flex;
-    height: 70px;
-    margin: 0;
-    padding: 0 35px;
-}
-
-.HeaderMenu li{
-    list-style-type: none;
-    padding-right: 30px;
-    display: flex;
-    align-items: center;
-}
-
 .IconBar{
     display: flex;
     align-items: center;
