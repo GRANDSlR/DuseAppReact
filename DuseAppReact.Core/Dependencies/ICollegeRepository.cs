@@ -8,6 +8,7 @@ namespace DuseAppReact.Core.Dependencies
         Task<int> Create(T parameter);
         Task<int> Delete(int id);
         Task<List<Result<T>>> Get();
+        Task<List<Result<T>>> GetByParams(string title);
         Task<int> Update(T parameter);
     }
 }

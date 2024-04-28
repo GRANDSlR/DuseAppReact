@@ -1,8 +1,44 @@
 
 
 .MainBox{
-    display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: auto;
-    gap: 10px;
+    padding: 0 140px;
+    width: 80vw;
+}
+
+.MenuBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 25px 0;
+}
+
+.FollowLinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.FollowLinks img{
+    margin-right: 20px;
+    width: 30px;
+}
+
+.FollowLinks a:last-child img{
+    margin-right: 0;
+}
+
+.CopyrightPanel{
+    margin: 0 180px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CopyrightPanel p{
+    padding: 0;
+    margin: 25px 0;
+    color: #799FFF;
+    font-size: 15px;
 }

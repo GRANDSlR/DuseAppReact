@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import style from "./MenuLink.module.css";
 import FallingList from "../FallingList/FallingList.jsx";
 import useIsActiveButton from "./HeaderViewRouter.js";
-import linkData from './LinkData.js';
+import data from './LinkData.js';
 
-function Header (data){
+
+function Header (){
+
     return (
         <ul className={style.HeaderMenu}>
           <li >
@@ -25,9 +26,9 @@ function Header (data){
     );
 }
 
-function Footer (data){
+function Footer (){
     return (
-        <ul className={style.HeaderMenu}>
+        <ul className={style.FooterMenu}>
           <li >
             <NavLink to={'/'} className={style.MenuFooter}>
               {'ГЛАВНАЯ'}
@@ -45,13 +46,11 @@ function Footer (data){
     );
 }
 
-export default function Menu (type){
-
-  const [navs] = useState(linkData);
+export default function Menu ({type, linkData}){
 
     return (
         <div>
-            {type == "header" ? <Header data={navs}/> : <Footer data={navs}/>}
+            {type == "header" ? <Header /> : <Footer />}
         </div>
     );
 }

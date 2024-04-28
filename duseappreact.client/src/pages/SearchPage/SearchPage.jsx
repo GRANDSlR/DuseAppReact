@@ -31,7 +31,9 @@ export default function CollegePage() {
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
             <div className={style.ContentPanel}>
-                <div className={style.FilterPanel}></div>
+                <div className={style.FilterPanel}>
+                    
+                </div>
                 <div className={style.InfoPanel}>
                     <p>Результаты поиска</p>
                 </div>

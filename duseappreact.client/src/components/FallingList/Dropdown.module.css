@@ -5,14 +5,25 @@
 .DropdownMenu {
     position: absolute;
     top: 50px;
-    /* top: 50px; */
     list-style: none;
-    padding: 0;
     margin: 0;
     border-top: 2px solid #2864FF; 
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(2px);
-    padding: 20px;
+    padding: 10px;
+    transition: 0.3s ease;
+}
+
+.NearDropdownMenu{
+    position: absolute;
+    bottom: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 2px solid #799FFF; 
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+    padding: 10px;
     transition: 0.3s ease;
 }
 
@@ -21,9 +32,14 @@
     margin-left: 10px; 
 }
 
+.CircumflexusBlue{
+    margin-left: 10px; 
+    margin-bottom: 2px;
+}
+
 .DropdownMenuLink{
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     color: #eaeaea;
 

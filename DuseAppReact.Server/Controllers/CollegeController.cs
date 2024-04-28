@@ -28,6 +28,17 @@ namespace DuseAppReact.Server.Controllers
             return Ok(CollegeHeaderResultList.Value);
         }
 
+        [HttpGet("{title:string}")]
+        public async Task<ActionResult<List<CollegeData>>> GetCollgesByTitle(string title)
+        {
+            var CollegeHeaderResultList = await _collegeDataConfiguration.GetColleges();
+
+            if (!CollegeHeaderResultList.IsSuccess)
+                return BadRequest(CollegeHeaderResultList.ErrorMessage);
+
+            return Ok(CollegeHeaderResultList.Value);
+        }
+
         [HttpPost]
         public async Task<ActionResult<int>> AddCollege([FromBody] CollegeDataRequest collegeDataRequest)
         {

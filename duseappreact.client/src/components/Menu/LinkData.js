@@ -1,6 +1,6 @@
 
 
-const data = [
+ const data = [
 	
     {
           title: 'Главная',
