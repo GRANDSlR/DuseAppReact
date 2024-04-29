@@ -1,7 +1,7 @@
+
 .ParentLink{
     white-space: nowrap;
 }
-
 .DropdownMenu {
     position: absolute;
     top: 50px;
@@ -14,9 +14,16 @@
     transition: 0.3s ease;
 }
 
-.NearDropdownMenu{
-    position: absolute;
-    bottom: 5px;
+.DropdownMenu.near{
+    position: relative;
+    bottom: -5px;
+    top: auto;
+    border-top: 2px solid #799FFF; 
+}
+
+/* .NearDropdownMenu{
+    position: relative;
+    bottom: 0px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -25,7 +32,7 @@
     backdrop-filter: blur(2px);
     padding: 10px;
     transition: 0.3s ease;
-}
+} */
 
 
 .Circumflexus{

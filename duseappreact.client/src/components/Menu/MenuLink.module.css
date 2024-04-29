@@ -17,8 +17,8 @@
     height: 70px;
     margin: 0;
     padding: 0 35px;
-    align-items: center;
-    justify-content: center;
+    align-items: baseline;
+    /* justify-content: center; */
 }
 
 .FooterMenu li{

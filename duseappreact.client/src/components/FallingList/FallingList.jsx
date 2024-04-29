@@ -17,17 +17,16 @@ const FallingList = ({type, title, link, data}) => {
 
   return (
     <div className={style.MainBox} >
-      <div className={style.ParentLink} >
-        <span 
+      <div className={style.ParentLink} onClick={handleDropdownClick}  >
+        <span
         className={ 
           type == 'header' ?
           (useIsActiveButton(link) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink)
-        : menuLinkStyle.MenuFooter} 
-        onClick={handleDropdownClick} >{title}</span>
+        : menuLinkStyle.MenuFooter}>{title}</span>
         <img alt='Circumflexus' src={type == 'header' ? Circumflexus : CircumflexusBlue} className={type == 'header' ? style.Circumflexus : style.CircumflexusBlue}/>
       </div>
       {dropdownState.open && (
-      <ul className={type == 'header' ? style.DropdownMenu : style.NearDropdownMenu} onMouseLeave={handleDropdownClick}>
+      <ul className={type == 'header' ? style.DropdownMenu : `${style.DropdownMenu} ${style.near}`} onMouseLeave={handleDropdownClick}>
         {
           Array.isArray(data) ? 
           data.map((nav, index) => {

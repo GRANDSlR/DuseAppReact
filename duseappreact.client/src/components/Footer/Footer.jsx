@@ -12,7 +12,7 @@ export default function Footer(){
                 <div className={style.IconBox}>
                     <img src={duseAppImg} />
                 </div>
-                <div className={style.MenuBox}>
+                <div>
                     <Menu type='footer'/>
                 </div>
                 <div className={style.FollowLinks}>

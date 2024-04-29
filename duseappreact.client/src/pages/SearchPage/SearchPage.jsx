@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAllColleges } from '../../services/Colleges.js';
-import { Colleges } from '../../components/CollegeHandler/Colleges.jsx';
+import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
 import style from './SearchPage.module.css';
@@ -32,7 +32,7 @@ export default function CollegePage() {
             </div>
             <div className={style.ContentPanel}>
                 <div className={style.FilterPanel}>
-                    
+
                 </div>
                 <div className={style.InfoPanel}>
                     <p>Результаты поиска</p>

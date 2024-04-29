@@ -24,7 +24,7 @@
 
 .ContentPanel{
     display: table;
-    width: 100%;
+    width: 99vw;
 }
 
 .FilterPanel{
@@ -36,12 +36,14 @@
 .InfoPanel{
     display: flex;
     background-color: #eaeaea;
-    width: 100%;
+    width: auto;
 
 }
 
 .ResultPanel{
-    display: inline-block;
-    width: 100%;
+    width: auto;
     background-color: #f6f6f6;
+    padding: 20px;
+    min-height: 100px;
+    /* padding-right: 45px; */
 }
