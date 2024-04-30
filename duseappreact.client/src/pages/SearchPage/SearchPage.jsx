@@ -4,7 +4,11 @@ import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
 import style from './SearchPage.module.css';
+import filterStyle from './SearchPageFilter.module.css';
+import infoStyle from './SearchPageInfo.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
+import AdditionButton from './img/AdditionButton.svg';
+import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 
 
 export default function CollegePage() {
@@ -31,17 +35,25 @@ export default function CollegePage() {
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
             <div className={style.ContentPanel}>
-                <div className={style.FilterPanel}>
-
+                <div className={filterStyle.FilterPanel}>
+                    <div className={filterStyle.SpecialtyFilter}>
+                        <p id={filterStyle.specialtyFilterTitle}>Специальности</p>
+                        <img src={AdditionButton} />
+                    </div>
                 </div>
-                <div className={style.InfoPanel}>
-                    <p>Результаты поиска</p>
-                </div>
-                <div className={style.ResultPanel}>
-                    {loading ? <div className={style.Preloader}><p>Loading...</p></div> : <Colleges collegeObjects={collegeData} />}
+                <div className={style.vertPanel}>
+                    <div className={infoStyle.InfoPanel}>
+                        <p id={infoStyle.title}>Результаты поиска</p>
+                        <div className={infoStyle.SortPanel}>
+                            <p id={infoStyle.title}>Сортировка</p>
+                            <SortFallingList />
+                        </div>
+                    </div>
+                    <div className={style.ResultPanel}>
+                        {loading ? <div className={style.Preloader}><p>Loading...</p></div> : <Colleges collegeObjects={collegeData} />}
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
-

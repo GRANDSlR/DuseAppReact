@@ -1,10 +1,14 @@
 
+.MainBox{
+    position: relative;
+}
+
 .ParentLink{
     white-space: nowrap;
 }
 .DropdownMenu {
     position: absolute;
-    top: 50px;
+    top: 25px;
     list-style: none;
     margin: 0;
     border-top: 2px solid #2864FF; 
@@ -15,24 +19,10 @@
 }
 
 .DropdownMenu.near{
-    position: relative;
-    bottom: -5px;
+    bottom: -85px;
     top: auto;
     border-top: 2px solid #799FFF; 
 }
-
-/* .NearDropdownMenu{
-    position: relative;
-    bottom: 0px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 2px solid #799FFF; 
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(2px);
-    padding: 10px;
-    transition: 0.3s ease;
-} */
 
 
 .Circumflexus{

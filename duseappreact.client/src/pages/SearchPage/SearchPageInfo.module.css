@@ -1,0 +1,23 @@
+
+.InfoPanel{
+    display: flex;
+    background-color: #eaeaea;
+    width: auto;
+    align-items: center;
+    padding: 25px;
+}
+
+#title{
+    margin: 0;
+    font-weight: 500;
+}
+
+.SortPanel{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.SortPanel #title{
+    margin-right: 10px;
+}

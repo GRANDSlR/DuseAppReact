@@ -23,27 +23,19 @@
 }
 
 .ContentPanel{
-    display: table;
+    display: flex;
     width: 99vw;
 }
 
-.FilterPanel{
-    display: table-cell;
-    background-color: white;
-    width: 30%;
+.vertPanel{
+    width: 100%;
 }
 
-.InfoPanel{
-    display: flex;
-    background-color: #eaeaea;
-    width: auto;
-
-}
 
 .ResultPanel{
     width: auto;
     background-color: #f6f6f6;
     padding: 20px;
-    min-height: 100px;
+    min-height: 200px;
     /* padding-right: 45px; */
 }

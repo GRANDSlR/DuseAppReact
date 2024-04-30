@@ -1,0 +1,38 @@
+
+
+.SelectBox{
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    padding: 5px 10px;
+    position: relative;
+    min-width: 180px;
+}
+
+.ParentBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ParentBox .Circumflexus{
+    margin-left: auto;
+}
+
+.currentSelectionValue{
+    margin-right: 10px;
+}
+
+.DropdownMenu{
+    position: absolute;
+    bottom: -150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #eaeaea;
+    border-radius: 15px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.DropdownMenu .selectionValue{
+    margin: 10px;
+}
