@@ -15,6 +15,23 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             _context = context;
         }
 
+        public async Task<Result<Speсialty>> GetById(int id)
+        {
+            var SpecialtyEntityEntities = await _context.Specialties
+                .FirstOrDefaultAsync(a => a.SpecialtyId == id);
+
+            var Specialties = Speсialty.Create(
+                    SpecialtyEntityEntities.SpecialtyId,
+                    SpecialtyEntityEntities.Title,
+                    SpecialtyEntityEntities.FinancialFoundation,
+                    SpecialtyEntityEntities.Cost,
+                    SpecialtyEntityEntities.FreePlaces,
+                    SpecialtyEntityEntities.EducationForm,
+                    SpecialtyEntityEntities.PassingScore);
+
+            return Specialties;
+        }
+
         public async Task<List<Result<Speсialty>>> Get()
         {
             var SpecialtyEntityEntities = await _context.Specialties

@@ -15,7 +15,16 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
         {
             _context = context;
         }
-        
+
+        public async Task<List<int>> GetById(int id)
+        {
+            var College_SpecialtyEntities = await _context.College_Specialties
+                .Where(a => a.CollegeId == id)
+                .Select(b => b.SpecialtyId)
+                .ToListAsync();
+            
+            return College_SpecialtyEntities;
+        }
         public async Task<List<Result<College_Specialty>>> Get()
         {
             var College_SpecialtyEntities = await _context.College_Specialties
@@ -25,17 +34,6 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             var College_Specialties = College_SpecialtyEntities
                 .Select(a => College_Specialty.Create(a.College_SpecialtyId, a.CollegeId, a.SpecialtyId))
                 .ToList();
-
-            return College_Specialties;
-        }
-
-        public async Task<Result<College_Specialty>> GetById(int collegeId)
-        {
-            var College_SpecialtyEntity = await _context.College_Specialties
-                .AsNoTracking()
-                .SingleOrDefaultAsync(a =>a.CollegeId == collegeId);
-
-            var College_Specialties = College_Specialty.Create(College_SpecialtyEntity.College_SpecialtyId, College_SpecialtyEntity.CollegeId, College_SpecialtyEntity.SpecialtyId);
 
             return College_Specialties;
         }
@@ -74,5 +72,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
 
             return id;
         }
+
+
     }
 }

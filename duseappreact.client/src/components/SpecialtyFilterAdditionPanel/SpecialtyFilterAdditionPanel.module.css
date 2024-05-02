@@ -1,0 +1,62 @@
+
+.MainBox{
+    position: relative;
+}
+
+.SpecialtyFilter{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.SpecialtyFilter #specialtyFilterTitle{
+    font-weight: 500;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.AdditionButton{
+    width: 30px;
+    transition: transform 0.2s;
+}
+
+.AdditionButton.open{
+    transform: rotate(45deg);
+}
+
+.DropdownBox{
+    padding: 15px;
+    background-color: #f6f6f6;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    max-height: 250px;
+    min-width: 90%;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: absolute;
+}
+
+.DropdownItem{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.DropdownItem:last-child{
+    margin-bottom: 0;
+}
+
+.DropdownItem img{
+    margin-right: 10px;
+}
+
+.DropdownItem p{
+    margin: 0;
+    color: #757575;
+    font-weight: 500;
+}
+
+.Preloader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

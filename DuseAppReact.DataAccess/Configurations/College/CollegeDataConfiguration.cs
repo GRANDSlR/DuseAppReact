@@ -8,6 +8,12 @@ namespace DuseAppReact.DataAccess.Configurations.College
 {
     public class CollegeDataConfiguration : ICollegeDataConfiguration
     {
+        public async Task<Result<List<Speсialty>>> GetAllSpecialties()
+        {
+            using (var context = new DatabaseContext())
+                return Result<Speсialty>.ResultListInit(await new CollegeSpecialtyRepository(context).Get()); ;
+        }
+
         public async Task<Result<List<CollegeData>>> GetColleges()
         {
 
@@ -70,6 +76,56 @@ namespace DuseAppReact.DataAccess.Configurations.College
                 return Result<List<CollegeData>>.Success(Colleges);
 
             }
+        }
+
+        public async Task<Result<List<CollegeData>>> GetCollegesByTitle(string title)
+        {
+
+            List<CollegeData> Colleges = new List<CollegeData>();
+
+
+            using (var context = new DatabaseContext())
+            {
+                var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await new CollegeHeaderRepository(context).GetByTitle(title));
+
+                if (!CollegeHeaderResultList.IsSuccess)
+                    return Result<List<CollegeData>>.Failure(CollegeHeaderResultList.ErrorMessage);
+
+                foreach (var collegeHeader in CollegeHeaderResultList.Value)
+                {
+                    var CollegeDescriptionResult = await new CollegeDescriptionRepository(context).GetById(collegeHeader.CollegeId);
+
+                    if (!CollegeDescriptionResult.IsSuccess)
+                        return Result<List<CollegeData>>.Failure(CollegeDescriptionResult.ErrorMessage);
+
+                    var CollegeLocationResult = await new CollegeLocationRepository(context).GetById(collegeHeader.CollegeId);
+
+                    if (!CollegeLocationResult.IsSuccess)
+                        return Result<List<CollegeData>>.Failure(CollegeLocationResult.ErrorMessage);
+
+                    List<Speсialty> SpeсialtyList = new List<Speсialty>();
+
+                    var College_SpecialtyIdList = await new College_SpecialtyRepository(context).GetById(collegeHeader.CollegeId);
+
+                    foreach(int College_SpecialtyId in College_SpecialtyIdList)
+                    {
+                        var CollegeSpecialtyResult = await new CollegeSpecialtyRepository(context).GetById(College_SpecialtyId);
+
+                        if (!CollegeSpecialtyResult.IsSuccess)
+                            return Result<List<CollegeData>>.Failure(CollegeSpecialtyResult.ErrorMessage);
+
+                        SpeсialtyList.Add(CollegeSpecialtyResult.Value);
+                    }
+
+                    Colleges.Add(new CollegeData(
+                        collegeHeader, 
+                        CollegeDescriptionResult.Value,
+                        CollegeLocationResult.Value,
+                        SpeсialtyList));
+                }
+            }
+
+            return Result<List<CollegeData>>.Success(Colleges);
         }
 
         public async Task<int> AddCollege(CollegeData collegeData)

@@ -6,14 +6,3 @@
     padding: 25px;
 
 }
-
-.SpecialtyFilter{
-    display: flex;
-    align-items: center;
-}
-
-.SpecialtyFilter #specialtyFilterTitle{
-    font-weight: 500;
-    margin: 0;
-    margin-right: 10px;
-}

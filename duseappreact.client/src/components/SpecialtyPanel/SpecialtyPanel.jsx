@@ -1,19 +1,16 @@
 
-import React, { useContext } from 'react';
+import React from 'react';
 import style from './SpecialtyPanel.module.css';
-import SpecialtyListContext from '../CollegeHandler/CollegePanel.jsx';
 
-export default function SpecialtyPanel () {
-
-    const specialtyList = useContext(SpecialtyListContext);
+export default function SpecialtyPanel (speсialtyList) {
 
     return (
         <div className={style.specialtyPanel}>
-            {specialtyList.map((specialty, index) =>
+            {Array.isArray(speсialtyList.speсialtyList) ? speсialtyList.speсialtyList.map((specialty, index) =>
                 <div className={style.specialtyItem} key={index}>
-                    <p>{specialty.title}</p>
+                    <p>{specialty}</p>
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }

@@ -15,6 +15,23 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             _context = context;
         }
 
+        public async Task<Result<CollegeDescription>> GetById(int id)
+        {
+            var CollegeDescriptionEntities = await _context.CollegeDescriptions
+                .FirstOrDefaultAsync(a => a.CollegeId == id);
+
+            var CollegeDescriptions = CollegeDescription.Create(
+                    CollegeDescriptionEntities.CollegeId,
+                    CollegeDescriptionEntities.CollegeDescriptionId,
+                    CollegeDescriptionEntities.Description,
+                    CollegeDescriptionEntities.Grade,
+                    CollegeDescriptionEntities.CollegeType,
+                    CollegeDescriptionEntities.Ownership,
+                    CollegeDescriptionEntities.WebSiteRef);
+
+            return CollegeDescriptions;
+        }
+
         public async Task<List<Result<CollegeDescription>>> Get()
         {
             var CollegeDescriptionEntities = await _context.CollegeDescriptions

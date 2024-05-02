@@ -6,9 +6,6 @@ import locationPin from './img/AdmitistrationPanel/locationPin.svg';
 import heartFull from './img/SaveButton/heartFull.svg';
 import heartEmpty from './img/SaveButton/heartFull.svg';
 
-const SpecialtyListContext = React.createContext();
-
-export default SpecialtyListContext;
 
 export const Colleges = ({collegeObjects}) => {
 
@@ -20,9 +17,7 @@ export const Colleges = ({collegeObjects}) => {
                     <p id={style.collegeTitle}>{college.collegeHeader.title}</p>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
 
-                    <SpecialtyListContext.Provider value={college.speсialtyList}>
-                        <SpecialtyPanel/>
-                    </SpecialtyListContext.Provider>
+                    <SpecialtyPanel speсialtyList={college.speсialtyList.map((item) => item.title)}/>
                     
                     <div className={style.AdministrationPanel}>
                         <div>

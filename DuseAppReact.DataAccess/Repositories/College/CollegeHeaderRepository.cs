@@ -1,4 +1,5 @@
 ﻿using DuseAppReact.Core.Dependencies;
+using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Entities.College;
 using DuseAppReact.Services.ResultService;
@@ -13,6 +14,20 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
         public CollegeHeaderRepository(DatabaseContext context)
         {
             _context = context;
+        }
+
+        public async Task<List<Result<CollegeHeader>>> GetByTitle(string title)
+        {
+            var collegeEntities = await _context.Colleges
+                .Where(b => b.Title.Contains(title))
+                .AsNoTracking()
+                .ToListAsync();
+
+            var colleges = collegeEntities
+                .Select(a => CollegeHeader.Create(a.CollegeId, a.Title, $"DuseAppReact.Resources/{a.CollegeId}.png"))
+                .ToList();
+
+            return colleges;
         }
 
         public async Task<List<Result<CollegeHeader>>> Get()

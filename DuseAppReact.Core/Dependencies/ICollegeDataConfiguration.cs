@@ -6,7 +6,11 @@ namespace DuseAppReact.Core.Dependencies
 {
     public interface ICollegeDataConfiguration
     {
+        Task<Result<List<Speсialty>>> GetAllSpecialties();
+
         Task<Result<List<CollegeData>>> GetColleges();
+
+        Task<Result<List<CollegeData>>> GetCollegesByTitle(string title);
 
         Task<int> AddCollege(CollegeData collegeData);
 

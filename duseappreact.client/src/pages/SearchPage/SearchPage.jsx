@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllColleges } from '../../services/Colleges.js';
+import { getAllColleges, getCollegesByTitle } from '../../services/Colleges.js';
 import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
@@ -7,8 +7,8 @@ import style from './SearchPage.module.css';
 import filterStyle from './SearchPageFilter.module.css';
 import infoStyle from './SearchPageInfo.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
-import AdditionButton from './img/AdditionButton.svg';
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
+import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 
 
 export default function CollegePage() {
@@ -18,7 +18,8 @@ export default function CollegePage() {
 
     useEffect(() => {
         const getColleges = async () => {
-            const data = await getAllColleges();
+            // const data = await getAllColleges();
+            const data = await getCollegesByTitle('Ин');
             setLoading(false);
             setColleges(data);
         }
@@ -26,6 +27,7 @@ export default function CollegePage() {
         getColleges();
 
     }, []);
+
 
     return (
         <div>
@@ -36,10 +38,7 @@ export default function CollegePage() {
             </div>
             <div className={style.ContentPanel}>
                 <div className={filterStyle.FilterPanel}>
-                    <div className={filterStyle.SpecialtyFilter}>
-                        <p id={filterStyle.specialtyFilterTitle}>Специальности</p>
-                        <img src={AdditionButton} />
-                    </div>
+                    <SpecialtyFilterAdditionPanel />
                 </div>
                 <div className={style.vertPanel}>
                     <div className={infoStyle.InfoPanel}>
