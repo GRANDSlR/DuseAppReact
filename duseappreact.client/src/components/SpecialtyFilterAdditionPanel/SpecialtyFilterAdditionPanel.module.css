@@ -27,6 +27,12 @@
     padding-bottom: 5px;
 }
 
+.EmptyQuery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .SearchIcon{
     width: 15px;
     margin-right: 5px;

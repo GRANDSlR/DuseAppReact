@@ -43,6 +43,11 @@ const SpecialtyFilterAdditionPanel = () => {
         }
     }
 
+    const [searchValue, setSearchValue] = useState('');
+
+    const textInputHandler = (event) =>
+    setSearchValue(event.target.value);
+
     return (
         <div className={style.MainBox}>
             <div className={style.SpecialtyFilter}>
@@ -53,17 +58,17 @@ const SpecialtyFilterAdditionPanel = () => {
                 <div className={style.DropdownBox}>
                     <div className={style.SearchPanelBox}>
                         <img src={SearchIcon} className={style.SearchIcon} />
-                        <input placeholder='Поиск по специальностям' className={style.SearchInput}></input>
+                        <input placeholder='поиск по специальностям' className={style.SearchInput} onChange={textInputHandler}></input>
                     </div>
                     <div className={style.DropdownItemBox}>
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 
-                        Array.isArray(specialtyFilterParams) ? 
-                        specialtyFilterParams.map((specialtyTitle, index) => 
+                        Array.isArray(specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))) ? 
+                        specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue)).map((specialtyTitle, index) => 
                             <div className={style.DropdownItem} key={index} onClick={() => handleClickAddSpecialty(specialtyTitle)}>
                                 <img src={specialties.includes(specialtyTitle) ? AppliedCheckbox : CheckboxEmpty} className={CheckboxEmpty}></img>
                                 <p>{specialtyTitle}</p>
                             </div>
-                        ) : null
+                        ) : <div className={style.EmptyQuery}><p>Ничего не найдено</p></div>
                     }
                     </div>
                 </div>
