@@ -37,5 +37,42 @@
     background-color: #f6f6f6;
     padding: 20px;
     min-height: 200px;
-    /* padding-right: 45px; */
+}
+
+.Preloader{
+    display: flex;
+    align-items: top;
+    justify-content: center;
+}
+
+.FilterPanel{
+    display: table-cell;
+    background-color: white;
+    width: 30%;
+    padding: 25px;
+    min-width: 280px;
+
+}
+
+.InfoPanel{
+    display: flex;
+    background-color: #eaeaea;
+    width: auto;
+    align-items: center;
+    padding: 25px;
+}
+
+#title{
+    margin: 0;
+    font-weight: 500;
+}
+
+.SortPanel{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.SortPanel #title{
+    margin-right: 10px;
 }

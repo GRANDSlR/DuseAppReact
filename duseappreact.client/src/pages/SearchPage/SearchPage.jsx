@@ -4,8 +4,6 @@ import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
 import style from './SearchPage.module.css';
-import filterStyle from './SearchPageFilter.module.css';
-import infoStyle from './SearchPageInfo.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
@@ -37,14 +35,14 @@ export default function CollegePage() {
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
             <div className={style.ContentPanel}>
-                <div className={filterStyle.FilterPanel}>
+                <div className={style.FilterPanel}>
                     <SpecialtyFilterAdditionPanel />
                 </div>
                 <div className={style.vertPanel}>
-                    <div className={infoStyle.InfoPanel}>
-                        <p id={infoStyle.title}>Результаты поиска</p>
-                        <div className={infoStyle.SortPanel}>
-                            <p id={infoStyle.title}>Сортировка</p>
+                    <div className={style.InfoPanel}>
+                        <p id={style.title}>Результаты поиска</p>
+                        <div className={style.SortPanel}>
+                            <p id={style.title}>Сортировка</p>
                             <SortFallingList />
                         </div>
                     </div>

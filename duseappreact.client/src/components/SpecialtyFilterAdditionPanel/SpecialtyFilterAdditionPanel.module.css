@@ -1,6 +1,8 @@
 
 .MainBox{
     position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2864FF;
 }
 
 .SpecialtyFilter{
@@ -13,6 +15,36 @@
     font-weight: 500;
     margin: 0;
     margin-right: 10px;
+}
+
+.SearchPanelBox{
+    height: auto;
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.SearchIcon{
+    width: 15px;
+    margin-right: 5px;
+}
+
+.SearchInput{
+    background-color: transparent;
+    border: none;
+    color: #757575;
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2px;
+}
+
+.SearchInput:focus {
+    outline: none;
 }
 
 .AdditionButton{
@@ -31,9 +63,17 @@
     border-radius: 15px;
     max-height: 250px;
     min-width: 90%;
+    position: absolute;
+    overflow: hidden;
+
+}
+
+.DropdownItemBox{
+    margin-top: 5px;
     overflow: hidden;
     overflow-y: scroll;
-    position: absolute;
+    max-height: 220px;
+
 }
 
 .DropdownItem{
@@ -51,6 +91,7 @@
 
 .DropdownItem p{
     margin: 0;
+    font-size: 15px;
     color: #757575;
     font-weight: 500;
 }

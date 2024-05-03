@@ -4,12 +4,18 @@ import style from './SpecialtyFilterAdditionPanel.module.css';
 import AdditionButton from './img/AdditionButton.svg';
 import {  getAllSpecialties } from '../../services/Colleges.js';
 import CheckboxEmpty from './img/CheckboxEmpty.svg';
+import AppliedCheckbox from './img/AppliedCheckbox.svg';
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
+import SearchIcon from "./img/SearchIconNew.svg"
+
 
 const SpecialtyFilterAdditionPanel = () => {
 
+
     const [specialtyFilterParams, setSpecialtyFilterParams] = useState([]);
-    const [specialties, setSpecialties] = useState([]);
+    const [specialties, setSpecialties] = useState(
+        sessionStorage.getItem('specialtyFilterParams') != null ? 
+        sessionStorage.getItem('specialtyFilterParams').split(',') : []);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,8 +33,15 @@ const SpecialtyFilterAdditionPanel = () => {
     const handleDropdownClick = () =>
         setDropdownState({ open: !dropdownState.open });
 
-    const handleClickAddSpecialty = (specialty) =>
-        setSpecialties([...new Set([...specialties, specialty])]);
+    const handleClickAddSpecialty = (specialty) => {
+        if (specialties.includes(specialty)) {
+            setSpecialties(specialties.filter(item => item !== specialty)); 
+            sessionStorage.setItem('specialtyFilterParams', specialties.filter(item => item !== specialty));
+        } else {
+            setSpecialties([...new Set([...specialties, specialty])]);
+            sessionStorage.setItem('specialtyFilterParams', [...new Set([...specialties, specialty])]);
+        }
+    }
 
     return (
         <div className={style.MainBox}>
@@ -38,15 +51,21 @@ const SpecialtyFilterAdditionPanel = () => {
             </div>
             {dropdownState.open && (
                 <div className={style.DropdownBox}>
+                    <div className={style.SearchPanelBox}>
+                        <img src={SearchIcon} className={style.SearchIcon} />
+                        <input placeholder='Поиск по специальностям' className={style.SearchInput}></input>
+                    </div>
+                    <div className={style.DropdownItemBox}>
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 
                         Array.isArray(specialtyFilterParams) ? 
                         specialtyFilterParams.map((specialtyTitle, index) => 
                             <div className={style.DropdownItem} key={index} onClick={() => handleClickAddSpecialty(specialtyTitle)}>
-                                <img src={CheckboxEmpty} className={CheckboxEmpty}></img>
+                                <img src={specialties.includes(specialtyTitle) ? AppliedCheckbox : CheckboxEmpty} className={CheckboxEmpty}></img>
                                 <p>{specialtyTitle}</p>
                             </div>
                         ) : null
                     }
+                    </div>
                 </div>
             )}
             {specialties.length !=0 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
