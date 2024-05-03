@@ -13,10 +13,16 @@ const SpecialtyFilterAdditionPanel = () => {
 
 
     const [specialtyFilterParams, setSpecialtyFilterParams] = useState([]);
+
     const [specialties, setSpecialties] = useState(
         sessionStorage.getItem('specialtyFilterParams') != null ? 
         sessionStorage.getItem('specialtyFilterParams').split(',') : []);
     const [loading, setLoading] = useState(true);
+
+    const [searchValue, setSearchValue] = useState('');
+
+    const [dropdownState, setDropdownState] = useState({ open: false });
+
 
     useEffect(() => {
         const getSepcialties = async () => {
@@ -28,7 +34,6 @@ const SpecialtyFilterAdditionPanel = () => {
 
     }, []);
 
-    const [dropdownState, setDropdownState] = useState({ open: false });
 
     const handleDropdownClick = () =>
         setDropdownState({ open: !dropdownState.open });
@@ -43,10 +48,8 @@ const SpecialtyFilterAdditionPanel = () => {
         }
     }
 
-    const [searchValue, setSearchValue] = useState('');
-
     const textInputHandler = (event) =>
-    setSearchValue(event.target.value);
+        setSearchValue(event.target.value);
 
     return (
         <div className={style.MainBox}>

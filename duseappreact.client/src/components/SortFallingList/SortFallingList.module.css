@@ -27,12 +27,18 @@
     bottom: -150px;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 5px 10px;
     background-color: #eaeaea;
     border-radius: 15px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .DropdownMenu .selectionValue{
-    margin: 10px;
+    margin: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.DropdownMenu li:last-child .selectionValue{
+    border: none;
 }

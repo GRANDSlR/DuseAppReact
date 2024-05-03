@@ -7,7 +7,7 @@ import style from './SearchPage.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
-
+import SliderBar from '../../components/SliderBar/SliderBar.jsx';
 
 export default function CollegePage() {
 
@@ -37,6 +37,7 @@ export default function CollegePage() {
             <div className={style.ContentPanel}>
                 <div className={style.FilterPanel}>
                     <SpecialtyFilterAdditionPanel />
+                    <SliderBar />
                 </div>
                 <div className={style.vertPanel}>
                     <div className={style.InfoPanel}>
