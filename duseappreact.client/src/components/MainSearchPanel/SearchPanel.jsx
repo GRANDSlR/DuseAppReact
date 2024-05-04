@@ -1,12 +1,12 @@
-import style from "./SearchPanel.module.css"
-import SearchIcon from "./img/SearchIconNew.svg"
+import style from "./SearchPanel.module.css";
+import SearchIcon from "./img/SearchIconNew.svg";
 
-const SearchPanel = ({title}) =>{
+const SearchPanel = ({title, CollegeTitleInputHandler}) =>{
     return (
         <div className={style.SearchPanelBorder}>
             <div className={style.SearchPanelBox}>
                 <img src={SearchIcon} className={style.SearchIcon} />
-                <input placeholder={title} className={style.SearchInput}></input>
+                <input placeholder={title} className={style.SearchInput} onChange={CollegeTitleInputHandler}></input>
             </div>
         </div>
     )

@@ -1,0 +1,20 @@
+
+.PanelItem{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.PanelItem:last-child{
+    margin-bottom: 0;
+}
+
+.PanelItem img{
+    margin-right: 10px;
+}
+
+.PanelItem p{
+    margin: 0;
+    font-size: 15px;
+    color: #757575;
+    font-weight: 500;
+}

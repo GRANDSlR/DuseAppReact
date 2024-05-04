@@ -10,7 +10,8 @@ export const getAllSpecialties = async () =>{
 }
 
 export const getCollegesByTitle = async (title) => {
-    const response = await fetch('/college/getcollegesbytitle/?title=' + title);
+
+    const response = await fetch('/college/getcollegesbytitle/?title='+title);
     return await response.json();
 };
 
@@ -25,7 +26,7 @@ export const createCollege = async (collegeRequest) => {
 };
 
 export const updateCollege = async (id, collegeRequest) => {
-    await fetch('/college/${id}', {
+    await fetch(`/college/${id}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json"
@@ -35,7 +36,7 @@ export const updateCollege = async (id, collegeRequest) => {
 };
 
 export const deleteCollege = async (id) => {
-    await fetch('/college/${id}', {
+    await fetch(`/college/${id}`, {
         method: "DELETE"
     });
 };

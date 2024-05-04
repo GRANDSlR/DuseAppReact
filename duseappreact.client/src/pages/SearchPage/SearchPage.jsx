@@ -8,29 +8,44 @@ import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 import SliderBar from '../../components/SliderBar/SliderBar.jsx';
+import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
+import EducationFormFilterParams from './DataCarrier.js';
 
 export default function CollegePage() {
 
     const [collegeData, setColleges] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const getColleges = async () => {
-            // const data = await getAllColleges();
-            const data = await getCollegesByTitle('Ин');
-            setLoading(false);
-            setColleges(data);
-        }
+    const CollegeTitleInputHandler = (event) =>{
+        getColleges(event.target.value);
+    }
 
-        getColleges();
+    const getColleges = async (searchString) => {
+
+        setLoading(true);
+
+        let data;
+
+        if (searchString == '')
+            data = await getAllColleges();
+        else
+            data = await getCollegesByTitle(searchString);
+
+        setLoading(false);
+        setColleges(data);
+
+    }
+
+    useEffect(() => {
+
+        getColleges('');
 
     }, []);
-
 
     return (
         <div>
             <div className={style.SearchBox}>
-                <SearchPanel title='поиск по названию'/> 
+                <SearchPanel title='поиск по названию' CollegeTitleInputHandler={CollegeTitleInputHandler}/> 
                 <img src={SearchBoxImageTop} id={style.SearchBoxImgTop}/>
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
@@ -38,10 +53,11 @@ export default function CollegePage() {
                 <div className={style.FilterPanel}>
                     <SpecialtyFilterAdditionPanel />
                     <SliderBar />
+                    <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams}/>
                 </div>
                 <div className={style.vertPanel}>
                     <div className={style.InfoPanel}>
-                        <p id={style.title}>Результаты поиска</p>
+                        {/* <p id={style.title}>Результаты поиска</p> */}
                         <div className={style.SortPanel}>
                             <p id={style.title}>Сортировка</p>
                             <SortFallingList />

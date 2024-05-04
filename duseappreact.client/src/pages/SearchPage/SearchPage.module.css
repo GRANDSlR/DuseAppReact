@@ -37,13 +37,22 @@
     background-color: #f6f6f6;
     padding: 20px;
     min-height: 200px;
+    animation: ani 2.5s forwards;
 }
+
+@keyframes ani {
+    0% {height: 0;}
+    100% {height: auto;}
+  }
 
 .Preloader{
     display: flex;
     align-items: top;
     justify-content: center;
+    animation: ani 2.5s forwards;
 }
+
+
 
 .FilterPanel{
     display: table-cell;

@@ -3,6 +3,8 @@ using DuseAppReact.Core.Converters;
 using DuseAppReact.Core.Dependencies;
 using DuseAppReact.Core.Models.College;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection.Metadata;
 
 namespace DuseAppReact.Server.Controllers
 {
@@ -28,6 +30,19 @@ namespace DuseAppReact.Server.Controllers
             return Ok(CollegeHeaderResultList.Value);
         }
 
+        
+        [HttpGet("getcollegesbytitle")]
+        public async Task<ActionResult<List<string>>> GetCollgesByTitle(string? title)
+        {
+
+            var CollegeHeaderResultList = await _collegeDataConfiguration.GetCollegesByTitle(title);
+
+            if (!CollegeHeaderResultList.IsSuccess)
+                return BadRequest(CollegeHeaderResultList.ErrorMessage);
+
+            return Ok(CollegeHeaderResultList.Value);
+        }
+
         [HttpGet("getallspecialties")]
         public async Task<ActionResult<List<string>>> GetAllSpecialties()
         {
@@ -40,16 +55,7 @@ namespace DuseAppReact.Server.Controllers
         }
 
 
-        [HttpGet("getcollegesbytitle")]
-        public async Task<ActionResult<List<string>>> GetCollgesByTitle(string title)
-        {
-            var CollegeHeaderResultList = await _collegeDataConfiguration.GetCollegesByTitle(title);
 
-            if (!CollegeHeaderResultList.IsSuccess)
-                return BadRequest(CollegeHeaderResultList.ErrorMessage);
-
-            return Ok(CollegeHeaderResultList.Value);
-        }
 
         [HttpPost]
         public async Task<ActionResult<int>> AddCollege([FromBody] CollegeDataRequest collegeDataRequest)

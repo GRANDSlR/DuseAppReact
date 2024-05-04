@@ -11,7 +11,7 @@ export const Colleges = ({collegeObjects}) => {
 
     return (
         <div className={style.Cards}>
-            {collegeObjects.map((college, index) => 
+            {Array.isArray(collegeObjects) || collegeObjects.length>0 ? collegeObjects.map((college, index) => 
                 <div className={style.CollegeCard} key={index}>
 
                     <p id={style.collegeTitle}>{college.collegeHeader.title}</p>
@@ -35,7 +35,7 @@ export const Colleges = ({collegeObjects}) => {
                         <p>Сохранить</p>
                     </div>
                 </div>
-            )}
+            ) : <div className={style.ReportMessage}><p>Совпадений не найдено</p></div>}
         </div>
     );
 }

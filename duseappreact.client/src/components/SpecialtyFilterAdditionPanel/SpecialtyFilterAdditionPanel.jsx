@@ -7,16 +7,17 @@ import CheckboxEmpty from './img/CheckboxEmpty.svg';
 import AppliedCheckbox from './img/AppliedCheckbox.svg';
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 import SearchIcon from "./img/SearchIconNew.svg"
+import CheckBoxPanel from '../CheckBoxPanel/CheckBoxPanel.jsx';
 
 
 const SpecialtyFilterAdditionPanel = () => {
 
-
-    const [specialtyFilterParams, setSpecialtyFilterParams] = useState([]);
-
     const [specialties, setSpecialties] = useState(
         sessionStorage.getItem('specialtyFilterParams') != null ? 
         sessionStorage.getItem('specialtyFilterParams').split(',') : []);
+
+    const [specialtyFilterParams, setSpecialtyFilterParams] = useState([]);
+
     const [loading, setLoading] = useState(true);
 
     const [searchValue, setSearchValue] = useState('');
@@ -38,15 +39,15 @@ const SpecialtyFilterAdditionPanel = () => {
     const handleDropdownClick = () =>
         setDropdownState({ open: !dropdownState.open });
 
-    const handleClickAddSpecialty = (specialty) => {
-        if (specialties.includes(specialty)) {
-            setSpecialties(specialties.filter(item => item !== specialty)); 
-            sessionStorage.setItem('specialtyFilterParams', specialties.filter(item => item !== specialty));
-        } else {
-            setSpecialties([...new Set([...specialties, specialty])]);
-            sessionStorage.setItem('specialtyFilterParams', [...new Set([...specialties, specialty])]);
-        }
-    }
+    // const handleClickAddSpecialty = (specialty) => {
+    //     if (specialties.includes(specialty)) {
+    //         setSpecialties(specialties.filter(item => item !== specialty)); 
+    //         sessionStorage.setItem('specialtyFilterParams', specialties.filter(item => item !== specialty));
+    //     } else {
+    //         setSpecialties([...new Set([...specialties, specialty])]);
+    //         sessionStorage.setItem('specialtyFilterParams', [...new Set([...specialties, specialty])]);
+    //     }
+    // }
 
     const textInputHandler = (event) =>
         setSearchValue(event.target.value);
@@ -66,12 +67,10 @@ const SpecialtyFilterAdditionPanel = () => {
                     <div className={style.DropdownItemBox}>
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 
                         Array.isArray(specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))) ? 
-                        specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue)).map((specialtyTitle, index) => 
-                            <div className={style.DropdownItem} key={index} onClick={() => handleClickAddSpecialty(specialtyTitle)}>
-                                <img src={specialties.includes(specialtyTitle) ? AppliedCheckbox : CheckboxEmpty} className={CheckboxEmpty}></img>
-                                <p>{specialtyTitle}</p>
-                            </div>
-                        ) : <div className={style.EmptyQuery}><p>Ничего не найдено</p></div>
+
+                        <CheckBoxPanel sessionStorageName={'specialtyFilterParams'} data={specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))}/>
+
+                        : <div className={style.EmptyQuery}><p>Ничего не найдено</p></div>
                     }
                     </div>
                 </div>

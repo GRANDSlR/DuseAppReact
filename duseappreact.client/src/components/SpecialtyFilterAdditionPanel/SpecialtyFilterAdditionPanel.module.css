@@ -82,26 +82,6 @@
 
 }
 
-.DropdownItem{
-    display: flex;
-    margin-bottom: 5px;
-}
-
-.DropdownItem:last-child{
-    margin-bottom: 0;
-}
-
-.DropdownItem img{
-    margin-right: 10px;
-}
-
-.DropdownItem p{
-    margin: 0;
-    font-size: 15px;
-    color: #757575;
-    font-weight: 500;
-}
-
 .Preloader{
     display: flex;
     align-items: center;
