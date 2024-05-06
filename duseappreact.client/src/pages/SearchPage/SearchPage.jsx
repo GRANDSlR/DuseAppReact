@@ -9,16 +9,29 @@ import SortFallingList from '../../components/SortFallingList/SortFallingList.js
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 import SliderBar from '../../components/SliderBar/SliderBar.jsx';
 import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
-import EducationFormFilterParams from './DataCarrier.js';
+import {EducationFormFilterParams, CollegeTypeFilterParams} from './DataCarrier.js';
 
 export default function CollegePage() {
 
     const [collegeData, setColleges] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const CollegeTitleInputHandler = (event) =>{
-        getColleges(event.target.value);
-    }
+    const [educationForm, setEducationForm] = useState(
+        sessionStorage.getItem('educationFormFilterPanel') != null ? 
+        sessionStorage.getItem('educationFormFilterPanel').split(',') : []);
+
+    const [collegeTypeFilterParams, setCollegeTypeFilterParams] = useState(
+        sessionStorage.getItem('collegeTypeFilterParams') != null ? 
+        sessionStorage.getItem('collegeTypeFilterParams').split(',') : []);
+
+    const CollegeTitleInputEvent = (event) =>
+    getColleges(event.target.value);
+
+    const handleCollegeTypeCheckboxEvent = (state) =>
+    setCollegeTypeFilterParams(state);
+
+    const handleEducationFormCheckboxEvent = (state) =>
+    setEducationForm(state);
 
     const getColleges = async (searchString) => {
 
@@ -45,15 +58,25 @@ export default function CollegePage() {
     return (
         <div>
             <div className={style.SearchBox}>
-                <SearchPanel title='поиск по названию' CollegeTitleInputHandler={CollegeTitleInputHandler}/> 
+                <SearchPanel title='поиск по названию' CollegeTitleInputHandler={CollegeTitleInputEvent}/> 
                 <img src={SearchBoxImageTop} id={style.SearchBoxImgTop}/>
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
             <div className={style.ContentPanel}>
                 <div className={style.FilterPanel}>
                     <SpecialtyFilterAdditionPanel />
-                    <SliderBar />
-                    <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams}/>
+                    <div className={style.CheckboxPanel}>
+                        <p>Форма обучения</p>
+                        <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams} event={handleEducationFormCheckboxEvent}/>
+                    </div>
+                    <div className={style.SliderBarPanel}>
+                        {/* <RangeSlider /> */}
+                        <SliderBar />
+                    </div>
+                    <div className={style.CheckboxPanel}>
+                        <p>Тип учебного заведения</p>
+                        <CheckBoxPanel sessionStorageName={'collegeTypeFilterParams'} data={CollegeTypeFilterParams} event={handleCollegeTypeCheckboxEvent}/>
+                    </div>
                 </div>
                 <div className={style.vertPanel}>
                     <div className={style.InfoPanel}>

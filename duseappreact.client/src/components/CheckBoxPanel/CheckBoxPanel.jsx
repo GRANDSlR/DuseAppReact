@@ -1,18 +1,18 @@
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import style from './CheckBoxPanel.module.css';
 import CheckboxEmpty from './img/CheckboxEmpty.svg';
 import AppliedCheckbox from './img/AppliedCheckbox.svg';
 
 
 
-export default function CheckBoxPanel ({sessionStorageName, data}){
+export default function CheckBoxPanel ({sessionStorageName, data, event}){
 
     const [filterParams, setFilterParams] = useState(
         sessionStorage.getItem(sessionStorageName) != null ? 
         sessionStorage.getItem(sessionStorageName).split(',') : []);
 
-    const handleClickAddSpecialty = (addedItem) => {
+    const handleClickAdd = (addedItem) => {
         if (filterParams.includes(addedItem)) {
             setFilterParams(filterParams.filter(item => item !== addedItem)); 
             sessionStorage.setItem(sessionStorageName, filterParams.filter(item => item !== addedItem));
@@ -22,10 +22,14 @@ export default function CheckBoxPanel ({sessionStorageName, data}){
         }
     }
 
+    useEffect(() => {
+        event(filterParams);
+    }, [filterParams]);
+
     return (
         <div className={style.MainBox}>
             {Array.isArray(data) ? data.map((item, index) =>
-            <div className={style.PanelItem} onClick={() => handleClickAddSpecialty(item)} key={index}>
+            <div className={style.PanelItem} onClick={() => {handleClickAdd(item);}} key={index}>
                 <img src={filterParams.includes(item) ? AppliedCheckbox : CheckboxEmpty}></img>
                 <p>{item}</p>
             </div>

@@ -85,3 +85,19 @@
 .SortPanel #title{
     margin-right: 10px;
 }
+
+.CheckboxPanel{
+    padding: 25px 0;
+    border-bottom: 1px solid #2864FF;
+}
+
+.CheckboxPanel p{
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.SliderBarPanel{
+    padding: 25px 0;
+    border-bottom: 1px solid #2864FF;
+}

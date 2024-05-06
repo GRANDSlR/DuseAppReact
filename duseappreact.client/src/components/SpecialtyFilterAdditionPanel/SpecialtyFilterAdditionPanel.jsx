@@ -39,15 +39,8 @@ const SpecialtyFilterAdditionPanel = () => {
     const handleDropdownClick = () =>
         setDropdownState({ open: !dropdownState.open });
 
-    // const handleClickAddSpecialty = (specialty) => {
-    //     if (specialties.includes(specialty)) {
-    //         setSpecialties(specialties.filter(item => item !== specialty)); 
-    //         sessionStorage.setItem('specialtyFilterParams', specialties.filter(item => item !== specialty));
-    //     } else {
-    //         setSpecialties([...new Set([...specialties, specialty])]);
-    //         sessionStorage.setItem('specialtyFilterParams', [...new Set([...specialties, specialty])]);
-    //     }
-    // }
+    const handleCheckboxEvent = (state) =>
+    setSpecialties(state);
 
     const textInputHandler = (event) =>
         setSearchValue(event.target.value);
@@ -68,7 +61,7 @@ const SpecialtyFilterAdditionPanel = () => {
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 
                         Array.isArray(specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))) ? 
 
-                        <CheckBoxPanel sessionStorageName={'specialtyFilterParams'} data={specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))}/>
+                        <CheckBoxPanel sessionStorageName={'specialtyFilterParams'} data={specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))} event={handleCheckboxEvent}/>
 
                         : <div className={style.EmptyQuery}><p>Ничего не найдено</p></div>
                     }

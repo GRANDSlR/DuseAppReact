@@ -1,8 +1,14 @@
 
-const EducationFormFilterParams = [
+export const EducationFormFilterParams = [
+    "Дневная",
+    "Заочная"
+];
+
+export const CollegeTypeFilterParams = [
     "Колледж",
     "ПТУ",
     "Лицей"
 ];
 
-export default EducationFormFilterParams;
+export default CollegeTypeFilterParams;
+

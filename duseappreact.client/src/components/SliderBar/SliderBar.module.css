@@ -22,11 +22,6 @@
     cursor: pointer;
   }
 
-  .MainBox{
-    padding: 25px 0;
-    border-bottom: 1px solid #2864FF;
-  }
-
   .sliderBarValue p{
     margin: 0;
     font-size: 15px;

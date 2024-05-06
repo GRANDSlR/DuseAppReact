@@ -7,9 +7,11 @@ export default function SpecialtyPanel (speсialtyList) {
     return (
         <div className={style.specialtyPanel}>
             {Array.isArray(speсialtyList.speсialtyList) ? speсialtyList.speсialtyList.map((specialty, index) =>
+                specialty!='' ? 
                 <div className={style.specialtyItem} key={index}>
                     <p>{specialty}</p>
                 </div>
+                : null
             ) : null}
         </div>
     );
