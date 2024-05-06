@@ -1,0 +1,56 @@
+
+
+.Track{
+    height: 6px;
+    width: 100%;
+    background-color: #eaeaea;
+    border-radius: 5px;
+}
+
+.Thumb{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 3px solid #2864FF;
+    outline: none;
+}
+
+.Progress{
+    height: 100%;
+    background-color: #2864FF;
+}
+
+.KeyboardRangeBox{
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.KeyboardRangeItem span{
+    font-size: 15px;
+    color: #999;
+    margin-right: 4px;
+}
+
+.KeyboardRangeItem input{
+    width: 100%;
+    font-size: 15px;
+    color: #999;
+    background-color: transparent;
+    outline: none;
+    border:none;
+    margin-bottom: 1px;
+}
+
+.KeyboardRangeItem{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.KeyboardRangeItem:first-child{
+    border-right: 1px solid #d9d9d9;
+}

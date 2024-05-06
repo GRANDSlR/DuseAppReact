@@ -31,18 +31,16 @@
     width: 100%;
 }
 
-
 .ResultPanel{
     width: auto;
     background-color: #f6f6f6;
     padding: 20px;
-    min-height: 200px;
-    animation: ani 2.5s forwards;
+    animation: ani 0.5s forwards;
 }
 
 @keyframes ani {
-    0% {height: 0;}
-    100% {height: auto;}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
   }
 
 .Preloader{
@@ -100,4 +98,10 @@
 .SliderBarPanel{
     padding: 25px 0;
     border-bottom: 1px solid #2864FF;
+}
+
+.SliderBarPanel p{
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 15px;
 }

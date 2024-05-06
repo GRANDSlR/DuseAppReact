@@ -7,9 +7,9 @@ import style from './SearchPage.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
-import SliderBar from '../../components/SliderBar/SliderBar.jsx';
 import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
 import {EducationFormFilterParams, CollegeTypeFilterParams} from './DataCarrier.js';
+import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 
 export default function CollegePage() {
 
@@ -24,8 +24,17 @@ export default function CollegePage() {
         sessionStorage.getItem('collegeTypeFilterParams') != null ? 
         sessionStorage.getItem('collegeTypeFilterParams').split(',') : []);
 
+    const [sliderBarValues, setSliderBarValues] = useState(
+        sessionStorage.getItem('sliderBarFilterValues') != null ? 
+        sessionStorage.getItem('sliderBarFilterValues').split(',') : [0, 6000]);
+
     const CollegeTitleInputEvent = (event) =>
     getColleges(event.target.value);
+
+    const SliderBarEvent = (state) => {
+    setSliderBarValues(state);
+    console.log(state);
+    }
 
     const handleCollegeTypeCheckboxEvent = (state) =>
     setCollegeTypeFilterParams(state);
@@ -70,8 +79,8 @@ export default function CollegePage() {
                         <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams} event={handleEducationFormCheckboxEvent}/>
                     </div>
                     <div className={style.SliderBarPanel}>
-                        {/* <RangeSlider /> */}
-                        <SliderBar />
+                        <p>Цена за год обучения (BY)</p>
+                        <RangeSlider event={SliderBarEvent}/>
                     </div>
                     <div className={style.CheckboxPanel}>
                         <p>Тип учебного заведения</p>
