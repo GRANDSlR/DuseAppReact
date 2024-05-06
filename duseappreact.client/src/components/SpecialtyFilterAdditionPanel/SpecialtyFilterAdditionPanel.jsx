@@ -10,7 +10,7 @@ import SearchIcon from "./img/SearchIconNew.svg"
 import CheckBoxPanel from '../CheckBoxPanel/CheckBoxPanel.jsx';
 
 
-const SpecialtyFilterAdditionPanel = () => {
+const SpecialtyFilterAdditionPanel = (event) => {
 
     const [specialties, setSpecialties] = useState(
         sessionStorage.getItem('specialtyFilterParams') != null ? 
@@ -24,6 +24,9 @@ const SpecialtyFilterAdditionPanel = () => {
 
     const [dropdownState, setDropdownState] = useState({ open: false });
 
+    useEffect(() => {
+        event.event(specialties);
+    }, [specialties]);
 
     useEffect(() => {
         const getSepcialties = async () => {
@@ -43,7 +46,7 @@ const SpecialtyFilterAdditionPanel = () => {
     setSpecialties(state);
 
     const textInputHandler = (event) =>
-        setSearchValue(event.target.value);
+    setSearchValue(event.target.value);
 
     return (
         <div className={style.MainBox}>

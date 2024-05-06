@@ -16,6 +16,10 @@ export default function CollegePage() {
     const [collegeData, setColleges] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [specialties, setSpecialties] = useState(
+        sessionStorage.getItem('specialtyFilterParams') != null ? 
+        sessionStorage.getItem('specialtyFilterParams').split(',') : []);
+
     const [educationForm, setEducationForm] = useState(
         sessionStorage.getItem('educationFormFilterPanel') != null ? 
         sessionStorage.getItem('educationFormFilterPanel').split(',') : []);
@@ -31,10 +35,11 @@ export default function CollegePage() {
     const CollegeTitleInputEvent = (event) =>
     getColleges(event.target.value);
 
-    const SliderBarEvent = (state) => {
+    const SliderBarEvent = (state) => 
     setSliderBarValues(state);
-    console.log(state);
-    }
+
+    const SpecialtyCheckboxEvent = (state) => 
+    setSpecialties(state);
 
     const handleCollegeTypeCheckboxEvent = (state) =>
     setCollegeTypeFilterParams(state);
@@ -73,7 +78,7 @@ export default function CollegePage() {
             </div>
             <div className={style.ContentPanel}>
                 <div className={style.FilterPanel}>
-                    <SpecialtyFilterAdditionPanel />
+                    <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent}/>
                     <div className={style.CheckboxPanel}>
                         <p>Форма обучения</p>
                         <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams} event={handleEducationFormCheckboxEvent}/>

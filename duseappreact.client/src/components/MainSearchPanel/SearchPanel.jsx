@@ -2,6 +2,7 @@ import style from "./SearchPanel.module.css";
 import SearchIcon from "./img/SearchIconNew.svg";
 
 const SearchPanel = ({title, CollegeTitleInputHandler}) =>{
+
     return (
         <div className={style.SearchPanelBorder}>
             <div className={style.SearchPanelBox}>
