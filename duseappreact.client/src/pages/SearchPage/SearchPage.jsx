@@ -84,7 +84,7 @@ export default function CollegePage() {
                         <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams} event={handleEducationFormCheckboxEvent}/>
                     </div>
                     <div className={style.SliderBarPanel}>
-                        <p>Цена за год обучения (BY)</p>
+                        <p>Цена за год обучения (BYN)</p>
                         <RangeSlider event={SliderBarEvent}/>
                     </div>
                     <div className={style.CheckboxPanel}>

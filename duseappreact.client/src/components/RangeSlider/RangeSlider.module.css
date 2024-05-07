@@ -14,6 +14,7 @@
     background-color: #fff;
     border: 3px solid #2864FF;
     outline: none;
+    position: relative;
 }
 
 .Progress{
@@ -53,4 +54,37 @@
 
 .KeyboardRangeItem:first-child{
     border-right: 1px solid #d9d9d9;
+}
+
+.Values{
+    position: absolute;
+    top: 20px;
+    background-color: #2864FF;
+    width: 30px;
+    border-radius: 5px;
+    left: -13px;
+    padding: 0 3px;
+}
+
+.ValueBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+.triangleUp{
+    position: relative;
+}
+
+.triangleUp div{
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 6px solid #2864FF;
 }
