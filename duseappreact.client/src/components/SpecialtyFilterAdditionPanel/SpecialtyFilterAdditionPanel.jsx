@@ -58,7 +58,7 @@ const SpecialtyFilterAdditionPanel = (event) => {
                 <div className={style.DropdownBox}>
                     <div className={style.SearchPanelBox}>
                         <img src={SearchIcon} className={style.SearchIcon} />
-                        <input placeholder='поиск по специальностям' className={style.SearchInput} onChange={textInputHandler}></input>
+                        <input placeholder='поиск по специальностям' value={searchValue} className={style.SearchInput} onChange={textInputHandler}></input>
                     </div>
                     <div className={style.DropdownItemBox}>
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 

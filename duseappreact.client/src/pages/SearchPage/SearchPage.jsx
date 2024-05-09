@@ -21,16 +21,25 @@ export default function CollegePage() {
         sessionStorage.getItem('specialtyFilterParams').split(',') : []);
 
     const [educationForm, setEducationForm] = useState(
-        sessionStorage.getItem('educationFormFilterPanel') != null ? 
-        sessionStorage.getItem('educationFormFilterPanel').split(',') : []);
+        sessionStorage.getItem('educationFormFilterPanel') != null ?
+        sessionStorage.getItem('educationFormFilterPanel').split(',') : EducationFormFilterParams);
 
     const [collegeTypeFilterParams, setCollegeTypeFilterParams] = useState(
         sessionStorage.getItem('collegeTypeFilterParams') != null ? 
-        sessionStorage.getItem('collegeTypeFilterParams').split(',') : []);
+        sessionStorage.getItem('collegeTypeFilterParams').split(',') : CollegeTypeFilterParams);
 
     const [sliderBarValues, setSliderBarValues] = useState(
         sessionStorage.getItem('sliderBarFilterValues') != null ? 
         sessionStorage.getItem('sliderBarFilterValues').split(',') : [0, 6000]);
+
+    useEffect(() => {
+        educationForm == '' ? setEducationForm(EducationFormFilterParams) : null;
+    }, [educationForm]);
+
+    useEffect(() => {
+        collegeTypeFilterParams == '' ? setCollegeTypeFilterParams(CollegeTypeFilterParams) : null;
+    }, [collegeTypeFilterParams]);
+    
 
     const CollegeTitleInputEvent = (event) =>
     getColleges(event.target.value);

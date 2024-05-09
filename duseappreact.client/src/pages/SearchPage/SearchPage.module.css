@@ -36,6 +36,7 @@
     background-color: #f6f6f6;
     padding: 20px;
     animation: ani 0.5s forwards;
+    height: calc(100% - 125px);
 }
 
 @keyframes ani {
@@ -65,6 +66,7 @@
     display: flex;
     background-color: #eaeaea;
     width: auto;
+    height: 35px;
     align-items: center;
     padding: 25px;
 }
