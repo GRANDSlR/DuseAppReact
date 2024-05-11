@@ -1,7 +1,7 @@
-﻿using DuseAppReact.Services.ResultService;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using DuseAppReact.Services.Services;
 
 namespace DuseAppReact.Core.Models.College
 {

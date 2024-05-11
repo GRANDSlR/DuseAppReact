@@ -1,6 +1,6 @@
 ﻿using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
-using DuseAppReact.Services.ResultService;
+using DuseAppReact.Services.Services;
 
 namespace DuseAppReact.Core.Dependencies
 {

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "z4vPqXavwij4o3ao0/ri/Oq13rlM/ILagCqMHlEirqWlbjMGiCXJhoVXPvLaoMyh3Z3FN91CU1LuvOvKVJnPpg==",
+  "dgSpecHash": "PFIpuvQ3z4yjC1/RnY1z1Di/y6kygLAvjFG4av5+pSEzmGnNJi743tJwTLOTaPjz2zJjaRjO2lBE06fbzUpEHA==",
   "success": true,
   "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Server\\DuseAppReact.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.4\\microsoft.aspnetcore.spaproxy.8.0.4.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

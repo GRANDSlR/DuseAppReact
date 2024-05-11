@@ -2,7 +2,7 @@
 using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Entities.College;
-using DuseAppReact.Services.ResultService;
+using DuseAppReact.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.CollegeRep

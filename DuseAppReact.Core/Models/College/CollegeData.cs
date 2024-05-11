@@ -1,4 +1,4 @@
-﻿using DuseAppReact.Services.ResultService;
+﻿using DuseAppReact.Services.Services;
 namespace DuseAppReact.Core.Models.College
 {
     public class CollegeData

@@ -1,8 +1,8 @@
-﻿using DuseAppReact.Services.ResultService;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
+using DuseAppReact.Services.Services;
 
 namespace DuseAppReact.Core.Models.College
 {

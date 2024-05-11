@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+oKTrVh0vgkjy9xFM7nkIXW2MxeZZZaMdAKmas4zs7ufNJTQmnsLeWDdMEeFmrexTNol/4FZ1np8VUZaXQ2E4A==",
+  "success": true,
+  "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Infrastructure\\DuseAppReact.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\root\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

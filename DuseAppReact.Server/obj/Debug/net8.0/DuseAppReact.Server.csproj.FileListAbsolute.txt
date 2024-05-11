@@ -130,10 +130,8 @@ C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\runtimes\win\lib\ne
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Core.dll
-C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.DataAccess.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Services.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Core.pdb
-C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.DataAccess.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Services.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.csproj.AssemblyReference.cache
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\spa.proxy.json
@@ -158,3 +156,6 @@ C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\refint\DuseAppReact
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.genruntimeconfig.cache
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\ref\DuseAppReact.Server.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Application.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Application.pdb

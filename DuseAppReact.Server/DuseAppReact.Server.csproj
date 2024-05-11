@@ -22,7 +22,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\DuseAppReact.Core\DuseAppReact.Core.csproj" />
-    <ProjectReference Include="..\DuseAppReact.DataAccess\DuseAppReact.DataAccess.csproj" />
+    <ProjectReference Include="..\DuseAppReact.DataAccess\DuseAppReact.Application.csproj" />
   </ItemGroup>
 
 </Project>

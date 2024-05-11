@@ -1,4 +1,4 @@
-﻿namespace DuseAppReact.Services.ResultService
+﻿namespace DuseAppReact.Services.Services
 {
     public class Result<T>
     {
@@ -17,10 +17,10 @@
         {
             return new Result<T>(true, value, null);
         }
-        
+
         public static Result<T> Failure(string errorMessage)
         {
-            return new Result<T>(false, default(T), errorMessage);
+            return new Result<T>(false, default, errorMessage);
         }
 
         public static Result<List<T>> ResultListInit<T>(List<Result<T>> speсialtyList)

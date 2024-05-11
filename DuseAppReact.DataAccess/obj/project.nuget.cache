@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rdrh+lFqLO/FC1AgPNqPMJli3vRCALiWakxwOOmtUCHYIWcsOFxs4k+k0ncaIp3FMF8s87vbIZh0SCVTlvybug==",
+  "dgSpecHash": "gmUawIiUBUgBcmG535Y6JlrSS6EOdLtvv+HI81N/qSN+yz8DOC3gIUe+wmEi3rV7zNW/IKMxyNIPpMVSwn65Cw==",
   "success": true,
-  "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
+  "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.5\\microsoft.data.sqlclient.5.1.5.nupkg.sha512",

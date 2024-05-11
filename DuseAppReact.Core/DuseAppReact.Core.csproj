@@ -10,4 +10,8 @@
     <ProjectReference Include="..\DuseAppReact.Services\DuseAppReact.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\User\" />
+  </ItemGroup>
+
 </Project>

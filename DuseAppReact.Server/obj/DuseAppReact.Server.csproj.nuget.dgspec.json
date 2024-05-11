@@ -63,12 +63,12 @@
         }
       }
     },
-    "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj": {
+    "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
-        "projectName": "DuseAppReact.DataAccess",
-        "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
+        "projectUniqueName": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
+        "projectName": "DuseAppReact.Application",
+        "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
         "packagesPath": "C:\\Users\\root\\.nuget\\packages\\",
         "outputPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
@@ -103,6 +103,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -159,8 +163,8 @@
               "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj": {
                 "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj"
               },
-              "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj": {
-                "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj"
+              "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj": {
+                "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj"
               }
             }
           }

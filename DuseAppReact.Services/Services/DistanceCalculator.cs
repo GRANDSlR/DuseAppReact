@@ -1,4 +1,4 @@
-﻿namespace DuseAppReact.Services.AllocationService
+﻿namespace DuseAppReact.Services.Services
 {
     internal class DistanceCalculator
     {

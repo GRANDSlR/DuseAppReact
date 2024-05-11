@@ -1,4 +1,5 @@
 ﻿using DuseAppReact.DataAccess.Entities.College;
+using DuseAppReact.DataAccess.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess
@@ -15,6 +16,8 @@ namespace DuseAppReact.DataAccess
         public DbSet<College_SpecialtyEntity> College_Specialties { get; set; } = null!;
 
         public DbSet<SpecialtyEntity> Specialties { get; set; } = null!;
+
+        public DbSet<UserEntity> Users { get; set; } = null!;
 
         public DatabaseContext() => Database.EnsureCreated();
 
