@@ -9,7 +9,7 @@ namespace DuseAppReact.Core.Dependencies
         Task<int> Create(UserModel parameter);
         Task<int> Delete(int id);
         Task<List<Result<UserModel>>> Get();
-        Task<List<Result<UserModel>>> GetByEmail(string email);
+        Task<Result<UserModel>> GetByEmail(string email);
         Task<int> Update(UserModel parameter);
     }
 }

@@ -15,16 +15,12 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
             _context = context;
         }
 
-        public async Task<List<Result<UserModel>>> GetByEmail(string email)
+        public async Task<Result<UserModel>> GetByEmail(string email)
         {
             var userEntities = await _context.Users
-                .Where(b => b.Email.Contains(email))
-                .AsNoTracking()
-                .ToListAsync();
+                .FirstOrDefaultAsync(b => b.Email == email);
 
-            var users = userEntities
-                .Select(a => UserModel.Create(a.Id, a.Name, a.Email, a.PasswordHash))
-                .ToList();
+            var users = UserModel.Create(userEntities.Id, userEntities.Name, userEntities.Email, userEntities.PasswordHash);
 
             return users;
         }
