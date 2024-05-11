@@ -159,3 +159,4 @@ C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\ref\DuseAppReact.Se
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Application.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Application.pdb
+C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
