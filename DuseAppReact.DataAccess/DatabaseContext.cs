@@ -22,7 +22,7 @@ namespace DuseAppReact.DataAccess
         public DatabaseContext() => Database.EnsureCreated();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        { 
+        {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=DuseAppDb;Trusted_Connection=True;");
         }
 

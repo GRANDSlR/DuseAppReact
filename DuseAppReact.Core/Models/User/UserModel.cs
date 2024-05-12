@@ -7,6 +7,7 @@ namespace DuseAppReact.Core.Models.UserModel
     public class UserModel
     {
         private const int NAME_MAX_LENGTH = 80;
+        private const int PASSWORD_MAX_LENGTH = 100;
         private UserModel(int id, string name, string email, string passwordHash)
         {
             Id = id;
@@ -28,6 +29,10 @@ namespace DuseAppReact.Core.Models.UserModel
 
             if (!Regex.IsMatch(email, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"))
                 return Result<UserModel>.Failure("Это не email");
+
+            if (passwordHash.Length > PASSWORD_MAX_LENGTH)
+                return Result<UserModel>.Failure($"Пароль не должен превышать {PASSWORD_MAX_LENGTH} символов");
+
 
             return Result<UserModel>.Success(new UserModel(id, name, email, passwordHash));
         }

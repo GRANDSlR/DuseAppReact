@@ -1,4 +1,4 @@
-﻿using DuseAppReact.Core.Dependencies;
+﻿using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Models.UserModel;
 using DuseAppReact.DataAccess.Entities.User;
 using DuseAppReact.Services.Services;

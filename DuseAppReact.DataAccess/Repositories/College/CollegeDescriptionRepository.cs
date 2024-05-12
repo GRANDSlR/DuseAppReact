@@ -1,4 +1,4 @@
-﻿using DuseAppReact.Core.Dependencies;
+﻿using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Entities.College;
 using DuseAppReact.Services.Services;

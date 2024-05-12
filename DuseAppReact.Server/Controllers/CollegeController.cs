@@ -1,6 +1,6 @@
-﻿using DuseAppReact.Core.Contracts;
+﻿using DuseAppReact.Application.Interfaces.Configure;
+using DuseAppReact.Core.Contracts;
 using DuseAppReact.Core.Converters;
-using DuseAppReact.Core.Dependencies;
 using DuseAppReact.Core.Models.College;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;

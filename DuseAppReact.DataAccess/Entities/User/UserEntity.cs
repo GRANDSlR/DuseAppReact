@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DuseAppReact.DataAccess.Entities.User
 {
-    [Table("User")]
+    [Table("Users")]
     public class UserEntity
     {
         [Key]

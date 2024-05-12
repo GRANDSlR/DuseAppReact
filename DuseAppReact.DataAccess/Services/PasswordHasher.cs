@@ -1,4 +1,6 @@
-﻿namespace DuseAppReact.Infrastructure
+﻿using DuseAppReact.Application.Interfaces.Auth;
+
+namespace DuseAppReact.Infrastructure
 {
     public class PasswordHasher : IPasswordHasher
     {
