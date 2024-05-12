@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.UserRepository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository<UserModel>
     {
         private readonly DatabaseContext _context;
 

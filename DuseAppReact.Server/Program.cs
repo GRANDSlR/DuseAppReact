@@ -2,20 +2,21 @@ using DuseAppReact.Application.Interfaces.Auth;
 using DuseAppReact.Application.Interfaces.Configure;
 using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Application.Services;
+using DuseAppReact.Core.Mo.College;
+using DuseAppReact.Core.Models.College;
+using DuseAppReact.Core.Models.UserModel;
 using DuseAppReact.DataAccess;
 using DuseAppReact.DataAccess.Configurations.College;
+using DuseAppReact.DataAccess.Repositories.CollegeRep;
 using DuseAppReact.DataAccess.Repositories.UserRepository;
 using DuseAppReact.Infrastructure;
 using DuseAppReact.Services.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 var configuration = builder.Configuration;
 
@@ -24,23 +25,31 @@ builder.Services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOption
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ICollegeRepositoryWithTitle<CollegeHeader>, CollegeHeaderRepository>();
+builder.Services.AddScoped<ICollegeRepositoryWithId<CollegeDescription>, CollegeDescriptionRepository>();
+builder.Services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRepository>();
+builder.Services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
+builder.Services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();
+builder.Services.AddScoped<IUserRepository<UserModel>, UserRepository>();
+
+
 builder.Services.AddScoped<ICollegeDataConfiguration, CollegeDataConfiguration>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 
 
-/*builder.Services.AddDbContext<DatabaseContext>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-    options.UseSqlServer(configuration.GetConnectionString("YourConnectionString"));
-});*/
+    options.UseSqlServer(configuration.GetConnectionString("DBConnection"));
+});
+
 
 var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

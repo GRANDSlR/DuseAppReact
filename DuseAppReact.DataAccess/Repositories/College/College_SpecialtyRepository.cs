@@ -1,13 +1,12 @@
 ﻿using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Mo.College;
-using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Entities.College;
 using DuseAppReact.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.CollegeRep
 {
-    public class College_SpecialtyRepository : ICollegeRepository<College_Specialty>
+    public class College_SpecialtyRepository : ICollegeRepositoryWithIdList<College_Specialty>
     {
         private readonly DatabaseContext _context;
 

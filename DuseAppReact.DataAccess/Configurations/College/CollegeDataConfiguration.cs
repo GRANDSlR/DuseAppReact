@@ -1,4 +1,5 @@
 ﻿using DuseAppReact.Application.Interfaces.Configure;
+using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Repositories.CollegeRep;
@@ -8,121 +9,145 @@ namespace DuseAppReact.DataAccess.Configurations.College
 {
     public class CollegeDataConfiguration : ICollegeDataConfiguration
     {
-        public async Task<Result<List<Speсialty>>> GetAllSpecialties()
+
+        private readonly ICollegeRepositoryWithTitle<CollegeHeader> _collegeHeaderRepository;
+        private readonly ICollegeRepositoryWithId<CollegeDescription> _collegeDescriptionRepository;
+        private readonly ICollegeRepositoryWithId<CollegeLocation> _collegeLocationRepository;
+        private readonly ICollegeRepositoryWithId<Speсialty> _speсialtyRepository;
+        private readonly ICollegeRepositoryWithIdList<College_Specialty> _college_SpecialtyRepository;
+
+        public CollegeDataConfiguration(
+            ICollegeRepositoryWithTitle<CollegeHeader> collegeHeaderRepository,
+            ICollegeRepositoryWithId<CollegeDescription> collegeDescriptionRepository,
+            ICollegeRepositoryWithId<CollegeLocation> collegeLocationRepository,
+            ICollegeRepositoryWithId<Speсialty> speсialtyRepository,
+            ICollegeRepositoryWithIdList<College_Specialty> college_SpecialtyRepository)
         {
-            using (var context = new DatabaseContext())
-                return Result<Speсialty>.ResultListInit(await new CollegeSpecialtyRepository(context).Get()); ;
+            _collegeHeaderRepository = collegeHeaderRepository;
+            _collegeDescriptionRepository = collegeDescriptionRepository;
+            _collegeLocationRepository = collegeLocationRepository;
+            _speсialtyRepository = speсialtyRepository;
+            _college_SpecialtyRepository = college_SpecialtyRepository;
         }
+
+        public async Task<Result<List<Speсialty>>> GetAllSpecialties() 
+            => Result<Speсialty>.ResultListInit(await _speсialtyRepository.Get());
 
         public async Task<Result<List<CollegeData>>> GetColleges()
         {
+            
+            var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await _collegeHeaderRepository.Get());
 
+            if (!CollegeHeaderResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(CollegeHeaderResultList.ErrorMessage);
+
+            var CollegeDescriptionResultList = Result<CollegeData>.ResultListInit(await _collegeDescriptionRepository.Get());
+
+            if (!CollegeDescriptionResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(CollegeDescriptionResultList.ErrorMessage);
+
+            var CollegeLocationResultList = Result<CollegeData>.ResultListInit(await _collegeLocationRepository.Get());
+
+            if (!CollegeLocationResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(CollegeLocationResultList.ErrorMessage);
+
+            var CollegeSpecialtyResultList = Result<CollegeData>.ResultListInit(await _speсialtyRepository.Get());
+
+            if (!CollegeSpecialtyResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(CollegeSpecialtyResultList.ErrorMessage);
+
+            var College_SpecialtyResultList = Result<CollegeData>.ResultListInit(await _college_SpecialtyRepository.Get());
+
+            if (!College_SpecialtyResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(College_SpecialtyResultList.ErrorMessage);
+
+
+            return Result<List<CollegeData>>.Success(
+                GetCollegeDataList(
+                    CollegeHeaderResultList.Value,
+                    CollegeDescriptionResultList.Value,
+                    CollegeLocationResultList.Value,
+                    CollegeSpecialtyResultList.Value,
+                    College_SpecialtyResultList.Value
+                ));
+            
+        }
+
+        private List<CollegeData> GetCollegeDataList(
+            List<CollegeHeader> CollegeHeaderResultList,
+            List<CollegeDescription> CollegeDescriptionResultList,
+            List<CollegeLocation> CollegeLocationResultList,
+            List<Speсialty> CollegeSpecialtyResultList,
+            List<College_Specialty> College_SpecialtyResultList)
+        {
             List<CollegeData> Colleges = new List<CollegeData>();
 
-
-            using (var context = new DatabaseContext())
+            foreach (CollegeHeader CurrCollegeHeaderObj in CollegeHeaderResultList)
             {
+                var CurrSpecialtyIds = College_SpecialtyResultList
+                    .Where(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId)
+                    .Select(a => a.SpecialtyId)
+                    .ToList();
 
-                var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await new CollegeHeaderRepository(context).Get());
+                Colleges.Add(new CollegeData(
 
-                if (!CollegeHeaderResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(CollegeHeaderResultList.ErrorMessage);
+                    CollegeHeaderResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
 
-                var CollegeDescriptionResultList = Result<CollegeData>.ResultListInit(await new CollegeDescriptionRepository(context).Get());
+                    CollegeDescriptionResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
 
-                if (!CollegeDescriptionResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(CollegeDescriptionResultList.ErrorMessage);
+                    CollegeLocationResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
 
-                var CollegeLocationResultList = Result<CollegeData>.ResultListInit(await new CollegeLocationRepository(context).Get());
-
-                if (!CollegeLocationResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(CollegeLocationResultList.ErrorMessage);
-
-                var CollegeSpecialtyResultList = Result<CollegeData>.ResultListInit(await new CollegeSpecialtyRepository(context).Get());
-
-                if (!CollegeSpecialtyResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(CollegeSpecialtyResultList.ErrorMessage);
-
-                var College_SpecialtyResultList = Result<CollegeData>.ResultListInit(await new College_SpecialtyRepository(context).Get());
-
-                if (!College_SpecialtyResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(College_SpecialtyResultList.ErrorMessage);
-
-
-                foreach (CollegeHeader CurrCollegeHeaderObj in CollegeHeaderResultList.Value)
-                {
-
-                    var CurrSpecialtyIds = College_SpecialtyResultList.Value
-                        .Where(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId)
-                        .Select(a => a.SpecialtyId)
-                        .ToList();
-
-
-                    Colleges.Add(new CollegeData(
-
-                        CollegeHeaderResultList.Value.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                        CollegeDescriptionResultList.Value.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                        CollegeLocationResultList.Value.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                        CollegeSpecialtyResultList.Value
-                            .Where(a => CurrSpecialtyIds
-                            .Contains(a.SpecialtyId))
-                            .ToList()
-                        ));
-                }
-
-                return Result<List<CollegeData>>.Success(Colleges);
-
+                    CollegeSpecialtyResultList
+                        .Where(a => CurrSpecialtyIds
+                        .Contains(a.SpecialtyId))
+                        .ToList()
+                ));
             }
+
+            return Colleges;
         }
 
         public async Task<Result<List<CollegeData>>> GetCollegesByTitle(string title)
         {
 
             List<CollegeData> Colleges = new List<CollegeData>();
+            
+            var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await _collegeHeaderRepository.GetByTitle(title));
 
+            if (!CollegeHeaderResultList.IsSuccess)
+                return Result<List<CollegeData>>.Failure(CollegeHeaderResultList.ErrorMessage);
 
-            using (var context = new DatabaseContext())
+            foreach (var collegeHeader in CollegeHeaderResultList.Value)
             {
-                var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await new CollegeHeaderRepository(context).GetByTitle(title));
+                var CollegeDescriptionResult = await _collegeDescriptionRepository.GetById(collegeHeader.CollegeId);
 
-                if (!CollegeHeaderResultList.IsSuccess)
-                    return Result<List<CollegeData>>.Failure(CollegeHeaderResultList.ErrorMessage);
+                if (!CollegeDescriptionResult.IsSuccess)
+                    return Result<List<CollegeData>>.Failure(CollegeDescriptionResult.ErrorMessage);
 
-                foreach (var collegeHeader in CollegeHeaderResultList.Value)
+                var CollegeLocationResult = await _collegeLocationRepository.GetById(collegeHeader.CollegeId);
+
+                if (!CollegeLocationResult.IsSuccess)
+                    return Result<List<CollegeData>>.Failure(CollegeLocationResult.ErrorMessage);
+
+                List<Speсialty> SpeсialtyList = new List<Speсialty>();
+
+                var College_SpecialtyIdList = await _college_SpecialtyRepository.GetById(collegeHeader.CollegeId);
+
+                foreach(int College_SpecialtyId in College_SpecialtyIdList)
                 {
-                    var CollegeDescriptionResult = await new CollegeDescriptionRepository(context).GetById(collegeHeader.CollegeId);
+                    var CollegeSpecialtyResult = await _speсialtyRepository.GetById(College_SpecialtyId);
 
-                    if (!CollegeDescriptionResult.IsSuccess)
-                        return Result<List<CollegeData>>.Failure(CollegeDescriptionResult.ErrorMessage);
+                    if (!CollegeSpecialtyResult.IsSuccess)
+                        return Result<List<CollegeData>>.Failure(CollegeSpecialtyResult.ErrorMessage);
 
-                    var CollegeLocationResult = await new CollegeLocationRepository(context).GetById(collegeHeader.CollegeId);
-
-                    if (!CollegeLocationResult.IsSuccess)
-                        return Result<List<CollegeData>>.Failure(CollegeLocationResult.ErrorMessage);
-
-                    List<Speсialty> SpeсialtyList = new List<Speсialty>();
-
-                    var College_SpecialtyIdList = await new College_SpecialtyRepository(context).GetById(collegeHeader.CollegeId);
-
-                    foreach(int College_SpecialtyId in College_SpecialtyIdList)
-                    {
-                        var CollegeSpecialtyResult = await new CollegeSpecialtyRepository(context).GetById(College_SpecialtyId);
-
-                        if (!CollegeSpecialtyResult.IsSuccess)
-                            return Result<List<CollegeData>>.Failure(CollegeSpecialtyResult.ErrorMessage);
-
-                        SpeсialtyList.Add(CollegeSpecialtyResult.Value);
-                    }
-
-                    Colleges.Add(new CollegeData(
-                        collegeHeader, 
-                        CollegeDescriptionResult.Value,
-                        CollegeLocationResult.Value,
-                        SpeсialtyList));
+                    SpeсialtyList.Add(CollegeSpecialtyResult.Value);
                 }
+
+                Colleges.Add(new CollegeData(
+                    collegeHeader, 
+                    CollegeDescriptionResult.Value,
+                    CollegeLocationResult.Value,
+                    SpeсialtyList));
             }
 
             return Result<List<CollegeData>>.Success(Colleges);
@@ -130,26 +155,21 @@ namespace DuseAppReact.DataAccess.Configurations.College
 
         public async Task<int> AddCollege(CollegeData collegeData)
         {
-            using (var context = new DatabaseContext())
+            int collegeId = await _collegeHeaderRepository.Create(collegeData.CollegeHeader);
+
+            int locationId = await _collegeLocationRepository.Create(collegeData.CollegeLocation);
+
+            int descriptionId = await _collegeDescriptionRepository.Create(collegeData.CollegeDescription);
+
+            int specialtyId;
+
+            int college_SpecialtyId;
+
+            foreach (Speсialty specialty in collegeData.SpeсialtyList)
             {
-                int collegeId = await new CollegeHeaderRepository(context).Create(collegeData.CollegeHeader);
+                specialtyId = await _speсialtyRepository.Create(specialty);
 
-                int locationId = await new CollegeLocationRepository(context).Create(collegeData.CollegeLocation);
-
-                int descriptionId = await new CollegeDescriptionRepository(context).Create(collegeData.CollegeDescription);
-
-                int specialtyId;
-
-                int college_SpecialtyId;
-
-                foreach (Speсialty specialty in collegeData.SpeсialtyList)
-                {
-                    specialtyId = await new CollegeSpecialtyRepository(context).Create(specialty);
-
-                    college_SpecialtyId = await new College_SpecialtyRepository(context).Create(College_Specialty.Create(1, collegeId, specialtyId).Value);
-
-                }
-
+                college_SpecialtyId = await _college_SpecialtyRepository.Create(College_Specialty.Create(1, collegeId, specialtyId).Value);
             }
 
             return collegeData.CollegeHeader.CollegeId;
@@ -157,50 +177,45 @@ namespace DuseAppReact.DataAccess.Configurations.College
 
         public async Task<Result<int>> DeleteCollege(int collegeId)
         {
-            using (var context = new DatabaseContext())
-            {
-                int deletedCollegeId = await new CollegeHeaderRepository(context).Delete(collegeId);
+            int deletedCollegeId = await _collegeHeaderRepository.Delete(collegeId);
 
-                int deletedDescriptionId = await new CollegeDescriptionRepository(context).Delete(collegeId);
+            int deletedDescriptionId = await _collegeDescriptionRepository.Delete(collegeId);
 
-                int deletedLocationId = await new CollegeLocationRepository(context).Delete(collegeId);
+            int deletedLocationId = await _collegeLocationRepository.Delete(collegeId);
 
-                var College_SpecialtyResultList = Result<CollegeData>.ResultListInit(await new College_SpecialtyRepository(context).Get());
+            var College_SpecialtyResultList = Result<CollegeData>.ResultListInit(await _college_SpecialtyRepository.Get());
 
-                if (!College_SpecialtyResultList.IsSuccess)
-                    return Result<int>.Failure(College_SpecialtyResultList.ErrorMessage);
+            if (!College_SpecialtyResultList.IsSuccess)
+                return Result<int>.Failure(College_SpecialtyResultList.ErrorMessage);
 
-                var deletedSpecialtiesIds = College_SpecialtyResultList.Value
-                    .Where(a => a.CollegeId == collegeId)
-                    .Select(b => b.SpecialtyId)
-                    .ToList();
+            var deletedSpecialtiesIds = College_SpecialtyResultList.Value
+                .Where(a => a.CollegeId == collegeId)
+                .Select(b => b.SpecialtyId)
+                .ToList();
 
-                int deletedCollege_Specialty = await new College_SpecialtyRepository(context).Delete(collegeId);
+            int deletedCollege_Specialty = await _college_SpecialtyRepository.Delete(collegeId);
 
-                int deletedSpecialty;
+            int deletedSpecialty;
 
-                foreach (int deletedSpecialtyId in deletedSpecialtiesIds)
-                    deletedSpecialty = await new CollegeSpecialtyRepository(context).Delete(deletedSpecialtyId);
-            }
+            foreach (int deletedSpecialtyId in deletedSpecialtiesIds)
+                deletedSpecialty = await _speсialtyRepository.Delete(deletedSpecialtyId);
 
             return Result<int>.Success(collegeId);
         }
 
         public async Task<Result<int>> UpdateCollege(int collegeId, CollegeData collegeData)
         {
-            using (var context = new DatabaseContext())
-            {
-                int updatedCollegeId = await new CollegeHeaderRepository(context).Update(collegeData.CollegeHeader);
+            
+            int updatedCollegeId = await _collegeHeaderRepository.Update(collegeData.CollegeHeader);
 
-                int updatedDescriptionId = await new CollegeDescriptionRepository(context).Update(collegeData.CollegeDescription);
+            int updatedDescriptionId = await _collegeDescriptionRepository.Update(collegeData.CollegeDescription);
 
-                int updatedLocationId = await new CollegeLocationRepository(context).Update(collegeData.CollegeLocation);
+            int updatedLocationId = await _collegeLocationRepository.Update(collegeData.CollegeLocation);
 
-                int updatedSpecialtyId;
+            int updatedSpecialtyId;
 
-                foreach (var updatedSpecialty in collegeData.SpeсialtyList)
-                    updatedSpecialtyId = await new CollegeSpecialtyRepository(context).Update(updatedSpecialty);
-            }
+            foreach (var updatedSpecialty in collegeData.SpeсialtyList)
+                updatedSpecialtyId = await _speсialtyRepository.Update(updatedSpecialty);
 
             return Result<int>.Success(collegeId);
         }

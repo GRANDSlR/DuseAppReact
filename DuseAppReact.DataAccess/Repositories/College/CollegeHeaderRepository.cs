@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.CollegeRep
 {
-    public class CollegeHeaderRepository : ICollegeRepository<CollegeHeader>
+    public class CollegeHeaderRepository : ICollegeRepositoryWithTitle<CollegeHeader>
     {
         private readonly DatabaseContext _context;
 

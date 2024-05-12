@@ -19,12 +19,7 @@ namespace DuseAppReact.DataAccess
 
         public DbSet<UserEntity> Users { get; set; } = null!;
 
-        public DatabaseContext() => Database.EnsureCreated();
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=DuseAppDb;Trusted_Connection=True;");
-        }
-
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) => Database.EnsureCreated();
     }
 }

@@ -8,7 +8,6 @@ namespace DuseAppReact.Application.Interfaces.Repositoty
         Task<int> Create(T parameter);
         Task<int> Delete(int id);
         Task<List<Result<T>>> Get();
-        /*Task<List<Result<T>>> GetByTitle(string title);*/
         Task<int> Update(T parameter);
     }
 }
