@@ -2,12 +2,14 @@
 using DuseAppReact.Core.Contracts;
 using DuseAppReact.Core.Converters;
 using DuseAppReact.Core.Models.College;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection.Metadata;
 
 namespace DuseAppReact.Server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CollegeController : ControllerBase

@@ -39,7 +39,9 @@ namespace DuseAppReact.Server.Controllers
             if (!userToken.IsSuccess)
                 return BadRequest(userToken.ErrorMessage);
 
-            return Ok(userToken.Value);
+            HttpContext.Response.Cookies.Append("space-cookies", userToken.Value);
+
+            return Ok(userToken.Value); 
         }
     }
 }

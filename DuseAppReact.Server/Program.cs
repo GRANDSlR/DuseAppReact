@@ -11,35 +11,70 @@ using DuseAppReact.DataAccess.Repositories.CollegeRep;
 using DuseAppReact.DataAccess.Repositories.UserRepository;
 using DuseAppReact.Infrastructure;
 using DuseAppReact.Services.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllers();
+var services = builder.Services;
 
 var configuration = builder.Configuration;
 
-builder.Services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
 
-builder.Services.AddScoped<ICollegeRepositoryWithTitle<CollegeHeader>, CollegeHeaderRepository>();
-builder.Services.AddScoped<ICollegeRepositoryWithId<CollegeDescription>, CollegeDescriptionRepository>();
-builder.Services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRepository>();
-builder.Services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
-builder.Services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();
-builder.Services.AddScoped<IUserRepository<UserModel>, UserRepository>();
+services.AddControllers();
+
+var jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>();
+
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(jwtOptions!.SecretKey))
+        };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                context.Token = context.Request.Cookies["space-cookies"];
+
+                return Task.CompletedTask;
+            }
+        };
+    });
+
+services.AddAuthorization();
+
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+
+services.AddScoped<ICollegeRepositoryWithTitle<CollegeHeader>, CollegeHeaderRepository>();
+services.AddScoped<ICollegeRepositoryWithId<CollegeDescription>, CollegeDescriptionRepository>();
+services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRepository>();
+services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
+services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();
+services.AddScoped<IUserRepository<UserModel>, UserRepository>();
 
 
-builder.Services.AddScoped<ICollegeDataConfiguration, CollegeDataConfiguration>();
-builder.Services.AddScoped<IJwtProvider, JwtProvider>();
-builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
-builder.Services.AddScoped<IUsersService, UsersService>();
+services.AddScoped<ICollegeDataConfiguration, CollegeDataConfiguration>();
+services.AddScoped<IJwtProvider, JwtProvider>();
+services.AddScoped<IPasswordHasher, PasswordHasher>();
+services.AddScoped<IUsersService, UsersService>();
 
 
-builder.Services.AddDbContext<DatabaseContext>(options =>
+services.AddDbContext<DatabaseContext>(options =>
 {
     options.UseSqlServer(configuration.GetConnectionString("DBConnection"));
 });
@@ -58,6 +93,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCookiePolicy(new CookiePolicyOptions //https://developer.mozilla.org/ru/docs/Web/HTTP/Cookies
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always,
+    Secure = CookieSecurePolicy.Always
+});
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
