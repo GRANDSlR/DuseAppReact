@@ -975,6 +975,20 @@
           "bin/placeholder/DuseAppReact.Core.dll": {}
         }
       },
+      "DuseAppReact.Dependencies/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DuseAppReact.Dependencies.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DuseAppReact.Dependencies.dll": {}
+        }
+      },
       "DuseAppReact.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2532,6 +2546,11 @@
       "path": "../DuseAppReact.Core/DuseAppReact.Core.csproj",
       "msbuildProject": "../DuseAppReact.Core/DuseAppReact.Core.csproj"
     },
+    "DuseAppReact.Dependencies/1.0.0": {
+      "type": "project",
+      "path": "../DuseAppReact.Dependencies/DuseAppReact.Dependencies.csproj",
+      "msbuildProject": "../DuseAppReact.Dependencies/DuseAppReact.Dependencies.csproj"
+    },
     "DuseAppReact.Services/1.0.0": {
       "type": "project",
       "path": "../DuseAppReact.Services/DuseAppReact.Services.csproj",
@@ -2542,6 +2561,7 @@
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
       "DuseAppReact.Core >= 1.0.0",
+      "DuseAppReact.Dependencies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.4",
       "Microsoft.EntityFrameworkCore >= 8.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.3"
@@ -2553,9 +2573,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
-      "projectName": "DuseAppReact.Application",
-      "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
+      "projectUniqueName": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
+      "projectName": "DuseAppReact.DataAccess",
+      "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
       "packagesPath": "C:\\Users\\root\\.nuget\\packages\\",
       "outputPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
@@ -2576,6 +2596,9 @@
           "projectReferences": {
             "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj": {
               "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj"
+            },
+            "C:\\GitReps\\DuseAppReact\\DuseAppReact.Dependencies\\DuseAppReact.Dependencies.csproj": {
+              "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Dependencies\\DuseAppReact.Dependencies.csproj"
             }
           }
         }

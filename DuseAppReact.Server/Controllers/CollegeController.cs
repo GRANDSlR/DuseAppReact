@@ -9,7 +9,6 @@ using System.Reflection.Metadata;
 
 namespace DuseAppReact.Server.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CollegeController : ControllerBase

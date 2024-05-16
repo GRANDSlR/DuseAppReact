@@ -10,6 +10,7 @@
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
           "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Dependencies": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3"
@@ -513,6 +514,15 @@
           "DuseAppReact.Core.dll": {}
         }
       },
+      "DuseAppReact.Dependencies/1.0.0": {
+        "dependencies": {
+          "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Services": "1.0.0"
+        },
+        "runtime": {
+          "DuseAppReact.Dependencies.dll": {}
+        }
+      },
       "DuseAppReact.Services/1.0.0": {
         "runtime": {
           "DuseAppReact.Services.dll": {}
@@ -891,6 +901,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "DuseAppReact.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DuseAppReact.Dependencies/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

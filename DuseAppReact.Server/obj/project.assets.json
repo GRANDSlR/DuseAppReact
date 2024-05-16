@@ -78,7 +78,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.AspNetCore.SpaProxy/8.0.4": {
+      "Microsoft.AspNetCore.SpaProxy/8.0.5": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll": {}
@@ -1064,23 +1064,6 @@
           }
         }
       },
-      "DuseAppReact.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "BCrypt.Net-Next": "4.0.3",
-          "DuseAppReact.Core": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
-          "Microsoft.EntityFrameworkCore": "8.0.3",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3"
-        },
-        "compile": {
-          "bin/placeholder/DuseAppReact.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DuseAppReact.Application.dll": {}
-        }
-      },
       "DuseAppReact.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1092,6 +1075,38 @@
         },
         "runtime": {
           "bin/placeholder/DuseAppReact.Core.dll": {}
+        }
+      },
+      "DuseAppReact.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
+          "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Dependencies": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
+          "Microsoft.EntityFrameworkCore": "8.0.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3"
+        },
+        "compile": {
+          "bin/placeholder/DuseAppReact.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DuseAppReact.DataAccess.dll": {}
+        }
+      },
+      "DuseAppReact.Dependencies/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DuseAppReact.Dependencies.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DuseAppReact.Dependencies.dll": {}
         }
       },
       "DuseAppReact.Services/1.0.0": {
@@ -1195,10 +1210,10 @@
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.SpaProxy/8.0.4": {
-      "sha512": "knuNBv+I6bYjaUHb6KoFEU7CjkKgzwHQWmdcMgUZ8DuLzQQxSS8dd/OacVccaKtTEz5PDFDeIKU8Gg+Pgu+Xvw==",
+    "Microsoft.AspNetCore.SpaProxy/8.0.5": {
+      "sha512": "7iEMQelKbwKS5Lk79d/yTOqYSiLPq/wB07Gx4FaFUmF4cv+jtR7vWE55ODaioM+WOHV/ke9HqBCrpfilaaG/Vw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.spaproxy/8.0.4",
+      "path": "microsoft.aspnetcore.spaproxy/8.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1206,7 +1221,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "build/Microsoft.AspNetCore.SpaProxy.targets",
         "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll",
-        "microsoft.aspnetcore.spaproxy.8.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.spaproxy.8.0.5.nupkg.sha512",
         "microsoft.aspnetcore.spaproxy.nuspec"
       ]
     },
@@ -2990,15 +3005,20 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "DuseAppReact.Application/1.0.0": {
-      "type": "project",
-      "path": "../DuseAppReact.DataAccess/DuseAppReact.Application.csproj",
-      "msbuildProject": "../DuseAppReact.DataAccess/DuseAppReact.Application.csproj"
-    },
     "DuseAppReact.Core/1.0.0": {
       "type": "project",
       "path": "../DuseAppReact.Core/DuseAppReact.Core.csproj",
       "msbuildProject": "../DuseAppReact.Core/DuseAppReact.Core.csproj"
+    },
+    "DuseAppReact.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../DuseAppReact.DataAccess/DuseAppReact.DataAccess.csproj",
+      "msbuildProject": "../DuseAppReact.DataAccess/DuseAppReact.DataAccess.csproj"
+    },
+    "DuseAppReact.Dependencies/1.0.0": {
+      "type": "project",
+      "path": "../DuseAppReact.Dependencies/DuseAppReact.Dependencies.csproj",
+      "msbuildProject": "../DuseAppReact.Dependencies/DuseAppReact.Dependencies.csproj"
     },
     "DuseAppReact.Services/1.0.0": {
       "type": "project",
@@ -3008,8 +3028,9 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "DuseAppReact.Application >= 1.0.0",
       "DuseAppReact.Core >= 1.0.0",
+      "DuseAppReact.DataAccess >= 1.0.0",
+      "DuseAppReact.Dependencies >= 1.0.0",
       "Microsoft.AspNetCore.SpaProxy >= 8.*-*",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -3044,8 +3065,11 @@
             "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj": {
               "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Core\\DuseAppReact.Core.csproj"
             },
-            "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj": {
-              "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj"
+            "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj": {
+              "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj"
+            },
+            "C:\\GitReps\\DuseAppReact\\DuseAppReact.Dependencies\\DuseAppReact.Dependencies.csproj": {
+              "projectPath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Dependencies\\DuseAppReact.Dependencies.csproj"
             }
           }
         }

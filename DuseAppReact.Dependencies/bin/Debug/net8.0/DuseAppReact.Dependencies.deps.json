@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DuseAppReact.Dependencies/1.0.0": {
+        "dependencies": {
+          "DuseAppReact.Core": "1.0.0",
+          "DuseAppReact.Services": "1.0.0"
+        },
+        "runtime": {
+          "DuseAppReact.Dependencies.dll": {}
+        }
+      },
+      "DuseAppReact.Core/1.0.0": {
+        "dependencies": {
+          "DuseAppReact.Services": "1.0.0"
+        },
+        "runtime": {
+          "DuseAppReact.Core.dll": {}
+        }
+      },
+      "DuseAppReact.Services/1.0.0": {
+        "runtime": {
+          "DuseAppReact.Services.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DuseAppReact.Dependencies/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DuseAppReact.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DuseAppReact.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

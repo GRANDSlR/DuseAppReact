@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1y3NuXSurGlISNnXGMoIDVDPPfRBEp+Oo8RdN+EHlQRNUiogwrpbHAtPFAnj0kixUOi57z0MTcPsTd0yZpwDFA==",
+  "dgSpecHash": "vuipl1dMa4mcx3+5bY8V5Oz5XSze+q2LV8S6bRmijLvi95by7MUDsXhWkQIWmT+XQ8lBjY9rmkobgZrMRvE3NQ==",
   "success": true,
-  "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.Application.csproj",
+  "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.DataAccess\\DuseAppReact.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

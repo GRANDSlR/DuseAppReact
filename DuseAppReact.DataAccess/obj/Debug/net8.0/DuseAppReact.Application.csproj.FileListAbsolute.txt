@@ -16,3 +16,5 @@ C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.Ap
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\refint\DuseAppReact.Application.dll
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.Application.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\ref\DuseAppReact.Application.dll
+C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\bin\Debug\net8.0\DuseAppReact.Dependencies.dll
+C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\bin\Debug\net8.0\DuseAppReact.Dependencies.pdb

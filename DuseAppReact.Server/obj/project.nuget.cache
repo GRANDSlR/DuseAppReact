@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MV4BD3ZJdNgVVjjd9xpFvOJd6IRbkM6TJkibVofxjcTNBx6ieYfSa4Xf/KIr7CetVCjbsUvCiYwXkdhLsY7iKQ==",
+  "dgSpecHash": "ievkiwBTiM0mYWKhvOK80G9kAKck27KMVTeCXK2TQwvCpI4zYW6HVdW3EmxjqqNPAr/r5Acxeoa4b1cdVAziOw==",
   "success": true,
   "projectFilePath": "C:\\GitReps\\DuseAppReact\\DuseAppReact.Server\\DuseAppReact.Server.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "C:\\Users\\root\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.4\\microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
-    "C:\\Users\\root\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.4\\microsoft.aspnetcore.spaproxy.8.0.4.nupkg.sha512",
+    "C:\\Users\\root\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.5\\microsoft.aspnetcore.spaproxy.8.0.5.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.5\\microsoft.data.sqlclient.5.1.5.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.1\\microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512",
