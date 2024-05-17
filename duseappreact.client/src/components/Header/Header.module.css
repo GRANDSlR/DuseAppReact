@@ -38,3 +38,22 @@
 #UserIcon{
     width: 42px;
 }
+
+.AuthHeader{
+    position: absolute;
+    top: 10vh;
+    left: calc(50% - 225px);
+}
+
+.AuthBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

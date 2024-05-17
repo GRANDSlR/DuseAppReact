@@ -1,0 +1,118 @@
+
+.ModalBox{
+    opacity: 100%;
+    width: 450px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.DuseAppLogoBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.DuseAppLogoBox img{
+    width: 122px;
+}
+
+.Menu{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.Menu p{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.Menu p:last-child{
+    margin-left: 60px;
+}
+
+/* .InputBox{
+    display: flex;
+} */
+
+.Input{
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.Input input{
+    outline: none;
+    border: none;
+    font-size: 15px;
+    color: #c7c7c7;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.Input input::placeholder{
+    font-size: 15px;
+    color: #c7c7c7;
+    font-weight: 500;
+}
+
+.Input:last-child{
+    margin: 0;
+}
+
+.EntryConditionBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EntryConditionBox p{
+    font-size: 14px;
+    color: #5e5e5e;
+    font-weight: 500;
+    text-align: center;
+}
+
+.EntryConditionBox a{
+    text-decoration: none;
+    outline: none;
+    font-size: 14px;
+    color: #5e5e5e;
+    font-weight: 700;
+}
+
+.AccessButton{
+    height: 50px;
+    width: 100%;
+    background-color: #2864FF;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+}
+
+.AccessButton:focus{
+    outline: none;
+}
+
+.ChangeAuthButton{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 100%;
+    background-color: transparent;
+    color: #5e5e5e;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+}

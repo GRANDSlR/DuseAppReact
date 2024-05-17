@@ -5,8 +5,20 @@ import SearchPanel from "../SearchPanel/SearchPanel.jsx";
 import UserIcon from "./img/DefaultUserIcon.svg"
 import DuseAppIcon from './img/DuseApp.svg'
 import Menu from '../Menu/Menu.jsx';
+import React, { useState } from 'react';
+import AuthHeader from '../AuthPanel/AuthPanel.jsx';
 
 const Header = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
+    const openModal = () => {
+      setIsOpen(true);
+    };
 
   return (
     <div className={style.HeaderBar}>
@@ -20,7 +32,17 @@ const Header = () => {
 
       <SearchPanel title='поиск по названию' /> 
 
-      <img alt='userIcon' src={UserIcon} id={style.UserIcon}/>
+      <img alt='userIcon' src={UserIcon} id={style.UserIcon} onClick={openModal}/>
+
+      {isOpen && (
+          <div>
+            <div className={style.AuthBack} onClick={closeModal}></div>
+            <div className={style.AuthHeader}>
+              <AuthHeader />
+            </div>
+          </div>
+      )}
+
     </div>
   );
 }
