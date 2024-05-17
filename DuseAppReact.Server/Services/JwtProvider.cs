@@ -13,7 +13,11 @@ namespace DuseAppReact.Application.Services
         private readonly JwtOptions _options = options.Value;
         public string GenerateToken(UserModel user)
         {
-            Claim[] claims = [new("userId", user.Id.ToString())];
+            Claim[] claims = 
+            [
+                new("userId", user.Id.ToString()),
+                new(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+            ];
 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey)),

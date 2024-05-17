@@ -2,6 +2,7 @@
 using DuseAppReact.Core.Models.UserModel;
 using DuseAppReact.DataAccess.Entities.User;
 using DuseAppReact.Services.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.UserRepository
@@ -20,7 +21,23 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
             var userEntities = await _context.Users
                 .FirstOrDefaultAsync(b => b.Email == email);
 
-            var users = UserModel.Create(userEntities.Id, userEntities.Name, userEntities.Email, userEntities.PasswordHash);
+            if (userEntities == null)
+                return Result<UserModel>.Failure("Значение было null");
+
+            var users = UserModel.Create(userEntities.Id, userEntities.Name, userEntities.Email, userEntities.PasswordHash, userEntities.Role);
+
+            return users;
+        }
+
+        public async Task<Result<UserModel>> GetByName(string name)
+        {
+            var userEntities = await _context.Users
+                .FirstOrDefaultAsync(b => b.Name == name);
+
+            if (userEntities == null)
+                return Result<UserModel>.Failure("Значение было null");
+
+            var users = UserModel.Create(userEntities.Id, userEntities.Name, userEntities.Email, userEntities.PasswordHash, userEntities.Role);
 
             return users;
         }
@@ -32,7 +49,7 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
                 .ToListAsync();
 
             var users = userEntities
-                .Select(a => UserModel.Create(a.Id, a.Name, a.Email, a.PasswordHash))
+                .Select(a => UserModel.Create(a.Id, a.Name, a.Email, a.PasswordHash, a.Role))
                 .ToList();
 
             return users;
@@ -45,7 +62,8 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
-                PasswordHash = user.PasswordHash
+                PasswordHash = user.PasswordHash,
+                Role = user.Role.ToString()
             };
 
             await _context.Users.AddAsync(userEntity);
@@ -61,7 +79,8 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Name, b => user.Name)
                     .SetProperty(b => b.Email, b => user.Email)
-                    .SetProperty(b => b.PasswordHash, b => user.PasswordHash));
+                    .SetProperty(b => b.PasswordHash, b => user.PasswordHash)
+                    .SetProperty(b => b.Role, b => user.Role.ToString()));
 
             return user.Id;
         }

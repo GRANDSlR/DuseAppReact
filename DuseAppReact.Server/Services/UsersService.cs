@@ -17,14 +17,32 @@ namespace DuseAppReact.Services.Services
             _jwtProvider = jwtProvider;
         }
 
+        private async Task<bool> IsUniqueEmail(string email)
+        {
+            var appropriateEmail = await _userRepository.GetByEmail(email);
+            return !appropriateEmail.IsSuccess || appropriateEmail.Value == null;
+        }
+
+        private async Task<bool> IsUniqueName(string name)
+        {
+            var appropriateName = await _userRepository.GetByName(name);
+            return !appropriateName.IsSuccess || appropriateName.Value == null;
+        }
+
         public async Task<Result<string>> Register(string name, string email, string password)
         {
             string hashedPassword = _passwordHasher.Generate(password);
 
-            var user = UserModel.Create(1, name, email, hashedPassword);
+            var user = UserModel.Create(new Random().Next(100000000, 999999999), name, email, hashedPassword);
 
             if (!user.IsSuccess)
                 return Result<string>.Failure(user.ErrorMessage);
+
+            if (!await IsUniqueEmail(email))
+                return Result<string>.Failure("Пользователь с таким Email уже существует");
+
+            if (!await IsUniqueName(name))
+                return Result<string>.Failure("Пользователь с таким именем уже существует");
 
             await _userRepository.Create(user.Value);
 

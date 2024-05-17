@@ -2,6 +2,8 @@
 using DuseAppReact.Core.Contracts;
 using DuseAppReact.Core.Converters;
 using DuseAppReact.Core.Models.College;
+using DuseAppReact.Core.Models.UserModel;
+using DuseAppReact.Server.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -19,6 +21,19 @@ namespace DuseAppReact.Server.Controllers
         {
             _collegeDataConfiguration = collegeDataConfiguration;
         }
+
+        [UserAuthorize(Roles.admin, Roles.user)]
+        [HttpGet("All")]
+        public async Task<ActionResult<string>> GetAll() => Ok("all");
+
+        [UserAuthorize(Roles.user)]
+        [HttpGet("user")]
+        public async Task<ActionResult<string>> GetUser() => Ok("User");
+
+        [UserAuthorize(Roles.admin)]
+        [HttpGet("admin")]
+        public async Task<ActionResult<string>> GetAdmin() => Ok("Admin");
+
 
         [HttpGet]
         public async Task<ActionResult<List<CollegeData>>> GetCollges()
@@ -54,9 +69,6 @@ namespace DuseAppReact.Server.Controllers
 
             return Ok(SpecialtiesResultList.Value.Select(a => a.Title).Distinct().ToList());
         }
-
-
-
 
         [HttpPost]
         public async Task<ActionResult<int>> AddCollege([FromBody] CollegeDataRequest collegeDataRequest)

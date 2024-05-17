@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DuseAppReact.Core.Models.UserModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DuseAppReact.DataAccess.Entities.User
@@ -11,5 +12,6 @@ namespace DuseAppReact.DataAccess.Entities.User
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
+        public string Role { get; set; } = Roles.user.ToString();
     }
 }
