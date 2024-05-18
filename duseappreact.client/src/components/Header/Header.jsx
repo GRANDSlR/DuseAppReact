@@ -7,6 +7,7 @@ import DuseAppIcon from './img/DuseApp.svg'
 import Menu from '../Menu/Menu.jsx';
 import React, { useState } from 'react';
 import AuthHeader from '../AuthPanel/AuthPanel.jsx';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
 
@@ -23,8 +24,6 @@ const Header = () => {
   return (
     <div className={style.HeaderBar}>
       <div className={style.IconBar}>
-        {/* <img alt='logo' src={NewLogo} id={style.appLogo}/> */}
-        {/* <img alt='companyTitle' src={CompanyIcon} id={style.appTitle}/> */}
         <img alt='companyTitle' src={DuseAppIcon} id={style.duseAppTitle}/>
       </div>
 
@@ -37,9 +36,9 @@ const Header = () => {
       {isOpen && (
           <div>
             <div className={style.AuthBack} onClick={closeModal}></div>
-            <div className={style.AuthHeader}>
-              <AuthHeader />
-            </div>
+              <div className={style.AuthHeader}>
+                  <AuthHeader closeEvent={closeModal}/>
+              </div>
           </div>
       )}
 

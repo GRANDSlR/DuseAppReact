@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
 import duseApp from './img/DuseApp.svg';
+import {register, login} from '../../services/Users.js'
 
-const AuthHeader = () => {
+const AuthHeader = (closeEvent) => {
 
     const [isRegister, setAuth] = useState(true);
 
@@ -15,11 +16,35 @@ const AuthHeader = () => {
         setAuth(state);
     };
 
-    const submitAuth = () => {
-        if(isRegister){
-            //fetch
-        }
+    const submitAuth = async () => {
+        
+        const response = isRegister ? await register(
+            {
+                "userName": userName,
+                "email": userEmail,
+                "password": userPassword
+            })
+            : await login(
+            {
+                "email": userEmail,
+                "password": userPassword
+            })
+
+        if(response.ok)
+            closeEvent.closeEvent()
+        else
+            console.log(response.status)
     };
+
+    const resetInputParams = () =>{
+        setUserName('');
+        setUserEmail('');
+        setUserPassword('');
+    }
+
+    useEffect(() => {
+        resetInputParams();
+    }, [isRegister])
 
     return (
         <div className={style.ModalBox}>
@@ -27,28 +52,28 @@ const AuthHeader = () => {
                 <img src={duseApp}/>
             </div>
             <div className={style.Menu}>
-                <p onClick={() => changeAuth(true)}>Регистрация</p>
-                <p onClick={() => changeAuth(false)}>Войти</p>
+                <p className={isRegister ? `${style.MenuLink} ${style.active}` : style.MenuLink} onClick={() => changeAuth(true)}>Регистрация</p>
+                <p className={!isRegister ? `${style.MenuLink} ${style.active}` : style.MenuLink} onClick={() => changeAuth(false)}>Войти</p>
             </div>
-            {isRegister ? (
+            {isRegister ?  (
                 <div className={style.InputBox}>
                     <div className={style.Input}>
-                        <input type='text' placeholder='Имя пользователя' required="required" onChange={(e) => setUserName(e.target.value)}></input>
+                        <input type='text' placeholder='Имя пользователя' value={userName} onLoad={(e) => setUserName('')} onChange={(e) => setUserName(e.target.value)}></input>
                     </div>
                     <div className={style.Input}>
-                        <input type='text' placeholder='E-mail' required="required" onChange={(e) => setUserEmail(e.target.value)}></input>
+                        <input type='text' placeholder='E-mail' value={userEmail}  onChange={(e) => setUserEmail(e.target.value)}></input>
                     </div>
                     <div className={style.Input}>
-                        <input type='password' placeholder='Пароль' required="required" onChange={(e) => setUserPassword(e.target.value)}></input>
+                        <input type='password' placeholder='Пароль' value={userPassword} onChange={(e) => setUserPassword(e.target.value)}></input>
                     </div>
                 </div>
             ) : (
                 <div className={style.InputBox}>
                     <div className={style.Input}>
-                        <input type='text' placeholder='E-mail' required="required" onChange={(e) => setUserEmail(e.target.value)}></input>
+                        <input type='text' placeholder='E-mail' value={userEmail} onChange={(e) => setUserEmail(e.target.value)}></input>
                     </div>
                     <div className={style.Input}>
-                        <input type='password' placeholder='Пароль' required="required" onChange={(e) => setUserPassword(e.target.value)}></input>
+                        <input type='password' placeholder='Пароль' value={userPassword} onChange={(e) => setUserPassword(e.target.value)}></input>
                     </div>
                 </div>
             )}

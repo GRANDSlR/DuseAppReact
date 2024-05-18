@@ -26,13 +26,41 @@
     margin-bottom: 35px;
 }
 
-.Menu p{
+.MenuLink{
     margin: 0;
     font-size: 22px;
     font-weight: 600;
+    position: relative;
+    color: #242424;
 }
 
-.Menu p:last-child{
+.MenuLink.active:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 15px;
+    background-color: #2864FF;
+    transition: height 0.2s;
+}
+
+ .MenuLink:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0;
+    border-radius: 15px;
+    background-color: black;
+    transition: height 0.1s;
+}
+
+.MenuLink:last-child{
     margin-left: 60px;
 }
 
@@ -45,6 +73,8 @@
     background-color: #f6f6f6;
     margin-bottom: 15px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .Input input{
@@ -54,7 +84,9 @@
     color: #c7c7c7;
     font-weight: 500;
     background-color: transparent;
+    width: 100%;
 }
+
 
 .Input input::placeholder{
     font-size: 15px;

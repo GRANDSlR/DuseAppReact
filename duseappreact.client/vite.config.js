@@ -53,6 +53,10 @@ export default defineConfig({
             '^/college': {
                 target: 'https://localhost:7138/',
                 secure: false
+            },
+            '^/user': {
+                target: 'https://localhost:7138/',
+                secure: false
             }
         },
         port: 5173,

@@ -4,6 +4,7 @@ import Home from './pages/Home/Home.jsx';
 import CollegePage from './pages/SearchPage/SearchPage.jsx';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import AuthPanel from './components/AuthPanel/AuthPanel.jsx';
 
 const App = () => {
   return (

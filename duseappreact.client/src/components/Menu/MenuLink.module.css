@@ -59,7 +59,7 @@
     height: 4px;
     border-radius: 15px 15px 0 0;
     background-color: #2864FF;
-    transition: height 0.3s;
+    transition: height 0.2s;
 }
 
  .MenuLink:after {
@@ -70,12 +70,13 @@
     left: 0px;
     width: 100%;
     height: 0;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
     background-color: black;
-    transition: height 0.3s;
+    transition: height 0.1s;
 }
 
  .MenuLink:hover:after {
     height: 4px;
     background-color: #2864FF;
+    border-radius: 15px 15px 0 0;
 }
