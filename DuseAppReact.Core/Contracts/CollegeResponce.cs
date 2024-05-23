@@ -7,6 +7,13 @@
         CollegeLocationRequest collegeLocationRequest,
         List<SpecialtyRequest> specialtyRequestList
     );
+    public record CollegeFilterRequest(
+        string title,
+        string[] specialties,
+        string[] educationForm,
+        string[] collegeTypeFilterParams, 
+        string[] costValues
+        );
     public record CollegeHeaderRequest(
         string Title,
         string Img

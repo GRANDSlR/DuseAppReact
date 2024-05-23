@@ -1,8 +1,22 @@
 
-export const getAllColleges = async () => {
-    const response = await fetch('/college');
-    return await response.json();
-};
+export const getCollegesByFilterParams = async (filterRequest) => {
+
+    return await fetch('/college/getcollegesbyfilterparams', {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(filterRequest)
+    })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      throw error;
+    });
+}
+
 
 export const getAllSpecialties = async () =>{
     const response = await fetch('/college/getallspecialties');

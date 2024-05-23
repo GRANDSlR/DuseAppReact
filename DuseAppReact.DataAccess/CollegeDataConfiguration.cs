@@ -33,7 +33,10 @@ namespace DuseAppReact.DataAccess.Configurations.College
         public async Task<Result<List<Speсialty>>> GetAllSpecialties() 
             => Result<Speсialty>.ResultListInit(await _speсialtyRepository.Get());
 
-        public async Task<Result<List<CollegeData>>> GetColleges()
+        public async Task<Result<List<CollegeData>>> GetColleges(string title)
+            => title == "" ? await GetAllColleges() : await GetCollegesByTitle(title);
+
+        private async Task<Result<List<CollegeData>>> GetAllColleges()
         {
             
             var CollegeHeaderResultList = Result<CollegeData>.ResultListInit(await _collegeHeaderRepository.Get());
@@ -73,41 +76,7 @@ namespace DuseAppReact.DataAccess.Configurations.College
             
         }
 
-        private List<CollegeData> GetCollegeDataList(
-            List<CollegeHeader> CollegeHeaderResultList,
-            List<CollegeDescription> CollegeDescriptionResultList,
-            List<CollegeLocation> CollegeLocationResultList,
-            List<Speсialty> CollegeSpecialtyResultList,
-            List<College_Specialty> College_SpecialtyResultList)
-        {
-            List<CollegeData> Colleges = new List<CollegeData>();
-
-            foreach (CollegeHeader CurrCollegeHeaderObj in CollegeHeaderResultList)
-            {
-                var CurrSpecialtyIds = College_SpecialtyResultList
-                    .Where(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId)
-                    .Select(a => a.SpecialtyId)
-                    .ToList();
-
-                Colleges.Add(new CollegeData(
-
-                    CollegeHeaderResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                    CollegeDescriptionResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                    CollegeLocationResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
-
-                    CollegeSpecialtyResultList
-                        .Where(a => CurrSpecialtyIds
-                        .Contains(a.SpecialtyId))
-                        .ToList()
-                ));
-            }
-
-            return Colleges;
-        }
-
-        public async Task<Result<List<CollegeData>>> GetCollegesByTitle(string title)
+        private async Task<Result<List<CollegeData>>> GetCollegesByTitle(string title)
         {
 
             List<CollegeData> Colleges = new List<CollegeData>();
@@ -151,6 +120,40 @@ namespace DuseAppReact.DataAccess.Configurations.College
             }
 
             return Result<List<CollegeData>>.Success(Colleges);
+        }
+
+        private List<CollegeData> GetCollegeDataList(
+            List<CollegeHeader> CollegeHeaderResultList,
+            List<CollegeDescription> CollegeDescriptionResultList,
+            List<CollegeLocation> CollegeLocationResultList,
+            List<Speсialty> CollegeSpecialtyResultList,
+            List<College_Specialty> College_SpecialtyResultList)
+        {
+            List<CollegeData> Colleges = new List<CollegeData>();
+
+            foreach (CollegeHeader CurrCollegeHeaderObj in CollegeHeaderResultList)
+            {
+                var CurrSpecialtyIds = College_SpecialtyResultList
+                    .Where(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId)
+                    .Select(a => a.SpecialtyId)
+                    .ToList();
+
+                Colleges.Add(new CollegeData(
+
+                    CollegeHeaderResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
+
+                    CollegeDescriptionResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
+
+                    CollegeLocationResultList.FirstOrDefault(a => a.CollegeId == CurrCollegeHeaderObj.CollegeId),
+
+                    CollegeSpecialtyResultList
+                        .Where(a => CurrSpecialtyIds
+                        .Contains(a.SpecialtyId))
+                        .ToList()
+                ));
+            }
+
+            return Colleges;
         }
 
         public async Task<int> AddCollege(CollegeData collegeData)

@@ -11,7 +11,7 @@ export const Colleges = ({collegeObjects}) => {
 
     return (
         <div className={style.Cards}>
-            {Array.isArray(collegeObjects) || collegeObjects.length>0 ? collegeObjects.map((college, index) => 
+            {collegeObjects != null || (Array.isArray(collegeObjects) && collegeObjects.length>0) ? collegeObjects.map((college, index) => 
                 <div className={style.CollegeCard} key={index}>
 
                     <p id={style.collegeTitle}>{college.collegeHeader.title}</p>

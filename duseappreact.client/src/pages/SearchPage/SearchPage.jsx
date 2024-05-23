@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllColleges, getCollegesByTitle } from '../../services/Colleges.js';
+import { getCollegesByFilterParams } from '../../services/Colleges.js';
 import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
@@ -13,8 +13,13 @@ import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 
 export default function CollegePage() {
 
-    const [collegeData, setColleges] = useState([]);
+    const [collegeData, setColleges] = useState(
+        sessionStorage.getItem('currCollegeData') != null ? 
+        JSON.parse(sessionStorage.getItem('currCollegeData')) : []);
+
     const [loading, setLoading] = useState(true);
+
+    const [collegeTitleSearch, setCollegeTitleSearch] = useState('');
 
     const [specialties, setSpecialties] = useState(
         sessionStorage.getItem('specialtyFilterParams') != null ? 
@@ -32,6 +37,27 @@ export default function CollegePage() {
         sessionStorage.getItem('sliderBarFilterValues') != null ? 
         sessionStorage.getItem('sliderBarFilterValues').split(',') : [0, 6000]);
 
+
+    if(sessionStorage.getItem('educationFormFilterPanel') === null)
+        sessionStorage.setItem('educationFormFilterPanel', EducationFormFilterParams)
+
+    if(sessionStorage.getItem('collegeTypeFilterParams') === null)
+        sessionStorage.setItem('collegeTypeFilterParams', collegeTypeFilterParams)
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            if(specialties.length>0 && educationForm.length>0 && collegeTypeFilterParams.length>0)
+            {
+                const result = await getColleges(collegeTitleSearch);
+                setColleges(result != null || result!=[] ? result : null);
+            }
+        }
+        fetchData();
+
+    }, [specialties, educationForm,
+        collegeTypeFilterParams, sliderBarValues]);
+
     useEffect(() => {
         educationForm == '' ? setEducationForm(EducationFormFilterParams) : null;
     }, [educationForm]);
@@ -39,10 +65,22 @@ export default function CollegePage() {
     useEffect(() => {
         collegeTypeFilterParams == '' ? setCollegeTypeFilterParams(CollegeTypeFilterParams) : null;
     }, [collegeTypeFilterParams]);
+
+    useEffect(() => {
+        if(collegeData!=null)
+            sessionStorage.setItem('currCollegeData', JSON.stringify(collegeData));
+    }, [collegeData]);
     
 
-    const CollegeTitleInputEvent = (event) =>
-    getColleges(event.target.value);
+    const CollegeTitleInputEvent = async (event) =>
+    {
+        setCollegeTitleSearch(event.target.value);
+
+        console.log(event.target.value);
+
+        const result = await getColleges(event.target.value);
+        setColleges(result != null || result!=[] ? result : null);
+    }
 
     const SliderBarEvent = (state) => 
     setSliderBarValues(state);
@@ -60,23 +98,19 @@ export default function CollegePage() {
 
         setLoading(true);
 
-        let data;
-
-        if (searchString == '')
-            data = await getAllColleges();
-        else
-            data = await getCollegesByTitle(searchString);
+        const result = await getCollegesByFilterParams(
+            {
+                'title': searchString,
+                'specialties': specialties,
+                'educationForm': educationForm,
+                'collegeTypeFilterParams': collegeTypeFilterParams, 
+                'costValues': [sliderBarValues[0].toString(), sliderBarValues[1].toString()]
+            });
 
         setLoading(false);
-        setColleges(data);
 
+        return result;
     }
-
-    useEffect(() => {
-
-        getColleges('');
-
-    }, []);
 
     return (
         <div>

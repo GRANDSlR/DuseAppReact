@@ -7,6 +7,7 @@ using DuseAppReact.Server.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 using System.Reflection.Metadata;
 
 namespace DuseAppReact.Server.Controllers
@@ -22,7 +23,7 @@ namespace DuseAppReact.Server.Controllers
             _collegeDataConfiguration = collegeDataConfiguration;
         }
 
-        [UserAuthorize(Roles.admin, Roles.user)]
+/*        [UserAuthorize(Roles.admin, Roles.user)]
         [HttpGet("All")]
         public async Task<ActionResult<string>> GetAll() => Ok("all");
 
@@ -32,13 +33,14 @@ namespace DuseAppReact.Server.Controllers
 
         [UserAuthorize(Roles.admin)]
         [HttpGet("admin")]
-        public async Task<ActionResult<string>> GetAdmin() => Ok("Admin");
+        public async Task<ActionResult<string>> GetAdmin() => Ok("Admin");*/
 
-
-        [HttpGet]
-        public async Task<ActionResult<List<CollegeData>>> GetCollges()
+        
+        [HttpGet("getcollegesbytitle")]
+        public async Task<ActionResult<List<CollegeData>>> GetCollgesByTitle(string? title)
         {
-            var CollegeHeaderResultList = await _collegeDataConfiguration.GetColleges();
+
+            var CollegeHeaderResultList = await _collegeDataConfiguration.GetColleges(title);
 
             if (!CollegeHeaderResultList.IsSuccess)
                 return BadRequest(CollegeHeaderResultList.ErrorMessage);
@@ -46,17 +48,23 @@ namespace DuseAppReact.Server.Controllers
             return Ok(CollegeHeaderResultList.Value);
         }
 
-        
-        [HttpGet("getcollegesbytitle")]
-        public async Task<ActionResult<List<string>>> GetCollgesByTitle(string? title)
+        [HttpPost("getcollegesbyfilterparams")]
+        public async Task<ActionResult<List<CollegeData>>> GetCollegesByFilterParams([FromBody] CollegeFilterRequest collegeFilterRequest)
         {
 
-            var CollegeHeaderResultList = await _collegeDataConfiguration.GetCollegesByTitle(title);
+            var CollegeHeaderResultList = await _collegeDataConfiguration.GetColleges(collegeFilterRequest.title);
 
             if (!CollegeHeaderResultList.IsSuccess)
                 return BadRequest(CollegeHeaderResultList.ErrorMessage);
 
-            return Ok(CollegeHeaderResultList.Value);
+            var FilteredCollegeList = CollegeHeaderResultList.Value.Where(
+                college => collegeFilterRequest.collegeTypeFilterParams.ToList().Contains(college.CollegeDescription.CollegeType.ToString())
+                && (collegeFilterRequest.specialties.ToList().Count()>0 ? college.SpeсialtyList.Where(specialty => collegeFilterRequest.specialties.ToList().Contains(specialty.Title)).ToList().Count() > 0 : true)
+                && college.SpeсialtyList.Where(specialty => collegeFilterRequest.educationForm.ToList().Contains(specialty.EducationForm.ToString())).ToList().Count() > 0
+                && college.SpeсialtyList.Where(specialty => specialty.Cost >= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[0]) && specialty.Cost <= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[1])).ToList().Count() > 0
+            );
+
+            return Ok(FilteredCollegeList);
         }
 
         [HttpGet("getallspecialties")]

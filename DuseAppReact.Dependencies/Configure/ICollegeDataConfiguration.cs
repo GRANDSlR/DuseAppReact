@@ -7,9 +7,9 @@ namespace DuseAppReact.Application.Interfaces.Configure
     {
         Task<Result<List<Speсialty>>> GetAllSpecialties();
 
-        Task<Result<List<CollegeData>>> GetColleges();
+        Task<Result<List<CollegeData>>> GetColleges(string title);
 
-        Task<Result<List<CollegeData>>> GetCollegesByTitle(string title);
+        // Task<Result<List<CollegeData>>> GetCollegesByTitle(string title);
 
         Task<int> AddCollege(CollegeData collegeData);
 
