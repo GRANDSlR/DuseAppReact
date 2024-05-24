@@ -59,9 +59,9 @@ namespace DuseAppReact.Server.Controllers
 
             var FilteredCollegeList = CollegeHeaderResultList.Value.Where(
                 college => collegeFilterRequest.collegeTypeFilterParams.ToList().Contains(college.CollegeDescription.CollegeType.ToString())
-                && (collegeFilterRequest.specialties.ToList().Count()>0 ? college.SpeсialtyList.Where(specialty => collegeFilterRequest.specialties.ToList().Contains(specialty.Title)).ToList().Count() > 0 : true)
-                && college.SpeсialtyList.Where(specialty => collegeFilterRequest.educationForm.ToList().Contains(specialty.EducationForm.ToString())).ToList().Count() > 0
-                && college.SpeсialtyList.Where(specialty => specialty.Cost >= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[0]) && specialty.Cost <= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[1])).ToList().Count() > 0
+                && (collegeFilterRequest.specialties.ToList().Count()>0 ? college.SpecialtyList.Where(specialty => collegeFilterRequest.specialties.ToList().Contains(specialty.Title)).ToList().Count() > 0 : true)
+                && college.SpecialtyList.Where(specialty => collegeFilterRequest.educationForm.ToList().Contains(specialty.EducationForm.ToString())).ToList().Count() > 0
+                && college.SpecialtyList.Where(specialty => specialty.Cost >= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[0]) && specialty.Cost <= Convert.ToDouble(collegeFilterRequest.costValues.ToList()[1])).ToList().Count() > 0
             );
 
             return Ok(FilteredCollegeList);

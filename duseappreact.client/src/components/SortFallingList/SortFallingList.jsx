@@ -1,19 +1,18 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./SortFallingList.module.css";
-import Circumflexus from "../FallingList/img/CircumflexusInvert.svg";
+import Circumflexus from "../FallingList/img/CircumflexusGrey.svg";
+import sortData from './SortHandler.js';
 
-const data = [
-    'Название, от А до Я',
-    'Название, от Я до А',
-    'Высокий рейтинг',
-    'Низкий рейтинг'
-]
 
-const SortFallingList = () => {
+const SortFallingList = (actionFunc) => {
 
     const [dropdownState, setDropdownState] = useState({ open: false });
-    const [sortValue, setSortValue] = useState(data[0]);
+    const [sortValue, setSortValue] = useState(sortData[0]);
+
+    useEffect(() => {
+        actionFunc.actionFunc(sortValue);
+    }, [sortValue]);
 
     const handleClickOpen = () =>
     setDropdownState({ open: !dropdownState.open });
@@ -30,8 +29,8 @@ const SortFallingList = () => {
             {dropdownState.open && (
             <ul className={style.DropdownMenu}>
                 {
-                Array.isArray(data) ? 
-                data.map((val, index) => {
+                Array.isArray(sortData) ? 
+                sortData.map((val, index) => {
                     return (
                     <li key={index}>
                         <p className={style.selectionValue} onClick={() => {handleClickValue(val)}}>{val}</p>

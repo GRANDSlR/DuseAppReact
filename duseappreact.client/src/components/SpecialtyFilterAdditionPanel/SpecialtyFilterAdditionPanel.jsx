@@ -71,7 +71,7 @@ const SpecialtyFilterAdditionPanel = (event) => {
                     </div>
                 </div>
             )}
-            {specialties.length !=0 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
+            {specialties.length > 1 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
         </div>
     );
 }

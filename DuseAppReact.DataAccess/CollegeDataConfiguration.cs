@@ -168,7 +168,7 @@ namespace DuseAppReact.DataAccess.Configurations.College
 
             int college_SpecialtyId;
 
-            foreach (Speсialty specialty in collegeData.SpeсialtyList)
+            foreach (Speсialty specialty in collegeData.SpecialtyList)
             {
                 specialtyId = await _speсialtyRepository.Create(specialty);
 
@@ -217,7 +217,7 @@ namespace DuseAppReact.DataAccess.Configurations.College
 
             int updatedSpecialtyId;
 
-            foreach (var updatedSpecialty in collegeData.SpeсialtyList)
+            foreach (var updatedSpecialty in collegeData.SpecialtyList)
                 updatedSpecialtyId = await _speсialtyRepository.Update(updatedSpecialty);
 
             return Result<int>.Success(collegeId);

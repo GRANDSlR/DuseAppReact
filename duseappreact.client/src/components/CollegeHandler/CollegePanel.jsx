@@ -17,7 +17,7 @@ export const Colleges = ({collegeObjects}) => {
                     <p id={style.collegeTitle}>{college.collegeHeader.title}</p>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
 
-                    <SpecialtyPanel speсialtyList={college.speсialtyList.map((item) => item.title)}/>
+                    <SpecialtyPanel speсialtyList={college.specialtyList.map((item) => item.title)}/>
                     
                     <div className={style.AdministrationPanel}>
                         <div>

@@ -10,12 +10,15 @@ import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditi
 import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
 import {EducationFormFilterParams, CollegeTypeFilterParams} from './DataCarrier.js';
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
+import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SortFallingList/SortHandler.js';
 
 export default function CollegePage() {
 
     const [collegeData, setColleges] = useState(
         sessionStorage.getItem('currCollegeData') != null ? 
         JSON.parse(sessionStorage.getItem('currCollegeData')) : []);
+
+    const [sortValue, setSortValue] = useState(sortValues[0]);
 
     const [loading, setLoading] = useState(true);
 
@@ -44,19 +47,7 @@ export default function CollegePage() {
     if(sessionStorage.getItem('collegeTypeFilterParams') === null)
         sessionStorage.setItem('collegeTypeFilterParams', collegeTypeFilterParams)
 
-    useEffect(() => {
-
-        const fetchData = async () => {
-            if(specialties.length>0 && educationForm.length>0 && collegeTypeFilterParams.length>0)
-            {
-                const result = await getColleges(collegeTitleSearch);
-                setColleges(result != null || result!=[] ? result : null);
-            }
-        }
-        fetchData();
-
-    }, [specialties, educationForm,
-        collegeTypeFilterParams, sliderBarValues]);
+    
 
     useEffect(() => {
         educationForm == '' ? setEducationForm(EducationFormFilterParams) : null;
@@ -66,35 +57,62 @@ export default function CollegePage() {
         collegeTypeFilterParams == '' ? setCollegeTypeFilterParams(CollegeTypeFilterParams) : null;
     }, [collegeTypeFilterParams]);
 
+    
+
+    const SortCollegeData = (collegeDataArray) =>{
+        if(collegeDataArray!=null && collegeDataArray.length>0)
+        {
+            if(sortValue === sortValues[0])
+                return sortByTitle(collegeDataArray);
+            if(sortValue === sortValues[1])
+                return sortByTitleReverse(collegeDataArray);
+            if(sortValue === sortValues[2])
+                return sortByGrade(collegeDataArray);
+            if(sortValue === sortValues[3])
+                return sortByGradeReverse(collegeDataArray);
+        }
+    }
+    
     useEffect(() => {
         if(collegeData!=null)
             sessionStorage.setItem('currCollegeData', JSON.stringify(collegeData));
     }, [collegeData]);
-    
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            if(educationForm.length>0 && collegeTypeFilterParams.length>0)
+            {
+                let result = await GetColleges(collegeTitleSearch);
+
+                result = SortCollegeData(result);
+
+                setColleges(result != null && result.length>0 ? result : null);
+            }
+        }
+        fetchData();
+
+    }, [specialties, educationForm,
+        collegeTypeFilterParams, sliderBarValues]);
+
+    useEffect(() => {
+
+        setColleges(SortCollegeData(collegeData));
+        
+    }, [sortValue]);
 
     const CollegeTitleInputEvent = async (event) =>
     {
         setCollegeTitleSearch(event.target.value);
 
-        console.log(event.target.value);
+        let result = await GetColleges(event.target.value);
 
-        const result = await getColleges(event.target.value);
-        setColleges(result != null || result!=[] ? result : null);
+        result = SortCollegeData(result);
+
+        setColleges(result != null && result.length>0 ? result : null);
     }
 
-    const SliderBarEvent = (state) => 
-    setSliderBarValues(state);
-
-    const SpecialtyCheckboxEvent = (state) => 
-    setSpecialties(state);
-
-    const handleCollegeTypeCheckboxEvent = (state) =>
-    setCollegeTypeFilterParams(state);
-
-    const handleEducationFormCheckboxEvent = (state) =>
-    setEducationForm(state);
-
-    const getColleges = async (searchString) => {
+    const GetColleges = async (searchString) => {
 
         setLoading(true);
 
@@ -111,6 +129,23 @@ export default function CollegePage() {
 
         return result;
     }
+
+    const SliderBarEvent = (state) => 
+    setSliderBarValues(state);
+
+    const SortValueEvent = (state) => 
+    setSortValue(state);
+
+    const SpecialtyCheckboxEvent = (state) => 
+    setSpecialties(state);
+
+    const handleCollegeTypeCheckboxEvent = (state) =>
+    setCollegeTypeFilterParams(state);
+
+    const handleEducationFormCheckboxEvent = (state) =>
+    setEducationForm(state);
+
+    
 
     return (
         <div>
@@ -140,7 +175,7 @@ export default function CollegePage() {
                         {/* <p id={style.title}>Результаты поиска</p> */}
                         <div className={style.SortPanel}>
                             <p id={style.title}>Сортировка</p>
-                            <SortFallingList />
+                            <SortFallingList actionFunc={SortValueEvent}/>
                         </div>
                     </div>
                     <div className={style.ResultPanel}>

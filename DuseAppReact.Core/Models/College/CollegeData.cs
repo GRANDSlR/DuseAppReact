@@ -8,7 +8,7 @@ namespace DuseAppReact.Core.Models.College
             CollegeHeader = collegeHeader;
             CollegeDescription = collegeDescription;
             CollegeLocation = collegeLocation;
-            SpeсialtyList = speсialtyList;
+            SpecialtyList = speсialtyList;
         }
 
         public CollegeHeader CollegeHeader { get; } = null!;
@@ -17,7 +17,7 @@ namespace DuseAppReact.Core.Models.College
 
         public CollegeLocation CollegeLocation { get; } = null!;
 
-        public List<Speсialty> SpeсialtyList { get; } = null!;
+        public List<Speсialty> SpecialtyList { get; } = null!;
 
 
         /*public static Result<CollegeData> Create(Result<CollegeHeader> collegeHeader, Result<CollegeDescription> collegeDescription, Result<CollegeLocation> collegeLocation, List<Result<Speсialty>> speсialtyList)
