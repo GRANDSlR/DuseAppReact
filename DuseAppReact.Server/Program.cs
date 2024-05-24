@@ -97,7 +97,7 @@ app.UseHttpsRedirection();
 app.UseCookiePolicy(new CookiePolicyOptions //https://developer.mozilla.org/ru/docs/Web/HTTP/Cookies
 {
     MinimumSameSitePolicy = SameSiteMode.Strict,
-    HttpOnly = HttpOnlyPolicy.Always,
+    HttpOnly = HttpOnlyPolicy.None,
     Secure = CookieSecurePolicy.Always
 });
 

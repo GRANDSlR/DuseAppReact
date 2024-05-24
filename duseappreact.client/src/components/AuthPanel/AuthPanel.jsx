@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
 import duseApp from './img/DuseApp.svg';
-import {getUserByToken, register, login} from '../../services/Users.js'
+import {getUserByToken, register, login} from '../../services/Users.js';
 
 const AuthHeader = (closeEvent) => {
 
@@ -34,10 +34,8 @@ const AuthHeader = (closeEvent) => {
             });
             const userModel = await getUserByToken(token);
             sessionStorage.setItem('userModel', JSON.stringify(userModel));
-            closeEvent.closeEvent();
+            closeEvent.closeEvent(false);
         }
-        console.log(sessionStorage.getItem('userModel'));
-
         setLoading(false);
     };
 

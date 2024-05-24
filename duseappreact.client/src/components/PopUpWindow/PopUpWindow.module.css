@@ -1,0 +1,27 @@
+
+.Header{
+    position: absolute;
+    top: 90px;
+    left: calc(50% - 225px);
+}
+
+.Back{
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header.Full{
+    top: 10vh;
+}
+
+.Back.Full{
+    top: 0;
+}
