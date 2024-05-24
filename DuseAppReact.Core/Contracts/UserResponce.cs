@@ -14,4 +14,9 @@ namespace DuseAppReact.Core.Contracts
         string Email,
         string Password
     );
+
+    public record UserTokenResponce
+    (
+        string Token
+    );
 }

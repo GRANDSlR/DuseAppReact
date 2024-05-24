@@ -29,6 +29,19 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
             return users;
         }
 
+        public async Task<Result<UserModel>> GetById(int id)
+        {
+            var userEntities = await _context.Users
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (userEntities == null)
+                return Result<UserModel>.Failure("Значение было null");
+
+            var users = UserModel.Create(userEntities.Id, userEntities.Name, userEntities.Email, userEntities.PasswordHash, userEntities.Role);
+
+            return users;
+        }
+
         public async Task<Result<UserModel>> GetByName(string name)
         {
             var userEntities = await _context.Users

@@ -130,6 +130,10 @@
     border-radius: 10px;
 }
 
+.AccessButton.loading{
+    opacity: 60%;
+}
+
 .AccessButton:focus{
     outline: none;
 }

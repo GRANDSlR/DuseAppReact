@@ -6,5 +6,6 @@ namespace DuseAppReact.Application.Interfaces.Repositoty
     {
         Task<Result<T>> GetByEmail(string email);
         Task<Result<T>> GetByName(string name);
+        Task<Result<T>> GetById(int id);
     }
 }

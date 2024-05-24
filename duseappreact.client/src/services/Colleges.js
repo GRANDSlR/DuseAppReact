@@ -17,7 +17,6 @@ export const getCollegesByFilterParams = async (filterRequest) => {
     });
 }
 
-
 export const getAllSpecialties = async () =>{
     const response = await fetch('/college/getallspecialties');
     return await response.json();

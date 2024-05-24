@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
 import duseApp from './img/DuseApp.svg';
-import {register, login} from '../../services/Users.js'
+import {getUserByToken, register, login} from '../../services/Users.js'
 
 const AuthHeader = (closeEvent) => {
 
@@ -11,29 +11,34 @@ const AuthHeader = (closeEvent) => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const changeAuth = (state) => {
         setAuth(state);
     };
 
     const submitAuth = async () => {
-        
-        const response = isRegister ? await register(
-            {
-                "userName": userName,
-                "email": userEmail,
-                "password": userPassword
-            })
-            : await login(
-            {
-                "email": userEmail,
-                "password": userPassword
-            })
 
-        if(response.ok)
-            closeEvent.closeEvent()
-        else
-            console.log(response.status)
+        setLoading(true);
+        
+        if (isRegister) {
+            await register({
+              userName: userName,
+              email: userEmail,
+              password: userPassword
+            });
+        } else {
+            const token = await login({
+                email: userEmail,
+                password: userPassword
+            });
+            const userModel = await getUserByToken(token);
+            sessionStorage.setItem('userModel', JSON.stringify(userModel));
+            closeEvent.closeEvent();
+        }
+        console.log(sessionStorage.getItem('userModel'));
+
+        setLoading(false);
     };
 
     const resetInputParams = () =>{
@@ -84,7 +89,7 @@ const AuthHeader = (closeEvent) => {
                     DuseApp
                 </p>
             </div>
-            <button type='submit' className={style.AccessButton} onClick={submitAuth}>Войти</button>
+            <button type='submit' className={loading ? `${style.AccessButton} ${style.loading}`: style.AccessButton} onClick={loading ? null : submitAuth}>Войти</button>
             {isRegister ? (
                 <div className={style.ChangeAuthButton} onClick={() => changeAuth(false)}>
                     <p>Уже есть учетная запись? Войти</p>
