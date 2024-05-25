@@ -45,10 +45,14 @@
 
 .AdditionButton{
     margin-right: 15px;
-    width: 42px;
+    width: 42px; /* Зависимость c CollegeAdditionButtonBox */
     transition: transform 0.2s;
 }
 
 .AdditionButton.open{
     transform: rotate(45deg);
+}
+
+.CollegeAdditionButtonBox{
+    height: 42px;
 }

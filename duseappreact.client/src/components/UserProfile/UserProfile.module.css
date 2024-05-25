@@ -1,0 +1,165 @@
+
+.MainBox{
+    padding-top: 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.MainContentBox{
+    display: flex;
+}
+
+.AdminBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 45px;
+}
+
+.InfoBox{
+    margin: 0 45px;
+}
+
+
+.UserImgbox{
+    width: 125px;
+    height: 125px;
+    border: 3px solid #d9d9d9;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.UserImgbox img{
+    width: 120px;
+}
+
+
+.Button{
+    border-radius: 15px;
+    background-color: #2864FF;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    width: 160px;
+    height: 35px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.Button:focus{
+    outline: none;
+}
+
+.Button.Important{
+    margin: 0;
+    margin-top: auto;
+    background-color: #FF285C;
+}
+
+
+
+
+.HeaderTitle{
+    /* font-family: "Poppins", sans-serif; */
+    font-weight: 600;
+    font-size: 25px;
+    margin: 10px 0;
+    margin-left: 8px;
+}
+
+
+.InputBox{
+    margin-top: 10px;
+}
+
+.InputBox .InputTitle{
+    margin: 0;
+    margin-left: 8px;
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.InputBox input{
+    padding: 8px 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eaeaea;
+    color: #999;
+    font-size: 15px;
+    font-weight: 500;
+    width: 220px;
+    outline: none;
+}
+
+
+.AuthBox{
+    margin-top: 30px;
+    padding-left: 8px;
+}
+
+.AuthBox .Title{
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.AuthBox .AuthItemBox{
+    margin-bottom: 20px;
+}
+
+.AuthBox .AuthItemBox:last-child{
+    margin-bottom: 0;
+}
+
+.AuthBox .AuthItemBox p{
+    margin: 0;
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.AuthBox .AuthItemBox #AuthDataUrl{
+    color: #2864FF;
+}
+
+
+.WindowButtonBox{
+    background-color: #d9d9d9;
+    border-radius: 0 0 15px 15px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.Button.Exit{
+    margin: 0;
+    margin-right: 20px;
+    background-color: white;
+    width: 130px;
+    height: 30px;
+}
+
+.Button.ChangeUserData{
+    margin: 0;
+    background-color: #2864FF;
+    width: 130px;
+    height: 30px;
+}
+
+.Button img{
+    height: 15px;
+}
+

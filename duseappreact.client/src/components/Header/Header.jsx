@@ -10,6 +10,7 @@ import AuthHeader from '../AuthPanel/AuthPanel.jsx';
 import AdditionButton from './img/AdditionButton.svg';
 import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
 import {verifyUsersCookies, getCookies} from '../../services/UserService.js';
+import UserProfile from '../UserProfile/UserProfile.jsx';
 
 const Header = () => {
 
@@ -39,7 +40,7 @@ const Header = () => {
       <SearchPanel title='поиск по названию' /> 
 
       {sessionStorage.getItem('userModel') != null && isVerifyUsersCookies && JSON.parse(sessionStorage.getItem('userModel')).role === 0 && (
-        <div>
+        <div className={style.CollegeAdditionButtonBox}>
           <img src={AdditionButton} className={isOpenCollegeAddition ? `${style.AdditionButton} ${style.open}` : style.AdditionButton} onClick={() => setIsOpenCollegeAddition(!isOpenCollegeAddition)}/>
           <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
         </div>
@@ -48,7 +49,7 @@ const Header = () => {
       <img alt='userIcon' src={UserIcon} id={style.UserIcon} onClick={() => setIsOpenAuth(true)}/>
 
       {sessionStorage.getItem('userModel') != null && isVerifyUsersCookies ? 
-        <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'not-full'}/>
+        <PopUpWindow handleCodeBlock={<UserProfile userData={JSON.parse(sessionStorage.getItem('userModel'))} closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'not-full'}/>
         : <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'full'}/>
       }
       {/* <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'full'}/> */}
