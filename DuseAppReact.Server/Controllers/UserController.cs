@@ -1,4 +1,5 @@
 ﻿using DuseAppReact.Application.Interfaces.Auth;
+using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Application.Services;
 using DuseAppReact.Core.Contracts;
 using DuseAppReact.Core.Models.UserModel;
@@ -12,10 +13,12 @@ namespace DuseAppReact.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUsersService _usersService;
+        private readonly IUserRepository<UserModel> _userRepository;
 
-        public UserController(IUsersService usersService)
+        public UserController(IUsersService usersService, IUserRepository<UserModel> userRepository)
         {
             _usersService = usersService;
+            _userRepository = userRepository;
         }
 
         [HttpPost("register")]
@@ -58,5 +61,20 @@ namespace DuseAppReact.Server.Controllers
 
             return Ok(user.Value);
         }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<int>> UpdateUser(int id, [FromBody] UserUpdateResponce userUpdateResponce)
+        {
+            var user = UserModel.Create(id, userUpdateResponce.UserName, userUpdateResponce.Email, "");
+
+            if (!user.IsSuccess)
+                return BadRequest(user.ErrorMessage);
+
+            int updatedUserId = await _userRepository.Update(user.Value);
+
+            return Ok(updatedUserId);
+        }
+
+
     }
 }

@@ -1,4 +1,27 @@
 
+export const updateUser = async (id, userUpdateRescponce) => {
+  try {
+    const response = await fetch(`/user/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userUpdateRescponce)
+    });
+
+    if (!response.ok) {
+      throw new Error('UpdateUser request failed');
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 export const getUserByToken = async (token) => {
   return await fetch('/user/getuserbytoken', {
       method: "POST",

@@ -19,4 +19,10 @@ namespace DuseAppReact.Core.Contracts
     (
         string Token
     );
+
+    public record UserUpdateResponce
+    (
+        string UserName,
+        string Email
+    );
 }

@@ -91,9 +91,7 @@ namespace DuseAppReact.DataAccess.Repositories.UserRepository
                 .Where(b => b.Id == user.Id)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Name, b => user.Name)
-                    .SetProperty(b => b.Email, b => user.Email)
-                    .SetProperty(b => b.PasswordHash, b => user.PasswordHash)
-                    .SetProperty(b => b.Role, b => user.Role.ToString()));
+                    .SetProperty(b => b.Email, b => user.Email));
 
             return user.Id;
         }

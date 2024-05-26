@@ -4,6 +4,7 @@ import style from './UserProfile.module.css';
 import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 import UserIcon from './img/DefaultUserIcon.svg';
+import {updateUser} from '../../services/Users.js';
 
 
 const UserProfile = ({userData, closeEvent}) => {
@@ -13,6 +14,23 @@ const UserProfile = ({userData, closeEvent}) => {
     const [userEmail, setUserEmail] = useState(userData.email);
 
     const updateUserEvent = () => {
+
+        updateUser(userData.id, {UserName: userName, Email: userEmail})
+        .then(updatedUserId => {
+            console.log('User updated successfully:', updatedUserId);
+            sessionStorage.setItem('userModel', JSON.stringify(
+            {
+                'id': userData.id,
+                'name': userName,
+                'email': userEmail,
+                'passwordHash': userData.passwordHash,
+                'role': userData.role
+            }));
+            closeEvent(false);
+        })
+        .catch(error => {
+            console.error('Failed to update user:', error);
+        });
 
     }
 
@@ -60,7 +78,7 @@ const UserProfile = ({userData, closeEvent}) => {
                 <button type='submit' className={`${style.Button} ${style.Exit}`} onClick={() => closeEvent(false)}>
                     <img src={CrossImg}></img>
                 </button>
-                <button type='submit' className={`${style.Button} ${style.ChangeUserData}`} onClick={updateUserEvent()}>
+                <button type='submit' className={`${style.Button} ${style.ChangeUserData}`} onClick={updateUserEvent}>
                     <img src={CheckImg}></img>
                 </button>
             </div>
