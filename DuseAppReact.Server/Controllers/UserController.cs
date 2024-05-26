@@ -75,6 +75,12 @@ namespace DuseAppReact.Server.Controllers
             return Ok(updatedUserId);
         }
 
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<int>> DeleteUser(int id)
+        {
+            return Ok(await _userRepository.Delete(id));
+        }
+
 
     }
 }

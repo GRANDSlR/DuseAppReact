@@ -4,7 +4,8 @@ import style from './UserProfile.module.css';
 import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 import UserIcon from './img/DefaultUserIcon.svg';
-import {updateUser} from '../../services/Users.js';
+import {updateUser, deleteUser} from '../../services/Users.js';
+import {deleteCookies} from '../../services/CookieService.js';
 
 
 const UserProfile = ({userData, closeEvent}) => {
@@ -34,6 +35,27 @@ const UserProfile = ({userData, closeEvent}) => {
 
     }
 
+    const logOut = () => {
+        sessionStorage.setItem('userModel', null);
+        deleteCookies('space-cookies');
+        closeEvent(false);
+    }
+
+    const deleteUserEvent = () => {
+
+        deleteUser(userData.id)
+        .then(deletedUserId => {
+            console.log('User deleted successfully:', deletedUserId);
+            sessionStorage.setItem('userModel', null);
+            deleteCookies('space-cookies');
+            closeEvent(false);
+        })
+        .catch(error => {
+            console.error('Failed to update user:', error);
+        });
+
+    }
+
     return (
         <div className={style.MainBox}>
             <div className={style.MainContentBox}>
@@ -42,8 +64,8 @@ const UserProfile = ({userData, closeEvent}) => {
                         <img src={UserIcon}></img>
                     </div>
                     <button type='submit' className={style.Button}>Сменить фото</button>
-                    <button type='submit' className={style.Button}>Выйти из аккаунта</button>
-                    <button type='submit' className={`${style.Button} ${style.Important}`}>Удалить аккаунт</button>
+                    <button type='submit' className={style.Button} onClick={logOut }>Выйти из аккаунта</button>
+                    <button type='submit' className={`${style.Button} ${style.Important}`} onClick={deleteUserEvent}>Удалить аккаунт</button>
                 </div>
                 <div className={style.InfoBox}>
                     <p className={style.HeaderTitle}>Мой профиль</p>
