@@ -1,0 +1,56 @@
+
+.ContentBox{
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #eaeaea;
+    padding-bottom: 15px;
+}
+
+.ContentBox p{
+    margin: 0;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.StarPanel{
+    margin: 5px 0;
+}
+
+.StarPanel img{
+    width: 20px;
+    margin-right: 1px;
+}
+
+.SubmitButton{
+    border: none;
+    width: 100%;
+    padding: 0;
+    padding-top: 15px;
+    color: #999;
+    font-weight: 500;
+    background-color: transparent;
+    border-top: 1px solid #eaeaea;
+    border-radius: 0 0 15px 15px;
+}
+
+.SubmitButton:focus{
+    outline: none;
+    border-top: 1px solid #eaeaea;
+
+}
+
+.Arrow{
+    position: absolute;
+    bottom: -9px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    /* border: 1px solid #eaeaea; */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #eaeaea;
+}
+

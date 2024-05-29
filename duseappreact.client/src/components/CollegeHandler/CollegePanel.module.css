@@ -65,10 +65,16 @@
     align-items: center;
     justify-content: center;
     background-color: #2864FF;
+    border: 1px solid #2864FF;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 4px 10px;
     width: fit-content;
     margin-left: auto;
+    width: 111px;
+}
+
+.SaveButton.Empty{
+    background-color: white;
 }
 
 .SaveButton img{
@@ -77,4 +83,30 @@
 
 .SaveButton p{
     color: white;
+}
+
+.SaveButton.Empty p{
+    color: #242424;
+}
+
+.StarPanel{
+    margin: 3px 0;
+    position: relative;
+}
+
+.StarPanel img{
+    /* width: 20px; */
+    height: 20px;
+    margin-right: 1px;
+}
+
+.GradePanelBox{
+    position: absolute;
+    top: -150px;
+    left: 71px;
+}
+
+.GradePanelBoxBack{
+    width: 100vw;
+    height: 100vh;
 }

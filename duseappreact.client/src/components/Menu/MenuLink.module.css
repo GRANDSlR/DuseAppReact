@@ -62,6 +62,10 @@
     transition: height 0.2s;
 }
 
+.MenuLink.active.Falling:after {
+    bottom: 3px;
+}
+
  .MenuLink:after {
     content: "";
     display: inline-block;

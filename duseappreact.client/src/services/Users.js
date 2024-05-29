@@ -30,7 +30,7 @@ export const deleteUser = async (id) => {
         'Content-Type': 'application/json'
       }
       // body: JSON.stringify(userUpdateRescponce)
-    });
+    }); 
 
     if (!response.ok) {
       throw new Error('DeleteUser request failed');

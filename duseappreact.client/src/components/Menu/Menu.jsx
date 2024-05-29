@@ -15,12 +15,13 @@ function Header (){
             </NavLink>
           </li>
           <li>
-            <NavLink to={'/college'} className={ useIsActiveButton('college') ? `${style.MenuLink} ${style.active}` : style.MenuLink}>
-              {'Колледжи'}
-            </NavLink>
+            <FallingList type='header' title='Колледжи' data={data} />
           </li>
+
           <li>
-            <FallingList type='header' title='Тесты' link='test' data={data} />
+            <NavLink to={'/test'} className={ useIsActiveButton('test') ? `${style.MenuLink} ${style.active}` : style.MenuLink}>
+              {'Тесты'}
+            </NavLink>
           </li>
       </ul>
     );
@@ -35,12 +36,13 @@ function Footer (){
             </NavLink>
           </li>
           <li>
-            <NavLink to={'/college'} className={style.MenuFooter}>
-              {'КОЛЛЕДЖИ'}
-            </NavLink>
+            <FallingList type='footer' title='КОЛЛЕДЖИ' data={data} />
           </li>
+
           <li>
-            <FallingList type='footer' title='ТЕСТЫ' link='test' data={data} />
+            <NavLink to={'/test'} className={ style.MenuFooter }>
+              {'ТЕСТЫ'}
+            </NavLink>
           </li>
       </ul>
     );

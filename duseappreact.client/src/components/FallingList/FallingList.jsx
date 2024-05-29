@@ -6,10 +6,10 @@ import Circumflexus from "./img/CircumflexusInvert.svg";
 import CircumflexusGrey from "./img/CircumflexusGrey.svg";
 import CircumflexusBlue from "./img/CircumflexusInvertBlue.svg";
 import menuLinkStyle from "../Menu/MenuLink.module.css";
-import useIsActiveButton from "../Menu/HeaderViewRouter.js"
+import {useIsActiveButtonFromData} from "../Menu/HeaderViewRouter.js"
 
 
-const FallingList = ({type, title, link, data}) => {
+const FallingList = ({type, title, data}) => {
 
   const [dropdownState, setDropdownState] = useState({ open: false });
 
@@ -22,8 +22,9 @@ const FallingList = ({type, title, link, data}) => {
         <span
         className={ 
           type == 'header' ?
-          (useIsActiveButton(link) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active}` : menuLinkStyle.MenuLink)
-        : menuLinkStyle.MenuFooter}>{title}</span>
+          (Array.isArray(data) && useIsActiveButtonFromData(data) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active} ${menuLinkStyle.Falling}` : menuLinkStyle.MenuLink)
+        : menuLinkStyle.MenuFooter}>
+          {title}</span>
         <img alt='Circumflexus' src={type == 'header' ? CircumflexusGrey : CircumflexusBlue} className={type == 'header' ? style.Circumflexus : style.CircumflexusBlue}/>
       </div>
       {dropdownState.open && (

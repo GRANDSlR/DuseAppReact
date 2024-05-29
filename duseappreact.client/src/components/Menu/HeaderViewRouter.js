@@ -1,9 +1,19 @@
 import {  useLocation } from 'react-router-dom';
 
-const useIsActiveButton = (name) => 
-    useIsCurrentRoute(name) ? true : false
+export const useIsActiveButton = (nameArray) => 
+    useIsCurrentRoute(nameArray) ? true : false
 
 export default useIsActiveButton;
 
-const useIsCurrentRoute = (name) => 
-    useLocation()['pathname'] === '/' + name;
+export const useIsActiveButtonFromData = (data) => {
+
+    let result = false;
+
+    for (let i = 0; i < data.length; i++)
+        useLocation()['pathname'] === data[i].link ? result=true : null;
+
+    return result;
+}
+
+const useIsCurrentRoute = (nameArray) => 
+    useLocation()['pathname'] === '/' + nameArray;

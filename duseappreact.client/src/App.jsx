@@ -4,7 +4,7 @@ import Home from './pages/Home/Home.jsx';
 import CollegePage from './pages/SearchPage/SearchPage.jsx';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import AuthPanel from './components/AuthPanel/AuthPanel.jsx';
+import FavoritePage from './pages/FavoriePage/FavoritePage.jsx';
 
 const App = () => {
   return (
@@ -13,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="*" element={<Home />}/>
         <Route path="/college" element={<CollegePage />} />
+        <Route path="/favorite" element={<FavoritePage />} />
       </Routes>
       <Footer />
     </Router>

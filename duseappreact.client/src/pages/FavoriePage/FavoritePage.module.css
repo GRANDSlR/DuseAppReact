@@ -1,0 +1,178 @@
+
+.HelloBox{
+    background-color: #799FFF;
+    padding: 80px 120px;
+    width: 100%;
+}
+
+#HelloTitle{
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 35px;
+    font-family: "Poppins", sans-serif;
+}
+
+#HelloDescription{
+    color: #E7ECFF;
+    font-size: 20px;
+    width: 550px;
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.UserAuthButton{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 12px 15px;
+    border: 1px solid white;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+.UserAuthButton:focus{
+    outline: none;
+}
+
+.UserAuthButton:hover{
+    border: 1px solid white;
+    box-shadow: 0 0 10px 1px white;
+}
+
+.UserAuthButton img{
+    margin-right: 15px;
+    width: 22px;
+}
+
+
+
+.WindowBack{
+    /* position: relative; */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.ContentPanel{
+    /* position: absolute; */
+    transform: translateY(-20px);
+    top: -40px;
+    background-color: white;
+    width: fit-content;
+    box-shadow: 0 0 5px 0px #aaaaaa;
+}
+
+.ContentPanel table{
+    table-layout: fixed;
+    border-collapse: collapse;
+
+}
+
+th, td{
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+    width: 130px;
+    border: 1px solid #f6f6f6;
+}
+
+th{
+    padding-bottom: 15px;
+}
+
+.ContentPanel table th div{
+    text-align: left;
+}
+
+.ContentPanel table th img{
+    width: 84px;
+    margin-right: 10px;
+}
+
+.ContentPanel table th .THTitle{
+    /* font-family: "Poppins", sans-serif; */
+    font-weight: 800;
+    font-size: 16px;
+    color: #464646;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.ContentPanel table th p{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+    line-height: 1;
+}
+
+#LocationImg{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#SpecializationImg{
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+#CostImg{
+    width: 63px;
+    margin-top: 15px;
+    margin-bottom: 16px;
+
+}
+
+#PeoplesImg{
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+#GradeImg{
+    width: 55px;
+    margin-top: 20px;
+    margin-bottom: 19px;
+}
+
+#OwnershipImg{
+    width: 66px;
+    margin-top: 15px;
+    margin-bottom: 14px
+}
+
+.ContentPanel table td{
+    color: #999;
+    font-weight: 500;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.ContentPanel table td:first-child{
+    min-width: 200px;
+}
+
+.ContentPanel table .TableCollegeHeader{
+    text-align: left;
+}
+
+.ContentPanel table .TableCollegeHeader p{
+    font-weight: 500;
+    font-size: 15px;
+    color: #999;
+    margin: 0;
+}
+
+.ContentPanel table .TableCollegeHeader .CollegeTitle{
+    font-weight: 700;
+    font-size: 16px;
+    color: #464646;
+    margin: 0;
+    margin-bottom: 1px;
+    line-height: 1.2;
+}
+
