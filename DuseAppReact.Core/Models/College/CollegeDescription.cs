@@ -22,7 +22,7 @@ namespace DuseAppReact.Core.Models.College
 
     public class CollegeDescription
     {
-        private CollegeDescription(int collegeId, int collegeDescriptionId, string description, int grade, CollegeType collegeType, Ownership ownership, string webSiteRef)
+        private CollegeDescription(int collegeId, int collegeDescriptionId, string description, double grade, CollegeType collegeType, Ownership ownership, string webSiteRef)
         {
             Description = description;
             Grade = grade;
@@ -41,7 +41,7 @@ namespace DuseAppReact.Core.Models.College
 
         public string Description { get; } = string.Empty;
 
-        public int Grade { get; } = 0;
+        public double Grade { get; } = 0;
 
         public CollegeType CollegeType { get; }
 
@@ -50,7 +50,7 @@ namespace DuseAppReact.Core.Models.College
         public string WebSiteRef { get; } = string.Empty;
 
 
-        public static Result<CollegeDescription> Create(int collegeId, int collegeDescriptionId, string description, int grade, string collegeType, string ownership, string webSiteRef)
+        public static Result<CollegeDescription> Create(int collegeId, int collegeDescriptionId, string description, double grade, string collegeType, string ownership, string webSiteRef)
         {
 
             if (!Enum.TryParse(collegeType, out CollegeType collegeTypeEnum))

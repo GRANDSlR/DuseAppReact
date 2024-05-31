@@ -3,7 +3,9 @@ using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Repositories.CollegeRep;
+using DuseAppReact.Dependencies.Repositoty;
 using DuseAppReact.Services.Services;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace DuseAppReact.DataAccess.Configurations.College
 {
@@ -11,14 +13,14 @@ namespace DuseAppReact.DataAccess.Configurations.College
     {
 
         private readonly ICollegeRepositoryWithTitle<CollegeHeader> _collegeHeaderRepository;
-        private readonly ICollegeRepositoryWithId<CollegeDescription> _collegeDescriptionRepository;
+        private readonly ICollegeRepositoryWithIdAndGrade<CollegeDescription> _collegeDescriptionRepository;
         private readonly ICollegeRepositoryWithId<CollegeLocation> _collegeLocationRepository;
         private readonly ICollegeRepositoryWithId<Speсialty> _speсialtyRepository;
         private readonly ICollegeRepositoryWithIdList<College_Specialty> _college_SpecialtyRepository;
 
         public CollegeDataConfiguration(
             ICollegeRepositoryWithTitle<CollegeHeader> collegeHeaderRepository,
-            ICollegeRepositoryWithId<CollegeDescription> collegeDescriptionRepository,
+            ICollegeRepositoryWithIdAndGrade<CollegeDescription> collegeDescriptionRepository,
             ICollegeRepositoryWithId<CollegeLocation> collegeLocationRepository,
             ICollegeRepositoryWithId<Speсialty> speсialtyRepository,
             ICollegeRepositoryWithIdList<College_Specialty> college_SpecialtyRepository)
@@ -206,7 +208,7 @@ namespace DuseAppReact.DataAccess.Configurations.College
             return Result<int>.Success(collegeId);
         }
 
-        public async Task<Result<int>> UpdateCollege(int collegeId, CollegeData collegeData)
+        public async Task<int> UpdateCollege(int collegeId, CollegeData collegeData)
         {
             
             int updatedCollegeId = await _collegeHeaderRepository.Update(collegeData.CollegeHeader);
@@ -220,7 +222,10 @@ namespace DuseAppReact.DataAccess.Configurations.College
             foreach (var updatedSpecialty in collegeData.SpecialtyList)
                 updatedSpecialtyId = await _speсialtyRepository.Update(updatedSpecialty);
 
-            return Result<int>.Success(collegeId);
+            return collegeId;
         }
+
+        public async Task<int> UpdateGrade(int collegeId, int grade) 
+            => await _collegeDescriptionRepository.UpdateGrade(collegeId, grade);
     }
 }

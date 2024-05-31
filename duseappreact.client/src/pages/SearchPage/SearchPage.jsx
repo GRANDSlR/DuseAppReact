@@ -8,7 +8,7 @@ import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
 import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
-import {EducationFormFilterParams, CollegeTypeFilterParams} from './DataCarrier.js';
+import {EducationFormFilterParams, CollegeTypeFilterParams} from '../../services/DataCarrier.js';
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SortFallingList/SortHandler.js';
 
@@ -47,8 +47,6 @@ export default function CollegePage() {
     if(sessionStorage.getItem('collegeTypeFilterParams') === null)
         sessionStorage.setItem('collegeTypeFilterParams', collegeTypeFilterParams)
 
-    
-
     useEffect(() => {
         educationForm == '' ? setEducationForm(EducationFormFilterParams) : null;
     }, [educationForm]);
@@ -56,8 +54,6 @@ export default function CollegePage() {
     useEffect(() => {
         collegeTypeFilterParams == '' ? setCollegeTypeFilterParams(CollegeTypeFilterParams) : null;
     }, [collegeTypeFilterParams]);
-
-    
 
     const SortCollegeData = (collegeDataArray) =>{
         if(collegeDataArray!=null && collegeDataArray.length>0)
@@ -145,8 +141,6 @@ export default function CollegePage() {
     const handleEducationFormCheckboxEvent = (state) =>
     setEducationForm(state);
 
-    
-
     return (
         <div>
             <div className={style.SearchBox}>
@@ -156,7 +150,9 @@ export default function CollegePage() {
             </div>
             <div className={style.ContentPanel}>
                 <div className={style.FilterPanel}>
-                    <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent}/>
+                    <div className={style.SpecialtyPanel}>
+                        <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent} sessionStorageName={'specialtyFilterParams'}/>
+                    </div>
                     <div className={style.CheckboxPanel}>
                         <p>Форма обучения</p>
                         <CheckBoxPanel sessionStorageName={'educationFormFilterPanel'} data={EducationFormFilterParams} event={handleEducationFormCheckboxEvent}/>

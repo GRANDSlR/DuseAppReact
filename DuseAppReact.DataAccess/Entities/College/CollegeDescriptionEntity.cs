@@ -14,7 +14,7 @@ namespace DuseAppReact.DataAccess.Entities.College
 
         public string Description { get; set; } = string.Empty;
 
-        public int Grade { get; set; } = 0;
+        public double Grade { get; set; } = 0;
 
         public string CollegeType { get; set; } = string.Empty;
 

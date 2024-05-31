@@ -51,6 +51,7 @@
 }
 
 .AdministrationPanel img{
+    width: 17px;
     margin-right: 10px;
 }
 
@@ -78,6 +79,7 @@
 }
 
 .SaveButton img{
+    width: 16px;
     margin-right: 5px;
 }
 
@@ -96,17 +98,12 @@
 
 .StarPanel img{
     /* width: 20px; */
-    height: 20px;
+    height: 18px;
     margin-right: 1px;
 }
 
 .GradePanelBox{
     position: absolute;
-    top: -150px;
-    left: 71px;
-}
-
-.GradePanelBoxBack{
-    width: 100vw;
-    height: 100vh;
+    top: -135px;
+    left: 60px;
 }

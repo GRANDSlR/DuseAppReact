@@ -10,11 +10,11 @@ import SearchIcon from "./img/SearchIconNew.svg"
 import CheckBoxPanel from '../CheckBoxPanel/CheckBoxPanel.jsx';
 
 
-const SpecialtyFilterAdditionPanel = (event) => {
+const SpecialtyFilterAdditionPanel = ({event, sessionStorageName}) => {
 
     const [specialties, setSpecialties] = useState(
-        sessionStorage.getItem('specialtyFilterParams') != null ? 
-        sessionStorage.getItem('specialtyFilterParams').split(',') : []);
+        sessionStorage.getItem(sessionStorageName) != null ? 
+        sessionStorage.getItem(sessionStorageName).split(',') : []);
 
     const [specialtyFilterParams, setSpecialtyFilterParams] = useState([]);
 
@@ -25,7 +25,7 @@ const SpecialtyFilterAdditionPanel = (event) => {
     const [dropdownState, setDropdownState] = useState({ open: false });
 
     useEffect(() => {
-        event.event(specialties);
+        event(specialties);
     }, [specialties]);
 
     useEffect(() => {
@@ -64,14 +64,14 @@ const SpecialtyFilterAdditionPanel = (event) => {
                     {loading ? <div className={style.Preloader}><p>Loading...</p></div> : 
                         Array.isArray(specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))) ? 
 
-                        <CheckBoxPanel sessionStorageName={'specialtyFilterParams'} data={specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))} event={handleCheckboxEvent}/>
+                        <CheckBoxPanel sessionStorageName={sessionStorageName} data={specialtyFilterParams.filter(element => element.toLowerCase().includes(searchValue))} event={handleCheckboxEvent}/>
 
                         : <div className={style.EmptyQuery}><p>Ничего не найдено</p></div>
                     }
                     </div>
                 </div>
             )}
-            {specialties.length > 1 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
+            {specialties.length > 0 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
         </div>
     );
 }

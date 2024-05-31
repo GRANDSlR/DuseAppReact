@@ -41,4 +41,8 @@
         string EducationForm,
         double PassingScore
         );
+
+    public record GradeUpdateRequest(
+        int grade
+        );
 }

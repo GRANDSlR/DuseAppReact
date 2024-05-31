@@ -90,10 +90,8 @@ namespace DuseAppReact.Server.Controllers
         }   
 
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<int>> DeleteCollege(int id)
-        {
-            return Ok(await _collegeDataConfiguration.DeleteCollege(id));
-        }
+        public async Task<ActionResult<int>> DeleteCollege(int id) 
+            => Ok(await _collegeDataConfiguration.DeleteCollege(id));
 
         [HttpPut("{id:int}")]
         public async Task<ActionResult<int>> UpdateCollege(int id, [FromBody] CollegeDataRequest collegeDataRequest)
@@ -105,5 +103,9 @@ namespace DuseAppReact.Server.Controllers
 
             return Ok(await _collegeDataConfiguration.UpdateCollege(id, CollegeDataResult.Value));
         }
+
+        [HttpPut("updategrade/{id:int}")]
+        public async Task<ActionResult<int>> UpdateGrade(int id, [FromBody] GradeUpdateRequest gradeUpdateRequest) 
+            => Ok(await _collegeDataConfiguration.UpdateGrade(id, gradeUpdateRequest.grade));
     }
 }

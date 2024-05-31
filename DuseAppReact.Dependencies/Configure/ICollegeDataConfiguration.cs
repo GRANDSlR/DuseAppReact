@@ -15,6 +15,8 @@ namespace DuseAppReact.Application.Interfaces.Configure
 
         Task<Result<int>> DeleteCollege(int collegeId);
 
-        Task<Result<int>> UpdateCollege(int collegeId, CollegeData collegeData);
+        Task<int> UpdateCollege(int collegeId, CollegeData collegeData);
+
+        Task<int> UpdateGrade(int collegeId, int grade);
     }
 }

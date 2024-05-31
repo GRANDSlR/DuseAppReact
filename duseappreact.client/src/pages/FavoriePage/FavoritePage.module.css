@@ -1,7 +1,7 @@
 
 .HelloBox{
     background-color: #799FFF;
-    padding: 80px 120px;
+    padding: 60px 120px 90px;
     width: 100%;
 }
 
@@ -58,7 +58,7 @@
 
 .ContentPanel{
     /* position: absolute; */
-    transform: translateY(-20px);
+    transform: translateY(-40px);
     top: -40px;
     background-color: white;
     width: fit-content;
@@ -71,7 +71,7 @@
 
 }
 
-th, td{
+.HeaderInfo, td{
     text-align: center;
     vertical-align: top;
     padding: 10px;
@@ -79,20 +79,15 @@ th, td{
     border: 1px solid #f6f6f6;
 }
 
-th{
+.HeaderInfo{
     padding-bottom: 15px;
 }
 
-.ContentPanel table th div{
+.ContentPanel table .HeaderInfo div{
     text-align: left;
 }
 
-.ContentPanel table th img{
-    width: 84px;
-    margin-right: 10px;
-}
-
-.ContentPanel table th .THTitle{
+.ContentPanel table .HeaderInfo .THTitle{
     /* font-family: "Poppins", sans-serif; */
     font-weight: 800;
     font-size: 16px;
@@ -101,7 +96,7 @@ th{
     margin-bottom: 5px;
 }
 
-.ContentPanel table th p{
+.ContentPanel table .HeaderInfo p{
     margin: 0;
     font-size: 14px;
     font-weight: 500;
@@ -109,18 +104,29 @@ th{
     line-height: 1;
 }
 
+.SpecialtyPanel{
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+}
+
 #LocationImg{
+    width: 84px;
+    margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 #SpecializationImg{
+    width: 84px;
+    margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 
 }
 
 #CostImg{
+    margin-right: 10px;
     width: 63px;
     margin-top: 15px;
     margin-bottom: 16px;
@@ -128,6 +134,8 @@ th{
 }
 
 #PeoplesImg{
+    width: 84px;
+    margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 
@@ -137,9 +145,11 @@ th{
     width: 55px;
     margin-top: 20px;
     margin-bottom: 19px;
+    margin-right: 10px;
 }
 
 #OwnershipImg{
+    margin-right: 10px;
     width: 66px;
     margin-top: 15px;
     margin-bottom: 14px
@@ -176,3 +186,12 @@ th{
     line-height: 1.2;
 }
 
+
+.GradeBox img{
+    width: 18px;
+    margin-right: 1px;
+}
+
+.GradeBox img:last-child{
+    margin: 0;
+}

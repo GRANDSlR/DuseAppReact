@@ -11,14 +11,24 @@ import AdditionButton from './img/AdditionButton.svg';
 import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
 import {verifyUsersCookies, getCookies} from '../../services/CookieService.js';
 import UserProfile from '../UserProfile/UserProfile.jsx';
+//
+import ExceptionState from '../../services/ApplicationException.js';
+//
+import { observer } from 'mobx-react';
 
-const Header = () => {
+
+const Header = observer(() => {
 
     const [isOpenAuth, setIsOpenAuth] = useState(false);
 
     const [isOpenCollegeAddition, setIsOpenCollegeAddition] = useState(false);
 
     const [isVerifyUsersCookies, setVerifyUsersCookies] = useState(false);
+
+    const SetExceptionState = (state) => 
+    {
+      ExceptionState.setException(state, '');
+    }
 
     useEffect(() => {
 
@@ -52,10 +62,14 @@ const Header = () => {
         <PopUpWindow handleCodeBlock={<UserProfile userData={JSON.parse(sessionStorage.getItem('userModel'))} closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'not-full'}/>
         : <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'full'}/>
       }
-      {/* <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenAuth}  handleCloseEnent={setIsOpenAuth} windowType={'full'}/> */}
+
+
+      {ExceptionState.getState() && 
+        <PopUpWindow handleCodeBlock={<div>{ExceptionState.getMessage()}</div>}  handleState={ExceptionState.getState()}  handleCloseEnent={SetExceptionState} windowType={'full'}/>
+      }
 
     </div>
   );
-}
+});
 
 export default Header;

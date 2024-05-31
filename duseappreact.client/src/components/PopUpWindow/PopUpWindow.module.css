@@ -1,13 +1,15 @@
 
 .Header{
     position: absolute;
-    top: 90px;
-    left: calc(50% - 225px);
+    /* top: 90px;
+    left: calc(50% - 225px); */
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .Back{
     position: absolute;
-    top: 71px;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -16,10 +18,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 71px;
 }
 
 .Header.Full{
-    top: 10vh;
+    top: 50vh;
 }
 
 .Back.Full{

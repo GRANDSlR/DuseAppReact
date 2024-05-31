@@ -10,6 +10,12 @@ import Peoples from './img/Peoples.png';
 import Ownership from './img/Ownership.png';
 import Money from './img/Money.png';
 import Grade from './img/Grade.png';
+//
+import {Ownership as OwnershipData} from '../../services/DataCarrier.js';
+//
+import {getGradeItems} from '../../components/CollegeHandler/CollegePanel.jsx';
+//
+import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 
 const FavoritePage = () => {
 
@@ -17,7 +23,9 @@ const FavoritePage = () => {
         sessionStorage.getItem('savedColleges') != null ?
         JSON.parse(sessionStorage.getItem('savedColleges')) : ['']);
 
-        console.log(savedCollegesArray);
+    const [currSpecialties, setCurrSpecialties] = useState(
+        sessionStorage.getItem('specialtyFavParams') != null ? 
+        sessionStorage.getItem('specialtyFavParams').split(',') : []);
 
     const getCollegeObjectArray = () => {
 
@@ -29,6 +37,9 @@ const FavoritePage = () => {
 
         return newCollegeArray;
     }
+
+    const SpecialtyCheckboxEvent = (state) => 
+    setCurrSpecialties(state);
 
     return (
         <div className={style.MainWindow}>
@@ -44,43 +55,45 @@ const FavoritePage = () => {
                 <div className={style.ContentPanel}>
                     <table>
                         <tr>
-                            <th></th>
-                            <th>
+                            <th className={style.SpecialtyPanel}>
+                                <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent} sessionStorageName={'specialtyFavParams'}/>
+                            </th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Geolocation} id={style.LocationImg}></img>
                                 <div>
                                     <p className={style.THTitle}>ГЕОЛОКАЦИЯ</p>
                                     <p>Дистанция от вас</p>
                                 </div>
                             </th>
-                            <th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Specialization} id={style.SpecializationImg}></img>
                                 <div>
                                     <p className={style.THTitle}>АТТЕСТАТ</p>
                                     <p>Ваш проходной балл</p>
                                 </div>
                             </th>
-                            <th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Money} id={style.CostImg}></img>
                                 <div>
                                     <p className={style.THTitle}>СТОИМОСТЬ</p>
                                     <p>Цена обучения за год</p>
                                 </div>
                             </th>
-                            <th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Peoples} id={style.PeoplesImg}></img>
                                 <div>
                                     <p className={style.THTitle}>КОЛИЧЕСТВО МЕСТ</p>
                                     <p>Набор мест на специальность</p>
                                 </div>
                             </th>
-                            <th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Grade} id={style.GradeImg}></img>
                                 <div>
                                     <p className={style.THTitle}>РЕЙТИНГ</p>
                                     <p>Внутренний рейтинг учреждения</p>
                                 </div>
                             </th>
-                            <th>
+                            <th className={style.HeaderInfo}>
                                 <img src={Ownership} id={style.OwnershipImg}></img>
                                 <div>
                                     <p className={style.THTitle}>СОБСТВЕННОСТЬ</p>
@@ -99,19 +112,19 @@ const FavoritePage = () => {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>{college.collegeDescription.grade}</td>
-                                <td>{college.collegeDescription.ownership}</td>
+                                <td><div className={style.GradeBox}>{getGradeItems(college.collegeDescription.grade)}</div></td>
+                                <td>{OwnershipData[parseInt(college.collegeDescription.ownership)]}</td>
                             </tr>
                         )
                         : (
                             <tr>
-                                <td>---||---</td>
-                                <td>---||---</td>
-                                <td>---||---</td>
-                                <td>---||---</td>
-                                <td>---||---</td>
-                                <td>---||---</td>
-                                <td>---||---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
+                                <td>---//---</td>
                             </tr>
                         )}
                     </table>

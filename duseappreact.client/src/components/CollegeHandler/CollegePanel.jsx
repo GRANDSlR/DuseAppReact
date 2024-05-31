@@ -1,35 +1,83 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import style from './CollegePanel.module.css';
 //
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 //
-import websitePin from './img/AdmitistrationPanel/websitePin.svg';
-import locationPin from './img/AdmitistrationPanel/locationPin.svg';
+import websitePin from './img/AdmitistrationPanel/worlwide.png';
+import locationPin from './img/AdmitistrationPanel/location.png';
 //
-import heartFull from './img/SaveButton/heartFull.svg';
-import heartEmpty from './img/SaveButton/heartEmpty.svg';
+import heartFull from './img/SaveButton/heartFull.png';
+import heartEmpty from './img/SaveButton/heartEmpty.png';
 //
 import FullStar from './img/FullStar.png';
 import EmptyStar from './img/EmptyStar.png';
 import PartedStar from './img/PartedStar.png';
 //
 import GradePanel from '../GradePanel/GradePanel.jsx';
+//
+import {verifyUsersCookies, getCookies} from '../../services/CookieService.js';
+//
+import ExceptionState from '../../services/ApplicationException.js';
+//
+import { observer } from 'mobx-react';
 
-export const Colleges = ({collegeObjects}) => {
+
+
+export const getGradeItems = (grade) => {
+    const gradeTail = parseFloat(grade) % 1;
+
+    const result = [];
+  
+    for (let i = 0; i < grade-gradeTail; i++) {
+      result.push(<img src={FullStar} />);
+    }
+  
+    if (gradeTail !== 0) {
+      result.push(<img src={PartedStar} />);
+    }
+  
+    for (let i = 0; i < 5 - Math.ceil(grade); i++) {
+      result.push(<img src={EmptyStar} />);
+    }
+  
+    return result;
+  };    
+
+export const Colleges = observer(({collegeObjects}) => {
+
+    const [isVerifyUsersCookies, setVerifyUsersCookies] = useState(false);
+
+    const verifyUser = () => {
+        if(sessionStorage.getItem('userModel') !== 'null' && isVerifyUsersCookies)
+            return true;
+        else{
+            // setOpenExeption(true);
+            ExceptionState.setException(true, 'Error 401');
+            setIsOpenGragePanel(null);
+            return false;
+        }
+    }
+
+    useEffect(() => {
+
+      const verify = async () =>{
+        setVerifyUsersCookies(await verifyUsersCookies());
+      }
+      verify();
+
+    }, [getCookies('space-cookies'), sessionStorage.getItem('userModel')]);
 
     const [savedCollegesArray, setSavedCollegesArray] = useState(
         sessionStorage.getItem('savedColleges') != null ?
         JSON.parse(sessionStorage.getItem('savedColleges')) : ['']);
 
-    console.log(savedCollegesArray);
-
     const [isOpenGragePanel, setIsOpenGragePanel] = useState(null);
-    
+
     const addToVaf = (college) => {
           
         if(savedCollegesArray.includes(`${JSON.stringify(college)}`))
         {
-            const newSavedCollegesArray = savedCollegesArray.filter(item => JSON.parse(item).collegeHeader.collegeId != `${college.collegeHeader.collegeId}`)
+            const newSavedCollegesArray = savedCollegesArray.filter(item => item!='' && JSON.parse(item).collegeHeader.collegeId != `${college.collegeHeader.collegeId}`)
             setSavedCollegesArray(newSavedCollegesArray);
             sessionStorage.setItem('savedColleges', JSON.stringify(newSavedCollegesArray));
         }
@@ -39,27 +87,7 @@ export const Colleges = ({collegeObjects}) => {
             sessionStorage.setItem('savedColleges', JSON.stringify(savedCollegesArray));
         }
     }
-
-    const getGradeItems = (grade) => {
-        const gradeTail = Math.trunc(grade);
-        const result = [];
       
-        for (let i = 0; i < gradeTail; i++) {
-          result.push(<img src={FullStar} />);
-        }
-      
-        if (gradeTail !== 0) {
-          result.push(<img src={PartedStar} />);
-        }
-      
-        for (let i = 0; i < 4 - grade; i++) {
-          result.push(<img src={EmptyStar} />);
-        }
-      
-        return result;
-      };    
-      
-
     return (
         <div className={style.Cards}>
             {collegeObjects != null || (Array.isArray(collegeObjects) && collegeObjects.length>0) ? collegeObjects.map((college, index) => 
@@ -68,14 +96,16 @@ export const Colleges = ({collegeObjects}) => {
                     <p id={style.collegeTitle}>{college.collegeHeader.title}</p>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
 
-                    <div className={style.StarPanel} onClick={() => setIsOpenGragePanel(index)}>
-                        {getGradeItems(college.collegeDescription.grade)}
-                        {isOpenGragePanel === index && (
-                            <div className={style.GradePanelBox} onClick={() => setIsOpenGragePanel(null)}>
-                                <GradePanel collegeId={college.collegeHeader.collegeId} onClick={() => setIsOpenGragePanel(null)}/>
+                    <div className={style.StarPanel}>
+                        <div onClick={() => setIsOpenGragePanel(index)}>{getGradeItems(college.collegeDescription.grade)}</div>
+                        {(isOpenGragePanel === index && isOpenGragePanel != null) && ( verifyUser() && (
+                            <div className={style.GradePanelBox}>
+                                <GradePanel closeEvent={setIsOpenGragePanel} collegeId={college.collegeHeader.collegeId}/>
                             </div>
-                        )}
+                        ))}
                     </div>
+
+                    {/* <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setOpenExeption}/>} handleState={isOpenExeption} handleCloseEnent={setOpenExeption} windowType={'full'}/> */}
 
                     <SpecialtyPanel speсialtyList={college.specialtyList.map((item) => item.title)}/>
                     
@@ -98,4 +128,4 @@ export const Colleges = ({collegeObjects}) => {
             ) : <div className={style.ReportMessage}><p>Совпадений не найдено</p></div>}
         </div>
     );
-}
+});

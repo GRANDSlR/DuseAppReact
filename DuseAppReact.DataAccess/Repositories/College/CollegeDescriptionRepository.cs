@@ -1,12 +1,13 @@
 ﻿using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Core.Models.College;
 using DuseAppReact.DataAccess.Entities.College;
+using DuseAppReact.Dependencies.Repositoty;
 using DuseAppReact.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DuseAppReact.DataAccess.Repositories.CollegeRep
 {
-    public class CollegeDescriptionRepository : ICollegeRepositoryWithId<CollegeDescription>
+    public class CollegeDescriptionRepository : ICollegeRepositoryWithIdAndGrade<CollegeDescription>
     {
         private readonly DatabaseContext _context;
 
@@ -86,6 +87,23 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
 
             return college.CollegeDescriptionId;
         }
+
+        public async Task<int> UpdateGrade(int id, int userGrade)
+        {
+            double newGrade = (await _context.CollegeDescriptions
+                .Where(a => a.CollegeId == id)
+                .Select(b => b.Grade)
+                .FirstOrDefaultAsync() + userGrade) / 2.0;
+
+            await _context.CollegeDescriptions
+                .Where(a => a.CollegeId == id)
+                .ExecuteUpdateAsync(s => s
+                    .SetProperty(b => b.Grade, b => newGrade));
+
+            return id;
+        }
+
+
 
         public async Task<int> Delete(int id)
         {

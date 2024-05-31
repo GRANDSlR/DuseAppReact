@@ -9,6 +9,7 @@ using DuseAppReact.DataAccess;
 using DuseAppReact.DataAccess.Configurations.College;
 using DuseAppReact.DataAccess.Repositories.CollegeRep;
 using DuseAppReact.DataAccess.Repositories.UserRepository;
+using DuseAppReact.Dependencies.Repositoty;
 using DuseAppReact.Infrastructure;
 using DuseAppReact.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -62,7 +63,7 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
 services.AddScoped<ICollegeRepositoryWithTitle<CollegeHeader>, CollegeHeaderRepository>();
-services.AddScoped<ICollegeRepositoryWithId<CollegeDescription>, CollegeDescriptionRepository>();
+services.AddScoped<ICollegeRepositoryWithIdAndGrade<CollegeDescription>, CollegeDescriptionRepository>();
 services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRepository>();
 services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
 services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();

@@ -1,11 +1,9 @@
 
-.ContentBox{
+.MainBox{
     position: relative;
-    padding: 20px;
     background-color: white;
     border-radius: 15px;
     border: 1px solid #eaeaea;
-    padding-bottom: 15px;
 }
 
 .ContentBox p{
@@ -15,36 +13,57 @@
     font-weight: 500;
 }
 
+.ContentBox{
+    padding: 20px;
+    padding-bottom: 0;
+}
+
 .StarPanel{
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .StarPanel img{
-    width: 20px;
+    width: 18px;
     margin-right: 1px;
 }
 
-.SubmitButton{
+.ButtonBox{
+    display: flex;
+}
+
+.Button{
     border: none;
-    width: 100%;
+    width: 50%;
     padding: 0;
-    padding-top: 15px;
+    height: 35px;
     color: #999;
     font-weight: 500;
     background-color: transparent;
-    border-top: 1px solid #eaeaea;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0;
 }
 
-.SubmitButton:focus{
+.Button img{
+    width: 16px;
+    height: 16px;
+}
+
+.Button.Submit img{
+    width: 18px;
+    height: 18px;
+}
+
+.Button.Submit{
+    border-right: 1px solid #eaeaea;
+}
+
+.Button:focus{
     outline: none;
-    border-top: 1px solid #eaeaea;
 
 }
 
 .Arrow{
     position: absolute;
-    bottom: -9px;
+    bottom: -10px;
     left: 15px;
     width: 0;
     height: 0;

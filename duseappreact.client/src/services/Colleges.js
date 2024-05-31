@@ -17,6 +17,30 @@ export const getCollegesByFilterParams = async (filterRequest) => {
     });
 }
 
+export const updateGrade = async (id, grade) => {
+
+    try {
+        const response = await fetch(`/college/updategrade/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(grade)
+        });
+    
+        if (!response.ok) {
+          throw new Error('College grade update request failed');
+        }
+    
+        const data = await response.json();
+    
+        return data;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+}
+
 export const getAllSpecialties = async () =>{
     const response = await fetch('/college/getallspecialties');
     return await response.json();

@@ -14,7 +14,7 @@
     border-top: 2px solid #2864FF; 
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(2px);
-    padding: 10px;
+    padding: 10px 15px;
     transition: 0.3s ease;
 }
 
@@ -38,6 +38,18 @@
     font-weight: 400;
     font-size: 14px;
     color: #eaeaea;
-    margin-bottom: 3px;
+}
 
+.DropdownMenu li{
+    padding: 5px 0;
+    border-bottom: 1px solid #5c5c5c;
+}
+
+.DropdownMenu li:first-child{
+    padding-top: 0;
+}
+
+.DropdownMenu li:last-child{
+    padding-bottom: 0;
+    border: none;
 }
