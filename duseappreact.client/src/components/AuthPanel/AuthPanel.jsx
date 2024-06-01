@@ -2,9 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
 import duseApp from './img/DuseApp.svg';
-import {getUserByToken, register, login} from '../../services/Users.js';
+import {getUserByToken, register, login} from '../../services/User/UserFetches.js';
+import UserModel from '../../services/User/UserModel.js';
+import { observer } from 'mobx-react';
+//
+import ExceptionState from '../../services/ApplicationException.js';
 
-const AuthHeader = (closeEvent) => {
+
+const AuthHeader = observer((closeEvent) => {
 
     const [isRegister, setAuth] = useState(true);
 
@@ -28,13 +33,24 @@ const AuthHeader = (closeEvent) => {
               password: userPassword
             });
         } else {
-            const token = await login({
+            await login({
                 email: userEmail,
                 password: userPassword
+            })
+            .then(userToken => {
+                console.log('User logged successfully');
+
+                const setUser = async() => {
+                    UserModel.setUser(JSON.stringify(await getUserByToken(userToken)));
+                }
+                setUser();
+
+                closeEvent.closeEvent(false);
+            })
+            .catch(error => {
+                ExceptionState.setException(true, "Невозможно войти. " +`${error}`);
+                console.error('Failed to login user:', error);
             });
-            const userModel = await getUserByToken(token);
-            sessionStorage.setItem('userModel', JSON.stringify(userModel));
-            closeEvent.closeEvent(false);
         }
         setLoading(false);
     };
@@ -99,6 +115,6 @@ const AuthHeader = (closeEvent) => {
             )}
         </div>
     );
-}
+});
 
 export default AuthHeader;

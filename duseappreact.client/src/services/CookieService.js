@@ -1,7 +1,8 @@
 
-import {getUserByToken} from './Users.js';
+import {getUserByToken} from './User/UserFetches.js';
 
-export const verifyUsersCookies = async () =>{
+
+export const verifyUsersCookies = async (userState) =>{
 
   const token = getCookies('space-cookies');
 
@@ -10,9 +11,7 @@ export const verifyUsersCookies = async () =>{
 
   const userModel = await getUserByToken(token);
 
-  const userSession = JSON.parse(sessionStorage.getItem('userModel'));
-
-  if(JSON.stringify(userModel) != JSON.stringify(userSession))
+  if(JSON.stringify(userModel) != userState)
     return false;
 
   return true;

@@ -4,11 +4,16 @@ import style from './UserProfile.module.css';
 import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 import UserIcon from './img/DefaultUserIcon.svg';
-import {updateUser, deleteUser} from '../../services/Users.js';
+import {updateUser, deleteUser} from '../../services/User/UserFetches.js';
 import {deleteCookies} from '../../services/CookieService.js';
+import { observer } from 'mobx-react';
+import UserModel from '../../services/User/UserModel.js';
+//
+import ExceptionState from '../../services/ApplicationException.js';
 
 
-const UserProfile = ({userData, closeEvent}) => {
+
+const UserProfile = observer(({userData, closeEvent}) => {
 
     const [userName, setUserName] = useState(userData.name);
 
@@ -19,7 +24,7 @@ const UserProfile = ({userData, closeEvent}) => {
         updateUser(userData.id, {UserName: userName, Email: userEmail})
         .then(updatedUserId => {
             console.log('User updated successfully:', updatedUserId);
-            sessionStorage.setItem('userModel', JSON.stringify(
+            UserModel.setUser(JSON.stringify(
             {
                 'id': userData.id,
                 'name': userName,
@@ -30,13 +35,14 @@ const UserProfile = ({userData, closeEvent}) => {
             closeEvent(false);
         })
         .catch(error => {
+            ExceptionState.setException(true, "Невозможно обновить пользователя. " +`${error}`);
             console.error('Failed to update user:', error);
         });
 
     }
 
     const logOut = () => {
-        sessionStorage.setItem('userModel', null);
+        UserModel.deleteUser();
         deleteCookies('space-cookies');
         closeEvent(false);
     }
@@ -46,7 +52,7 @@ const UserProfile = ({userData, closeEvent}) => {
         deleteUser(userData.id)
         .then(deletedUserId => {
             console.log('User deleted successfully:', deletedUserId);
-            sessionStorage.setItem('userModel', null);
+            UserModel.deleteUser();
             deleteCookies('space-cookies');
             closeEvent(false);
         })
@@ -106,6 +112,6 @@ const UserProfile = ({userData, closeEvent}) => {
             </div>
         </div>
     );
-}
+});
 
 export default UserProfile;

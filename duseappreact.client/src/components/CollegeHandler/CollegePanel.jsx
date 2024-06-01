@@ -15,9 +15,11 @@ import PartedStar from './img/PartedStar.png';
 //
 import GradePanel from '../GradePanel/GradePanel.jsx';
 //
-import {verifyUsersCookies, getCookies} from '../../services/CookieService.js';
+import {getCookies} from '../../services/CookieService.js';
 //
 import ExceptionState from '../../services/ApplicationException.js';
+//
+import UserModel from '../../services/User/UserModel.js';
 //
 import { observer } from 'mobx-react';
 
@@ -52,7 +54,7 @@ export const Colleges = observer(({collegeObjects}) => {
             return true;
         else{
             // setOpenExeption(true);
-            ExceptionState.setException(true, 'Error 401');
+            ExceptionState.setException(true, 'Ошибка доступа. Войдите в аккаунт');
             setIsOpenGragePanel(null);
             return false;
         }
@@ -60,12 +62,12 @@ export const Colleges = observer(({collegeObjects}) => {
 
     useEffect(() => {
 
-      const verify = async () =>{
-        setVerifyUsersCookies(await verifyUsersCookies());
-      }
-      verify();
-
-    }, [getCookies('space-cookies'), sessionStorage.getItem('userModel')]);
+        const verify = async () =>{
+          setVerifyUsersCookies(await UserModel.verifyUser());
+        }
+        verify();
+  
+      }, [getCookies('space-cookies'), UserModel.userData]);
 
     const [savedCollegesArray, setSavedCollegesArray] = useState(
         sessionStorage.getItem('savedColleges') != null ?

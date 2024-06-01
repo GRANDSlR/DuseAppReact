@@ -1,0 +1,28 @@
+
+.MainBox{
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    width: 200px;
+}
+
+.MainBox p{
+    color: #999;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+
+button{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: #2864FF;
+    padding: 0;
+}
+
+button:focus{
+    outline: none;
+}
