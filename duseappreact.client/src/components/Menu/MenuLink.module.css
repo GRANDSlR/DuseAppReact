@@ -58,7 +58,7 @@
     width: 100%;
     height: 4px;
     border-radius: 15px 15px 0 0;
-    background-color: #2864FF;
+    background-color: var(--main-blue-color);
     transition: height 0.2s;
 }
 
@@ -81,6 +81,6 @@
 
  .MenuLink:hover:after {
     height: 4px;
-    background-color: #2864FF;
+    background-color: var(--main-blue-color);
     border-radius: 15px 15px 0 0;
 }

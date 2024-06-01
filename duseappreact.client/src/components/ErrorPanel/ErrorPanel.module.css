@@ -15,7 +15,7 @@
     line-height: 1.2;
 }
 
-button{
+.ErrorButton{
     width: 100%;
     border: none;
     background-color: transparent;
@@ -23,6 +23,6 @@ button{
     padding: 0;
 }
 
-button:focus{
+.ErrorButton:focus{
     outline: none;
 }

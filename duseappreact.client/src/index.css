@@ -10,6 +10,10 @@
 
   color-scheme: light dark;
   color: #242424;
+
+  --main-blue-color: #517ef3;
+  --main-green-color: #cbe490;
+  --main-red-color: #e45175;
 }
 
 

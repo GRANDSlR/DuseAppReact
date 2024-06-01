@@ -18,7 +18,6 @@ import GradePanel from '../GradePanel/GradePanel.jsx';
 import {getCookies} from '../../services/CookieService.js';
 //
 import ExceptionState from '../../services/ApplicationException.js';
-//
 import UserModel from '../../services/User/UserModel.js';
 //
 import { observer } from 'mobx-react';
@@ -53,7 +52,6 @@ export const Colleges = observer(({collegeObjects}) => {
         if(sessionStorage.getItem('userModel') !== 'null' && isVerifyUsersCookies)
             return true;
         else{
-            // setOpenExeption(true);
             ExceptionState.setException(true, 'Ошибка доступа. Войдите в аккаунт');
             setIsOpenGragePanel(null);
             return false;
@@ -106,8 +104,6 @@ export const Colleges = observer(({collegeObjects}) => {
                             </div>
                         ))}
                     </div>
-
-                    {/* <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setOpenExeption}/>} handleState={isOpenExeption} handleCloseEnent={setOpenExeption} windowType={'full'}/> */}
 
                     <SpecialtyPanel speсialtyList={college.specialtyList.map((item) => item.title)}/>
                     

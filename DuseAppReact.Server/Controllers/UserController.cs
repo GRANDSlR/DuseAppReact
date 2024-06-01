@@ -63,7 +63,7 @@ namespace DuseAppReact.Server.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<int>> UpdateUser(int id, [FromBody] UserUpdateResponce userUpdateResponce)
+        public async Task<ActionResult<string>> UpdateUser(int id, [FromBody] UserUpdateResponce userUpdateResponce)
         {
             var user = UserModel.Create(id, userUpdateResponce.UserName, userUpdateResponce.Email, "");
 
@@ -71,6 +71,13 @@ namespace DuseAppReact.Server.Controllers
                 return BadRequest(user.ErrorMessage);
 
             int updatedUserId = await _userRepository.Update(user.Value);
+
+            var userToken = await _usersService.Update(id);
+
+            if (!userToken.IsSuccess)
+                return BadRequest(userToken.ErrorMessage);
+
+            HttpContext.Response.Cookies.Append("space-cookies", userToken.Value);
 
             return Ok(updatedUserId);
         }

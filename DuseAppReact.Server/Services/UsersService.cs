@@ -80,5 +80,17 @@ namespace DuseAppReact.Services.Services
 
             return Result<UserModel>.Success(user.Value);
         }
+
+        public async Task<Result<string>> Update(int id)
+        {
+            var user = await _userRepository.GetById(id);
+
+            if (!user.IsSuccess)
+                return Result<string>.Failure(user.ErrorMessage);
+
+            var token = _jwtProvider.GenerateToken(user.Value);
+
+            return Result<string>.Success(token); 
+        }
     }
 }

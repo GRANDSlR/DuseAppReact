@@ -7,6 +7,8 @@
     padding: 5px 10px;
     margin: 0 5px 5px 0;
     background-color: #C1ED58;
+    background-color: var(--main-green-color);
+    
     border-radius: 15px; 
 }
 

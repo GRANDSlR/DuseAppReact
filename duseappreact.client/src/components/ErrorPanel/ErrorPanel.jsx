@@ -7,7 +7,7 @@ const ErrorPanel = ({closeEvent, errorMessage}) => {
     return (
         <div className={style.MainBox}>
             <p>{errorMessage}</p>
-            <button type='button' onClick={() => closeEvent(false)}>ОК</button>
+            <button className={style.ErrorButton} type='button' onClick={() => closeEvent(false)}>ОК</button>
         </div>
     );
 }

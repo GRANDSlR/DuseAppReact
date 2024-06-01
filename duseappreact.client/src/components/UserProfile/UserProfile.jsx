@@ -1,14 +1,17 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import style from './UserProfile.module.css';
+//
 import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 import UserIcon from './img/DefaultUserIcon.svg';
-import {updateUser, deleteUser} from '../../services/User/UserFetches.js';
-import {deleteCookies} from '../../services/CookieService.js';
-import { observer } from 'mobx-react';
-import UserModel from '../../services/User/UserModel.js';
 //
+import {updateUser, deleteUser, login} from '../../services/User/UserFetches.js';
+import {deleteCookies} from '../../services/CookieService.js';
+//
+import { observer } from 'mobx-react';
+//
+import UserModel from '../../services/User/UserModel.js';
 import ExceptionState from '../../services/ApplicationException.js';
 
 
@@ -19,11 +22,12 @@ const UserProfile = observer(({userData, closeEvent}) => {
 
     const [userEmail, setUserEmail] = useState(userData.email);
 
-    const updateUserEvent = () => {
+    const updateUserEvent = async () => {
 
-        updateUser(userData.id, {UserName: userName, Email: userEmail})
+        await updateUser(userData.id, {UserName: userName, Email: userEmail})
         .then(updatedUserId => {
             console.log('User updated successfully:', updatedUserId);
+            // UserModel.setUser(JSON.stringify(updatedUser));
             UserModel.setUser(JSON.stringify(
             {
                 'id': userData.id,
@@ -32,7 +36,8 @@ const UserProfile = observer(({userData, closeEvent}) => {
                 'passwordHash': userData.passwordHash,
                 'role': userData.role
             }));
-            closeEvent(false);
+            ExceptionState.setException(true, "Данные пользователя обновлены");
+            // closeEvent(false);
         })
         .catch(error => {
             ExceptionState.setException(true, "Невозможно обновить пользователя. " +`${error}`);

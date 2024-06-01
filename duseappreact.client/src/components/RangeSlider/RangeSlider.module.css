@@ -12,14 +12,14 @@
     height: 10px;
     border-radius: 50%;
     background-color: #fff;
-    border: 3px solid #2864FF;
+    border: 3px solid var(--main-blue-color);
     outline: none;
     position: relative;
 }
 
 .Progress{
     height: 100%;
-    background-color: #2864FF;
+    background-color: var(--main-blue-color);
 }
 
 .KeyboardRangeBox{
@@ -59,7 +59,7 @@
 .Values{
     position: absolute;
     top: 20px;
-    background-color: #2864FF;
+    background-color: var(--main-blue-color);
     width: 30px;
     border-radius: 5px;
     left: -13px;
@@ -86,5 +86,5 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 6px solid #2864FF;
+    border-bottom: 6px solid var(--main-blue-color);
 }

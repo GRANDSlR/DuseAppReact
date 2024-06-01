@@ -1,12 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
+//
 import duseApp from './img/DuseApp.svg';
+//
 import {getUserByToken, register, login} from '../../services/User/UserFetches.js';
-import UserModel from '../../services/User/UserModel.js';
+//
 import { observer } from 'mobx-react';
 //
 import ExceptionState from '../../services/ApplicationException.js';
+import UserModel from '../../services/User/UserModel.js';
 
 
 const AuthHeader = observer((closeEvent) => {
@@ -31,6 +34,13 @@ const AuthHeader = observer((closeEvent) => {
               userName: userName,
               email: userEmail,
               password: userPassword
+            })
+            .then(userId => {
+                ExceptionState.setException(true, "Пользователь зарегистрирован");
+            })
+            .catch(error => {
+                ExceptionState.setException(true, "Ошибка регистрации. " +`${error}`);
+                console.error('Failed to register user:', error);
             });
         } else {
             await login({
@@ -41,7 +51,9 @@ const AuthHeader = observer((closeEvent) => {
                 console.log('User logged successfully');
 
                 const setUser = async() => {
-                    UserModel.setUser(JSON.stringify(await getUserByToken(userToken)));
+                    const userByToken = await getUserByToken(userToken);
+                    console.log(userByToken);
+                    UserModel.setUser(JSON.stringify(userByToken));
                 }
                 setUser();
 

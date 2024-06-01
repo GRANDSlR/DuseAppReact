@@ -6,6 +6,7 @@ namespace DuseAppReact.Application.Interfaces.Auth
     public interface IUsersService
     {
         Task<Result<string>> Login(string email, string password);
+        Task<Result<string>> Update(int id);
         Task<Result<string>> Register(string name, string email, string password);
         Task<Result<UserModel>> GetUserByToken(string token);
     }

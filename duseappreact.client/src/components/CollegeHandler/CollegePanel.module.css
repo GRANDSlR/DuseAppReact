@@ -65,8 +65,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2864FF;
-    border: 1px solid #2864FF;
+    background-color: var(--main-blue-color);
+    border: 1px solid var(--main-blue-color);
     border-radius: 20px;
     padding: 4px 10px;
     width: fit-content;
