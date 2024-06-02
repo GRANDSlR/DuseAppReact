@@ -3,7 +3,7 @@ import { Range } from 'react-range';
 import style from './RangeSlider.module.css';
 
 
-const TwoThumbsSlider = (event) => {
+const TwoThumbsSlider = (eventSetValues) => {
 
   const [values, setValues] = useState(
     sessionStorage.getItem('sliderBarFilterValues') != null ? 
@@ -31,6 +31,7 @@ const TwoThumbsSlider = (event) => {
       setValues(newValues);
       setInputValues(newValues);
       setSessionStorage(newValues);
+      eventSetValues.eventSetValues(newValues)
     }
     else
       setInputValues(newValues);
@@ -52,7 +53,7 @@ const TwoThumbsSlider = (event) => {
         min={0}
         max={10000}
         values={values}
-        onChange={(values) => {setSessionStorage(values); setValues(values); setInputValues(values); event.event(values)}}
+        onChange={(values) => {setSessionStorage(values); setValues(values); setInputValues(values); eventSetValues.eventSetValues(values)}}
         renderTrack={({ props, children }) => (
             <div
             {...props}

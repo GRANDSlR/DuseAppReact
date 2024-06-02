@@ -9,11 +9,13 @@
 .ContentBox p{
     margin: 0;
     color: #999;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
+    line-height: 1;
 }
 
 .ContentBox{
+    text-align: center;
     padding: 20px;
     padding-bottom: 0;
 }

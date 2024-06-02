@@ -54,6 +54,7 @@ const FavoritePage = () => {
             <div className={style.WindowBack}>
                 <div className={style.ContentPanel}>
                     <table>
+                    <tbody>
                         <tr>
                             <th className={style.SpecialtyPanel}>
                                 <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent} sessionStorageName={'specialtyFavParams'}/>
@@ -127,6 +128,7 @@ const FavoritePage = () => {
                                 <td>---//---</td>
                             </tr>
                         )}
+                    </tbody>
                     </table>
                 </div>
             </div>

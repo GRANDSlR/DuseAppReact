@@ -23,7 +23,7 @@ export default function CheckBoxPanel ({sessionStorageName, data, event}){
     }
 
     useEffect(() => {
-        event(filterParams);
+        event(filterParams != '' ? filterParams : []);
     }, [filterParams]);
 
     return (

@@ -36,7 +36,7 @@ const AuthHeader = observer((closeEvent) => {
               password: userPassword
             })
             .then(userId => {
-                ExceptionState.setException(true, "Пользователь зарегистрирован");
+                ExceptionState.setException(true, "Пользователь создан. Теперь войдите в аккаунт");
             })
             .catch(error => {
                 ExceptionState.setException(true, "Ошибка регистрации. " +`${error}`);

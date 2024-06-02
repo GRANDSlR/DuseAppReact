@@ -115,7 +115,7 @@ export default function CollegePage() {
         const result = await getCollegesByFilterParams(
             {
                 'title': searchString,
-                'specialties': specialties,
+                'specialties': specialties != '' ? specialties : [],
                 'educationForm': educationForm,
                 'collegeTypeFilterParams': collegeTypeFilterParams, 
                 'costValues': [sliderBarValues[0].toString(), sliderBarValues[1].toString()]
@@ -159,7 +159,7 @@ export default function CollegePage() {
                     </div>
                     <div className={style.SliderBarPanel}>
                         <p>Цена за год обучения (BYN)</p>
-                        <RangeSlider event={SliderBarEvent}/>
+                        <RangeSlider eventSetValues={SliderBarEvent}/>
                     </div>
                     <div className={style.CheckboxPanel}>
                         <p>Тип учебного заведения</p>

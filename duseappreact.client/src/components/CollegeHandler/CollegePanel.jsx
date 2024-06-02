@@ -52,7 +52,7 @@ export const Colleges = observer(({collegeObjects}) => {
         if(sessionStorage.getItem('userModel') !== 'null' && isVerifyUsersCookies)
             return true;
         else{
-            ExceptionState.setException(true, 'Ошибка доступа. Войдите в аккаунт');
+            ExceptionState.setException(true, 'Ошибка доступа. Эта функция доступна только зарегистрированным пользователям');
             setIsOpenGragePanel(null);
             return false;
         }
