@@ -73,9 +73,9 @@
 
 .HeaderInfo, td{
     text-align: center;
-    vertical-align: top;
+    vertical-align: middle;
     padding: 10px;
-    width: 130px;
+    /* width: 130px; */
     border: 1px solid #f6f6f6;
 }
 
@@ -106,18 +106,18 @@
 
 .SpecialtyPanel{
     padding: 10px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     display: flex;
 }
 
-#LocationImg{
+#Location img{
     width: 84px;
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-#SpecializationImg{
+#Specialization img{
     width: 84px;
     margin-right: 10px;
     margin-top: 5px;
@@ -125,7 +125,7 @@
 
 }
 
-#CostImg{
+#Cost img{
     margin-right: 10px;
     width: 63px;
     margin-top: 15px;
@@ -133,7 +133,7 @@
 
 }
 
-#PeoplesImg{
+#Peoples img{
     width: 84px;
     margin-right: 10px;
     margin-top: 5px;
@@ -141,14 +141,22 @@
 
 }
 
-#GradeImg{
+#Grade{
+    max-width: 150px;
+}
+
+#Grade img{
     width: 55px;
     margin-top: 20px;
     margin-bottom: 19px;
     margin-right: 10px;
 }
 
-#OwnershipImg{
+#Ownership{
+    max-width: 160px;
+}
+
+#Ownership img{
     margin-right: 10px;
     width: 66px;
     margin-top: 15px;
@@ -162,12 +170,9 @@
     vertical-align: middle;
 }
 
-.ContentPanel table td:first-child{
-    min-width: 200px;
-}
-
 .ContentPanel table .TableCollegeHeader{
     text-align: left;
+    width: 200px;
 }
 
 .ContentPanel table .TableCollegeHeader p{
@@ -186,6 +191,9 @@
     line-height: 1.2;
 }
 
+.ContentPanel table td p{
+    margin: 0;
+}
 
 .GradeBox img{
     width: 18px;
@@ -194,4 +202,24 @@
 
 .GradeBox img:last-child{
     margin: 0;
+}
+
+.SpecialtyParamsTableItem{
+    padding: 0;
+}
+
+.SpecialtyTable td{
+    text-align: center;
+    border: none;
+}
+
+.SpecialtyTable td:first-child{
+    text-align: start;
+    min-width: none;
+    width: 180px;
+}
+
+.SpecialtyPanel th:last-child{
+    width: 80px;
+    line-height: 1;
 }

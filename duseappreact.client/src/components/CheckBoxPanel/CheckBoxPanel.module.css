@@ -1,7 +1,7 @@
 
 .PanelItem{
     display: flex;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .PanelItem:last-child{
@@ -17,4 +17,6 @@
     font-size: 15px;
     color: #757575;
     font-weight: 500;
+    line-height: 1;
+    text-align: start;
 }

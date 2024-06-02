@@ -1,5 +1,5 @@
 
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import style from './FavoritePage.module.css';
 //
 import Avatar from './img/Avatar.png';
@@ -16,8 +16,15 @@ import {Ownership as OwnershipData} from '../../services/DataCarrier.js';
 import {getGradeItems} from '../../components/CollegeHandler/CollegePanel.jsx';
 //
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
+//
+import calculateDistance from '../../services/DistanceCalculationService.js';
+//
+import {EducationFormFilterParams} from '../../services/DataCarrier.js';
+
 
 const FavoritePage = () => {
+
+    const [userCoords, setUserCoords] = useState(null);
 
     const [savedCollegesArray, setSavedCollegesArray] = useState(
         sessionStorage.getItem('savedColleges') != null ?
@@ -38,8 +45,44 @@ const FavoritePage = () => {
         return newCollegeArray;
     }
 
+    const setUserLocation = () => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
+        });
+    }
+
+    useEffect(() => {
+        setUserLocation();
+    }, []);
+
     const SpecialtyCheckboxEvent = (state) => 
     setCurrSpecialties(state);
+
+    const getSpecialtyCostItems = (college) => {
+
+        let SpecialtyCostItemsArray = [];
+      
+        if (Array.isArray(college.specialtyList)) {
+          college.specialtyList.forEach((item) => {
+            if (currSpecialties.includes(item.title)) {
+              SpecialtyCostItemsArray.push(
+                <tr>
+                    <td>{item.title}</td>
+                    <td>{EducationFormFilterParams[item.educationForm]}</td>
+                    <td>{parseInt(item.cost) === 0 ? 'Бюджет' : `${item.cost} BYN`}</td>
+                    <td>{item.passingScore}</td>
+                </tr>
+              );
+            }
+          });
+        }
+
+        if(SpecialtyCostItemsArray.length === 0)
+            SpecialtyCostItemsArray = null;
+
+        return SpecialtyCostItemsArray;
+      };
+      
 
     return (
         <div className={style.MainWindow}>
@@ -59,43 +102,29 @@ const FavoritePage = () => {
                             <th className={style.SpecialtyPanel}>
                                 <SpecialtyFilterAdditionPanel event={SpecialtyCheckboxEvent} sessionStorageName={'specialtyFavParams'}/>
                             </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Geolocation} id={style.LocationImg}></img>
+                            <th className={style.HeaderInfo} id={style.Location}>
+                                {/* <img src={Geolocation}></img> */}
                                 <div>
                                     <p className={style.THTitle}>ГЕОЛОКАЦИЯ</p>
                                     <p>Дистанция от вас</p>
                                 </div>
                             </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Specialization} id={style.SpecializationImg}></img>
+                            <th className={style.HeaderInfo} id={style.Specialization}>
+                                {/* <img src={Specialization}></img> */}
                                 <div>
-                                    <p className={style.THTitle}>АТТЕСТАТ</p>
-                                    <p>Ваш проходной балл</p>
+                                    <p className={style.THTitle}>СПЕЦИАЛЬНОСТИ</p>
+                                    <p>Описание выбранных специальностей</p>
                                 </div>
                             </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Money} id={style.CostImg}></img>
-                                <div>
-                                    <p className={style.THTitle}>СТОИМОСТЬ</p>
-                                    <p>Цена обучения за год</p>
-                                </div>
-                            </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Peoples} id={style.PeoplesImg}></img>
-                                <div>
-                                    <p className={style.THTitle}>КОЛИЧЕСТВО МЕСТ</p>
-                                    <p>Набор мест на специальность</p>
-                                </div>
-                            </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Grade} id={style.GradeImg}></img>
+                            <th className={style.HeaderInfo} id={style.Grade}>
+                                {/* <img src={Grade}></img> */}
                                 <div>
                                     <p className={style.THTitle}>РЕЙТИНГ</p>
                                     <p>Внутренний рейтинг учреждения</p>
                                 </div>
                             </th>
-                            <th className={style.HeaderInfo}>
-                                <img src={Ownership} id={style.OwnershipImg}></img>
+                            <th className={style.HeaderInfo} id={style.Ownership}>
+                                {/* <img src={Ownership}></img> */}
                                 <div>
                                     <p className={style.THTitle}>СОБСТВЕННОСТЬ</p>
                                     <p>Форма собственности учреждения</p>
@@ -109,11 +138,36 @@ const FavoritePage = () => {
                                     <p className={style.CollegeTitle}>{college.collegeHeader.title}</p>
                                     <p>{college.collegeLocation.region}</p>
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><div className={style.GradeBox}>{getGradeItems(college.collegeDescription.grade)}</div></td>
+                                <td>{userCoords != null ? 
+                                    <p>{calculateDistance(
+                                    parseFloat(userCoords.lat), 
+                                    parseFloat(userCoords.long), 
+                                    parseFloat(college.collegeLocation.lat), 
+                                    parseFloat(college.collegeLocation.long)
+                                    )} км</p> :
+                                    <p>Разрешите использование вашей геолокации</p>}
+                                </td>
+                                <td className={style.SpecialtyParamsTableItem}>
+                                    
+                                    {getSpecialtyCostItems(college) != null ? 
+                                    <table className={style.SpecialtyTable}>
+                                        <tbody>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Форма</th>
+                                                <th>Стоимость</th>
+                                                <th>Балл</th>
+                                            </tr>
+                                            {getSpecialtyCostItems(college)}
+                                        </tbody>
+                                    </table>
+                                    : <p>Совпадений не найдено</p>}
+                                </td>
+                                <td>
+                                    <div className={style.GradeBox}>
+                                        {getGradeItems(college.collegeDescription.grade)}
+                                    </div>
+                                </td>
                                 <td>{OwnershipData[parseInt(college.collegeDescription.ownership)]}</td>
                             </tr>
                         )

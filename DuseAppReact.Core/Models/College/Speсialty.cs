@@ -8,7 +8,7 @@ namespace DuseAppReact.Core.Models.College
     public enum FinancialFoundation
     {
         Коммерческая,
-        Бютжетная
+        Бюджетная
     };
 
     public enum EducationForm
