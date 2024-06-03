@@ -2,7 +2,7 @@
 
 namespace DuseAppReact.Application.Interfaces.Repositoty
 {
-    public interface ICollegeRepositoryWithIdList<T> : ICollegeRepository<T>
+    public interface ICollegeRepositoryWithIdList<T> : IRepository<T>
     {
         Task<List<int>> GetById(int id);
     }

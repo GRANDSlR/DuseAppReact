@@ -2,7 +2,7 @@
 
 namespace DuseAppReact.Application.Interfaces.Repositoty
 {
-    public interface IUserRepository<T> : ICollegeRepository<T>
+    public interface IUserRepository<T> : IRepository<T>
     {
         Task<Result<T>> GetByEmail(string email);
         Task<Result<T>> GetByName(string name);

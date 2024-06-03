@@ -4,10 +4,12 @@ using DuseAppReact.Application.Interfaces.Repositoty;
 using DuseAppReact.Application.Services;
 using DuseAppReact.Core.Mo.College;
 using DuseAppReact.Core.Models.College;
+using DuseAppReact.Core.Models.Comment;
 using DuseAppReact.Core.Models.UserModel;
 using DuseAppReact.DataAccess;
 using DuseAppReact.DataAccess.Configurations.College;
 using DuseAppReact.DataAccess.Repositories.CollegeRep;
+using DuseAppReact.DataAccess.Repositories.Comment;
 using DuseAppReact.DataAccess.Repositories.UserRepository;
 using DuseAppReact.Dependencies.Repositoty;
 using DuseAppReact.Infrastructure;
@@ -68,6 +70,8 @@ services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRep
 services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
 services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();
 services.AddScoped<IUserRepository<UserModel>, UserRepository>();
+
+services.AddScoped<ICommentRepository<CommentModel>, CommentRepository>();
 
 
 services.AddScoped<ICollegeDataConfiguration, CollegeDataConfiguration>();

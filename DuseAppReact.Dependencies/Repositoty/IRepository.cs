@@ -3,7 +3,7 @@ using DuseAppReact.Services.Services;
 
 namespace DuseAppReact.Application.Interfaces.Repositoty
 {
-    public interface ICollegeRepository<T>
+    public interface IRepository<T>
     {
         Task<int> Create(T parameter);
         Task<int> Delete(int id);

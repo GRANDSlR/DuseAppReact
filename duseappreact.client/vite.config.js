@@ -57,6 +57,10 @@ export default defineConfig({
             '^/user': {
                 target: 'https://localhost:7138/',
                 secure: false
+            },
+            '^/comment': {
+                target: 'https://localhost:7138/',
+                secure: false
             }
         },
         port: 5173,
