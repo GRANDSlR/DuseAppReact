@@ -25,15 +25,20 @@
 }
 
 #collegeTitle{
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    /* letter-spacing: 0.05cap; */
     font-weight: 600;
     font-size: 22px;
     margin-bottom: 5px;
     line-height: 1;
+    text-decoration: none;
+    color: #242424;
 }
 
 #collegeLocationHeader{
     margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .AdministrationPanel{
@@ -61,6 +66,7 @@
     color: #999;
 }
 
+
 .SaveButton{
     display: flex;
     align-items: center;
@@ -72,6 +78,8 @@
     width: fit-content;
     margin-left: auto;
     width: 111px;
+    /* margin-top: auto; */
+
 }
 
 .SaveButton.Empty{

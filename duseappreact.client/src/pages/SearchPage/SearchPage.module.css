@@ -98,7 +98,7 @@
     border-bottom: 1px solid #2864FF;
 }
 
-.CheckboxPanel p{
+.CheckboxPanel p:first-child{
     font-weight: 500;
     margin: 0;
     margin-bottom: 15px;

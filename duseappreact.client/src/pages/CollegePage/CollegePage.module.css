@@ -1,0 +1,138 @@
+
+
+.HelloBox{
+    background-color: #799FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    /* padding: 60px 10vw 90px; */
+    width: 100%;
+}
+
+.HelloBox div{
+    width: 70vw;
+}
+
+.HelloBox div hr{
+    width: 33.333333%;
+    color: white;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.HelloBox div p{
+    text-align: center;
+
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05cap;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
+
+    margin: 0;
+}
+
+.HelloBox div .CollegeTitle{
+    font-size: 46px;
+}
+
+.WindowBack{
+    /* position: relative; */
+    background-color: #f9f9fa;
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.ContentPanel{
+    /* position: absolute; */
+    transform: translateY(-45px);
+    /* top: -40px; */
+    width: 75vw;
+    width: 1000px;
+    min-height: 200px;
+    display: flex;
+}
+
+.Content{
+    box-shadow: 0 0px 2px 0px #dad9d9;
+    background-color: white;
+    margin: 8px;
+    padding: 24px;
+}
+
+.MainContent{
+    width: 100%;
+}
+
+.Content.Description{
+    margin-bottom: 16px;
+}
+
+.Content.Description:last-child{
+    margin-bottom: 8px;
+}
+
+.Content.CostPanel{
+    width: 400px;
+}
+
+
+.MainContent .Headers{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.AdminBoxBack{
+    margin: 30px 0;
+}
+
+.AdminBox{
+    display: flex;
+    margin: 20px 0;
+}
+
+.AdminBox .Item:first-child{
+    margin-right: 20px;
+    width: 45%;
+}
+
+.AdminBox .Item div p{
+    margin: 0;
+}
+
+.AdminBox .Item div p.Info{
+    font-weight: 500;
+    font-size: 18px;
+    /* line-height: 1.2; */
+}
+
+.AdminBox .Item{
+    display: flex;
+}
+
+.AdminBox .Item .ItemImg{
+    margin-right: 15px;
+    margin-top: 1px;
+
+    width: 22px;
+    height: 22px;
+}
+
+
+.AdminBox .Item .StarPanel img{
+    width: 18px;
+    margin-right: 2px;
+}
+
+
+.collegeDescription{
+    margin: 0;
+}

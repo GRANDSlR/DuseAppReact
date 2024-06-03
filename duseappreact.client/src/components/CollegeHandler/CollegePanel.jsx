@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import style from './CollegePanel.module.css';
+import { NavLink } from 'react-router-dom';
+
 //
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 //
@@ -21,6 +23,8 @@ import ExceptionState from '../../services/ApplicationException.js';
 import UserModel from '../../services/User/UserModel.js';
 //
 import { observer } from 'mobx-react';
+//
+import currCollegeData from '../../services/CollegeGlobalStates.js';
 
 
 
@@ -93,7 +97,9 @@ export const Colleges = observer(({collegeObjects}) => {
             {collegeObjects != null || (Array.isArray(collegeObjects) && collegeObjects.length>0) ? collegeObjects.map((college, index) => 
                 <div className={style.CollegeCard} key={index}>
 
-                    <p id={style.collegeTitle}>{college.collegeHeader.title}</p>
+                    <NavLink to={'/collegePage'}  id={style.collegeTitle} onClick={currCollegeData.setData(college)}>
+                        {college.collegeHeader.title}
+                    </NavLink>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
 
                     <div className={style.StarPanel}>
@@ -106,7 +112,7 @@ export const Colleges = observer(({collegeObjects}) => {
                     </div>
 
                     <SpecialtyPanel speсialtyList={college.specialtyList.map((item) => item.title)}/>
-                    
+
                     <div className={style.AdministrationPanel}>
                         <div>
                             <img src={websitePin} />

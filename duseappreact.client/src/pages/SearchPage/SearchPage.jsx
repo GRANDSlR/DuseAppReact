@@ -12,7 +12,7 @@ import {EducationFormFilterParams, CollegeTypeFilterParams} from '../../services
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SortFallingList/SortHandler.js';
 
-export default function CollegePage() {
+export default function SearchPage() {
 
     const [collegeData, setColleges] = useState(
         sessionStorage.getItem('currCollegeData') != null ? 

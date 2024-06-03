@@ -63,7 +63,7 @@
 }
 
 .MenuLink.active.Falling:after {
-    bottom: 3px;
+    bottom: 2px;
 }
 
  .MenuLink:after {
