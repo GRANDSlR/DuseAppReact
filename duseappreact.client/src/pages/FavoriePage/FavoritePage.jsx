@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect } from 'react';
 import style from './FavoritePage.module.css';
+import { NavLink } from 'react-router-dom';
 //
 import Avatar from './img/Avatar.png';
 //
@@ -20,9 +21,13 @@ import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditi
 import calculateDistance from '../../services/DistanceCalculationService.js';
 //
 import {EducationFormFilterParams} from '../../services/DataCarrier.js';
+//
+import { observer } from 'mobx-react';
+//
+import currCollegeData from '../../services/CollegeGlobalStates.js';
 
 
-const FavoritePage = () => {
+const FavoritePage = observer(() => {
 
     const [userCoords, setUserCoords] = useState(null);
 
@@ -58,7 +63,7 @@ const FavoritePage = () => {
     const SpecialtyCheckboxEvent = (state) => 
     setCurrSpecialties(state);
 
-    const getSpecialtyCostItems = (college) => {
+    const getSpecialtyItems = (college) => {
 
         let SpecialtyCostItemsArray = [];
       
@@ -135,7 +140,9 @@ const FavoritePage = () => {
                         {Array.isArray(getCollegeObjectArray()) && getCollegeObjectArray()!='' ? getCollegeObjectArray().map((college, index) => 
                             <tr key={index}>
                                 <td className={style.TableCollegeHeader}>
-                                    <p className={style.CollegeTitle}>{college.collegeHeader.title}</p>
+                                    <NavLink to={'/collegePage'}  className={style.CollegeTitle} onClick={() => currCollegeData.setData(college)}>
+                                        {college.collegeHeader.title}
+                                    </NavLink>
                                     <p>{college.collegeLocation.region}</p>
                                 </td>
                                 <td>{userCoords != null ? 
@@ -149,7 +156,7 @@ const FavoritePage = () => {
                                 </td>
                                 <td className={style.SpecialtyParamsTableItem}>
                                     
-                                    {getSpecialtyCostItems(college) != null ? 
+                                    {getSpecialtyItems(college) != null ? 
                                     <table className={style.SpecialtyTable}>
                                         <tbody>
                                             <tr>
@@ -158,7 +165,7 @@ const FavoritePage = () => {
                                                 <th>Стоимость</th>
                                                 <th>Балл</th>
                                             </tr>
-                                            {getSpecialtyCostItems(college)}
+                                            {getSpecialtyItems(college)}
                                         </tbody>
                                     </table>
                                     : <p>Совпадений не найдено</p>}
@@ -178,8 +185,6 @@ const FavoritePage = () => {
                                 <td>---//---</td>
                                 <td>---//---</td>
                                 <td>---//---</td>
-                                <td>---//---</td>
-                                <td>---//---</td>
                             </tr>
                         )}
                     </tbody>
@@ -188,6 +193,6 @@ const FavoritePage = () => {
             </div>
         </div>
     );
-}
+});
 
 export default FavoritePage;

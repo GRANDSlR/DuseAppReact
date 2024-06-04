@@ -16,7 +16,7 @@
 
 .HelloBox div hr{
     width: 33.333333%;
-    color: white;
+    border-color: white;
     margin-top: 16px;
     margin-bottom: 32px;
 }
@@ -41,7 +41,7 @@
 
 .WindowBack{
     /* position: relative; */
-    background-color: #f9f9fa;
+    background-color: var(--light-gray-back-color);
     display: flex;
     justify-content: center;
     height: auto;
@@ -76,19 +76,24 @@
     margin-bottom: 8px;
 }
 
-.Content.CostPanel{
+.SecondaryContent{
     width: 400px;
 }
 
+.ContentPanel .Box{
+    margin-top: 20px;
+}
 
-.MainContent .Headers{
-    font-family: 'Montserrat', sans-serif;
+.ContentPanel p{
     margin: 0;
+    line-height: 1;
+}
+
+.ContentPanel .Headers{
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 600;
 }
-
-
 
 .AdminBoxBack{
     margin: 30px 0;
@@ -104,23 +109,13 @@
     width: 45%;
 }
 
-.AdminBox .Item div p{
-    margin: 0;
-}
-
-.AdminBox .Item div p.Info{
-    font-weight: 500;
-    font-size: 18px;
-    /* line-height: 1.2; */
-}
-
 .AdminBox .Item{
     display: flex;
 }
 
 .AdminBox .Item .ItemImg{
     margin-right: 15px;
-    margin-top: 1px;
+    /* margin-top: 1px; */
 
     width: 22px;
     height: 22px;
@@ -133,6 +128,59 @@
 }
 
 
-.collegeDescription{
+
+p.MiniHeader{
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.SpecialtyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.SpecialtyTable th{
+    font-weight: 500;
+}
+  
+.SpecialtyTable  td, th {
+    width: auto;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.2;
+    /* border: 1px solid #ccc; */
+}
+  
+.ButtonCase{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.ConnectionButton{
+    border: 1px solid var(--main-blue-color);
+    border-radius: 0;
+    padding: 10px 20px;
+    color: var(--main-blue-color);
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.ConnectionButton:focus{
+    outline: none;
+}
+
+.ContactItemBox{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.ContactItemBox p{
     margin: 0;
+    margin-right: 5px;
 }

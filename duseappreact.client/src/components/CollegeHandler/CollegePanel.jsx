@@ -25,6 +25,8 @@ import UserModel from '../../services/User/UserModel.js';
 import { observer } from 'mobx-react';
 //
 import currCollegeData from '../../services/CollegeGlobalStates.js';
+//
+import calculateDistance from '../../services/DistanceCalculationService.js';
 
 
 
@@ -49,6 +51,18 @@ export const getGradeItems = (grade) => {
   };    
 
 export const Colleges = observer(({collegeObjects}) => {
+
+    const [userCoords, setUserCoords] = useState(null);
+
+    const setUserLocation = () => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
+        });
+    }
+
+    useEffect(() => {
+        setUserLocation();
+    }, []);
 
     const [isVerifyUsersCookies, setVerifyUsersCookies] = useState(false);
 
@@ -97,7 +111,7 @@ export const Colleges = observer(({collegeObjects}) => {
             {collegeObjects != null || (Array.isArray(collegeObjects) && collegeObjects.length>0) ? collegeObjects.map((college, index) => 
                 <div className={style.CollegeCard} key={index}>
 
-                    <NavLink to={'/collegePage'}  id={style.collegeTitle} onClick={currCollegeData.setData(college)}>
+                    <NavLink to={'/collegePage'}  id={style.collegeTitle} onClick={() => currCollegeData.setData(college)}>
                         {college.collegeHeader.title}
                     </NavLink>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
@@ -120,7 +134,16 @@ export const Colleges = observer(({collegeObjects}) => {
                         </div>
                         <div>
                             <img src={locationPin} />
-                            <p>{college.collegeLocation.region}</p>
+                            <p>
+                                {userCoords != null ? 
+                                    <span> {calculateDistance(
+                                    parseFloat(userCoords.lat), 
+                                    parseFloat(userCoords.long), 
+                                    parseFloat(college.collegeLocation.lat), 
+                                    parseFloat(college.collegeLocation.long)
+                                )} км</span> :
+                                <span>Разрешите использование вашей геолокации</span>}
+                            </p>
                         </div>
                     </div>
 

@@ -10,8 +10,8 @@ export const EducationFormFilterParams = [
 ];
 
 export const CollegeTypeFilterParams = [
-    "Колледж",
     "ПТУ",
+    "Колледж",
     "Лицей"
 ];
 
