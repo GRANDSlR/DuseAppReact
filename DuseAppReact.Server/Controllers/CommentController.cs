@@ -47,11 +47,11 @@ namespace DuseAppReact.Server.Controllers
         }
 
         [HttpPut("editcomment")]
-        public async Task<ActionResult<int>> EditComment([FromBody] CommentRequest commentRequest)
+        public async Task<ActionResult<int>> EditComment([FromBody] CommentUpdateRequest commentRequest)
         {
             var commentModel = CommentModel.Create(
                 commentRequest.Id,
-                commentRequest.UserId,
+                0,
                 commentRequest.Grade,
                 commentRequest.Message,
                 commentRequest.DateOfCreation);

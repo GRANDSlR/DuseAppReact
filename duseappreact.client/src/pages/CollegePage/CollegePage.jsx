@@ -1,28 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import style from './CollegePage.module.css';
 //
-import currCollegeData from '../../services/CollegeGlobalStates.js';
-//
 import collegeType from './img/collegeType.png';
 import ownership from './img/ownership.png';
 import grade from './img/exam.png';
 import location from './img/location.png';
 //
 import {getGradeItems} from '../../components/CollegeHandler/CollegePanel.jsx';
+import CommentPanel from '../../components/CommentPanel/CommentPanel.jsx';
+import CommentPreloader from '../../components/CommentPreloader/CommentPreloader.jsx';
+import CommentHandler from '../../components/CommentHandler/CommentHandler.jsx';
 //
 import {CollegeTypeFilterParams, Ownership, EducationFormFilterParams} from '../../services/DataCarrier.js';
-//
 import calculateDistance from '../../services/DistanceCalculationService.js';
-//
-import CommentPreloader from '../../components/CommentPreloader/CommentPanel.jsx';
-//
 import getCommentsByCollegeId from '../../services/CommentFetches.js';
+import currCollegeData from '../../services/CollegeGlobalStates.js';
+import ExceptionState from '../../services/ApplicationException.js';
+import PopUpState from '../../services/PopUpState.js';
+import UserModel from '../../services/User/UserModel.js';
 //
 import { observer } from 'mobx-react';
-//
-import ExceptionState from '../../services/ApplicationException.js';
-//
-import PopUpState from '../../services/PopUpState.js';
 
 
 const CollegePage = observer(() => {
@@ -35,35 +32,13 @@ const CollegePage = observer(() => {
 
     const [loading, setLoading] = useState(false);
 
+    const [updateData, setUpdateData] = useState(null);
+
     const setUserLocation = () => {
         navigator.geolocation.getCurrentPosition(function(position) {
             setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
         });
     }
-
-    useEffect(() => {
-
-        setUserLocation();
-
-        setLoading(true);
-
-        const getComments = async () =>{
-            await getCommentsByCollegeId(college.collegeHeader.collegeId)
-            .then(comments => {
-                
-                if(comments.length !== 0)
-                    setComments(JSON.parse(comments));
-            })
-            .catch(error => {
-                ExceptionState.setException(true, "Что-то пошло не так. " +`${error}`);
-            });
-        }
-
-        getComments();
-
-        setLoading(false);
-
-    }, []);
 
     const getSpecialtyItems = (college) => {
 
@@ -89,6 +64,18 @@ const CollegePage = observer(() => {
         return SpecialtyCostItemsArray;
       };
 
+      const closeCommentHandlerEvent = (state) => {
+        PopUpState.setPopUpState(state, null);
+      }
+
+      const verifyUser = async () => {
+
+        if(await UserModel.verifyUser())
+            PopUpState.setPopUpState(true, <CommentHandler updateEvent={setUpdateData} closeEvent={closeCommentHandlerEvent} collegeId={college.collegeHeader.collegeId}/>);
+        else
+            ExceptionState.setException(true, "Ошибка доступа. Эта функция доступна только зарегистрированным пользователям");
+      }
+
     const getAvgCost = (college) => {
 
         let sum = 0;
@@ -105,6 +92,49 @@ const CollegePage = observer(() => {
 
         return 0;
     }
+
+    function compareDates(a, b) {
+        return new Date(b.dateOfCreation) - new Date(a.dateOfCreation);
+      }
+      
+    const getComments = async () =>{
+        await getCommentsByCollegeId(college.collegeHeader.collegeId)
+        .then(comments => {
+
+            if(comments.length !== 0)
+            {
+                const sortedComments = comments.sort(compareDates)
+                console.log(sortedComments);
+                setComments(sortedComments);
+            }
+        })
+        .catch(error => {
+            ExceptionState.setException(true, "Что-то пошло не так. " +`${error}`);
+            console.log(error);
+        });
+    }
+
+    useEffect(() => {
+
+        setUserLocation();
+
+        setLoading(true);
+
+        getComments();
+
+        setLoading(false);
+
+    }, []);
+
+    useEffect(() => {
+
+        setLoading(true);
+
+        getComments();
+
+        setLoading(false);
+
+    }, [updateData]);
 
     return (
         <div className={style.MainWindow}>
@@ -189,19 +219,19 @@ const CollegePage = observer(() => {
                                     <p className={style.Headers}>Отзывы</p>
                                     <p>Оставьте здесь свой комментарий</p>
                                 </div>
-                                <button type='button' className={style.Button} onClick={() => PopUpState.setPopUpState(true, <p>asd</p>)}>Оставить отзыв</button>
+                                <button type='button' className={style.Button} onClick={() => {verifyUser(); }}>Оставить отзыв</button>
                             </div>
 
                             {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
-                                <CommentPreloader key={index} comment={{grade: comment.grade, message: comment.Message, userId: comment.userId}}/>
+                                <CommentPanel comment={comment}/>
                                 ):
                                 <div className={style.NoComment}>
                                     <p>Пока комментариев нет</p>
                                 </div>
                             ) :
                             <div>
-                                <CommentPreloader comment={null}/>
-                                <CommentPreloader comment={null}/>
+                                <CommentPreloader/>
+                                <CommentPreloader/>
                             </div>}
                         </div>
                     </div>

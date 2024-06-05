@@ -15,7 +15,9 @@ try {
 
 
     if(response.statusText !== 'No Content')
+    {
       return await response.json();
+    }
     else
       return [];
   } catch (error) {

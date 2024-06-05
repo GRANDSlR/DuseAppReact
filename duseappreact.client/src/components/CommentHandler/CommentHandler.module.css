@@ -1,0 +1,116 @@
+
+.MainFormBox .ContentBox{
+    padding: 25px 35px;
+}
+
+.MainFormBox{
+    background-color: white;
+    border-radius: 15px;
+    width: 400px;
+}
+
+.MainFormBox .ItemBox{
+    margin: 20px 0;
+}
+
+.MainFormBox .ItemBox:first-child{
+    margin-top: 0;
+}
+
+.MainFormBox .ItemBox:last-child{
+    margin-bottom: 0;
+}
+
+.UserInfoBox{
+    display: flex;
+    align-items: center;
+}
+
+.UserInfoBox img{
+    width: 50px;
+    margin-right: 15px;
+}
+
+.MainFormBox p{
+    margin: 0;
+}
+
+.MainFormBox .HeaderTitle{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.StarPanel img{
+    width: 18px;
+    margin-right: 1px;
+}
+
+.MultipleInputBox{
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 15px;
+    /* width: 100%; */
+    height: 120px;
+}
+
+.MultipleInputBox textarea{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.MultipleInputBox textarea:focus{
+    outline: none;
+}
+
+
+
+.WindowButtonBox{
+    background-color: #d9d9d9;
+    border-radius: 0 0 15px 15px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Button{
+    border-radius: 15px;
+    background-color: var(--main-blue-color);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    width: 160px;
+    height: 37px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.Button:focus{
+    outline: none;
+}
+
+.Button.Exit{
+    margin: 0;
+    margin-right: 20px;
+    background-color: white;
+    width: 130px;
+    height: 30px;
+}
+
+.Button.ChangeUserData{
+    margin: 0;
+    width: 130px;
+    height: 30px;
+}
+
+.Button img{
+    height: 15px;
+}

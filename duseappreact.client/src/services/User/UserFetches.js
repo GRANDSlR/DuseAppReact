@@ -1,11 +1,8 @@
 
 export const getUserById = async (id) => {
   try {
-    const response = await fetch(`/getuserbyid/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    const response = await fetch(`/user/getuserbyid/${id}`, {
+      method: 'POST'
       // body: JSON.stringify(userUpdateRescponce)
     });
 

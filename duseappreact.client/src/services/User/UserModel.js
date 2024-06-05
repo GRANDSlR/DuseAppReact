@@ -8,14 +8,19 @@ export class UserModel {
     userData = null;
 
     constructor() {
+        if(sessionStorage.getItem("userModel") !==null)
+          this.userData = sessionStorage.getItem("userModel");
+
         makeAutoObservable(this);
     }
 
     setUser(data){
-        this.userData=data;
+      sessionStorage.setItem("userModel", data);
+      this.userData=data;
     }
   
     deleteUser() {
+      sessionStorage.setItem("userModel", null);
       this.userData = null;
     }
   

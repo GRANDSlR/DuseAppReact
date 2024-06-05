@@ -1,0 +1,52 @@
+
+.MainBox{
+    margin: 20px 10px;
+}
+
+.AdminBox{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.UserIcon{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.UserIcon img{
+    width: 50px;
+    height: 50px;
+}
+
+.UserInfo .UserGrade img{
+    width: 18px;
+    margin-right: 1px;
+}
+
+.UserInfo .UserGrade{
+    display: flex;
+}
+
+.UserInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.UserInfo .UserName{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.AdminBox .BoxUnderData{
+    display: flex;
+}
+
+.DateOfCreationBox{
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 15px;
+    color: #999;
+}

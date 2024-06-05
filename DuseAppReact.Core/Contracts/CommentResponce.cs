@@ -2,8 +2,15 @@
 {
     public record CommentRequest
     (
-        int Id,
         int UserId,
+        string Message,
+        int Grade,
+        DateTime DateOfCreation
+    );
+
+    public record CommentUpdateRequest
+    (
+        int Id,
         string Message,
         int Grade,
         DateTime DateOfCreation

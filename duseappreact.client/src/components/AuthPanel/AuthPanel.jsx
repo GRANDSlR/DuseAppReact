@@ -51,8 +51,8 @@ const AuthHeader = observer((closeEvent) => {
                 console.log('User logged successfully');
 
                 const setUser = async() => {
+                    
                     const userByToken = await getUserByToken(userToken);
-                    console.log(userByToken);
                     UserModel.setUser(JSON.stringify(userByToken));
                 }
                 setUser();
