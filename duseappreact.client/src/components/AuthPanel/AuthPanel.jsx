@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import style from './AuthPanel.module.css';
 //
-import duseApp from './img/DuseApp.svg';
+// import duseApp from './img/DuseApp.svg';
+import duseApp from '../Header/img/DuseAppNew.svg';
 //
 import {getUserByToken, register, login} from '../../services/User/UserFetches.js';
 //

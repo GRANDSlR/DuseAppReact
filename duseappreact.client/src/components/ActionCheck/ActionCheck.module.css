@@ -1,0 +1,54 @@
+.MainBox{
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #eaeaea;
+    width: 250px;
+}
+
+.ContentBox p{
+    margin: 0;
+    color: #999;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.ContentBox{
+    text-align: center;
+    padding: 20px;
+}
+
+.ButtonBox{
+    display: flex;
+}
+
+.Button{
+    border: none;
+    width: 50%;
+    padding: 0;
+    height: 35px;
+    color: #999;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.Button img{
+    width: 16px;
+    height: 16px;
+}
+
+.Button.Submit img{
+    width: 18px;
+    height: 18px;
+}
+
+.Button.Submit{
+    border-right: 1px solid #eaeaea;
+}
+
+.Button:focus{
+    outline: none;
+
+}

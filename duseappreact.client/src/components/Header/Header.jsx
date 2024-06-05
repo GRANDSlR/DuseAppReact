@@ -3,11 +3,12 @@ import style from "./Header.module.css";
 // import NewLogo from "./img/NewLogo.svg";
 import SearchPanel from "../SearchPanel/SearchPanel.jsx";
 import UserIcon from "./img/DefaultUserIcon.svg"
-import DuseAppIcon from './img/DuseApp.svg'
+import DuseAppIcon from './img/DuseAppNew.svg';
 import Menu from '../Menu/Menu.jsx';
 import React, { useState, useEffect } from 'react';
 import AuthHeader from '../AuthPanel/AuthPanel.jsx';
-import AdditionButton from './img/AdditionButton.svg';
+// import AdditionButton from './img/AdditionButton.svg';
+import AdditionButton from '../SpecialtyFilterAdditionPanel/img/AdditionButtonNew.svg';
 import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
 import {getCookies} from '../../services/CookieService.js';
 import UserProfile from '../UserProfile/UserProfile.jsx';

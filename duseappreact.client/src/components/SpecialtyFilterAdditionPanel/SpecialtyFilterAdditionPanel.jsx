@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import style from './SpecialtyFilterAdditionPanel.module.css';
-import AdditionButton from './img/AdditionButton.svg';
+import AdditionButton from './img/AdditionButtonNew.svg';
 import {  getAllSpecialties } from '../../services/Colleges.js';
 import CheckboxEmpty from './img/CheckboxEmpty.svg';
 import AppliedCheckbox from './img/AppliedCheckbox.svg';

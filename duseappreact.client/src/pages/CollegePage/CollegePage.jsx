@@ -34,6 +34,11 @@ const CollegePage = observer(() => {
 
     const [updateData, setUpdateData] = useState(null);
 
+    const [commentDeleteState, setCommentDeleteState] = useState(false);
+
+    const setCommentDeleteStateAction = () =>
+        setCommentDeleteState(!commentDeleteState);
+
     const setUserLocation = () => {
         navigator.geolocation.getCurrentPosition(function(position) {
             setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
@@ -104,7 +109,6 @@ const CollegePage = observer(() => {
             if(comments.length !== 0)
             {
                 const sortedComments = comments.sort(compareDates)
-                console.log(sortedComments);
                 setComments(sortedComments);
             }
         })
@@ -134,13 +138,13 @@ const CollegePage = observer(() => {
 
         setLoading(false);
 
-    }, [updateData]);
+    }, [updateData, commentDeleteState]);
 
     return (
         <div className={style.MainWindow}>
             <div className={style.HelloBox}>
                 <div>
-                    <p>{college.collegeHeader.title}</p>
+                    <p>{college.collegeLocation.region}</p>
                     <hr></hr>
                     <p className={style.CollegeTitle}>{college.collegeHeader.title}</p>
                 </div>
@@ -217,13 +221,13 @@ const CollegePage = observer(() => {
                             <div className={style.CommentInfoBox}>
                                 <div>
                                     <p className={style.Headers}>Отзывы</p>
-                                    <p>Оставьте здесь свой комментарий</p>
+                                    <p className={style.HeaderDescription}>Оставьте здесь свой комментарий</p>
                                 </div>
                                 <button type='button' className={style.Button} onClick={() => {verifyUser(); }}>Оставить отзыв</button>
                             </div>
 
                             {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
-                                <CommentPanel comment={comment}/>
+                                <CommentPanel comment={comment} deleteAction={setCommentDeleteStateAction}/>
                                 ):
                                 <div className={style.NoComment}>
                                     <p>Пока комментариев нет</p>

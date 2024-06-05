@@ -27,10 +27,6 @@ namespace DuseAppReact.Core.Models.Comment
             if (message.Length > MESSAGE_MAX_LENGTH)
                 Result<CommentModel>.Failure("Превышена доступная длинна сообщения");
 
-/*            DateTime dateTime;
-            if (!DateTime.TryParseExact(dateOfCreation, "M.dd.yy HH:mm", null, DateTimeStyles.None, out dateTime))
-                Result<Comment>.Failure("Некорректная дата");*/
-
             return Result<CommentModel>.Success(new CommentModel(id, userId, grade, message, dateOfCreation));
         }
     }

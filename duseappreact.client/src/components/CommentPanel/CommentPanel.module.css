@@ -50,3 +50,18 @@
     font-size: 15px;
     color: #999;
 }
+
+.EditBox{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.EditBox img{
+    width: 18px;
+    margin-right: 10px;
+}
+
+.EditBox img:last-child{
+    margin-right: 0px;
+}

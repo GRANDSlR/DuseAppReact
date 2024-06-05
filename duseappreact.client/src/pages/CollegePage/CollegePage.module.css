@@ -210,3 +210,7 @@ p.MiniHeader{
     justify-content: center;
     margin-top: 30px;
 }
+
+.CommentInfoBox .HeaderDescription{
+    margin-top: 8px;
+}

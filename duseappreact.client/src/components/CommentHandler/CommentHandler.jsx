@@ -38,7 +38,27 @@ const CommentHandler = observer(({closeEvent, collegeId, updateEvent}) => {
     const sendData = async() => {
 
         let currentDate = new Date();
+        currentDate.setHours(currentDate.getHours() + 3);
+
+        if (currentDate.getHours() < 3) {
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        
         let formattedDate = currentDate.toISOString();
+
+        if(parseInt(currGradeValue) === 0)
+        {
+            closeEvent(false);
+            ExceptionState.setException(true, "Ошибка отправки данных. Заполните поле оценивания");
+            return;
+        }
+
+        if(commentText === null || commentText === '')
+        {
+            closeEvent(false);
+            ExceptionState.setException(true, "Ошибка отправки данных. Напишите отзыв");
+            return;
+        }
 
         await addComment(collegeId, 
             {
@@ -50,6 +70,8 @@ const CommentHandler = observer(({closeEvent, collegeId, updateEvent}) => {
         .then(addedCommentId => {
 
             console.log("Comment was added successfully" + addedCommentId);
+
+            updateCollegeGrade();
 
             closeEvent(false);
 

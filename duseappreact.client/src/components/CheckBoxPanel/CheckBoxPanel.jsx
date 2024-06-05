@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from "react";
 import style from './CheckBoxPanel.module.css';
 import CheckboxEmpty from './img/CheckboxEmpty.svg';
-import AppliedCheckbox from './img/AppliedCheckbox.svg';
+import AppliedCheckbox from './img/AppliedCheckboxNew.svg';
 
 
 
