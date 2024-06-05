@@ -19,11 +19,11 @@ import { observer } from 'mobx-react';
 import UserModel from '../../services/User/UserModel.js';
 //
 import ErrorPanel from '../ErrorPanel/ErrorPanel.jsx';
+//
+import PopUpState from '../../services/PopUpState.js';
 
 
 const Header = observer(() => {
-
-
 
     const [isOpenAuth, setIsOpenAuth] = useState(false);
 
@@ -34,6 +34,11 @@ const Header = observer(() => {
     const SetExceptionState = (state) => 
     {
       ExceptionState.setException(state, '');
+    }
+
+    const SetPopUpState = (state) => {
+
+      PopUpState.setPopUpState(state, null);
     }
 
     useEffect(() => {
@@ -73,6 +78,10 @@ const Header = observer(() => {
 
       {ExceptionState.getState() && 
         <PopUpWindow handleCodeBlock={<ErrorPanel closeEvent={SetExceptionState} errorMessage={ExceptionState.getMessage()} />}  handleState={ExceptionState.getState()}  handleCloseEnent={SetExceptionState} windowType={'full'}/>
+      }
+
+      {PopUpState.getState() && 
+        <PopUpWindow handleCodeBlock={PopUpState.getCodeBlock()}  handleState={PopUpState.getState()}  handleCloseEnent={SetPopUpState} windowType={'full'}/>
       }
 
     </div>

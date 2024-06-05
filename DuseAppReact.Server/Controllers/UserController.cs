@@ -62,6 +62,17 @@ namespace DuseAppReact.Server.Controllers
             return Ok(user.Value);
         }
 
+        [HttpPost("getuserbyid/{id:int}")]
+        public async Task<ActionResult<UserModel>> GetUserById(int id)
+        {
+            var user = await _userRepository.GetById(id);
+
+            if (!user.IsSuccess)
+                return BadRequest(user.ErrorMessage);
+
+            return Ok(user.Value);
+        }
+
         [HttpPut("{id:int}")]
         public async Task<ActionResult<string>> UpdateUser(int id, [FromBody] UserUpdateResponce userUpdateResponce)
         {

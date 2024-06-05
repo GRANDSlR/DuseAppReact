@@ -21,6 +21,9 @@ import getCommentsByCollegeId from '../../services/CommentFetches.js';
 import { observer } from 'mobx-react';
 //
 import ExceptionState from '../../services/ApplicationException.js';
+//
+import PopUpState from '../../services/PopUpState.js';
+
 
 const CollegePage = observer(() => {
 
@@ -48,7 +51,6 @@ const CollegePage = observer(() => {
             await getCommentsByCollegeId(college.collegeHeader.collegeId)
             .then(comments => {
                 
-                console.log(comments);
                 if(comments.length !== 0)
                     setComments(JSON.parse(comments));
             })
@@ -187,11 +189,11 @@ const CollegePage = observer(() => {
                                     <p className={style.Headers}>Отзывы</p>
                                     <p>Оставьте здесь свой комментарий</p>
                                 </div>
-                                <button type='button' className={style.Button}>Оставить отзыв</button>
+                                <button type='button' className={style.Button} onClick={() => PopUpState.setPopUpState(true, <p>asd</p>)}>Оставить отзыв</button>
                             </div>
 
                             {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
-                                <CommentPreloader key={index} comment={{grade: comment.grade, message: comment.Message}}/>
+                                <CommentPreloader key={index} comment={{grade: comment.grade, message: comment.Message, userId: comment.userId}}/>
                                 ):
                                 <div className={style.NoComment}>
                                     <p>Пока комментариев нет</p>

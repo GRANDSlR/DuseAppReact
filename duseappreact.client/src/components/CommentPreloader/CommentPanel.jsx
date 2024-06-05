@@ -1,14 +1,30 @@
+import React, {useState, useEffect} from 'react';
 import style from './CommentPanel.module.css';
 //
 import defaultUserIcon from './img/DefaultUserIcon.svg';
 //
 import { observer } from 'mobx-react';
 //
-import UserModel from '../../services/User/UserModel.js';
 //
 import {getGradeItems} from '../CollegeHandler/CollegePanel.jsx';
+//
+import {getUserById} from '../../services/User/UserFetches.js';
 
 const CommentPreloader = observer((comment) => {
+
+    const getUser = async (id) => {
+
+        await getUserById(id)
+        .then(user => {
+            
+            console.log(user);
+
+            return JSON.parse(user);
+        })
+        .catch(error => {
+            ExceptionState.setException(true, "Пользователь не найден. " +`${error}`);
+        });
+    }
 
     return (
         <div>
@@ -19,7 +35,7 @@ const CommentPreloader = observer((comment) => {
                     <div className={style.UserIcon}><img src={defaultUserIcon}></img></div>
                     <div className={style.UserParams}>
                         <div className={`${style.Item} ${style.UserName}`}>
-                            <p>{JSON.parse(UserModel.userData).name}</p>
+                            <p>{getUser(JSON.parse(comment).userId).name}</p>
                         </div>
                         <div className={`${style.Item} ${style.UserGrade}`}>
                             {getGradeItems(JSON.parse(comment).grade)}

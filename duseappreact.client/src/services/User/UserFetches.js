@@ -1,4 +1,28 @@
 
+export const getUserById = async (id) => {
+  try {
+    const response = await fetch(`/getuserbyid/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      // body: JSON.stringify(userUpdateRescponce)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 export const updateUser = async (id, userUpdateRescponce) => {
   try {
     const response = await fetch(`/user/${id}`, {

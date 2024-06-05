@@ -13,7 +13,6 @@ try {
       throw new Error(errorText);
     }
 
-    console.log(response.statusText !== 'No Content');
 
     if(response.statusText !== 'No Content')
       return await response.json();
