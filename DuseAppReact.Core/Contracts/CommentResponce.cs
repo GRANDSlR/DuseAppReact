@@ -5,6 +5,7 @@
         int Id,
         int UserId,
         string Message,
+        int Grade,
         DateTime DateOfCreation
     );
 }

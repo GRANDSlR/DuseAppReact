@@ -33,7 +33,8 @@ namespace DuseAppReact.Server.Controllers
         {
             var commentModel = CommentModel.Create(
                 new Random().Next(10000000, 99999999),
-                commentRequest.UserId, 
+                commentRequest.UserId,
+                commentRequest.Grade,
                 commentRequest.Message, 
                 commentRequest.DateOfCreation);
 
@@ -51,6 +52,7 @@ namespace DuseAppReact.Server.Controllers
             var commentModel = CommentModel.Create(
                 commentRequest.Id,
                 commentRequest.UserId,
+                commentRequest.Grade,
                 commentRequest.Message,
                 commentRequest.DateOfCreation);
 

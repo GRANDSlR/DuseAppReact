@@ -12,7 +12,7 @@ namespace DuseAppReact.DataAccess.Entities.College
 
         public string Title { get; set; } = string.Empty;
 
-        public string FinancialFoundation { get; set; } = string.Empty; // финансовая основа
+        public string Description { get; set; } = string.Empty; // финансовая основа
 
         public double Cost { get; set; } = 0;
 

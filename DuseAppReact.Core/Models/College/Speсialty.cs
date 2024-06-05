@@ -5,11 +5,6 @@ using DuseAppReact.Services.Services;
 
 namespace DuseAppReact.Core.Models.College
 {
-    public enum FinancialFoundation
-    {
-        Коммерческая,
-        Бюджетная
-    };
 
     public enum EducationForm
     {
@@ -19,10 +14,12 @@ namespace DuseAppReact.Core.Models.College
 
     public class Speсialty
     {
-        private Speсialty(int specialtyId, string title, FinancialFoundation financialFoundation, double cost, int freePlaces, EducationForm educationForm, double passingScore)
+        private const int TITLE_MAX_LENGTH = 100;
+        private const int DESCRIPTION_MAX_LENGTH = 100;
+        private Speсialty(int specialtyId, string title, string description, double cost, int freePlaces, EducationForm educationForm, double passingScore)
         {
             Title = title;
-            FinancialFoundation = financialFoundation;
+            Description = description;
             Cost = cost;
             FreePlaces = freePlaces;
             EducationForm = educationForm;
@@ -36,7 +33,7 @@ namespace DuseAppReact.Core.Models.College
 
         public string Title { get; } = string.Empty;
 
-        public FinancialFoundation FinancialFoundation { get; } // финансовая основа
+        public string Description { get; } = string.Empty;
 
         public double Cost { get; } = 0;
 
@@ -46,16 +43,17 @@ namespace DuseAppReact.Core.Models.College
 
         public double PassingScore { get; } = 0;
 
-        public static Result<Speсialty> Create(int specialtyId, string title, string financialFoundation, double cost, int freePlaces, string educationForm, double passingScore)
+        public static Result<Speсialty> Create(int specialtyId, string title, string description, double cost, int freePlaces, string educationForm, double passingScore)
         {
-            if (!Enum.TryParse(financialFoundation, out FinancialFoundation financialFoundationEnum))
-                return Result<Speсialty>.Failure($"Ошибка преобразования {financialFoundation} в CollegeType");
 
             if (!Enum.TryParse(educationForm, out EducationForm educationFormEnum))
-                return Result<Speсialty>.Failure($"Ошибка преобразования {educationForm} в CollegeType");
+                return Result<Speсialty>.Failure($"Ошибка преобразования {educationForm} в EducationForm");
 
-            if (title.Length > 100)
-                return Result<Speсialty>.Failure("Название не должно превышать 100 символов");
+            if (title.Length > TITLE_MAX_LENGTH)
+                return Result<Speсialty>.Failure($"Название не должно превышать {TITLE_MAX_LENGTH} символов");
+
+            if (description.Length > DESCRIPTION_MAX_LENGTH)
+                return Result<Speсialty>.Failure($"Название не должно превышать {DESCRIPTION_MAX_LENGTH} символов");
 
             if (cost < 0)
                 return Result<Speсialty>.Failure("Цена не должна быть отрицательной");
@@ -68,7 +66,7 @@ namespace DuseAppReact.Core.Models.College
 
 
             return Result<Speсialty>.Success(
-                new Speсialty(specialtyId, title, financialFoundationEnum, cost, freePlaces, educationFormEnum, passingScore)
+                new Speсialty(specialtyId, title, description, cost, freePlaces, educationFormEnum, passingScore)
             );
         }
     }

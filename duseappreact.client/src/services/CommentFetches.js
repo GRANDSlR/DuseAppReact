@@ -1,5 +1,5 @@
 
-export const getCommentByCollegeId = async (id) => {
+export const getCommentsByCollegeId = async (id) => {
 try {
     const response = await fetch(`/comment/getcommentbycollegeid/${id}`, {
       method: 'GET',
@@ -13,16 +13,19 @@ try {
       throw new Error(errorText);
     }
 
-    const data = await response.json();
+    console.log(response.statusText !== 'No Content');
 
-    return data;
+    if(response.statusText !== 'No Content')
+      return await response.json();
+    else
+      return [];
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
 
-export default getCommentByCollegeId;
+export default getCommentsByCollegeId;
 
 
 export const addComment = async (id, commentRequest) => {

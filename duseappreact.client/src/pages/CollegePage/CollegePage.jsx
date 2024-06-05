@@ -14,12 +14,23 @@ import {CollegeTypeFilterParams, Ownership, EducationFormFilterParams} from '../
 //
 import calculateDistance from '../../services/DistanceCalculationService.js';
 //
+import CommentPreloader from '../../components/CommentPreloader/CommentPanel.jsx';
+//
+import getCommentsByCollegeId from '../../services/CommentFetches.js';
+//
+import { observer } from 'mobx-react';
+//
+import ExceptionState from '../../services/ApplicationException.js';
 
-const CollegePage = () => {
+const CollegePage = observer(() => {
 
     const [userCoords, setUserCoords] = useState(null);
 
     const [college, setCollege] = useState(currCollegeData.data);
+
+    const [comments, setComments] = useState(null);
+
+    const [loading, setLoading] = useState(false);
 
     const setUserLocation = () => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -28,7 +39,28 @@ const CollegePage = () => {
     }
 
     useEffect(() => {
+
         setUserLocation();
+
+        setLoading(true);
+
+        const getComments = async () =>{
+            await getCommentsByCollegeId(college.collegeHeader.collegeId)
+            .then(comments => {
+                
+                console.log(comments);
+                if(comments.length !== 0)
+                    setComments(JSON.parse(comments));
+            })
+            .catch(error => {
+                ExceptionState.setException(true, "Что-то пошло не так. " +`${error}`);
+            });
+        }
+
+        getComments();
+
+        setLoading(false);
+
     }, []);
 
     const getSpecialtyItems = (college) => {
@@ -150,9 +182,25 @@ const CollegePage = () => {
 
                         <div className={`${style.Content} ${style.Description}`}>
                             
-                            <p className={style.Headers}>Отзывы</p>
-                            
-                            
+                            <div className={style.CommentInfoBox}>
+                                <div>
+                                    <p className={style.Headers}>Отзывы</p>
+                                    <p>Оставьте здесь свой комментарий</p>
+                                </div>
+                                <button type='button' className={style.Button}>Оставить отзыв</button>
+                            </div>
+
+                            {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
+                                <CommentPreloader key={index} comment={{grade: comment.grade, message: comment.Message}}/>
+                                ):
+                                <div className={style.NoComment}>
+                                    <p>Пока комментариев нет</p>
+                                </div>
+                            ) :
+                            <div>
+                                <CommentPreloader comment={null}/>
+                                <CommentPreloader comment={null}/>
+                            </div>}
                         </div>
                     </div>
                     <div className={style.SecondaryContent}>
@@ -205,6 +253,6 @@ const CollegePage = () => {
             </div>
         </div>
     );
-}
+});
 
 export default CollegePage;

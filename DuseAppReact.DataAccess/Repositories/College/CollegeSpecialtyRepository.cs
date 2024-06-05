@@ -23,7 +23,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             var Specialties = Speсialty.Create(
                     SpecialtyEntityEntities.SpecialtyId,
                     SpecialtyEntityEntities.Title,
-                    SpecialtyEntityEntities.FinancialFoundation,
+                    SpecialtyEntityEntities.Description,
                     SpecialtyEntityEntities.Cost,
                     SpecialtyEntityEntities.FreePlaces,
                     SpecialtyEntityEntities.EducationForm,
@@ -42,7 +42,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .Select(a => Speсialty.Create(
                     a.SpecialtyId,
                     a.Title,
-                    a.FinancialFoundation,
+                    a.Description,
                     a.Cost,
                     a.FreePlaces,
                     a.EducationForm, 
@@ -57,7 +57,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             var CollegeSpecialtyEntity = new SpecialtyEntity
             {
                 Title=college.Title,
-                FinancialFoundation=college.FinancialFoundation.ToString(),
+                Description = college.Description,
                 Cost=college.Cost,
                 FreePlaces=college.FreePlaces,
                 EducationForm=college.EducationForm.ToString(),
@@ -77,7 +77,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .ExecuteUpdateAsync(s => s
                    .SetProperty(b => b.SpecialtyId, b => college.SpecialtyId)
                    .SetProperty(b => b.Title, b => college.Title)
-                   .SetProperty(b => b.FinancialFoundation, b => college.FinancialFoundation.ToString())
+                   .SetProperty(b => b.Description, b => college.Description)
                    .SetProperty(b => b.Cost, b => college.Cost)
                    .SetProperty(b => b.FreePlaces, b => college.FreePlaces)
                    .SetProperty(b => b.EducationForm, b => college.EducationForm.ToString())

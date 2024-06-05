@@ -39,7 +39,7 @@ namespace DuseAppReact.Core.Converters
             {
                 specialties.Add(Speсialty.Create(1, 
                     specialty.Title, 
-                    specialty.FinancialFoundation, 
+                    specialty.Description, 
                     specialty.Cost, 
                     specialty.FreePlaces, 
                     specialty.EducationForm, 

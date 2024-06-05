@@ -35,7 +35,7 @@
 
     public record SpecialtyRequest(
         string Title,
-        string FinancialFoundation,
+        string Description,
         double Cost,
         int FreePlaces,
         string EducationForm,

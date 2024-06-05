@@ -163,7 +163,7 @@ p.MiniHeader{
 .ConnectionButton{
     border: 1px solid var(--main-blue-color);
     border-radius: 0;
-    padding: 10px 20px;
+    padding: 6px 20px;
     color: var(--main-blue-color);
     background-color: transparent;
     text-decoration: none;
@@ -183,4 +183,30 @@ p.MiniHeader{
 .ContactItemBox p{
     margin: 0;
     margin-right: 5px;
+}
+
+
+.CommentInfoBox{
+    display: flex;
+}
+
+.Button{
+    margin-left: auto;
+    border: 1px solid var(--main-blue-color);
+    border-radius: 0;
+    padding: 8px 20px;
+    color: var(--main-blue-color);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.Button:focus{
+    outline: none;
+}
+
+.NoComment{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }

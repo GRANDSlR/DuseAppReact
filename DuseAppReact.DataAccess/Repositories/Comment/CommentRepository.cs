@@ -22,6 +22,7 @@ namespace DuseAppReact.DataAccess.Repositories.Comment
                 Id = parameter.Id,
                 UserId  = parameter.UserId,
                 Message = parameter.Message,
+                Grade = parameter.Grade,
                 DateOfCreation = parameter.DateOfCreation
             };
 
@@ -69,7 +70,7 @@ namespace DuseAppReact.DataAccess.Repositories.Comment
                 return Result<List<CommentModel>>.Failure("Значение было null");
 
             var users = commentEntities
-                .Select(a => CommentModel.Create(a.Id, a.UserId, a.Message, a.DateOfCreation))
+                .Select(a => CommentModel.Create(a.Id, a.UserId, a.Grade, a.Message, a.DateOfCreation))
                 .ToList();
 
             var usersResultOfList = Result<CommentModel>.ResultListInit(users);
@@ -83,6 +84,7 @@ namespace DuseAppReact.DataAccess.Repositories.Comment
                 .Where(b => b.Id == parameter.Id)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Message, b => parameter.Message)
+                    .SetProperty(b => b.Grade, b => parameter.Grade)
                     .SetProperty(b => b.DateOfCreation, b => parameter.DateOfCreation));
 
             return parameter.Id;
