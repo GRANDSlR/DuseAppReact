@@ -112,6 +112,7 @@ p.DescTitle{
     border: none;
     background-color: transparent;
     font-size: 16px;
+    color: #999;
 }
 
 .InputBox.DescPanel textarea:focus{

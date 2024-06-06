@@ -20,6 +20,16 @@ const CollegeAdditionForm = ({closeEvent}) => {
 
     const [specialties, setSpecialties] = useState(null);
 
+    const [specialtyTitleToEdit, setSpecialtyTitleToEdit] = useState(false);
+
+    const getSpecialtyData = (title) => {
+
+        if(specialties !== null && Array.isArray(specialties))
+        {
+            return specialties.filter(item => JSON.parse(item).title === title);
+        }
+    }
+
 
     const addSpecialty = (data) => {
 
@@ -39,8 +49,17 @@ const CollegeAdditionForm = ({closeEvent}) => {
         }
     }
 
-    console.log(specialties);
+    const editSpecialties = (data) => {
 
+        if(data !== null)
+        {
+            let specialtiesWithoutEdited = specialties.filter(item => JSON.parse(item).title !== specialtyTitleToEdit)
+
+            setSpecialties([...specialtiesWithoutEdited, data]);
+
+            setSpecialtyTitleToEdit(false);
+        }
+    }
 
     return (
 
@@ -128,10 +147,14 @@ const CollegeAdditionForm = ({closeEvent}) => {
                         <button type='button' className={style.SpecialtyAdditionButton} onClick={() => setSpecialtyAddition(true)}>Добавить</button>
                     </div>
 
-                    <SpecialtyPanel speсialtyList={getSpecialtyNameList()} actionClick={null}/>
+                    <SpecialtyPanel speсialtyList={getSpecialtyNameList()} actionClick={setSpecialtyTitleToEdit}/>
 
                     {specialtyAddition && 
                         <SpecialtyAdditionPanel closeEvent={setSpecialtyAddition} data={null} additionAction={addSpecialty}/>
+                    }
+
+                    {specialtyTitleToEdit !== false && 
+                        <SpecialtyAdditionPanel closeEvent={setSpecialtyTitleToEdit} data={getSpecialtyData(specialtyTitleToEdit)} additionAction={editSpecialties}/>
                     }
 
                 </div>

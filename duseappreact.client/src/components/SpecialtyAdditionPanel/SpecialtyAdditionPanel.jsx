@@ -19,11 +19,11 @@ const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => 
 
     const [freePlaces, setFreePlaces] = useState(data !== null ? JSON.parse(data).freePlaces : '');
     
-    const [passingScore, setPassingScore] = useState(data !== null ? JSON.parse(data).title : '');
+    const [passingScore, setPassingScore] = useState(data !== null ? JSON.parse(data).passingScore : '');
 
     const [description, setDescription] = useState(data !== null ? JSON.parse(data).description : '');
 
-    const [educationForm, setEducationForm] = useState(data !== null ? JSON.parse(data).educationForm[0] : EducationFormFilterParams[0]);
+    const [educationForm, setEducationForm] = useState(data !== null ? JSON.parse(data).educationForm : EducationFormFilterParams[0]);
 
 
     const getData = () => {
