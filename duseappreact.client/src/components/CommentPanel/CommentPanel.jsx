@@ -14,6 +14,7 @@ import {getUserById} from '../../services/User/UserFetches.js';
 import {deleteComment} from '../../services/CommentFetches.js'
 import ExceptionState from '../../services/ApplicationException.js';
 import PopUpState from '../../services/PopUpState.js';
+import UserModel from '../../services/User/UserModel.js';
 
 
 
@@ -40,7 +41,7 @@ const CommentPanel = observer(({comment, deleteAction}) => {
 
         getUser();
 
-    }, [])
+    }, [comment.userId])
 
     const formatDate = (dateTimeString) => {
 
@@ -103,7 +104,7 @@ const CommentPanel = observer(({comment, deleteAction}) => {
                     </div>
                     <div className={style.DateOfCreationBox}>
                         <p>{formatDate(comment.dateOfCreation)}</p>
-                        {user !== null && comment.userId === user.id && 
+                        {((UserModel.userData !== null && JSON.parse(UserModel.userData).role === 0 ) || (user !== null && UserModel.userData !== null && JSON.parse(UserModel.userData).id === user.id)) && 
                         <div className={style.EditBox}>
                             <img src={pencil}></img>
                             <img src={bin} onClick={() => openCommentDeletingWindow()}></img>

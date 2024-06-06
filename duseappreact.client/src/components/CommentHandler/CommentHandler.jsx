@@ -60,6 +60,7 @@ const CommentHandler = observer(({closeEvent, collegeId, updateEvent}) => {
             return;
         }
 
+
         await addComment(collegeId, 
             {
                 userId: JSON.parse(UserModel.userData).id, 
