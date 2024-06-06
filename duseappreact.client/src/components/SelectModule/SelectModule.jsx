@@ -4,10 +4,10 @@ import style from "./SelectModule.module.css";
 import Circumflexus from "../FallingList/img/CircumflexusGrey.svg";
 
 
-const SortFallingList = ({data, actionFunc}) => {
+const SortFallingList = ({defaultValue, data, actionFunc}) => {
 
     const [dropdownState, setDropdownState] = useState({ open: false });
-    const [sortValue, setSortValue] = useState(data[0]);
+    const [sortValue, setSortValue] = useState(defaultValue);
 
     useEffect(() => {
         actionFunc(sortValue);

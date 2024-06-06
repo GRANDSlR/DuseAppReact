@@ -5,6 +5,8 @@ import CrossImg from '../CommentHandler/img/Cross.png';
 import CheckImg from '../CommentHandler/img/Check.png';
 //
 import SelectModule from '../SelectModule/SelectModule.jsx';
+import SpecialtyAdditionPanel from '../SpecialtyAdditionPanel/SpecialtyAdditionPanel.jsx';
+import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 //
 import {CollegeTypeFilterParams, EducationFormFilterParams, Ownership} from '../../services/DataCarrier.js';
 
@@ -16,15 +18,35 @@ const CollegeAdditionForm = ({closeEvent}) => {
 
     const [specialtyAddition, setSpecialtyAddition] = useState(false);
 
-    // specialty
-    const [educationForm, setEducationForm] = useState(EducationFormFilterParams[0]);
+    const [specialties, setSpecialties] = useState(null);
+
+
+    const addSpecialty = (data) => {
+
+        if(data !== null)
+            if (specialties !== null)
+                setSpecialties([...specialties, data]);
+            else
+                setSpecialties([data]);
+
+    }
+
+    const getSpecialtyNameList = () => {
+
+        if(Array.isArray(specialties))
+        {
+            return specialties.map(item => JSON.parse(item).title);
+        }
+    }
+
+    console.log(specialties);
 
 
     return (
 
         <div className={style.MainBox}>
             <div className={style.ContentBox}>
-                <div className={style.MainInfo}>
+                <div className={style.MainInfo}> 
                     <div className={style.HorizPanel}>
                         <div className={style.Header}>
                             <p className={style.Title}>Описание</p>
@@ -51,11 +73,11 @@ const CollegeAdditionForm = ({closeEvent}) => {
                     <div className={style.HorizPanel}>
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Тип</p>
-                            <SelectModule data={CollegeTypeFilterParams} actionFunc={setCollegeType} />
+                            <SelectModule defaultValue={collegeType} data={CollegeTypeFilterParams} actionFunc={setCollegeType} />
                         </div>
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Форма собственности</p>
-                            <SelectModule data={Ownership} actionFunc={setOwnershipValue} />
+                            <SelectModule defaultValue={collegeType} data={Ownership} actionFunc={setOwnershipValue} />
                         </div>
                     </div>
 
@@ -66,21 +88,19 @@ const CollegeAdditionForm = ({closeEvent}) => {
                         </div>
                     </div>
 
-                    {/* <div className={style.Row}> */}
-                        <p className={style.DescTitle}>Координаты</p>
-                        <div className={style.HorizPanel}>
-                            <div className={style.Item}>
-                                <div className={style.InputBox}>
-                                    <input type='number' placeholder='Широта'></input>
-                                </div>
-                            </div>
-                            <div className={style.Item}>
-                                <div className={style.InputBox}>
-                                    <input type='number' placeholder='Долгота'></input>
-                                </div>
+                    <p className={style.DescTitle}>Координаты</p>
+                    <div className={style.HorizPanel}>
+                        <div className={style.Item}>
+                            <div className={style.InputBox}>
+                                <input type='number' placeholder='Широта'></input>
                             </div>
                         </div>
-                    {/* </div> */}
+                        <div className={style.Item}>
+                            <div className={style.InputBox}>
+                                <input type='number' placeholder='Долгота'></input>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className={style.Row}>
                         <p className={style.DescTitle}>Локация</p>
@@ -108,49 +128,10 @@ const CollegeAdditionForm = ({closeEvent}) => {
                         <button type='button' className={style.SpecialtyAdditionButton} onClick={() => setSpecialtyAddition(true)}>Добавить</button>
                     </div>
 
+                    <SpecialtyPanel speсialtyList={getSpecialtyNameList()} actionClick={null}/>
+
                     {specialtyAddition && 
-                        <div className={style.SpecialtyAdditionBox}>
-
-                            <div className={style.HorizPanel}>
-                                <div className={style.Item}>
-                                    <p className={style.DescTitle}>Наименование</p>
-                                    <div className={style.InputBox}>
-                                        <input type='text' placeholder='Название специальности'></input>
-                                    </div>
-                                </div>
-                                <div className={style.Item}>
-                                    <p className={style.DescTitle}>Форма обучения</p>
-                                    <SelectModule data={EducationFormFilterParams} actionFunc={setEducationForm} />
-                                </div>
-                            </div>
-
-                            <div className={style.HorizPanel}>
-                                <div className={style.Item}>
-                                    <p className={style.DescTitle}>Цена за год</p>
-                                    <div className={style.InputBox}>
-                                        <input type='number' placeholder='Цена'></input>
-                                    </div>
-                                </div>
-                                <div className={style.Item}>
-                                    <p className={style.DescTitle}>Количество мест</p>
-                                    <div className={style.InputBox}>
-                                        <input type='number' placeholder='Места'></input>
-                                    </div>
-                                </div>
-                                <div className={style.Item}>
-                                    <p className={style.DescTitle}>Проходной балл</p>
-                                    <div className={style.InputBox}>
-                                        <input type='number' placeholder='Балл'></input>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <p className={style.DescTitle}>Ключевые слова</p>
-                            <div className={`${style.InputBox} ${style.DescPanel}`}>
-                                <textarea placeholder='Добавьте ключевые слова, описывающие эту специальность  '></textarea>
-                            </div>
-
-                        </div>
+                        <SpecialtyAdditionPanel closeEvent={setSpecialtyAddition} data={null} additionAction={addSpecialty}/>
                     }
 
                 </div>

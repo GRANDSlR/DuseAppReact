@@ -32,8 +32,6 @@
     margin: 15px 0;
 }
 
-
-
 .ContentBox .Header .Title{
     font-weight: 600;
     margin-bottom: 5px;
@@ -186,8 +184,3 @@ p.DescTitle{
 }
 
 
-.ContentBox .SpecialtyAdditionBox{
-    border: 1px solid #f6f6f6;
-    border-radius: 15px;
-    padding: 10px;
-}

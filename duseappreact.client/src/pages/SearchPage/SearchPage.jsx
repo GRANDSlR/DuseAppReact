@@ -171,7 +171,7 @@ export default function SearchPage() {
                         {/* <p id={style.title}>Результаты поиска</p> */}
                         <div className={style.SortPanel}>
                             <p id={style.title}>Сортировка</p>
-                            <SortFallingList data={sortValues} actionFunc={SortValueEvent}/>
+                            <SortFallingList defaultValue={sortValues[0]} data={sortValues} actionFunc={SortValueEvent}/>
                         </div>
                     </div>
                     <div className={style.ResultPanel}>

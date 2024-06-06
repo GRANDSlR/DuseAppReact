@@ -125,7 +125,7 @@ export const Colleges = observer(({collegeObjects}) => {
                         ))}
                     </div>
 
-                    <SpecialtyPanel speсialtyList={college.specialtyList.map((item) => item.title)}/>
+                    <SpecialtyPanel  actionClick={null} speсialtyList={college.specialtyList.map((item) => item.title)}/>
 
                     <div className={style.AdministrationPanel}>
                         <div>

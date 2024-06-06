@@ -71,7 +71,7 @@ const SpecialtyFilterAdditionPanel = ({event, sessionStorageName}) => {
                     </div>
                 </div>
             )}
-            {specialties.length > 0 ? <SpecialtyPanel speсialtyList={specialties}/> : null}
+            {specialties.length > 0 ? <SpecialtyPanel actionClick={null} speсialtyList={specialties}/> : null}
         </div>
     );
 }

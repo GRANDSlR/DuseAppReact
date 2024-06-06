@@ -1,0 +1,122 @@
+
+
+.SpecialtyAdditionBox{
+    border: 1px solid #f6f6f6;
+    border-radius: 15px;
+}
+
+.Content{
+    padding: 10px;
+}
+
+.InputBox.DescPanel{
+    padding: 10px;
+    height: 100px;
+}
+
+.InputBox.DescPanel textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.InputBox.DescPanel textarea:focus{
+    outline: none;
+}
+
+.SpecialtyAdditionBox p.DescTitle{
+    font-weight: 500;
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+
+.InputBox{
+    padding: 8px 10px;
+    border-radius: 15px;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+}
+
+.InputBox .InputButton{
+    border-left: 1px solid #eaeaea;
+    padding-left: 5px;
+    color: #999;
+}
+
+.InputBox input{
+    background-color: transparent;
+    border: none;
+    color: #999;
+    width: 95%;
+    font-size: 16px;
+}
+
+.InputBox input:focus{
+    outline: none;
+}
+
+.SpecialtyAdditionBox p{
+    margin: 0;
+    line-height: 1;
+}
+
+.SpecialtyAdditionBox .Header .Title{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+.SpecialtyAdditionBox .HorizPanel{
+    height: fit-content;
+    display: flex;
+    /* align-items: center; */
+    margin-bottom: 15px;
+}
+
+.SpecialtyAdditionBox .HorizPanel .Item{
+    width: 50%;
+    margin-right: 10px;
+}
+
+.SpecialtyAdditionBox .HorizPanel .Item:last-child{
+    margin-right: 0px;
+}
+
+
+.ButtonBox{
+    display: flex;
+}
+
+.Button{
+    border: none;
+    width: 50%;
+    padding: 0;
+    height: 35px;
+    color: #999;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.Button img{
+    width: 16px;
+    height: 16px;
+}
+
+.Button.Submit img{
+    width: 18px;
+    height: 18px;
+}
+
+.Button.Submit{
+    border-left: 1px solid #f6f6f6;
+}
+
+.Button:focus{
+    outline: none;
+
+}

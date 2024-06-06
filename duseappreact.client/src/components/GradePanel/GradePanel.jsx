@@ -47,7 +47,7 @@ const GradePanel = ({closeEvent, collegeId}) => {
                         <img src={CrossImg}></img>
                     </button> 
                     
-                </div>
+            </div>
             <div className={style.Arrow}></div>
         </div>
     );
