@@ -2,6 +2,7 @@
 
 .SelectBox{
     background-color: #d9d9d9;
+    background-color: #f6f6f6;
     border-radius: 15px;
     padding: 5px 13px;
     position: relative;
@@ -28,7 +29,8 @@
     color: #5e5e5e;
     font-weight: 500;
     position: absolute;
-    bottom: -175px;
+    top: 40px;
+    /* bottom: -175px; */
     left: 0px;
     list-style: none;
     margin: 0;

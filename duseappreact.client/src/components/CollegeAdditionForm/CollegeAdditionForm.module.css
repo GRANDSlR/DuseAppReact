@@ -1,0 +1,193 @@
+
+.MainBox{
+    background-color: white;
+    border-radius: 15px;
+    width: 600px;
+    margin-top: 70px
+
+}
+
+.MainInfo{
+    margin-bottom: 20px;
+}
+
+.ContentBox{
+    margin: 25px;
+    margin-right: 15px;
+    padding-top: 25px;
+    padding-right: 10px;
+    height: 70vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.ContentBox p{
+    margin: 0;
+    line-height: 1;
+}
+
+/*  */
+
+.ContentBox .Row{
+    margin: 15px 0;
+}
+
+
+
+.ContentBox .Header .Title{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+.ContentBox .HorizPanel{
+    height: fit-content;
+    display: flex;
+    /* align-items: center; */
+    margin-bottom: 15px;
+}
+
+.ContentBox .HorizPanel .Item{
+    width: 50%;
+    margin-right: 10px;
+}
+
+.ContentBox .HorizPanel .Item:last-child{
+    margin-right: 0px;
+}
+
+
+p.DescTitle{
+    font-weight: 500;
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+
+.InputBox{
+    padding: 8px 10px;
+    border-radius: 15px;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+}
+
+.InputBox .InputButton{
+    border-left: 1px solid #eaeaea;
+    padding-left: 5px;
+    color: #999;
+}
+
+.InputBox input{
+    background-color: transparent;
+    border: none;
+    color: #999;
+    width: 95%;
+    font-size: 16px;
+}
+
+.InputBox input:focus{
+    outline: none;
+}
+
+.CoordsPanel{
+    display: flex;
+}
+
+.InputBox.CoordsPanel input{
+    margin-right: 10px;
+}
+
+.InputBox.CoordsPanel input:last-child{
+    margin-right: 0;
+}
+
+
+.InputBox.DescPanel{
+    padding: 10px;
+    height: 100px;
+}
+
+.InputBox.DescPanel textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.InputBox.DescPanel textarea:focus{
+    outline: none;
+}
+
+/*  */
+
+.WindowButtonBox{
+    background-color: #d9d9d9;
+    border-radius: 0 0 15px 15px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Button{
+    border-radius: 15px;
+    background-color: var(--main-blue-color);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    width: 160px;
+    height: 37px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.Button:focus{
+    outline: none;
+}
+
+.Button.Exit{
+    margin: 0;
+    margin-right: 20px;
+    background-color: white;
+    width: 130px;
+    height: 30px;
+}
+
+.Button.ChangeUserData{
+    margin: 0;
+    width: 130px;
+    height: 30px;
+}
+
+.Button img{
+    height: 15px;
+}
+
+
+.SpecialtyAdditionButton{
+    margin-left: auto;
+    border: 1px solid var(--main-blue-color);
+    border-radius: 0;
+    padding: 8px 20px;
+    color: var(--main-blue-color);
+    background-color: transparent;
+    height: 40px;
+}
+
+.SpecialtyAdditionButton:focus{
+    outline: none;
+}
+
+
+.ContentBox .SpecialtyAdditionBox{
+    border: 1px solid #f6f6f6;
+    border-radius: 15px;
+    padding: 10px;
+}

@@ -5,12 +5,12 @@ import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";
 import style from './SearchPage.module.css';
 import SearchPanel from "../../components/MainSearchPanel/SearchPanel.jsx";
-import SortFallingList from '../../components/SortFallingList/SortFallingList.jsx';
+import SortFallingList from '../../components/SelectModule/SelectModule.jsx';
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
 import {EducationFormFilterParams, CollegeTypeFilterParams} from '../../services/DataCarrier.js';
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
-import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SortFallingList/SortHandler.js';
+import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SelectModule/SortHandler.js';
 
 export default function SearchPage() {
 
@@ -171,7 +171,7 @@ export default function SearchPage() {
                         {/* <p id={style.title}>Результаты поиска</p> */}
                         <div className={style.SortPanel}>
                             <p id={style.title}>Сортировка</p>
-                            <SortFallingList actionFunc={SortValueEvent}/>
+                            <SortFallingList data={sortValues} actionFunc={SortValueEvent}/>
                         </div>
                     </div>
                     <div className={style.ResultPanel}>

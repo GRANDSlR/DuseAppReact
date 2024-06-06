@@ -12,6 +12,7 @@ import AdditionButton from '../SpecialtyFilterAdditionPanel/img/AdditionButtonNe
 import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
 import {getCookies} from '../../services/CookieService.js';
 import UserProfile from '../UserProfile/UserProfile.jsx';
+import CollegeAdditionForm from '../CollegeAdditionForm/CollegeAdditionForm.jsx';
 //
 import ExceptionState from '../../services/ApplicationException.js';
 //
@@ -65,7 +66,7 @@ const Header = observer(() => {
       {UserModel.userData != null && isVerifyUsersCookies && JSON.parse(UserModel.userData).role === 0 && (
         <div className={style.CollegeAdditionButtonBox}>
           <img src={AdditionButton} className={isOpenCollegeAddition ? `${style.AdditionButton} ${style.open}` : style.AdditionButton} onClick={() => setIsOpenCollegeAddition(!isOpenCollegeAddition)}/>
-          <PopUpWindow handleCodeBlock={<AuthHeader closeEvent={setIsOpenAuth}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
+          <PopUpWindow handleCodeBlock={<CollegeAdditionForm closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
         </div>
       )}
 

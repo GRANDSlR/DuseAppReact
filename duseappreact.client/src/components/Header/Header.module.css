@@ -1,6 +1,6 @@
 
 .HeaderBar{
-    z-index: 100;
+    z-index: 400;
     position: fixed;
     padding: 0 25px;
     margin-right: 200px;
