@@ -23,20 +23,22 @@ const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => 
 
     const [description, setDescription] = useState(data !== null ? data[0].description : '');
 
-    const [educationForm, setEducationForm] = useState(data !== null ? EducationFormFilterParams[data[0].educationForm] : EducationFormFilterParams[0]);
+    const [educationForm, setEducationForm] = useState(data !== null ? data[0].educationForm : EducationFormFilterParams[0]);
 
 
     const getData = () => {
 
         if(verifyFields())
         {
+
+            console.log(educationForm);
             additionAction({
                 title: title,
                 cost: cost,
                 freePlaces: freePlaces,
                 passingScore: passingScore,
                 description: description,
-                educationForm: EducationFormFilterParams.indexOf(educationForm)
+                educationForm: educationForm
             });
             closeEvent(false);
         }
@@ -119,6 +121,12 @@ const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => 
                 <div className={`${style.InputBox} ${style.DescPanel}`}>
                     <textarea value={description} onChange={(event) => setDescription(event.target.value)} placeholder='Добавьте ключевые слова, описывающие эту специальность  '></textarea>
                 </div>
+
+                {data !== null &&
+                    <div id={style.DeleteButtonPanel}>
+                        <button type='text' id={style.DeleteButton} onClick={() => additionAction(null)}>Удалить</button>
+                    </div>
+                }
             </div>
 
             <div className={style.ButtonBox}>

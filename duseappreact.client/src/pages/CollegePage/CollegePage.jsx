@@ -20,6 +20,7 @@ import CollegeAdditionForm from '../../components/CollegeAdditionForm/CollegeAdd
 import ExceptionState from '../../services/ApplicationException.js';
 import PopUpState from '../../services/PopUpState.js';
 import UserModel from '../../services/User/UserModel.js';
+import {updateCollege} from '../../services/Colleges.js';
 //
 import { observer } from 'mobx-react';
 
@@ -40,6 +41,27 @@ const CollegePage = observer(() => {
 
     // const [collegeEditionForm, setCollegeEditionForm] = useState(false);
 
+    const updateCollegeData = async(data) => {
+
+        console.log(data);
+
+        if(data !== null)
+        {
+            console.log(data);
+
+            await updateCollege(college.collegeHeader.collegeId, data)
+            .then(updatedCollegeId => {
+                ExceptionState.setException(true, "Изменения сохранены");
+            })
+            .catch(error => {
+                ExceptionState.setException(true, "Ошибка редактирования. " +`${error}`);
+                console.error('Failed to update college:', error);
+            });
+            setCollege(data);
+            closeCollegeEditionEvent(false);
+        }
+    }
+
 
     const closeCollegeEditionEvent = (state) => {
         PopUpState.setPopUpState(state, null);
@@ -47,19 +69,9 @@ const CollegePage = observer(() => {
 
     const openCollegeEditionPanel = () => {
 
-        PopUpState.setPopUpState(true, <CollegeAdditionForm closeEvent={closeCollegeEditionEvent} data={JSON.stringify(college)}/>);
+        PopUpState.setPopUpState(true, <CollegeAdditionForm collegeId={college.collegeHeader.collegeId} closeEvent={closeCollegeEditionEvent} data={JSON.stringify(college)} actionFunc={updateCollegeData}/>);
 
     }
-
-
-    // useEffect(() => {
-
-    //     if(collegeEditionForm)
-    //     {
-    //         PopUpState.setPopUpState(true, <CollegeAdditionForm closeEvent={closeCollegeEditionEvent} data={JSON.stringify(college)}/>);
-    //     }
-
-    // }, [collegeEditionForm])
 
 
     const setCommentDeleteStateAction = () =>

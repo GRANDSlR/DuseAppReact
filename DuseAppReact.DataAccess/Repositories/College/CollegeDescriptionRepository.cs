@@ -77,7 +77,6 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .Where(b => b.CollegeId == college.CollegeId)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.CollegeId, b => college.CollegeId)
-                    .SetProperty(b => b.CollegeDescriptionId, b => college.CollegeDescriptionId)
                     .SetProperty(b => b.Description, b => college.Description)
                     .SetProperty(b => b.Grade, b => college.Grade)
                     .SetProperty(b => b.CollegeType, b => college.CollegeType.ToString())

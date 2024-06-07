@@ -66,7 +66,7 @@ const Header = observer(() => {
       {UserModel.userData != null && isVerifyUsersCookies && JSON.parse(UserModel.userData).role === 0 && (
         <div className={style.CollegeAdditionButtonBox}>
           <img src={AdditionButton} className={isOpenCollegeAddition ? `${style.AdditionButton} ${style.open}` : style.AdditionButton} onClick={() => setIsOpenCollegeAddition(!isOpenCollegeAddition)}/>
-          <PopUpWindow handleCodeBlock={<CollegeAdditionForm closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
+          <PopUpWindow handleCodeBlock={<CollegeAdditionForm data={null} closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
         </div>
       )}
 

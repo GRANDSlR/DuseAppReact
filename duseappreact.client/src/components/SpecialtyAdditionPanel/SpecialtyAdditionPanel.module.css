@@ -121,3 +121,20 @@
     outline: none;
 
 }
+
+#DeleteButtonPanel{
+    margin-top: 15px;
+}
+
+#DeleteButton{
+    padding: 8px 20px;
+    width: 100%;
+    color: var(--main-red-color);
+    border: 1px solid var(--main-red-color);
+    background-color: transparent;
+    /* border-radius: 15px; */
+}
+
+#DeleteButton:focus{
+    outline: none;
+}

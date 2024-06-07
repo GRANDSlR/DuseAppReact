@@ -2,10 +2,11 @@
 {
     public record CollegeDataRequest
     (
-        CollegeHeaderRequest collegeHeaderRequest,
-        CollegeDescriptionRequest collegeDescriptionRequest,
-        CollegeLocationRequest collegeLocationRequest,
-        List<SpecialtyRequest> specialtyRequestList
+        CollegeHeaderRequest collegeHeader,
+        CollegeDescriptionRequest collegeDescription,
+        CollegeLocationRequest collegeLocation,
+        SpecialtyRequest[] specialtyList
+        /*List<SpecialtyRequest> specialtyRequestList*/
     );
     public record CollegeFilterRequest(
         string title,
@@ -15,13 +16,14 @@
         string[] costValues
         );
     public record CollegeHeaderRequest(
+        int collegeId,
         string Title,
         string Img
         );
 
     public record CollegeDescriptionRequest(
         string Description,
-        int Grade,
+        double Grade,
         string CollegeType,
         string Ownership,
         string WebSiteRef

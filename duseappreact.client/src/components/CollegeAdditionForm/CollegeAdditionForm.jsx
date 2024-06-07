@@ -12,7 +12,7 @@ import {CollegeTypeFilterParams, EducationFormFilterParams, Ownership} from '../
 import ExceptionState from '../../services/ApplicationException.js';
 
 
-const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
+const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
 
     const [title, setTitle] = useState(data !== null ? JSON.parse(data).collegeHeader.title : '');
 
@@ -22,28 +22,105 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
 
     const [ownershipValue, setOwnershipValue] = useState(data !== null ? Ownership[JSON.parse(data).collegeDescription.ownership] : Ownership[0]);
 
-    const [websiteRef, setWebSiteRef] = useState(data !== null ? JSON.parse(data).collegeDescription.websiteRef : '');
+    const [websiteRef, setWebSiteRef] = useState(data !== null ? JSON.parse(data).collegeDescription.webSiteRef : '');
 
     const [region, setRegion] = useState(data !== null ? JSON.parse(data).collegeLocation.region : '');
 
     const [lat, setLat]  = useState(data !== null ? JSON.parse(data).collegeLocation.lat : '');
 
     const [long, setLong]  = useState(data !== null ? JSON.parse(data).collegeLocation.long : '');
+
+
+    const getCurrSpecialties = () =>{
+
+        let specialtyList = JSON.parse(data).specialtyList;
+
+        let updatedCost = specialtyList.map(function(item) {
+            return {
+              ...item,
+              educationForm: EducationFormFilterParams[item.educationForm]
+            };
+          });
+
+          return updatedCost;
+    }
     
     
     const [specialtyAddition, setSpecialtyAddition] = useState(false);
 
-    const [specialties, setSpecialties] = useState(data !== null ? JSON.parse(data).specialtyList  : null);
+    const [specialties, setSpecialties] = useState(data !== null ? getCurrSpecialties() : null);
 
     const [specialtyTitleToEdit, setSpecialtyTitleToEdit] = useState(false);
 
+    
 
     const verifyFields = () => {
 
         if(title === '')
         {
-            ExceptionState.setException(true, "Ошибка. Заполните поле наименования");
+            ExceptionState.setException(true, "Ошибка. Заполните поле наименования учреждения");
             return false;
+        }
+
+        if(description === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле 'Описание'");
+            return false;
+        }
+
+        if(websiteRef === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле 'Ссылка на первоисточник'");
+            return false;
+        }
+
+        if(region === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле 'Локация'");
+            return false;
+        }
+
+        if(lat === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле 'Широта'");
+            return false;
+        }
+
+        if(long === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле 'Долгота'");
+            return false;
+        }
+
+        return true;
+    }
+
+    const sendData = () => {
+
+        if(verifyFields)
+        {
+
+            console.log('websiteRef ',websiteRef);
+            actionFunc({
+                collegeHeader:{
+                    collegeId: collegeId,
+                    title: title,
+                    img: ''
+                },
+                collegeDescription:{
+                    description: description,
+                    grade: JSON.parse(data).collegeDescription.grade,
+                    collegeType: collegeType,
+                    ownership: ownershipValue,
+                    websiteRef: websiteRef
+                },
+                collegeLocation:{
+                    region: region,
+                    lat: lat,
+                    long: long
+                },
+                specialtyList: specialties
+            })
         }
     }
 
@@ -75,23 +152,25 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
 
     const editSpecialties = (data) => {
 
-        console.log("first data ", data);
-
         if(data !== null)
         {
             if(specialties.length > 1)
             {
                 let specialtiesWithoutEdited = specialties.filter(item => item.title !== specialtyTitleToEdit)
 
-                console.log(specialtiesWithoutEdited);
-
                 setSpecialties([...specialtiesWithoutEdited, data]);
             }
             else
                 setSpecialties([data]);
-
-            setSpecialtyTitleToEdit(false);
         }
+        else{
+
+            let specialtiesWithoutEdited = specialties.filter(item => item.title !== specialtyTitleToEdit)
+
+            setSpecialties([...specialtiesWithoutEdited]);
+        }
+
+        setSpecialtyTitleToEdit(false);
     }
 
     return (
@@ -110,7 +189,7 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Наименование</p>
                             <div className={style.InputBox}>
-                                <input type='text' value={title} placeholder='Название учреждения'></input>
+                                <input type='text' value={title} onChange={(event) => setTitle(event.target.value)} placeholder='Название учреждения'></input>
                             </div>
                         </div>
                         <div className={style.Item}>
@@ -136,7 +215,7 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
                     <div className={style.Row}>
                         <p className={style.DescTitle}>Ссылка на первоисточник</p>
                         <div className={style.InputBox}>
-                            <input type='text' value={websiteRef} placeholder='URL-адрес'></input>
+                            <input type='text' value={websiteRef} onChange={(event) => setWebSiteRef(event.target.value)} placeholder='URL-адрес'></input>
                         </div>
                     </div>
 
@@ -144,12 +223,12 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
                     <div className={style.HorizPanel}>
                         <div className={style.Item}>
                             <div className={style.InputBox}>
-                                <input type='number' value={lat} placeholder='Широта'></input>
+                                <input type='number' value={lat} onChange={(event) => setLat(event.target.value)} placeholder='Широта'></input>
                             </div>
                         </div>
                         <div className={style.Item}>
                             <div className={style.InputBox}>
-                                <input type='number' value={long} placeholder='Долгота'></input>
+                                <input type='number' value={long} onChange={(event) => setLong(event.target.value)} placeholder='Долгота'></input>
                             </div>
                         </div>
                     </div>
@@ -157,13 +236,13 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
                     <div className={style.Row}>
                         <p className={style.DescTitle}>Локация</p>
                         <div className={style.InputBox}>
-                            <input type='text' value={region} placeholder='Название локации'></input>
+                            <input type='text' value={region} onChange={(event) => setRegion(event.target.value)} placeholder='Название локации'></input>
                         </div>
                     </div>
 
                     <p className={style.DescTitle}>Описание</p>
                     <div className={`${style.InputBox} ${style.DescPanel}`}>
-                        <textarea>{description}</textarea>
+                        <textarea onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
                     </div>
 
 
@@ -197,7 +276,7 @@ const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
                 <button type='button' className={`${style.Button} ${style.Exit}`} onClick={() => closeEvent(false)}>
                     <img src={CrossImg}></img>
                 </button>
-                <button type='button' className={`${style.Button} ${style.ChangeUserData}`}>
+                <button type='button' className={`${style.Button} ${style.ChangeUserData}`} onClick={() => sendData()}>
                     <img src={CheckImg}></img>
                 </button>
             </div>

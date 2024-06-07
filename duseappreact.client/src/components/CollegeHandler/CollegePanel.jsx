@@ -111,7 +111,7 @@ export const Colleges = observer(({collegeObjects}) => {
             {collegeObjects != null || (Array.isArray(collegeObjects) && collegeObjects.length>0) ? collegeObjects.map((college, index) => 
                 <div className={style.CollegeCard} key={index}>
 
-                    <NavLink to={'/collegePage'}  id={style.collegeTitle} onClick={() => currCollegeData.setData(college)}>
+                    <NavLink to={'/page'}  id={style.collegeTitle} onClick={() => currCollegeData.setData(college)}>
                         {college.collegeHeader.title}
                     </NavLink>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>

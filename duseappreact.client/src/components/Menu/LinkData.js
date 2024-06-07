@@ -4,12 +4,12 @@
 	
       {
           title: 'Колледжи',
-          link: '/college',
+          link: '/search',
       },
     {
           title: 'Избранное',
           link: '/favorite',
-      }
+      } 
   ];
 
   export default data;

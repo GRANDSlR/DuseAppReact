@@ -63,13 +63,35 @@ export const createCollege = async (collegeRequest) => {
 };
 
 export const updateCollege = async (id, collegeRequest) => {
-    await fetch(`/college/${id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(collegeRequest)
-    });
+
+    try {
+        const response = await fetch(`/college/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(collegeRequest)
+        });
+    
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText);
+        }
+    
+        const data = await response.json();
+    
+        return data;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    // await fetch(`/college/${id}`, {
+    //     method: "PUT",
+    //     headers: {
+    //         "content-type": "application/json"
+    //     },
+    //     body: JSON.stringify(collegeRequest)
+    // });
 };
 
 export const deleteCollege = async (id) => {

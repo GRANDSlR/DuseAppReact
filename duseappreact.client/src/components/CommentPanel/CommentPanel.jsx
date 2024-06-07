@@ -71,7 +71,7 @@ const CommentPanel = observer(({comment, deleteAction}) => {
             const deleteCommentAction = async() => {
                 await deleteComment(comment.id)
                 .then(commentId => {
-                    ExceptionState.setException(true, "Ваш комментарий успешно удален");
+                    ExceptionState.setException(true, "Комментарий успешно удален");
                     deleteAction();
                 })
                 .catch(error => {

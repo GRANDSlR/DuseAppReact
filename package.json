@@ -2,6 +2,7 @@
   "dependencies": {
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "circular-json": "^0.5.9",
     "jsonwebtoken": "^9.0.2",
     "leaflet": "^1.9.4",
     "mobx": "^6.12.3",

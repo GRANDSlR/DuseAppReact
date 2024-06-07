@@ -65,7 +65,6 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .Where(b => b.CollegeId == college.CollegeId)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.CollegeId, b => college.CollegeId)
-                    .SetProperty(b => b.CollegeLocationId, b => college.CollegeLocationId)
                     .SetProperty(b => b.Region, b => college.Region)
                     .SetProperty(b => b.Lat, b => college.Lat)
                     .SetProperty(b => b.Long, b => college.Long));
