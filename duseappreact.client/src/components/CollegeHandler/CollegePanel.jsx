@@ -116,6 +116,7 @@ export const Colleges = observer(({collegeObjects}) => {
                     </NavLink>
                     <p id={style.collegeLocationHeader}>{college.collegeLocation.region}</p>
 
+
                     <div className={style.StarPanel}>
                         <div onClick={() => setIsOpenGragePanel(index)}>{getGradeItems(college.collegeDescription.grade)}</div>
                         {(isOpenGragePanel === index && isOpenGragePanel != null) && ( verifyUser() && (
@@ -125,31 +126,35 @@ export const Colleges = observer(({collegeObjects}) => {
                         ))}
                     </div>
 
+
                     <SpecialtyPanel  actionClick={null} speсialtyList={college.specialtyList.map((item) => item.title)}/>
 
-                    <div className={style.AdministrationPanel}>
-                        <div>
-                            <img src={websitePin} />
-                            <p>{college.collegeDescription.webSiteRef}</p>
-                        </div>
-                        <div>
-                            <img src={locationPin} />
-                            <p>
-                                {userCoords != null ? 
-                                    <span> {calculateDistance(
-                                    parseFloat(userCoords.lat), 
-                                    parseFloat(userCoords.long), 
-                                    parseFloat(college.collegeLocation.lat), 
-                                    parseFloat(college.collegeLocation.long)
-                                )} км</span> :
-                                <span>Разрешите использование вашей геолокации</span>}
-                            </p>
-                        </div>
-                    </div>
+                    <div className={style.InfoPanel}>
 
-                    <div className={savedCollegesArray.includes(`${JSON.stringify(college)}`) ? `${style.SaveButton} ${style.Empty} `: style.SaveButton} onClick={() => addToVaf(college)}>
-                        <img src={savedCollegesArray.includes(`${JSON.stringify(college)}`) ? heartEmpty : heartFull} />
-                        <p>{savedCollegesArray.includes(`${JSON.stringify(college)}`) ? 'Сохранено' : 'Сохранить'}</p>
+                        <div className={style.AdministrationPanel}>
+                            <div>
+                                <img src={websitePin} />
+                                <p>{college.collegeDescription.webSiteRef}</p>
+                            </div>
+                            <div>
+                                <img src={locationPin} />
+                                <p>
+                                    {userCoords != null ? 
+                                        <span> {calculateDistance(
+                                        parseFloat(userCoords.lat), 
+                                        parseFloat(userCoords.long), 
+                                        parseFloat(college.collegeLocation.lat), 
+                                        parseFloat(college.collegeLocation.long)
+                                    )} км</span> :
+                                    <span>Разрешите использование вашей геолокации</span>}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className={savedCollegesArray.includes(`${JSON.stringify(college)}`) ? `${style.SaveButton} ${style.Empty} `: style.SaveButton} onClick={() => addToVaf(college)}>
+                            <img src={savedCollegesArray.includes(`${JSON.stringify(college)}`) ? heartEmpty : heartFull} />
+                            <p>{savedCollegesArray.includes(`${JSON.stringify(college)}`) ? 'Сохранено' : 'Сохранить'}</p>
+                        </div>
                     </div>
                 </div>
             ) : <div className={style.ReportMessage}><p>Совпадений не найдено</p></div>}

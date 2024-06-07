@@ -20,7 +20,7 @@ import CollegeAdditionForm from '../../components/CollegeAdditionForm/CollegeAdd
 import ExceptionState from '../../services/ApplicationException.js';
 import PopUpState from '../../services/PopUpState.js';
 import UserModel from '../../services/User/UserModel.js';
-import {updateCollege} from '../../services/Colleges.js';
+import {updateCollege, deleteCollege} from '../../services/Colleges.js';
 //
 import { observer } from 'mobx-react';
 
@@ -45,10 +45,8 @@ const CollegePage = observer(() => {
 
         console.log(data);
 
-        if(data !== null)
+        if(data != null)
         {
-            console.log(data);
-
             await updateCollege(college.collegeHeader.collegeId, data)
             .then(updatedCollegeId => {
                 ExceptionState.setException(true, "Изменения сохранены");
@@ -178,13 +176,25 @@ const CollegePage = observer(() => {
 
     }, [updateData, commentDeleteState]);
 
+    const deleteCollegeEvent = async() => {
+
+        await deleteCollege(college.collegeHeader.collegeId)
+        .then(deletedCollegeId => {
+            ExceptionState.setException(true, "Данные о странице удалены");
+        })
+        .catch(error => {
+            ExceptionState.setException(true, "Ошибка удаления. " +`${error}`);
+            console.error('Failed to delete college:', error);
+        });
+    }
+
     return (
         <div className={style.MainWindow}>
             <div className={style.HelloBox}>
                 <div>
                     <p>{college.collegeLocation.region}</p>
                     <hr></hr>
-                    <p className={style.CollegeTitle} onClick={() => openCollegeEditionPanel()}>{college.collegeHeader.title}</p>
+                    <p className={style.CollegeTitle}>{college.collegeHeader.title}</p>
                 </div>
             </div>
             <div className={style.WindowBack}>
@@ -261,7 +271,7 @@ const CollegePage = observer(() => {
                                     <p className={style.Headers}>Отзывы</p>
                                     <p className={style.HeaderDescription}>Оставьте здесь свой комментарий</p>
                                 </div>
-                                <button type='button' className={style.Button} onClick={() => {verifyUser(); }}>Оставить отзыв</button>
+                                <button type='button' className={`${style.Button} ${style.NewSpecialty}`} onClick={() => {verifyUser(); }}>Оставить отзыв</button>
                             </div>
 
                             {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
@@ -278,6 +288,13 @@ const CollegePage = observer(() => {
                         </div>
                     </div>
                     <div className={style.SecondaryContent}>
+
+                        {UserModel.verifyUser() && 
+                            <div className={`${style.Content} ${style.Description}`}>
+                                <button type='button' className={`${style.Button} ${style.Edit}`}  onClick={() => openCollegeEditionPanel()}>Редактировать</button>
+                                <button type='button' className={`${style.Button} ${style.Delete}`}  onClick={() => deleteCollegeEvent()}>Удалить</button>
+                            </div>
+                        }
 
                         <div className={`${style.Content} ${style.Description}`}>
                             

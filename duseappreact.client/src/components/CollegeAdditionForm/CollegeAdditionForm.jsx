@@ -99,17 +99,15 @@ const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
 
         if(verifyFields)
         {
-
-            console.log('websiteRef ',websiteRef);
             actionFunc({
                 collegeHeader:{
-                    collegeId: collegeId,
+                    collegeId: collegeId !== null ? collegeId : 0,
                     title: title,
                     img: ''
                 },
                 collegeDescription:{
                     description: description,
-                    grade: JSON.parse(data).collegeDescription.grade,
+                    grade: data != null ? JSON.parse(data).collegeDescription.grade : 0,
                     collegeType: collegeType,
                     ownership: ownershipValue,
                     websiteRef: websiteRef

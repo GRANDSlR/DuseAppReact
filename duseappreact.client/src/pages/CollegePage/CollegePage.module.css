@@ -190,19 +190,6 @@ p.MiniHeader{
     display: flex;
 }
 
-.Button{
-    margin-left: auto;
-    border: 1px solid var(--main-blue-color);
-    border-radius: 0;
-    padding: 8px 20px;
-    color: var(--main-blue-color);
-    background-color: transparent;
-    text-decoration: none;
-}
-
-.Button:focus{
-    outline: none;
-}
 
 .NoComment{
     width: 100%;
@@ -213,4 +200,31 @@ p.MiniHeader{
 
 .CommentInfoBox .HeaderDescription{
     margin-top: 8px;
+}
+
+.Content.Description .Button{
+    border: 1px solid var(--main-blue-color);
+    border-radius: 0;
+    padding: 12px 20px;
+    color: var(--main-blue-color);
+    background-color: transparent;
+    width: 100%;
+}
+
+.Content.Description .Button.NewSpecialty{
+    margin-left: auto;
+    width: auto;
+}
+
+.Content.Description .Button:focus{
+    outline: none;
+}
+
+.Content.Description .Button.Edit{
+    margin-bottom: 10px;
+}
+
+.Content.Description .Button.Delete{
+    color: var(--main-red-color);
+    border: 1px solid var(--main-red-color);
 }

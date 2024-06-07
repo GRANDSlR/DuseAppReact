@@ -53,13 +53,27 @@ export const getCollegesByTitle = async (title) => {
 };
 
 export const createCollege = async (collegeRequest) => {
-    await fetch('/college', {
+    try {
+      const response = await fetch('/college', {
         method: "POST",
         headers: {
             "content-type": "application/json"
         },
         body: JSON.stringify(collegeRequest)
     });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+      }
+
+      const data = await response.json();
+
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
 };
 
 export const updateCollege = async (id, collegeRequest) => {
@@ -95,7 +109,20 @@ export const updateCollege = async (id, collegeRequest) => {
 };
 
 export const deleteCollege = async (id) => {
-    await fetch(`/college/${id}`, {
+  try {
+    const response = await fetch(`/college/${id}`, {
         method: "DELETE"
     });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };

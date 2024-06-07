@@ -13,16 +13,15 @@ import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
 import {getCookies} from '../../services/CookieService.js';
 import UserProfile from '../UserProfile/UserProfile.jsx';
 import CollegeAdditionForm from '../CollegeAdditionForm/CollegeAdditionForm.jsx';
-//
-import ExceptionState from '../../services/ApplicationException.js';
+import ErrorPanel from '../ErrorPanel/ErrorPanel.jsx';
 //
 import { observer } from 'mobx-react';
 //
 import UserModel from '../../services/User/UserModel.js';
-//
-import ErrorPanel from '../ErrorPanel/ErrorPanel.jsx';
-//
 import PopUpState from '../../services/PopUpState.js';
+import ExceptionState from '../../services/ApplicationException.js';
+//
+import {createCollege} from '../../services/Colleges.js';
 
 
 const Header = observer(() => {
@@ -52,6 +51,21 @@ const Header = observer(() => {
 
     }, [getCookies('space-cookies'), UserModel.userData]);
 
+    const createCollegeAction = async(data) => {
+
+      if (data != null)
+      {
+        await createCollege(data)
+        .then(createdCollege => {
+            ExceptionState.setException(true, "Новая страница учреждения добавлена");
+        })
+        .catch(error => {
+            ExceptionState.setException(true, "Ошибка создания страницы. " +`${error}`);
+            console.error('Failed to create college page:', error);
+        });
+        setIsOpenCollegeAddition(!isOpenCollegeAddition)
+      }
+    }
 
   return (
     <div className={style.HeaderBar}>
@@ -66,7 +80,7 @@ const Header = observer(() => {
       {UserModel.userData != null && isVerifyUsersCookies && JSON.parse(UserModel.userData).role === 0 && (
         <div className={style.CollegeAdditionButtonBox}>
           <img src={AdditionButton} className={isOpenCollegeAddition ? `${style.AdditionButton} ${style.open}` : style.AdditionButton} onClick={() => setIsOpenCollegeAddition(!isOpenCollegeAddition)}/>
-          <PopUpWindow handleCodeBlock={<CollegeAdditionForm data={null} closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
+          <PopUpWindow handleCodeBlock={<CollegeAdditionForm collegeId={null} actionFunc={createCollegeAction} data={null} closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
         </div>
       )}
 
