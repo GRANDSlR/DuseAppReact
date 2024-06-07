@@ -9,27 +9,51 @@ import SpecialtyAdditionPanel from '../SpecialtyAdditionPanel/SpecialtyAdditionP
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 //
 import {CollegeTypeFilterParams, EducationFormFilterParams, Ownership} from '../../services/DataCarrier.js';
+import ExceptionState from '../../services/ApplicationException.js';
 
-const CollegeAdditionForm = ({closeEvent}) => {
 
-    const [collegeType, setCollegeType] = useState(CollegeTypeFilterParams[0]);
+const CollegeAdditionForm = ({closeEvent, data, actionFunc}) => {
 
-    const [ownershipValue, setOwnershipValue] = useState(Ownership[0]);
+    const [title, setTitle] = useState(data !== null ? JSON.parse(data).collegeHeader.title : '');
 
+    const [description, setDescription] = useState(data !== null ? JSON.parse(data).collegeDescription.description : '');
+
+    const [collegeType, setCollegeType] = useState(data !== null ? CollegeTypeFilterParams[JSON.parse(data).collegeDescription.collegeType] : CollegeTypeFilterParams[0]);
+
+    const [ownershipValue, setOwnershipValue] = useState(data !== null ? Ownership[JSON.parse(data).collegeDescription.ownership] : Ownership[0]);
+
+    const [websiteRef, setWebSiteRef] = useState(data !== null ? JSON.parse(data).collegeDescription.websiteRef : '');
+
+    const [region, setRegion] = useState(data !== null ? JSON.parse(data).collegeLocation.region : '');
+
+    const [lat, setLat]  = useState(data !== null ? JSON.parse(data).collegeLocation.lat : '');
+
+    const [long, setLong]  = useState(data !== null ? JSON.parse(data).collegeLocation.long : '');
+    
+    
     const [specialtyAddition, setSpecialtyAddition] = useState(false);
 
-    const [specialties, setSpecialties] = useState(null);
+    const [specialties, setSpecialties] = useState(data !== null ? JSON.parse(data).specialtyList  : null);
 
     const [specialtyTitleToEdit, setSpecialtyTitleToEdit] = useState(false);
+
+
+    const verifyFields = () => {
+
+        if(title === '')
+        {
+            ExceptionState.setException(true, "Ошибка. Заполните поле наименования");
+            return false;
+        }
+    }
 
     const getSpecialtyData = (title) => {
 
         if(specialties !== null && Array.isArray(specialties))
         {
-            return specialties.filter(item => JSON.parse(item).title === title);
+            return specialties.filter(item => item.title === title);
         }
     }
-
 
     const addSpecialty = (data) => {
 
@@ -45,17 +69,26 @@ const CollegeAdditionForm = ({closeEvent}) => {
 
         if(Array.isArray(specialties))
         {
-            return specialties.map(item => JSON.parse(item).title);
+            return specialties.map(item => item.title);
         }
     }
 
     const editSpecialties = (data) => {
 
+        console.log("first data ", data);
+
         if(data !== null)
         {
-            let specialtiesWithoutEdited = specialties.filter(item => JSON.parse(item).title !== specialtyTitleToEdit)
+            if(specialties.length > 1)
+            {
+                let specialtiesWithoutEdited = specialties.filter(item => item.title !== specialtyTitleToEdit)
 
-            setSpecialties([...specialtiesWithoutEdited, data]);
+                console.log(specialtiesWithoutEdited);
+
+                setSpecialties([...specialtiesWithoutEdited, data]);
+            }
+            else
+                setSpecialties([data]);
 
             setSpecialtyTitleToEdit(false);
         }
@@ -77,7 +110,7 @@ const CollegeAdditionForm = ({closeEvent}) => {
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Наименование</p>
                             <div className={style.InputBox}>
-                                <input type='text' placeholder='Название учреждения'></input>
+                                <input type='text' value={title} placeholder='Название учреждения'></input>
                             </div>
                         </div>
                         <div className={style.Item}>
@@ -96,14 +129,14 @@ const CollegeAdditionForm = ({closeEvent}) => {
                         </div>
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Форма собственности</p>
-                            <SelectModule defaultValue={collegeType} data={Ownership} actionFunc={setOwnershipValue} />
+                            <SelectModule defaultValue={ownershipValue} data={Ownership} actionFunc={setOwnershipValue} />
                         </div>
                     </div>
 
                     <div className={style.Row}>
                         <p className={style.DescTitle}>Ссылка на первоисточник</p>
                         <div className={style.InputBox}>
-                            <input type='text' placeholder='URL-адрес'></input>
+                            <input type='text' value={websiteRef} placeholder='URL-адрес'></input>
                         </div>
                     </div>
 
@@ -111,12 +144,12 @@ const CollegeAdditionForm = ({closeEvent}) => {
                     <div className={style.HorizPanel}>
                         <div className={style.Item}>
                             <div className={style.InputBox}>
-                                <input type='number' placeholder='Широта'></input>
+                                <input type='number' value={lat} placeholder='Широта'></input>
                             </div>
                         </div>
                         <div className={style.Item}>
                             <div className={style.InputBox}>
-                                <input type='number' placeholder='Долгота'></input>
+                                <input type='number' value={long} placeholder='Долгота'></input>
                             </div>
                         </div>
                     </div>
@@ -124,13 +157,13 @@ const CollegeAdditionForm = ({closeEvent}) => {
                     <div className={style.Row}>
                         <p className={style.DescTitle}>Локация</p>
                         <div className={style.InputBox}>
-                            <input type='text' placeholder='Название локации'></input>
+                            <input type='text' value={region} placeholder='Название локации'></input>
                         </div>
                     </div>
 
                     <p className={style.DescTitle}>Описание</p>
                     <div className={`${style.InputBox} ${style.DescPanel}`}>
-                        <textarea></textarea>
+                        <textarea>{description}</textarea>
                     </div>
 
 

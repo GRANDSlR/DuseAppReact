@@ -13,31 +13,31 @@ import style from './SpecialtyAdditionPanel.module.css';
 
 const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => {
 
-    const [title, setTitle] = useState(data !== null ? JSON.parse(data).title : '');
+    const [title, setTitle] = useState(data !== null ? data[0].title : '');
     
-    const [cost, setCost] = useState(data !== null ? JSON.parse(data).cost : '');
+    const [cost, setCost] = useState(data !== null ? data[0].cost : '');
 
-    const [freePlaces, setFreePlaces] = useState(data !== null ? JSON.parse(data).freePlaces : '');
+    const [freePlaces, setFreePlaces] = useState(data !== null ? data[0].freePlaces : '');
     
-    const [passingScore, setPassingScore] = useState(data !== null ? JSON.parse(data).passingScore : '');
+    const [passingScore, setPassingScore] = useState(data !== null ? data[0].passingScore : '');
 
-    const [description, setDescription] = useState(data !== null ? JSON.parse(data).description : '');
+    const [description, setDescription] = useState(data !== null ? data[0].description : '');
 
-    const [educationForm, setEducationForm] = useState(data !== null ? JSON.parse(data).educationForm : EducationFormFilterParams[0]);
+    const [educationForm, setEducationForm] = useState(data !== null ? EducationFormFilterParams[data[0].educationForm] : EducationFormFilterParams[0]);
 
 
     const getData = () => {
 
         if(verifyFields())
         {
-            additionAction(JSON.stringify({
+            additionAction({
                 title: title,
                 cost: cost,
                 freePlaces: freePlaces,
                 passingScore: passingScore,
                 description: description,
-                educationForm: educationForm
-            }));
+                educationForm: EducationFormFilterParams.indexOf(educationForm)
+            });
             closeEvent(false);
         }
     }

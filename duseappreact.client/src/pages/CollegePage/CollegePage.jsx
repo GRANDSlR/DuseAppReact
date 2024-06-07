@@ -15,6 +15,8 @@ import {CollegeTypeFilterParams, Ownership, EducationFormFilterParams} from '../
 import calculateDistance from '../../services/DistanceCalculationService.js';
 import getCommentsByCollegeId from '../../services/CommentFetches.js';
 import currCollegeData from '../../services/CollegeGlobalStates.js';
+import CollegeAdditionForm from '../../components/CollegeAdditionForm/CollegeAdditionForm.jsx';
+//
 import ExceptionState from '../../services/ApplicationException.js';
 import PopUpState from '../../services/PopUpState.js';
 import UserModel from '../../services/User/UserModel.js';
@@ -35,6 +37,30 @@ const CollegePage = observer(() => {
     const [updateData, setUpdateData] = useState(null);
 
     const [commentDeleteState, setCommentDeleteState] = useState(false);
+
+    // const [collegeEditionForm, setCollegeEditionForm] = useState(false);
+
+
+    const closeCollegeEditionEvent = (state) => {
+        PopUpState.setPopUpState(state, null);
+    }
+
+    const openCollegeEditionPanel = () => {
+
+        PopUpState.setPopUpState(true, <CollegeAdditionForm closeEvent={closeCollegeEditionEvent} data={JSON.stringify(college)}/>);
+
+    }
+
+
+    // useEffect(() => {
+
+    //     if(collegeEditionForm)
+    //     {
+    //         PopUpState.setPopUpState(true, <CollegeAdditionForm closeEvent={closeCollegeEditionEvent} data={JSON.stringify(college)}/>);
+    //     }
+
+    // }, [collegeEditionForm])
+
 
     const setCommentDeleteStateAction = () =>
         setCommentDeleteState(!commentDeleteState);
@@ -146,7 +172,7 @@ const CollegePage = observer(() => {
                 <div>
                     <p>{college.collegeLocation.region}</p>
                     <hr></hr>
-                    <p className={style.CollegeTitle}>{college.collegeHeader.title}</p>
+                    <p className={style.CollegeTitle} onClick={() => openCollegeEditionPanel()}>{college.collegeHeader.title}</p>
                 </div>
             </div>
             <div className={style.WindowBack}>
