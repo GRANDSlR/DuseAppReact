@@ -3,6 +3,8 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "circular-json": "^0.5.9",
+    "core-js": "^3.37.1",
+    "flowbite-react": "^0.9.0",
     "jsonwebtoken": "^9.0.2",
     "leaflet": "^1.9.4",
     "mobx": "^6.12.3",
@@ -10,6 +12,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
+    "react-progressbar": "^15.4.1",
     "react-range-slider": "^0.2.1",
     "typescript": "^5.4.5"
   }

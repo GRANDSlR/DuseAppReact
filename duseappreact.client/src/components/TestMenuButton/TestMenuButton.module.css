@@ -1,0 +1,29 @@
+
+.MenuItem{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaeaea;
+    border: none;
+    color: #999;    
+    padding: 12px 20px;
+}
+
+.MenuItem:focus{
+    outline: none;
+}
+
+.MenuItem p{
+    margin: 0;
+}
+
+.MenuItem img{
+    margin-left: auto;
+    width: 20px;
+}
+
+.MenuItem.Active{
+    background-color: var(--main-blue-color);
+    color: white;
+}

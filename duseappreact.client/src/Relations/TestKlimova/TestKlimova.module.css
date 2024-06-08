@@ -1,0 +1,51 @@
+
+.BarPanel{
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+
+.BarPanel .RetryButton{
+    padding: 8x;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid var(--main-red-color);
+    color: var(--main-red-color);
+    border-radius: 0;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.BarPanel .RetryButton:focus{
+    outline: none;
+}
+
+.BarPanel .BarBox{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 38px;
+    border: 1px solid #999;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border-left: 0;
+}
+
+.BarBox #BarDescription{
+    position: absolute;
+    top: 50%;
+    left: 85px;
+    transform: translate(-50%, -50%);
+    color: #999;
+    font-weight: 500;
+    margin: 0;
+    /* color: #8eaaf1; */
+}
+
+
+.Content{
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    gap: 20px;
+}
