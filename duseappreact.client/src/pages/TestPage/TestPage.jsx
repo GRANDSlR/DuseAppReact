@@ -22,7 +22,7 @@ const TestPage = () => {
 
             </div>
             <div className={style.ContentPanel}>
-                <TestKlimova />
+                {activeTest === 0 && <TestKlimova />}
             </div>
         </div>
     );
