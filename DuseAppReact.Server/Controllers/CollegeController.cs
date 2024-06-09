@@ -67,6 +67,23 @@ namespace DuseAppReact.Server.Controllers
             return Ok(FilteredCollegeList);
         }
 
+        [HttpPost("getcollegesbyspecialtykeys")]
+        public async Task<ActionResult<List<CollegeData>>> GetCollegesBySpecialtyKeys([FromBody] SpecialtyKeyRequest specialtyKeyRequest)
+        {
+
+            var CollegeHeaderResultList = await _collegeDataConfiguration.GetColleges("");
+
+            if (!CollegeHeaderResultList.IsSuccess)
+                return BadRequest(CollegeHeaderResultList.ErrorMessage);
+
+            var FilteredCollegeList = CollegeHeaderResultList.Value
+                .Where(college => college.SpecialtyList
+                .Where(specialty => specialtyKeyRequest.keys.Any(element => specialty.Description.Contains(element))).ToList().Count > 0).ToList();
+
+
+            return Ok(FilteredCollegeList);
+        }
+
         [HttpGet("getallspecialties")]
         public async Task<ActionResult<List<string>>> GetAllSpecialties()
         {
@@ -94,7 +111,7 @@ namespace DuseAppReact.Server.Controllers
             => Ok(await _collegeDataConfiguration.DeleteCollege(id));
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<int>> UpdateCollege(int id, [FromBody] CollegeDataRequest collegeDataRequest)
+        public async Task<ActionResult<CollegeData>> UpdateCollege(int id, [FromBody] CollegeDataRequest collegeDataRequest)
         {
             var CollegeDataResult = CollegeConverter.CDRequestToCDModel(id, collegeDataRequest);
 

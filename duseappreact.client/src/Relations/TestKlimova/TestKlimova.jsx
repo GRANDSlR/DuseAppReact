@@ -2,19 +2,35 @@ import React, { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import style from './TestKlimova.module.css';
 //
-import {QuestionRespoce, QuestionData} from './Data.js';
+import {QuestionData} from './Data.js';
 //
 import TestKlimovaQuestion from '../../components/TestKlimovaQuestion/TestKlimovaQuestion.jsx';
+//
+import TestKlimovaResult from './TestKlimovaResult/TestKlimovaResult.jsx';
+import ExceptionState from '../../services/ApplicationException.js';
+
 
 const TestKlimova = () => {
 
     const [completedQuestions, setCompletedQuestions] = useState(0);
 
     const [questionState, setQuestionState] = useState(new Array(QuestionData.length).fill(null));
+      
+    const [showResult, setShowResult] = useState(false);
 
     const clearData = () => {
         setCompletedQuestions(0);
         setQuestionState(new Array(QuestionData.length).fill(null));
+        setShowResult(false);
+    }
+
+    
+    const handleSubmission = () => {
+
+        if(completedQuestions === QuestionData.length)
+            setShowResult(true); 
+        else
+            ExceptionState.setException(true, "Ошибка. Вы не заполнили все поля");
     }
 
     const fillQuestionState = (id, state) => {
@@ -30,7 +46,10 @@ const TestKlimova = () => {
     return(
         <div className={style.MainBox}>
 
-            <p id={style.Certificate}>* Тест на определение типа будущей профессии сделан Г. В. Резапкиной для профориентации школьников на основе аналогичной методики Е. А. Климова и использует его классификацию профессий: природа, техника, знак, художественный образ, человек.</p>
+            <p id={style.Certificate}>* Тест на определение типа будущей профессии сделан Г. В. Резапкиной 
+            для профориентации школьников на основе аналогичной методики Е. А. Климова и использует его 
+            классификацию профессий: природа, техника, знак, искусство, человек.
+            </p>
 
             <div className={style.BarPanel}>
                 <button className={style.RetryButton} onClick={() => clearData()}>Очистить</button>
@@ -49,8 +68,12 @@ const TestKlimova = () => {
 
             <div className={style.SubmitBox}>
                 <p>Вы уверены в своем ответе?</p>
-                <button className={style.SubmitButton}>Отправить</button>
+                <button className={style.SubmitButton} onClick={handleSubmission}>Отправить</button>
             </div>
+
+            {completedQuestions === QuestionData.length && showResult  &&
+                <TestKlimovaResult data={questionState} />
+            }
         </div>
     );
 }

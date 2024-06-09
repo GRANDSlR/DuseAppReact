@@ -37,7 +37,8 @@ namespace DuseAppReact.Core.Converters
 
             foreach(var specialty in collegeDataRequest.specialtyList)
             {
-                specialties.Add(Speсialty.Create(1, 
+                specialties.Add(Speсialty.Create(
+                    specialty.specialtyId, 
                     specialty.Title, 
                     specialty.Description, 
                     specialty.Cost, 

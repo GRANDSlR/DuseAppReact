@@ -1,0 +1,35 @@
+
+.MainBox{
+    width: 100%;
+}
+
+.TableBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TableBox .ResultTable{
+    /* border-spacing: inherit; */
+    border: none;
+}
+
+.TableBox .ResultTable td{
+    border: none;
+    padding: 0;
+    padding: 3px 10px;
+    text-align: end;
+}
+
+.TableBox .ResultTable td p{
+    margin: 0;
+    color: #999;
+    font-weight: 500;
+}
+
+.TableBox .ResultTable td.ProgressBox{
+    height: fit-content;
+    padding: 0;
+    min-width: 200px;
+    /* border-left: 2px solid #999; */
+}

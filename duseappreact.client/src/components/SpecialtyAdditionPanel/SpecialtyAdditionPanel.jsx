@@ -13,6 +13,8 @@ import style from './SpecialtyAdditionPanel.module.css';
 
 const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => {
 
+    const [specialtyId, setSpecialtyId] = useState(data !== null ? data[0].specialtyId : 1);
+
     const [title, setTitle] = useState(data !== null ? data[0].title : '');
     
     const [cost, setCost] = useState(data !== null ? data[0].cost : '');
@@ -33,6 +35,7 @@ const SpecialtyAdditionPanel = observer(({closeEvent, data, additionAction}) => 
 
             console.log(educationForm);
             additionAction({
+                specialtyId: specialtyId,
                 title: title,
                 cost: cost,
                 freePlaces: freePlaces,

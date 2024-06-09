@@ -82,7 +82,6 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                    .SetProperty(b => b.EducationForm, b => college.EducationForm.ToString())
                    .SetProperty(b => b.PassingScore, b => college.PassingScore));
 
-
             return college.SpecialtyId;
         }
 

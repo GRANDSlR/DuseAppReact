@@ -6,8 +6,12 @@
         CollegeDescriptionRequest collegeDescription,
         CollegeLocationRequest collegeLocation,
         SpecialtyRequest[] specialtyList
-        /*List<SpecialtyRequest> specialtyRequestList*/
     );
+
+    public record SpecialtyKeyRequest(
+        string[] keys
+        );
+
     public record CollegeFilterRequest(
         string title,
         string[] specialties,
@@ -36,6 +40,7 @@
         );
 
     public record SpecialtyRequest(
+        int specialtyId,
         string Title,
         string Description,
         double Cost,

@@ -2,7 +2,9 @@
 import React from 'react';
 import style from './SpecialtyPanel.module.css';
 
-export default function SpecialtyPanel ({speсialtyList, actionClick}) {
+const SpecialtyPanel = ({speсialtyList, actionClick}) => {
+
+    console.log(speсialtyList);
 
     const selectElement = (specialty) => {
 
@@ -22,3 +24,5 @@ export default function SpecialtyPanel ({speсialtyList, actionClick}) {
         </div>
     );
 }
+
+export default SpecialtyPanel;

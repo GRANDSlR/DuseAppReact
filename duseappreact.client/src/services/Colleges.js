@@ -126,3 +126,26 @@ export const deleteCollege = async (id) => {
     throw error;
   }
 };
+
+export const getCollegesBySpecialtyKeys = async (keys) => {
+  try {
+    const response = await fetch(`/college/getcollegesbyspecialtykeys`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(keys)
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  };
+};

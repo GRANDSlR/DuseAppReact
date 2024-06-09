@@ -49,6 +49,7 @@ const CollegePage = observer(() => {
         {
             await updateCollege(college.collegeHeader.collegeId, data)
             .then(updatedCollegeId => {
+                console.log(updatedCollegeId);
                 ExceptionState.setException(true, "Изменения сохранены");
             })
             .catch(error => {
