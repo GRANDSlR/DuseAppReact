@@ -1,0 +1,146 @@
+
+.ImgBox{
+    position: relative;
+}
+
+.ImgBox img{
+    width: 100vw;
+}
+
+.ImgBox .PageDescription{
+    position: absolute;
+    top: 50vh;
+    left: 60px;
+    transform: translate(0, -60%);
+}
+
+.ImgBox .PageDescription p{
+    max-width: 40vw;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
+    margin: 0;
+}
+
+.ImgBox .PageDescription .Title{
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 0.9;
+    margin-bottom: 40px;
+}
+
+.TestInfoBack{
+    background-color: var(--light-gray-back-color);
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.TestInfoBox{
+    transform: translateY(-80px);
+    /* top: -40px; */
+    /* width: 80vw; */
+    /* width: 1000px; */
+    margin: 0 60px;
+    width: 100%;
+    min-height: 200px;
+    box-shadow: 0 0px 2px 0px #dad9d9;
+    background-color: white;
+    display: flex;
+    padding: 60px;
+    display: flex;
+    /* align-items: center; */
+}
+
+.Description{
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.Description img{
+    margin-top: auto;
+    width: 200px;
+}
+
+.Description p{
+    /* color: white; */
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.Description .Header{
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+
+.TestInfoBox .ItemBox{
+    box-shadow: 0 0px 2px 0px #dad9d9;
+    margin-left: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    min-width: 350px;
+    transition: 0.2s ease;
+
+}
+
+.TestInfoBox .ItemBox:hover{
+    box-shadow: 0 0px 8px 0px #dad9d9;
+    transition: 0.2s ease;
+
+}
+
+.ItemBox p{
+    margin: 20px 0;
+    font-weight: 500;
+    line-height: 1.2;
+    max-width: 248px;
+    /* font-size: 17px; */
+}
+
+.ItemBox .Title{
+    font-size: 18px;
+    max-width: none;
+    font-weight: 600;
+
+}
+
+.ItemBox .Line{
+    height: 3px;
+    background-color: #242424;
+    width: 40px;
+
+}
+
+.ItemBox .Link{
+    text-decoration: none;
+    /* text-underline-position: above; */
+    color: #242424;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.ItemBox .Link:hover{
+    text-decoration: underline;
+}
+
+.ItemBox .Link img{
+    width: 12px;
+    margin-bottom: 1px;
+    margin-left: 5px;
+}
+
+.ItemBox .Link:focus{
+    text-underline-position: auto;
+}

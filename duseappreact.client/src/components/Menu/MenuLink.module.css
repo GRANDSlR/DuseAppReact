@@ -62,9 +62,17 @@
     transition: height 0.2s;
 }
 
-.MenuLink.active.Falling:after {
+.MenuLink.active.Falling:after{
     bottom: 2px;
 }
+
+.MenuLink.Falling::after{
+    bottom: 2px;
+}
+
+/* .MenuLink.active.Falling:after {
+    bottom: 0px;
+} */
 
  .MenuLink:after {
     content: "";

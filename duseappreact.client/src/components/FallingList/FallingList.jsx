@@ -22,7 +22,7 @@ const FallingList = ({type, title, data}) => {
         <span
         className={ 
           type == 'header' ?
-          (Array.isArray(data) && useIsActiveButtonFromData(data) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active} ${menuLinkStyle.Falling}` : menuLinkStyle.MenuLink)
+          (Array.isArray(data) && useIsActiveButtonFromData(data) ? `${menuLinkStyle.MenuLink} ${menuLinkStyle.active} ${menuLinkStyle.Falling}` : `${menuLinkStyle.MenuLink} ${menuLinkStyle.Falling}`)
         : menuLinkStyle.MenuFooter}>
           {title}</span>
         <img alt='Circumflexus' src={type == 'header' ? CircumflexusGrey : CircumflexusBlue} className={type == 'header' ? style.Circumflexus : style.CircumflexusBlue}/>

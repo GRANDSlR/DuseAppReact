@@ -3,12 +3,14 @@
     z-index: 400;
     position: fixed;
     padding: 0 25px;
+    /* padding: 0 60px; */
     margin-right: 200px;
     top: 0;
     left: 0;
     background-color: white;
     height: 70px;
     width: calc(100vw - 55px);
+    /* width: calc(100vw - 110px); */
     display: flex;
     align-items: center;
     border-bottom: 1px solid #EDEFF4;
