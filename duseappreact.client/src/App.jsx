@@ -10,6 +10,7 @@ import CollegePage from './pages/CollegePage/CollegePage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import SearchPage from './pages/SearchPage/SearchPage.jsx';
 import TestPage from './pages/TestPage/TestPage.jsx'; 
+import GuidePage from './pages/GuidePage/GuidePage.jsx';
 
 const App = observer(() => {
 
@@ -22,6 +23,7 @@ const App = observer(() => {
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="/page" element={<CollegePage/>} />
         <Route path="/test" element={<TestPage/>} />
+        <Route path="/guide" element={<GuidePage/>} />
       </Routes>
       <Footer />
     </Router>

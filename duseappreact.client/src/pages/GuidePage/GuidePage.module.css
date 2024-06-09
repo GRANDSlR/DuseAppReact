@@ -1,0 +1,21 @@
+
+.MainBox{
+    display: flex;
+
+}
+
+.MainBox .MenuPanel{
+    background-color: #f6f6f6;
+    min-width: 250px;
+    padding: 30px 20px;
+}
+
+.MainBox .MenuPanel .MenuItem{
+    margin-bottom: 10px;
+}
+
+
+.MainBox .ContentPanel{
+    padding: 30px 5vw;
+    width: 100%;
+}

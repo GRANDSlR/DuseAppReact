@@ -1,0 +1,35 @@
+
+.MainBox p{
+    color: #999;
+    font-weight: 500;
+    margin: 0;
+}
+
+.Element{
+    margin: 20px 0;
+    /* color: #999; */
+    font-weight: 600;
+    padding: 20px;
+}
+
+.Element img{
+    box-shadow: 0 0px 2px 0px #dad9d9;
+}
+
+.Element ul {
+    color: #999;
+    font-weight: 500;
+}
+
+.Element .ImgItem{
+    margin-top: 10px;
+    list-style-type: none;
+}
+
+p.Header{
+    color: #242424;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+
+}
