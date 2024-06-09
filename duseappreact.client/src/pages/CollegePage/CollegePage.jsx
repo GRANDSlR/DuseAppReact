@@ -290,7 +290,7 @@ const CollegePage = observer(() => {
                     </div>
                     <div className={style.SecondaryContent}>
 
-                        {UserModel.verifyUser() && 
+                        {(UserModel.userData !== null && JSON.parse(UserModel.userData).role === 0 ) && 
                             <div className={`${style.Content} ${style.Description}`}>
                                 <button type='button' className={`${style.Button} ${style.Edit}`}  onClick={() => openCollegeEditionPanel()}>Редактировать</button>
                                 <button type='button' className={`${style.Button} ${style.Delete}`}  onClick={() => deleteCollegeEvent()}>Удалить</button>

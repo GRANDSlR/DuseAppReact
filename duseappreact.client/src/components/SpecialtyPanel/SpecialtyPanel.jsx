@@ -4,8 +4,6 @@ import style from './SpecialtyPanel.module.css';
 
 const SpecialtyPanel = ({speсialtyList, actionClick}) => {
 
-    console.log(speсialtyList);
-
     const selectElement = (specialty) => {
 
         if (actionClick !== null)

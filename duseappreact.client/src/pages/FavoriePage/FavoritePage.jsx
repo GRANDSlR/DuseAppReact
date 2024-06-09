@@ -140,7 +140,7 @@ const FavoritePage = observer(() => {
                         {Array.isArray(getCollegeObjectArray()) && getCollegeObjectArray()!='' ? getCollegeObjectArray().map((college, index) => 
                             <tr key={index}>
                                 <td className={style.TableCollegeHeader}>
-                                    <NavLink to={'/collegePage'}  className={style.CollegeTitle} onClick={() => currCollegeData.setData(college)}>
+                                    <NavLink to={'/page'}  className={style.CollegeTitle} onClick={() => currCollegeData.setData(college)}>
                                         {college.collegeHeader.title}
                                     </NavLink>
                                     <p>{college.collegeLocation.region}</p>
