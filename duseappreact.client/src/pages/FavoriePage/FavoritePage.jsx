@@ -92,7 +92,8 @@ const FavoritePage = observer(() => {
     return (
         <div className={style.MainWindow}>
             <div className={style.HelloBox}>
-                <p id={style.HelloTitle}>НАЧНИ ИССЛЕДОВАТЬ СЕЙЧАС</p>
+                {/* <p id={style.HelloTitle}>НАЧНИ ИССЛЕДОВАТЬ СЕЙЧАС</p> */}
+                <p id={style.HelloTitle}>Начни исследовать сейчас</p>
                 <p id={style.HelloDescription}>Войдите в аккаунт чтобы получить полный доступ к функционалу нашего сервиса </p>
                 <button type='submit' className={style.UserAuthButton}>
                     <img src={Avatar}></img>

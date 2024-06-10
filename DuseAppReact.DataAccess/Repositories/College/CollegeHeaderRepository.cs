@@ -24,7 +24,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .ToListAsync();
 
             var colleges = collegeEntities
-                .Select(a => CollegeHeader.Create(a.CollegeId, a.Title, $"DuseAppReact.Resources/{a.CollegeId}.png"))
+                .Select(a => CollegeHeader.Create(a.CollegeId, a.Title, a.Img))
                 .ToList();
 
             return colleges;
@@ -37,7 +37,7 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
                 .ToListAsync();
 
             var colleges = collegeEntities
-                .Select(a => CollegeHeader.Create(a.CollegeId, a.Title, $"DuseAppReact.Resources/{a.CollegeId}.png"))
+                .Select(a => CollegeHeader.Create(a.CollegeId, a.Title, a.Img))
                 .ToList();
 
             return colleges;
@@ -48,7 +48,8 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             var collegeEntity = new CollegeHeaderEntity
             {
                 CollegeId = college.CollegeId,
-                Title = college.Title
+                Title = college.Title,
+                Img = college.Img
             };
 
             await _context.Colleges.AddAsync(collegeEntity);
@@ -62,7 +63,8 @@ namespace DuseAppReact.DataAccess.Repositories.CollegeRep
             await _context.Colleges
                 .Where(b => b.CollegeId == college.CollegeId)
                 .ExecuteUpdateAsync(s => s
-                    .SetProperty(b => b.Title, b => college.Title));
+                    .SetProperty(b => b.Title, b => college.Title)
+                    .SetProperty(b => b.Img, b => college.Img));
 
             return college.CollegeId;
         }

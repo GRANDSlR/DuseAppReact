@@ -15,6 +15,8 @@ const TestKlimovaResult = ({data}) => {
 
     const [colleges, setColleges] = useState(null);
 
+    const [loading, setLoading] = useState(false);
+
     const calculateResults = (title) => {
 
         const valueArrayByTitle = QuestionRespoce.find(item => item.title === title)?.values;
@@ -22,7 +24,7 @@ const TestKlimovaResult = ({data}) => {
         let counter = 0;
 
         valueArrayByTitle.forEach(element => {
-            if(data[element] === 1)
+            if(data[element-1] === 1)
                 counter++;
         });
 
@@ -44,6 +46,8 @@ const TestKlimovaResult = ({data}) => {
 
     const getCollegeData = async() => {
 
+        setLoading(true);
+
         await getCollegesBySpecialtyKeys({keys: getMaxCalculateResults()})
         .then(collegeArray => {
             setColleges(collegeArray);
@@ -52,6 +56,9 @@ const TestKlimovaResult = ({data}) => {
             ExceptionState.setException(true, "Невозможно получить данные. " +`${error}`);
             console.error('Failed to update user:', error);
         });
+
+        setLoading(false);
+
     }
 
     useEffect(() => {
@@ -65,6 +72,8 @@ const TestKlimovaResult = ({data}) => {
 
         return appropriateSpecialtyList.map((specialty) => specialty.title)
     }
+
+    console.log(colleges);
 
     return (
         <div className={style.MainBox}>
@@ -99,7 +108,7 @@ const TestKlimovaResult = ({data}) => {
                             <th>Название</th>
                             <th>Подходящие специальности</th>
                         </tr>
-                    {colleges !== null && Array.isArray(colleges) &&
+                    { colleges !== null && Array.isArray(colleges) && colleges.length !== 0  ? (!loading ?
                         colleges.map((college, index) => (
                         <tr key={index}>
                             <td className={style.CollegeHeader}>
@@ -113,7 +122,43 @@ const TestKlimovaResult = ({data}) => {
                                 <SpecialtyPanel actionClick={null} speсialtyList={getRelevantSpecialtyNames(college.specialtyList)}/>
                             </td>
                         </tr>
-                        ))}
+                        ))
+                        :<>
+                            <tr className={style.LoadingRow}>
+                                <td>
+                                    <div className={`${style.Item} ${style.Title}`}></div>
+                                    <div className={`${style.Item} ${style.Location}`}></div>
+                                </td>
+                                <td>
+                                    <div className={style.SpecialtyBox}>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr className={style.LoadingRow}>
+                                <td>
+                                    <div className={`${style.Item} ${style.Title}`}></div>
+                                    <div className={`${style.Item} ${style.Location}`}></div>
+                                </td>
+                                <td>
+                                    <div className={style.SpecialtyBox}>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                        <div className={`${style.Item} ${style.Specialty}`}></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </>)
+                    :  
+                        <tr className={style.NonInfo}> 
+                            {/* <td><p>Информация отсутствует</p></td> */}
+                            <td colSpan={2}><p>Информация отсутствует</p></td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>

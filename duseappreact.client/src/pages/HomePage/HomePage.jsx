@@ -20,7 +20,7 @@ const HomePage = () => {
       <div className={style.TestInfoBack}>
         <div className={style.TestInfoBox}>
             <div className={style.Description}>
-              <p className={style.Header}>Тест вашей карьеры</p>
+              <p className={style.Header}>Ваша профессия</p>
               <p>Пройдите наш уникальный тест, чтобы узнать, какая профессия наиболее соответствует
                  вашим навыкам, интересам и личностным чертам. Наша функция прохождения теста на 
                  определение типа профессии поможет вам принять осознанное решение о выборе карьерного пути.</p>

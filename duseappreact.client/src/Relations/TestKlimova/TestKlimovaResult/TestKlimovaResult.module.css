@@ -67,3 +67,42 @@
     line-height: 1;
     font-weight: 600;
 }
+
+@keyframes opacityAnim {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.LoadingRow{
+    animation: opacityAnim 1.5s infinite;
+}
+
+.LoadingRow .Item{
+    background-color: #eaeaea;
+    border-radius: 15px;
+    height: 22px;
+    margin-bottom: 5px;
+    width: 130px;
+}
+
+.Item.Title{
+    width: 200px;
+}
+
+.LoadingRow .SpecialtyBox{
+    max-width: 430px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Item.Specialty{
+    margin-right: 5px;
+}
+
+/* .NonInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} */

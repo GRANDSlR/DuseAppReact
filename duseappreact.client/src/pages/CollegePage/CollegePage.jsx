@@ -192,6 +192,7 @@ const CollegePage = observer(() => {
     return (
         <div className={style.MainWindow}>
             <div className={style.HelloBox}>
+                <img src={college.collegeHeader.img}/>
                 <div>
                     <p>{college.collegeLocation.region}</p>
                     <hr></hr>

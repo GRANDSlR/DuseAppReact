@@ -30,7 +30,7 @@ const TestKlimova = () => {
         if(completedQuestions === QuestionData.length)
             setShowResult(true); 
         else
-            ExceptionState.setException(true, "Ошибка. Вы не заполнили все поля");
+            ExceptionState.setException(true, "Ошибка. Не все поля заполнены");
     }
 
     const fillQuestionState = (id, state) => {
@@ -59,21 +59,23 @@ const TestKlimova = () => {
                 </div>
             </div>
 
-            <div className={style.Content}>
-                {Array.isArray(QuestionData) && QuestionData.map((item, index) => 
-                    <TestKlimovaQuestion data={item} completedQuestionCount={completedQuestions} action={fillQuestionState}/>
-                )
+            <div className={style.ContentBox}>
+                <div className={style.Content}>
+                    {Array.isArray(QuestionData) && QuestionData.map((item, index) => 
+                        <TestKlimovaQuestion data={item} completedQuestionCount={completedQuestions} action={fillQuestionState}/>
+                    )
+                    }
+                </div>
+
+                <div className={style.SubmitBox}>
+                    <p>Вы уверены в своем ответе?</p>
+                    <button className={style.SubmitButton} onClick={handleSubmission}>Отправить</button>
+                </div>
+
+                {completedQuestions === QuestionData.length && showResult  &&
+                    <TestKlimovaResult data={questionState} />
                 }
             </div>
-
-            <div className={style.SubmitBox}>
-                <p>Вы уверены в своем ответе?</p>
-                <button className={style.SubmitButton} onClick={handleSubmission}>Отправить</button>
-            </div>
-
-            {completedQuestions === QuestionData.length && showResult  &&
-                <TestKlimovaResult data={questionState} />
-            }
         </div>
     );
 }

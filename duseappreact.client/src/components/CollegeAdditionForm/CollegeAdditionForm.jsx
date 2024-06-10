@@ -16,6 +16,8 @@ const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
 
     const [title, setTitle] = useState(data !== null ? JSON.parse(data).collegeHeader.title : '');
 
+    const [img, setImg] = useState(data !== null ? JSON.parse(data).collegeHeader.img : '');
+
     const [description, setDescription] = useState(data !== null ? JSON.parse(data).collegeDescription.description : '');
 
     const [collegeType, setCollegeType] = useState(data !== null ? CollegeTypeFilterParams[JSON.parse(data).collegeDescription.collegeType] : CollegeTypeFilterParams[0]);
@@ -103,7 +105,7 @@ const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
                 collegeHeader:{
                     collegeId: collegeId !== null ? collegeId : 0,
                     title: title,
-                    img: ''
+                    img: img
                 },
                 collegeDescription:{
                     description: description,
@@ -171,6 +173,71 @@ const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
         setSpecialtyTitleToEdit(false);
     }
 
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+      
+        reader.onloadend = () => {
+          const byteString = reader.result;
+          setImg(byteString);
+        };
+      
+        reader.readAsDataURL(file);
+      };
+
+    //   const handleFileUpload = (event) => {
+    //     const file = event.target.files[0];
+    //     const reader = new FileReader();
+      
+    //     reader.onload = (e) => {
+    //       const img = new Image();
+    //       img.src = e.target.result;
+      
+    //       img.onload = () => {
+    //         const canvas = document.createElement('canvas');
+    //         const ctx = canvas.getContext('2d');
+      
+    //         // Уменьшение размера изображения
+    //         const maxWidth = 800;
+    //         const maxHeight = 600;
+    //         let width = img.width;
+    //         let height = img.height;
+      
+    //         if (width > height) {
+    //           if (width > maxWidth) {
+    //             height *= maxWidth / width;
+    //             width = maxWidth;
+    //           }
+    //         } else {
+    //           if (height > maxHeight) {
+    //             width *= maxHeight / height;
+    //             height = maxHeight;
+    //           }
+    //         }
+      
+    //         canvas.width = width;
+    //         canvas.height = height;
+      
+    //         // Отрисовка уменьшенного изображения на холсте
+    //         ctx.drawImage(img, 0, 0, width, height);
+      
+    //         // Получение уменьшенного изображения в формате JPEG с заданным качеством
+    //         const reducedImageData = canvas.toDataURL('image/jpeg', 0.5);
+      
+    //         // Преобразование в байт-строку
+    //         const byteString = atob(reducedImageData.split(',')[1]);
+
+    //         setImg(byteString);
+      
+    //         console.log(byteString);
+    //       };
+    //     };
+      
+    //     reader.readAsDataURL(file);
+    //   };
+      
+      console.log(img);
+
     return (
 
         <div className={style.MainBox}>
@@ -192,10 +259,13 @@ const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {
                         </div>
                         <div className={style.Item}>
                             <p className={style.DescTitle}>Фото</p>
-                            <div className={style.InputBox}>
-                                <input type='text' placeholder='Путь'></input>
-                                <p className={style.InputButton}>Открыть</p>
-                            </div>
+                            {/* <div className={style.InputBox}> */}
+                                <label className={style.InputFile}>
+                                    <input type='file' onChange={handleFileUpload}></input>
+                                    <p className={style.Button}>Открыть</p>           
+                                </label>
+                                {/* <p className={style.InputButton}>Открыть</p> */}
+                            {/* </div> */}
                         </div>
                     </div>
 

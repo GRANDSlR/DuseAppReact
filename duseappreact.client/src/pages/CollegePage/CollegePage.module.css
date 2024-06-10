@@ -1,16 +1,24 @@
 
 
 .HelloBox{
-    background-color: #799FFF;
+    overflow: hidden;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 400px;
     /* padding: 60px 10vw 90px; */
     width: 100%;
+    position: relative;
+}
+
+.HelloBox img{
+    opacity: 60%;
+    width: 100vw;
 }
 
 .HelloBox div{
+    position: absolute;
     width: 70vw;
 }
 
@@ -24,7 +32,7 @@
 .HelloBox div p{
     text-align: center;
 
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
     letter-spacing: 0.05cap;
     font-weight: 600;
     font-size: 24px;
@@ -89,6 +97,10 @@
 .ContentPanel p{
     margin: 0;
     line-height: 1;
+}
+
+.ContentPanel .collegeDescription{
+    line-height: 1.2;
 }
 
 .ContentPanel .Headers{

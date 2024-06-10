@@ -6,7 +6,7 @@ import style from './TestKlimovaQuestion.module.css';
 
 const TestKlimovaQuestion = ({data, action, completedQuestionCount}) => {
 
-    const [activeState, setActiveState] = useState(null);
+    const [activeState, setActiveState] = useState(null); //default: null
 
     // useEffect(()=>{
     //     action(data.id, 1)

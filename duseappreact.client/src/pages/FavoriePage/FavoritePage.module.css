@@ -1,25 +1,29 @@
 
 .HelloBox{
     background-color: #799FFF;
-    padding: 60px 10vw 90px;
+    padding: 60px 60px 110px;
     width: 100%;
 }
 
 #HelloTitle{
     color: white;
-    font-size: 32px;
+    /* font-size: 32px; */
+    font-size: 60px;
     font-weight: 700;
+    width: 500px;
     margin: 0;
-    margin-bottom: 35px;
-    font-family: "Poppins", sans-serif;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    /* font-family: "Poppins", sans-serif; */
 }
 
 #HelloDescription{
+    line-height: 1.3;
     color: #E7ECFF;
     font-size: 20px;
     width: 550px;
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 .UserAuthButton{
@@ -58,16 +62,21 @@
 
 .ContentPanel{
     /* position: absolute; */
-    transform: translateY(-40px);
+    transform: translateY(-60px);
+
+    margin: 0 60px;
+    width: 100%;
+
     top: -40px;
     background-color: white;
-    width: fit-content;
+    /* width: fit-content; */
     box-shadow: 0 0px 2px 0px #dad9d9;
 
 }
 
 .ContentPanel table{
-    table-layout: fixed;
+    width: 100%;
+    /* table-layout: fixed; */
     border-collapse: collapse;
 
 }
