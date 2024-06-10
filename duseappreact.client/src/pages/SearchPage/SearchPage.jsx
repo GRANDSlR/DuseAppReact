@@ -12,13 +12,18 @@ import {EducationFormFilterParams, CollegeTypeFilterParams} from '../../services
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SelectModule/SortHandler.js';
 import CollegePreloader from '../../components/CollegePreloader/CollegePreloader.jsx';
-
+// import CollegeList from '../../services/CollegeListGlobalStates.js';
 
 export default function SearchPage() {
 
-    const [collegeData, setColleges] = useState(
-        sessionStorage.getItem('currCollegeData') != null ? 
-        JSON.parse(sessionStorage.getItem('currCollegeData')) : []);
+    const [collegeData, setColleges] = useState([]);
+        // CollegeList.data != null ? 
+        // CollegeList.data : []);
+
+    // const setColleges = (data) => {
+    //     setCollegeData(data);
+    //     CollegeList.data = data;
+    // }
 
     const [sortValue, setSortValue] = useState(sortValues[0]);
 
@@ -71,10 +76,10 @@ export default function SearchPage() {
         }
     }
     
-    useEffect(() => {
-        if(collegeData!=null)
-            sessionStorage.setItem('currCollegeData', JSON.stringify(collegeData));
-    }, [collegeData]);
+    // useEffect(() => {
+    //     if(collegeData!=null)
+    //         sessionStorage.setItem('currCollegeData', JSON.stringify(collegeData));
+    // }, [collegeData]);
 
     useEffect(() => {
 
@@ -88,7 +93,7 @@ export default function SearchPage() {
                 setColleges(result != null && result.length>0 ? result : null);
             }
         }
-        fetchData();
+            fetchData();
 
     }, [specialties, educationForm,
         collegeTypeFilterParams, sliderBarValues]);

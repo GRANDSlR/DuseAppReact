@@ -66,17 +66,8 @@ export const Colleges = observer(({collegeObjects}) => {
         function(position) 
         {
             
-          var latitude = position.coords.latitude;
-              
-          var longitude = position.coords.longitude;
-
           setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
 
-          console.log("Широта: " + latitude + ", Долгота: " + longitude);
-      
-          console.log(calculateDistance(latitude, longitude, 53,919208, 27,592652))
-      
-          // return {latitude, longitude};
         });
         } 
       else
@@ -129,11 +120,6 @@ export const Colleges = observer(({collegeObjects}) => {
             setSavedCollegesArray([...savedCollegesArray])
             sessionStorage.setItem('savedColleges', JSON.stringify(savedCollegesArray));
         }
-    }
-
-    const viewCoords = (coord) => {
-        console.log(coord)
-        return coord;
     }
       
     return (
