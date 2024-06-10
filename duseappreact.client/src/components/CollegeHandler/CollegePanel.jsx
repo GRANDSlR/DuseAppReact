@@ -163,7 +163,7 @@ export const Colleges = observer(({collegeObjects}) => {
                         <div className={style.AdministrationPanel}>
                             <div>
                                 <img src={websitePin} />
-                                <p>{college.collegeDescription.webSiteRef}</p>
+                                <a className={style.collegeRef} href={college.collegeDescription.webSiteRef}>{college.collegeDescription.webSiteRef}</a>
                             </div>
                             <div>
                                 <img src={locationPin} />

@@ -59,11 +59,11 @@ namespace DuseAppReact.Core.Models.College
             if (!Enum.TryParse(ownership, out Ownership ownershipEnum))
                 return Result<CollegeDescription>.Failure($"Ошибка преобразования {ownership} в Ownership");
 
-            if (description.Length > 400)
-                return Result<CollegeDescription>.Failure("Описание не должно быть длиннее 400 символов");
+            if (description.Length > 2000)
+                return Result<CollegeDescription>.Failure("Описание не должно быть длиннее 2000 символов");
 
-            if (webSiteRef.Length > 100)
-                return Result<CollegeDescription>.Failure("Ссылка не должна быть длиннее 100 символов");
+            if (webSiteRef.Length > 200)
+                return Result<CollegeDescription>.Failure("Ссылка не должна быть длиннее 200 символов");
 
             if (grade < 0 || grade > 5)
                 return Result<CollegeDescription>.Failure("Отметка не должна быть меньше 0 или больше 5");
