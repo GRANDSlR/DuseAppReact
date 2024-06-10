@@ -115,3 +115,11 @@
     margin: 0;
     margin-bottom: 15px;
 }
+
+
+.Preloader{
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    gap: 20px;
+}

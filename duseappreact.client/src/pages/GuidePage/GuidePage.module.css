@@ -18,4 +18,7 @@
 .MainBox .ContentPanel{
     padding: 30px 5vw;
     width: 100%;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    overflow-y: scroll;
 }

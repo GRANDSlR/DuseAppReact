@@ -6,10 +6,10 @@
 }
 
 .Element{
-    margin: 20px 0;
+    margin: 25px 0;
     /* color: #999; */
     font-weight: 600;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .Element img{
@@ -30,6 +30,6 @@ p.Header{
     color: #242424;
     font-weight: 600;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin: 15px 0;
 
 }

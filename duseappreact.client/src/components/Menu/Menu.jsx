@@ -23,6 +23,12 @@ function Header (){
               {'Тесты'}
             </NavLink>
           </li>
+
+          <li>
+            <NavLink to={'/guide'} className={ useIsActiveButton('guide') ? `${style.MenuLink} ${style.active}` : style.MenuLink}>
+              {'Помощь'}
+            </NavLink>
+          </li>
       </ul>
     );
 }

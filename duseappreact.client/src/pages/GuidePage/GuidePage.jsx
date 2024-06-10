@@ -4,6 +4,8 @@ import style from './GuidePage.module.css';
 import TestMenuButton from '../../components/TestMenuButton/TestMenuButton.jsx';
 //
 import Registration from '../../Relations/Guides/Registration/Registration.jsx';
+import Search from '../../Relations/Guides/Search/Search.jsx';
+import Favorite from '../../Relations/Guides/Favorite/Favorite.jsx';
 
 const GuidePage = () => {
 
@@ -18,12 +20,18 @@ const GuidePage = () => {
                 </div>
 
                 <div className={style.MenuItem} onClick={() => setActiveTest(1)}>
-                    <TestMenuButton message={'Чат'} state={activeTest} value={1}/>
+                    <TestMenuButton message={'Поиск и фильтрация'} state={activeTest} value={1}/>
+                </div>
+
+                <div className={style.MenuItem} onClick={() => setActiveTest(2)}>
+                    <TestMenuButton message={'Избранное'} state={activeTest} value={2}/>
                 </div>
 
             </div>
             <div className={style.ContentPanel}>
                 {activeTest === 0 && <Registration />}
+                {activeTest === 1 && <Search />}
+                {activeTest === 2 && <Favorite />}
             </div>
         </div>
     );

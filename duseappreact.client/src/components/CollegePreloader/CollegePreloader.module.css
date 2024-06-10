@@ -1,0 +1,44 @@
+
+.MainBox{
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    animation: opacityAnim 1.5s infinite;
+}
+
+.MainBox .Elem{
+    border-radius: 15px;
+    height: 30px;
+    background-color: #eaeaea;
+    margin-bottom: 10px;
+}
+
+.Elem.Title{
+    width: 100%;
+    /* margin: 0; */
+    margin-bottom: 8px;
+}
+
+.Elem.Grade{
+    width: 30%;
+    margin-bottom: 15px;
+}
+
+.Elem.Body{
+    width: 100%;
+    height: 80px;
+}
+
+.Elem.Button{
+    margin-bottom: 0;
+    margin-left: auto;
+    width: 120px;
+}
+
+@keyframes opacityAnim {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+  

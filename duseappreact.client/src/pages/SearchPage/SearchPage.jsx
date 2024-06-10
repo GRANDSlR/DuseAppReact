@@ -11,6 +11,8 @@ import CheckBoxPanel from '../../components/CheckBoxPanel/CheckBoxPanel.jsx';
 import {EducationFormFilterParams, CollegeTypeFilterParams} from '../../services/DataCarrier.js';
 import RangeSlider from '../../components/RangeSlider/RangeSlider.jsx';
 import {sortData as sortValues, sortByTitle, sortByTitleReverse, sortByGrade, sortByGradeReverse} from '../../components/SelectModule/SortHandler.js';
+import CollegePreloader from '../../components/CollegePreloader/CollegePreloader.jsx';
+
 
 export default function SearchPage() {
 
@@ -175,7 +177,20 @@ export default function SearchPage() {
                         </div>
                     </div>
                     <div className={style.ResultPanel}>
-                        {loading ? <div className={style.Preloader}><p>Loading...</p></div> : <Colleges collegeObjects={collegeData} />}
+                        {/* <div className={style.Preloader}>
+                            <CollegePreloader />
+                            <CollegePreloader />
+                            <CollegePreloader />
+                            <CollegePreloader />
+                        </div> */}
+                        {loading ? 
+                        <div className={style.Preloader}>
+                            <CollegePreloader />
+                            <CollegePreloader />
+                            <CollegePreloader />
+                            <CollegePreloader />
+                        </div> 
+                        : <Colleges collegeObjects={collegeData} />}
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ const HomePage = () => {
       <div className={style.ImgBox}>
         <img src={mainPicture}/>
         <div className={style.PageDescription}>
-          <p className={style.Title}>Твое будущее начинается сейчас</p>
-          <p>Apply to college for the first time or transfer to complete your degree. Navigate your entire college application journey with Common App.</p>
+          <p className={style.Title}>Ваше будущее начинается сейчас</p>
+          <p>Мы предлагаем удобный и надежный инструмент для нахождения и выбора идеального образовательного учреждения. Начните свой путь к знаниям сегодня и доверьтесь нам.</p>
         </div>
       </div>
 

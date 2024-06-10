@@ -54,14 +54,39 @@ export const Colleges = observer(({collegeObjects}) => {
 
     const [userCoords, setUserCoords] = useState(null);
 
-    const setUserLocation = () => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
+    // const setUserLocation = () => {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
+    //     });
+    // }
+
+    const getUserLocation = () => {
+        if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+        function(position) 
+        {
+            
+          var latitude = position.coords.latitude;
+              
+          var longitude = position.coords.longitude;
+
+          setUserCoords({lat: position.coords.latitude, long: position.coords.longitude});
+
+          console.log("Широта: " + latitude + ", Долгота: " + longitude);
+      
+          console.log(calculateDistance(latitude, longitude, 53,919208, 27,592652))
+      
+          // return {latitude, longitude};
         });
-    }
+        } 
+      else
+       {
+      console.log("Геолокация не поддерживается вашим браузером.");
+      }
+      }
 
     useEffect(() => {
-        setUserLocation();
+        getUserLocation();
     }, []);
 
     const [isVerifyUsersCookies, setVerifyUsersCookies] = useState(false);
@@ -105,6 +130,11 @@ export const Colleges = observer(({collegeObjects}) => {
             sessionStorage.setItem('savedColleges', JSON.stringify(savedCollegesArray));
         }
     }
+
+    const viewCoords = (coord) => {
+        console.log(coord)
+        return coord;
+    }
       
     return (
         <div className={style.Cards}>
@@ -126,7 +156,6 @@ export const Colleges = observer(({collegeObjects}) => {
                         ))}
                     </div>
 
-
                     <SpecialtyPanel  actionClick={null} speсialtyList={college.specialtyList.map((item) => item.title)}/>
 
                     <div className={style.InfoPanel}>
@@ -142,9 +171,10 @@ export const Colleges = observer(({collegeObjects}) => {
                                     {userCoords != null ? 
                                         <span> {calculateDistance(
                                         parseFloat(userCoords.lat), 
-                                        parseFloat(userCoords.long), 
-                                        parseFloat(college.collegeLocation.lat), 
-                                        parseFloat(college.collegeLocation.long)
+                                        parseFloat(userCoords.long),
+                                        parseFloat(college.collegeLocation.lat),
+                                        parseFloat(college.collegeLocation.long) 
+
                                     )} км</span> :
                                     <span>Разрешите использование вашей геолокации</span>}
                                 </p>
