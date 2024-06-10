@@ -70,6 +70,7 @@ services.AddScoped<ICollegeRepositoryWithId<CollegeLocation>, CollegeLocationRep
 services.AddScoped<ICollegeRepositoryWithId<Speñialty>, CollegeSpecialtyRepository>();
 services.AddScoped<ICollegeRepositoryWithIdList<College_Specialty>, College_SpecialtyRepository>();
 services.AddScoped<IUserRepository<UserModel>, UserRepository>();
+services.AddScoped<ICollegeRepositoryForSpecialty<Speñialty>, CollegeSpecialtyRepository>();
 
 services.AddScoped<ICommentRepository<CommentModel>, CommentRepository>();
 

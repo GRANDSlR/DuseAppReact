@@ -15,14 +15,14 @@ namespace DuseAppReact.DataAccess.Configurations.College
         private readonly ICollegeRepositoryWithTitle<CollegeHeader> _collegeHeaderRepository;
         private readonly ICollegeRepositoryWithIdAndGrade<CollegeDescription> _collegeDescriptionRepository;
         private readonly ICollegeRepositoryWithId<CollegeLocation> _collegeLocationRepository;
-        private readonly ICollegeRepositoryWithId<Speсialty> _speсialtyRepository;
+        private readonly ICollegeRepositoryForSpecialty<Speсialty> _speсialtyRepository;
         private readonly ICollegeRepositoryWithIdList<College_Specialty> _college_SpecialtyRepository;
 
         public CollegeDataConfiguration(
             ICollegeRepositoryWithTitle<CollegeHeader> collegeHeaderRepository,
             ICollegeRepositoryWithIdAndGrade<CollegeDescription> collegeDescriptionRepository,
             ICollegeRepositoryWithId<CollegeLocation> collegeLocationRepository,
-            ICollegeRepositoryWithId<Speсialty> speсialtyRepository,
+            ICollegeRepositoryForSpecialty<Speсialty> speсialtyRepository,
             ICollegeRepositoryWithIdList<College_Specialty> college_SpecialtyRepository)
         {
             _collegeHeaderRepository = collegeHeaderRepository;
@@ -217,10 +217,18 @@ namespace DuseAppReact.DataAccess.Configurations.College
 
             int updatedLocationId = await _collegeLocationRepository.Update(collegeData.CollegeLocation);
 
-            int updatedSpecialtyId;
 
             foreach (var updatedSpecialty in collegeData.SpecialtyList)
-                updatedSpecialtyId = await _speсialtyRepository.Update(updatedSpecialty);
+            {
+                var updatedSpecialtyResult = await _speсialtyRepository.Update(updatedSpecialty, updatedCollegeId);
+
+                if(!updatedSpecialtyResult.IsSuccess)
+                {
+                    int specialtyId = await _speсialtyRepository.Create(updatedSpecialty);
+
+                    int college_SpecialtyId = await _college_SpecialtyRepository.Create(College_Specialty.Create(1, collegeId, specialtyId).Value);
+                }
+            }
 
             return collegeId;
         }

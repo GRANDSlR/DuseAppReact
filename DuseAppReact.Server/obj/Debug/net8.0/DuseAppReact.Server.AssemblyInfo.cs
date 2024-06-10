@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DuseAppReact.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82b1b14c6b8b20b168ae4252dadbf2323ae24e42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db4cb42a29372fbf5b1f681c196a99c9649e727c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DuseAppReact.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DuseAppReact.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
