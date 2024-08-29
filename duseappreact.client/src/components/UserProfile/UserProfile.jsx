@@ -6,13 +6,13 @@ import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 import UserIcon from './img/DefaultUserIcon.svg';
 //
-import {updateUser, deleteUser, login} from '../../services/User/UserFetches.js';
-import {deleteCookies} from '../../services/CookieService.js';
+import {updateUser, deleteUser, login} from '../../entities/UserFetches.js';
+import {deleteCookies} from '../../features/cookies/CookieService.js';
 //
 import { observer } from 'mobx-react';
 //
-import UserModel from '../../services/User/UserModel.js';
-import ExceptionState from '../../services/ApplicationException.js';
+import UserModel from '../../features/states/UserModel.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 
 
 

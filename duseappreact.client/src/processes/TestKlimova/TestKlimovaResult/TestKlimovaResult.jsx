@@ -4,10 +4,10 @@ import style from './TestKlimovaResult.module.css';
 import { NavLink } from 'react-router-dom';
 //
 import {QuestionRespoce} from '../Data.js';
-import {getCollegesBySpecialtyKeys} from '../../../services/Colleges.js';
-import ExceptionState from '../../../services/ApplicationException.js';
+import {getCollegesBySpecialtyKeys} from '../../../entities/CollegeFetches.js';
+import ExceptionState from '../../../features/exceptions/ApplicationException.js';
 import SpecialtyPanel from '../../../components/SpecialtyPanel/SpecialtyPanel.jsx';
-import currCollegeData from '../../../services/CollegeGlobalStates.js';
+import currCollegeData from '../../../features/states/CollegeGlobalStates.js';
 
 
 

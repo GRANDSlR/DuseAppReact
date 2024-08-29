@@ -10,11 +10,11 @@ import { observer } from 'mobx-react';
 import {getGradeItems} from '../CollegeHandler/CollegePanel.jsx';
 import ActionCheck from '../ActionCheck/ActionCheck.jsx';
 //
-import {getUserById} from '../../services/User/UserFetches.js';
-import {deleteComment} from '../../services/CommentFetches.js'
-import ExceptionState from '../../services/ApplicationException.js';
-import PopUpState from '../../services/PopUpState.js';
-import UserModel from '../../services/User/UserModel.js';
+import {getUserById} from '../../entities/UserFetches.js';
+import {deleteComment} from '../../entities/CommentFetches.js'
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
+import PopUpState from '../../features/states/PopUpState.js';
+import UserModel from '../../features/states/UserModel.js';
 
 
 

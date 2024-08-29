@@ -4,16 +4,16 @@ import { observer } from 'mobx-react';
 //
 import defaultUserIcon from './img/DefaultUserIcon.svg';
 //
-import UserModel from '../../services/User/UserModel.js';
-import ExceptionState from '../../services/ApplicationException.js';
+import UserModel from '../../features/states/UserModel.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 //
 import FullStar from '../CollegeHandler/img/FullStar.png';
 import EmptyStar from '../CollegeHandler/img/EmptyStar.png';
 import CrossImg from './img/Cross.png';
 import CheckImg from './img/Check.png';
 //
-import {updateGrade} from '../../services/Colleges.js';
-import {addComment} from '../../services/CommentFetches.js';
+import {updateGrade} from '../../entities/CollegeFetches.js';
+import {addComment} from '../../entities/CommentFetches.js';
 
 const CommentHandler = observer(({closeEvent, collegeId, updateEvent}) => {
 

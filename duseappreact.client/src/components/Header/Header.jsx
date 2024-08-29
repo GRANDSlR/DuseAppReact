@@ -10,18 +10,18 @@ import AuthHeader from '../AuthPanel/AuthPanel.jsx';
 // import AdditionButton from './img/AdditionButton.svg';
 import AdditionButton from '../SpecialtyFilterAdditionPanel/img/AdditionButtonNew.svg';
 import PopUpWindow from '../PopUpWindow/PopUpWindow.jsx';
-import {getCookies} from '../../services/CookieService.js';
+import {getCookies} from '../../features/cookies/CookieService.js';
 import UserProfile from '../UserProfile/UserProfile.jsx';
 import CollegeAdditionForm from '../CollegeAdditionForm/CollegeAdditionForm.jsx';
 import ErrorPanel from '../ErrorPanel/ErrorPanel.jsx';
 //
 import { observer } from 'mobx-react';
 //
-import UserModel from '../../services/User/UserModel.js';
-import PopUpState from '../../services/PopUpState.js';
-import ExceptionState from '../../services/ApplicationException.js';
+import UserModel from '../../features/states/UserModel.js';
+import PopUpState from '../../features/states/PopUpState.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 //
-import {createCollege} from '../../services/Colleges.js';
+import {createCollege} from '../../entities/CollegeFetches.js';
 
 
 const Header = observer(() => {

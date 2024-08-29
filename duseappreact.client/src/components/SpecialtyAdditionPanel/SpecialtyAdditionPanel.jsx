@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 
 import SelectModule from '../SelectModule/SelectModule.jsx';
 import { EducationFormFilterParams} from '../../services/DataCarrier.js';
-import ExceptionState from '../../services/ApplicationException.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 
 
 import CrossImg from '../GradePanel/img/cross.png';

@@ -5,12 +5,12 @@ import style from './AuthPanel.module.css';
 // import duseApp from './img/DuseApp.svg';
 import duseApp from '../Header/img/DuseAppNew.svg';
 //
-import {getUserByToken, register, login} from '../../services/User/UserFetches.js';
+import {getUserByToken, register, login} from '../../entities/UserFetches.js';
 //
 import { observer } from 'mobx-react';
 //
-import ExceptionState from '../../services/ApplicationException.js';
-import UserModel from '../../services/User/UserModel.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
+import UserModel from '../../features/states/UserModel.js';
 
 
 const AuthHeader = observer((closeEvent) => {

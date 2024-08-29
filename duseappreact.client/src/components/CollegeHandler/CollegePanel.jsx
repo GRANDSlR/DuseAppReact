@@ -17,16 +17,16 @@ import PartedStar from './img/PartedStar.png';
 //
 import GradePanel from '../GradePanel/GradePanel.jsx';
 //
-import {getCookies} from '../../services/CookieService.js';
+import {getCookies} from '../../features/cookies/CookieService.js';
 //
-import ExceptionState from '../../services/ApplicationException.js';
-import UserModel from '../../services/User/UserModel.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
+import UserModel from '../../features/states/UserModel.js';
 //
 import { observer } from 'mobx-react';
 //
-import currCollegeData from '../../services/CollegeGlobalStates.js';
+import currCollegeData from '../../features/states/CollegeGlobalStates.js';
 //
-import calculateDistance from '../../services/DistanceCalculationService.js';
+import calculateDistance from '../../processes/DistanceCalculationService.js';
 
 
 

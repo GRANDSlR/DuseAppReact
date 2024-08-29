@@ -1,6 +1,6 @@
 
 import { makeAutoObservable } from "mobx";
-import {verifyUsersCookies} from '../CookieService.js';
+import {verifyUsersCookies} from '../cookies/CookieService.js';
 
 
 export class UserModel {

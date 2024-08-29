@@ -9,7 +9,7 @@ import SpecialtyAdditionPanel from '../SpecialtyAdditionPanel/SpecialtyAdditionP
 import SpecialtyPanel from '../SpecialtyPanel/SpecialtyPanel.jsx';
 //
 import {CollegeTypeFilterParams, EducationFormFilterParams, Ownership} from '../../services/DataCarrier.js';
-import ExceptionState from '../../services/ApplicationException.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 
 
 const CollegeAdditionForm = ({collegeId, closeEvent, data, actionFunc}) => {

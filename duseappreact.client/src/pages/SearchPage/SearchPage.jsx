@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCollegesByFilterParams } from '../../services/Colleges.js';
+import { getCollegesByFilterParams } from '../../entities/CollegeFetches.js';
 import {  Colleges } from '../../components/CollegeHandler/CollegePanel.jsx';
 import SearchBoxImageBottom from "./img/SearchPanelImgBottom.svg";
 import SearchBoxImageTop from "./img/SearchPanelImgTop.svg";

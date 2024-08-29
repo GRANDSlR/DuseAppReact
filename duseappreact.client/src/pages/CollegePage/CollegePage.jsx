@@ -12,15 +12,15 @@ import CommentPreloader from '../../components/CommentPreloader/CommentPreloader
 import CommentHandler from '../../components/CommentHandler/CommentHandler.jsx';
 //
 import {CollegeTypeFilterParams, Ownership, EducationFormFilterParams} from '../../services/DataCarrier.js';
-import calculateDistance from '../../services/DistanceCalculationService.js';
-import getCommentsByCollegeId from '../../services/CommentFetches.js';
-import currCollegeData from '../../services/CollegeGlobalStates.js';
+import calculateDistance from '../../processes/DistanceCalculationService.js';
+import getCommentsByCollegeId from '../../entities/CommentFetches.js';
+import currCollegeData from '../../features/states/CollegeGlobalStates.js';
 import CollegeAdditionForm from '../../components/CollegeAdditionForm/CollegeAdditionForm.jsx';
 //
-import ExceptionState from '../../services/ApplicationException.js';
-import PopUpState from '../../services/PopUpState.js';
-import UserModel from '../../services/User/UserModel.js';
-import {updateCollege, deleteCollege} from '../../services/Colleges.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
+import PopUpState from '../../features/states/PopUpState.js';
+import UserModel from '../../features/states/UserModel.js';
+import {updateCollege, deleteCollege} from '../../entities/CollegeFetches.js';
 //
 import { observer } from 'mobx-react';
 

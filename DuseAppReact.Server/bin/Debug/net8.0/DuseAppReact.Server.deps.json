@@ -11,7 +11,7 @@
           "DuseAppReact.Core": "1.0.0",
           "DuseAppReact.DataAccess": "1.0.0",
           "DuseAppReact.Dependencies": "1.0.0",
-          "Microsoft.AspNetCore.SpaProxy": "8.0.5",
+          "Microsoft.AspNetCore.SpaProxy": "8.0.8",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -71,11 +71,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.SpaProxy/8.0.5": {
+      "Microsoft.AspNetCore.SpaProxy/8.0.8": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll": {
-            "assemblyVersion": "8.0.5.0",
-            "fileVersion": "8.0.524.22404"
+            "assemblyVersion": "8.0.8.0",
+            "fileVersion": "8.0.824.36908"
           }
         }
       },
@@ -565,7 +565,10 @@
           "DuseAppReact.Services": "1.0.0"
         },
         "runtime": {
-          "DuseAppReact.Core.dll": {}
+          "DuseAppReact.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DuseAppReact.DataAccess/1.0.0": {
@@ -578,7 +581,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3"
         },
         "runtime": {
-          "DuseAppReact.DataAccess.dll": {}
+          "DuseAppReact.DataAccess.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DuseAppReact.Dependencies/1.0.0": {
@@ -587,12 +593,18 @@
           "DuseAppReact.Services": "1.0.0"
         },
         "runtime": {
-          "DuseAppReact.Dependencies.dll": {}
+          "DuseAppReact.Dependencies.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DuseAppReact.Services/1.0.0": {
         "runtime": {
-          "DuseAppReact.Services.dll": {}
+          "DuseAppReact.Services.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -631,12 +643,12 @@
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.4",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.SpaProxy/8.0.5": {
+    "Microsoft.AspNetCore.SpaProxy/8.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7iEMQelKbwKS5Lk79d/yTOqYSiLPq/wB07Gx4FaFUmF4cv+jtR7vWE55ODaioM+WOHV/ke9HqBCrpfilaaG/Vw==",
-      "path": "microsoft.aspnetcore.spaproxy/8.0.5",
-      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.5.nupkg.sha512"
+      "sha512": "sha512-T9Zhb64OmOr2nU0iND7br44EfJrQYHpopxvq33l33uZM2Uu/V2GTHKg5OmGMO3XJuUX59fhqvMyXOcFFj6k1pA==",
+      "path": "microsoft.aspnetcore.spaproxy/8.0.8",
+      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.8.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",

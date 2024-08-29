@@ -511,7 +511,10 @@
           "DuseAppReact.Services": "1.0.0"
         },
         "runtime": {
-          "DuseAppReact.Core.dll": {}
+          "DuseAppReact.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DuseAppReact.Dependencies/1.0.0": {
@@ -520,12 +523,18 @@
           "DuseAppReact.Services": "1.0.0"
         },
         "runtime": {
-          "DuseAppReact.Dependencies.dll": {}
+          "DuseAppReact.Dependencies.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DuseAppReact.Services/1.0.0": {
         "runtime": {
-          "DuseAppReact.Services.dll": {}
+          "DuseAppReact.Services.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

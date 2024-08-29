@@ -18,13 +18,13 @@ import {getGradeItems} from '../../components/CollegeHandler/CollegePanel.jsx';
 //
 import SpecialtyFilterAdditionPanel from '../../components/SpecialtyFilterAdditionPanel/SpecialtyFilterAdditionPanel.jsx';
 //
-import calculateDistance from '../../services/DistanceCalculationService.js';
+import calculateDistance from '../../processes/DistanceCalculationService.js';
 //
 import {EducationFormFilterParams} from '../../services/DataCarrier.js';
 //
 import { observer } from 'mobx-react';
 //
-import currCollegeData from '../../services/CollegeGlobalStates.js';
+import currCollegeData from '../../features/states/CollegeGlobalStates.js';
 
 
 const FavoritePage = observer(() => {

@@ -150,7 +150,6 @@ C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\staticwebassets\msb
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DuseAppReact.Server.props
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\staticwebassets.pack.json
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\scopedcss\bundle\DuseAppReact.Server.styles.css
-C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.csproj.CopyComplete
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\refint\DuseAppReact.Server.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppReact.Server.pdb
@@ -162,3 +161,4 @@ C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Depend
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.Dependencies.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.DataAccess.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Server\bin\Debug\net8.0\DuseAppReact.DataAccess.pdb
+C:\GitReps\DuseAppReact\DuseAppReact.Server\obj\Debug\net8.0\DuseAppR.8D36720B.Up2Date

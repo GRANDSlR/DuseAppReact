@@ -8,7 +8,7 @@ import EmptyStar from '../CollegeHandler/img/EmptyStar.png';
 import CrossImg from './img/cross.png';
 import CheckImg from './img/check.png';
 //
-import {updateGrade} from '../../services/Colleges.js';
+import {updateGrade} from '../../entities/CollegeFetches.js';
 
 const GradePanel = ({closeEvent, collegeId}) => {
 

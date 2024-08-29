@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import style from './TestPage.module.css';
 //
 import TestMenuButton from '../../components/TestMenuButton/TestMenuButton.jsx';
-import TestKlimova from '../../Relations/TestKlimova/TestKlimova.jsx';
+import TestKlimova from '../../processes/TestKlimova/TestKlimova.jsx';
 
 const TestPage = () => {
 

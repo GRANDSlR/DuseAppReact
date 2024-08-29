@@ -3,9 +3,9 @@ import style from './GuidePage.module.css';
 //
 import TestMenuButton from '../../components/TestMenuButton/TestMenuButton.jsx';
 //
-import Registration from '../../Relations/Guides/Registration/Registration.jsx';
-import Search from '../../Relations/Guides/Search/Search.jsx';
-import Favorite from '../../Relations/Guides/Favorite/Favorite.jsx';
+import Registration from '../../processes/Guides/Registration/Registration.jsx';
+import Search from '../../processes/Guides/Search/Search.jsx';
+import Favorite from '../../processes/Guides/Favorite/Favorite.jsx';
 
 const GuidePage = () => {
 

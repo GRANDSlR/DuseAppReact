@@ -1,5 +1,5 @@
 
-import {getUserByToken} from './User/UserFetches.js';
+import {getUserByToken} from '../../entities/UserFetches.js';
 
 
 export const verifyUsersCookies = async (userState) =>{

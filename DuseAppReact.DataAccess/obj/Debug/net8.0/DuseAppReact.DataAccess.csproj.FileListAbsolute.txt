@@ -47,10 +47,10 @@ C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.Da
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.AssemblyInfo.cs
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.csproj.CoreCompileInputs.cache
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.sourcelink.json
-C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.csproj.CopyComplete
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.dll
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\refint\DuseAppReact.DataAccess.dll
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppReact.DataAccess.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\ref\DuseAppReact.DataAccess.dll
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\bin\Debug\net8.0\DuseAppReact.Dependencies.dll
 C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\bin\Debug\net8.0\DuseAppReact.Dependencies.pdb
+C:\GitReps\DuseAppReact\DuseAppReact.DataAccess\obj\Debug\net8.0\DuseAppR.11248203.Up2Date

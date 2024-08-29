@@ -7,7 +7,7 @@ import {QuestionData} from './Data.js';
 import TestKlimovaQuestion from '../../components/TestKlimovaQuestion/TestKlimovaQuestion.jsx';
 //
 import TestKlimovaResult from './TestKlimovaResult/TestKlimovaResult.jsx';
-import ExceptionState from '../../services/ApplicationException.js';
+import ExceptionState from '../../features/exceptions/ApplicationException.js';
 
 
 const TestKlimova = () => {
