@@ -11,6 +11,5 @@ namespace DuseAppReact.DataAccess.Entities.College
 
         public string Title { get; set; } = string.Empty;
         public string Img { get; set; } = string.Empty;
-
     }
 }
