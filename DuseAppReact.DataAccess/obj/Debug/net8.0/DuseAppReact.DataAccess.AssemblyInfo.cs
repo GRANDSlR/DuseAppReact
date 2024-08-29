@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DuseAppReact.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+642fd62ed35ea0c29f317b3a5bd7854da92bdeaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ef088f1bc719f921a30bc4096785d11dfd270dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("DuseAppReact.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DuseAppReact.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
