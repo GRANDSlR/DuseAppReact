@@ -1,9 +1,9 @@
-import style from './Footer.module.css';
+import style from './footer.module.css';
 import duseAppImg from './img/DuseApp.svg';
 import facebookImg from './img/facebook.svg';
 import instagramImg from './img/instagram.svg';
 import emailImg from './img/email.svg' 
-import Menu from '../Menu/Menu.jsx';
+import Menu from '../menu/menu.jsx';
 
 export default function Footer(){
     return (

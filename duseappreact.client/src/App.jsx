@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { observer } from 'mobx-react';
 //
-import Header from './components/Header/Header.jsx';
-import Footer from './components/Footer/Footer.jsx';
+import Header from './pages/wrapper/header/header.jsx';
+import Footer from './pages/wrapper/footer/footer.jsx';
 //
 import FavoritePage from './pages/FavoriePage/FavoritePage.jsx';
 import CollegePage from './pages/CollegePage/CollegePage.jsx';

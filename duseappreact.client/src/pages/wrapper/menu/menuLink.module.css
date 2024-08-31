@@ -1,20 +1,25 @@
 
 .HeaderMenu{
     display: flex;
-    height: 70px;
+    height: 60px;
     margin: 0;
     padding: 0 35px;
 }
 .HeaderMenu li{
     list-style-type: none;
-    padding-right: 30px;
+    padding-right: 40px;
     display: flex;
     align-items: center;
+    color: black;
+}
+
+.HeaderMenu li:last-child{
+    padding: 0;
 }
 
 .FooterMenu{
     display: flex;
-    height: 70px;
+    height: 60px;
     margin: 0;
     padding: 0 35px;
     align-items: baseline;
@@ -33,12 +38,11 @@
 }
 
 .MenuLink {
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: 400;
+    font-size: 14px;
     text-decoration: inherit;
     position: relative;
-    padding: 28px 0;
-    color: #5e5e5e;
+    padding: 23px 0;
 } 
 
 .MenuFooter{
