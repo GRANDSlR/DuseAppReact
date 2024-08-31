@@ -130,11 +130,15 @@
   --gray-color: #eaeaea;
   --secondText-color: #656971;
   --mainButtonText-color: #A5AAB4;
+  --wrapperGrey-color: #787878;
+  --blueBG-color: #FAF9FF;
 
   
 }
 
-
+body p{
+  margin: 0;
+}
 
 body {
   /* padding: 80px 70px; */

@@ -19,18 +19,18 @@
 
 .FooterMenu{
     display: flex;
-    height: 60px;
     margin: 0;
     padding: 0 35px;
-    align-items: baseline;
+    /* align-items: baseline; */
     /* justify-content: center; */
 }
 
 .FooterMenu li{
     list-style-type: none;
-    padding-right: 30px;
+    padding-right: 40px;
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .FooterMenu li:last-child{
@@ -46,11 +46,11 @@
 } 
 
 .MenuFooter{
-    color: #799FFF;
-    font-weight: 600;
+    color: white;
+    font-weight: 400;
     font-size: 15px;
     text-decoration: inherit;
-    padding: 28px 0;
+    /* padding: 28px 0; */
 }
 
  .MenuLink.active:after {

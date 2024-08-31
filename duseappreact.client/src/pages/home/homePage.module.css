@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: var(--blueBG-color);
+}
+
+.page {
+    width: 1000px;
+}
+
+.previewContent {
+    /* padding: 160px 0; */
+    padding: 12vw 0;
+}
+
+.homeBG {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    width: 58vw;
+}
+
+.pageHeader {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 90%;
+    width: 380px;
+}
+
+.pageDescription {
+    margin-top: 30px;
+    width: 380px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 120%;
+    color: var(--secondText-color);
+}
+
+.buttonCase {
+    margin-top: 90px;
+}
+

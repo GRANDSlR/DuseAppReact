@@ -1,0 +1,67 @@
+
+.infoItem{
+    display: flex;
+    margin-bottom: 95px;
+
+}
+
+.infoImg{
+    position: relative;
+    width: 162px;
+    height: 162px;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-right: 80px;
+    flex-shrink: 0;
+}
+
+.infoImg.rightAlign{
+    margin-left: 80px;
+    margin-right: 0;
+}
+
+.infoImg img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.infoText{
+    width: auto;
+}
+
+.infoText.rightAlign{
+    text-align: right;
+}
+
+.infoText .header{
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.infoText .description{
+    margin-top:30px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--secondText-color);
+    line-height: 175%;
+}
+
+.mainButtonCase{
+    margin-top: 10px;
+}
+
+#searchImg{
+    width: 81px;
+}
+
+#bookImg{
+    width: 82px;
+}
+
+#hatImg{
+    width: 110px;
+
+}

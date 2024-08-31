@@ -43,7 +43,7 @@ function Footer (){
         <ul className={style.FooterMenu}>
           <li >
             <NavLink to={'/'} className={style.MenuFooter}>
-              {'ГЛАВНАЯ'}
+              {'главная'}
             </NavLink>
           </li>
           {/* <li>
@@ -58,7 +58,7 @@ function Footer (){
 
           <li>
             <NavLink to={'/test'} className={ style.MenuFooter }>
-              {'ТЕСТЫ'}
+              {'тесты'}
             </NavLink>
           </li>
       </ul>

@@ -1,16 +1,33 @@
 
 
 .MainBox{
-    padding: 0 140px;
-    width: 80vw;
+    /* padding: 0 140px; */
+    padding: 40px 60px;
+    width: calc(100vw - 120px);
+    background-color: var(--wrapperGrey-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .MenuBox{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 0 25px 0;
+    margin-bottom: 40px;
 }
+
+.CompanyBar{
+    width: 130px;
+}
+
+.CompanyBar span{
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+
 
 .FollowLinks{
     display: flex;
@@ -24,21 +41,22 @@
     width: 30px;
 }
 
-.FollowLinks a:last-child img{
+.FollowLinks img:last-child{
     margin-right: 0;
 }
 
 .CopyrightPanel{
-    margin: 0 180px;
-    border-top: 1px solid #eaeaea;
+    width: 500px;
+    /* margin: 0 500px; */
+    border-top: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .CopyrightPanel p{
-    padding: 0;
-    margin: 25px 0;
-    color: #799FFF;
+    margin: 0;
+    margin-top: 10px;
+    color: white;
     font-size: 15px;
 }

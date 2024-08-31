@@ -1,24 +1,24 @@
 import style from './footer.module.css';
-import duseAppImg from './img/DuseApp.svg';
-import facebookImg from './img/facebook.svg';
-import instagramImg from './img/instagram.svg';
-import emailImg from './img/email.svg' 
+import facebookImg from './img/facebook.png';
+import telegramImg from './img/telegram.png';
+import vkImg from './img/vk.png' 
 import Menu from '../menu/menu.jsx';
 
 export default function Footer(){
     return (
         <div className={style.MainBox}>
             <div className={style.MenuBox}>
-                <div className={style.IconBox}>
-                    <img src={duseAppImg} />
-                </div>
+            <div className={style.CompanyBar}>
+                <span>Duse</span>
+                <span>App</span>
+            </div>
                 <div>
                     <Menu type='footer'/>
                 </div>
                 <div className={style.FollowLinks}>
+                    <img src={telegramImg}/>
                     <img src={facebookImg}/>
-                    <img src={instagramImg}/>
-                    <img src={emailImg}/>
+                    <img src={vkImg}/>
                 </div>
             </div>
             <div className={style.CopyrightPanel}>

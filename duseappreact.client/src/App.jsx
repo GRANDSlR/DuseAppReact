@@ -7,7 +7,8 @@ import Footer from './pages/wrapper/footer/footer.jsx';
 //
 import FavoritePage from './pages/FavoriePage/FavoritePage.jsx';
 import CollegePage from './pages/CollegePage/CollegePage.jsx';
-import HomePage from './pages/HomePage/HomePage.jsx';
+import HomePage from './pages/home/homePage.jsx';
+// import HomePage from './pages/HomePage/HomePage.jsx';
 import SearchPage from './pages/SearchPage/SearchPage.jsx';
 import TestPage from './pages/TestPage/TestPage.jsx'; 
 import GuidePage from './pages/GuidePage/GuidePage.jsx';
