@@ -8,16 +8,16 @@
     width: 1000px;
 }
 
-.previewContent {
-    /* padding: 160px 0; */
-    padding: 12vw 0;
+.testPreviewBG {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 58vw;
 }
 
-.homeBG {
-    position: absolute;
-    top: 60px;
-    right: 0px;
-    width: 58vw;
+.previewContent {
+    float: right;
+    padding: 12vw 0;
 }
 
 .pageHeader {
