@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\GitReps\\DuseAppReact\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1DD4D16B-3CC4-4605-B51D-92624C611A30}|duseappreact.client\\duseappreact.client.esproj|c:\\gitreps\\duseappreact\\duseappreact.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1DD4D16B-3CC4-4605-B51D-92624C611A30}|duseappreact.client\\duseappreact.client.esproj|solutionrelative:duseappreact.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DD4D16B-3CC4-4605-B51D-92624C611A30}|duseappreact.client\\duseappreact.client.esproj|c:\\gitreps\\duseappreact\\duseappreact.client\\.vscode\\launch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1DD4D16B-3CC4-4605-B51D-92624C611A30}|duseappreact.client\\duseappreact.client.esproj|solutionrelative:duseappreact.client\\.vscode\\launch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 157,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,31 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "vite.config.js",
-              "DocumentMoniker": "C:\\GitReps\\DuseAppReact\\duseappreact.client\\vite.config.js",
-              "RelativeDocumentMoniker": "duseappreact.client\\vite.config.js",
-              "ToolTip": "C:\\GitReps\\DuseAppReact\\duseappreact.client\\vite.config.js",
-              "RelativeToolTip": "duseappreact.client\\vite.config.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-02T07:35:09.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "launch.json",
-              "DocumentMoniker": "C:\\GitReps\\DuseAppReact\\duseappreact.client\\.vscode\\launch.json",
-              "RelativeDocumentMoniker": "duseappreact.client\\.vscode\\launch.json",
-              "ToolTip": "C:\\GitReps\\DuseAppReact\\duseappreact.client\\.vscode\\launch.json",
-              "RelativeToolTip": "duseappreact.client\\.vscode\\launch.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-02T07:34:18.17Z"
             }
           ]
         }

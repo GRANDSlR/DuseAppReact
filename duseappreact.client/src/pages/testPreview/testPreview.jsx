@@ -4,6 +4,7 @@ import style from './testPreview.module.css';
 import testPreviewBGImg from './img/testPreviewBG.svg'
 
 import MainButton from '../../components/mainButton/mainButton.jsx';
+import LiveLine from './liveLine/liveLine.jsx';
 
 const testPreview = () => {
     return (
@@ -17,8 +18,10 @@ const testPreview = () => {
                         <MainButton content={'Пройти тест'} />
                     </div>
                 </div>
-
                 
+                <div className={style.liveLine}>
+                    <LiveLine />
+                </div>
             </div>
         </div>
     )

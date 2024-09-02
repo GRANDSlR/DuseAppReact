@@ -41,8 +41,8 @@ C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.Ass
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.AssemblyInfo.cs
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.csproj.CoreCompileInputs.cache
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.sourcelink.json
-C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.csproj.CopyComplete
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\refint\DuseAppReact.Core.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppReact.Core.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\ref\DuseAppReact.Core.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Core\obj\Debug\net8.0\DuseAppR.DBF90BA2.Up2Date

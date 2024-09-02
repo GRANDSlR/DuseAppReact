@@ -16,7 +16,10 @@
       },
       "DuseAppReact.Services/1.0.0": {
         "runtime": {
-          "DuseAppReact.Services.dll": {}
+          "DuseAppReact.Services.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

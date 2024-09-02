@@ -11,8 +11,8 @@ C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.AssemblyInfo.cs
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.csproj.CoreCompileInputs.cache
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.sourcelink.json
-C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.csproj.CopyComplete
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\refint\DuseAppReact.Dependencies.dll
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppReact.Dependencies.pdb
 C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\ref\DuseAppReact.Dependencies.dll
+C:\GitReps\DuseAppReact\DuseAppReact.Dependencies\obj\Debug\net8.0\DuseAppR.BD038AA3.Up2Date

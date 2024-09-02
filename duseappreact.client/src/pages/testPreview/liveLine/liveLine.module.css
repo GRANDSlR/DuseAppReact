@@ -1,8 +1,112 @@
 
 .wrapper{
-    position: relative;
+    height: 800px;
 }
 
 #liveLineImg{
     width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 860px;
 }
+
+.blockHeader{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.numberBox{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.innerBox{
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondText-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxNumber{
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 1px;
+}
+
+.textLine{
+    margin: 5px 13px;
+    width: 3px;
+}
+
+.header{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+    line-height: 1;
+}
+
+.description{
+    line-height: 175%;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 12px;
+    color: var(--secondText-color);
+    margin-top: 20px;
+    width: 420px;
+}
+
+.blockBox{
+    position: relative;
+}
+
+.block{
+    position: absolute;
+}
+
+.block.block1{
+    top: 224px;
+}
+
+.block.block2{
+    left: 150px;
+    top: 39px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+}
+
+.block.block2 .description{
+    text-align: right;
+}
+
+.block.block2 .header{
+    text-align: right;
+}
+
+
+.block.block3{
+    right: 0px;
+    top: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+}
+
+.block.block3 .description{
+    text-align: right;
+    width: 310px;
+}
+
+.block.block3 .header{
+    text-align: right;
+}
+

@@ -17,7 +17,7 @@
 
 .previewContent {
     float: right;
-    padding: 12vw 0;
+    padding: 10vw 0;
 }
 
 .pageHeader {
@@ -38,5 +38,10 @@
 
 .buttonCase {
     margin-top: 90px;
+}
+
+.liveLine{
+    /* position: relative; */
+    margin-top: 100vh
 }
 
