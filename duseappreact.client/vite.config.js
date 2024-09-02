@@ -6,6 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import child_process from 'child_process';
 
+import { env } from 'process';
+
 const baseFolder =
     process.env.APPDATA !== undefined && process.env.APPDATA !== ''
         ? `${process.env.APPDATA}/ASP.NET/https`
@@ -36,6 +38,9 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     }
 }
 
+const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
+    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7138/'
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [plugin()],
@@ -47,19 +52,19 @@ export default defineConfig({
     server: {
         proxy: {
             '^/weatherforecast': {
-                target: 'https://localhost:7138/',
+                target,
                 secure: false
             },
             '^/college': {
-                target: 'https://localhost:7138/',
+                target,
                 secure: false
             },
             '^/user': {
-                target: 'https://localhost:7138/',
+                target,
                 secure: false
             },
             '^/comment': {
-                target: 'https://localhost:7138/',
+                target,
                 secure: false
             }
         },
