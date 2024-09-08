@@ -1,6 +1,6 @@
 import style from './liveLine.module.css';
 
-import liveLineImg from './img/liveLine.svg'
+import liveLineImg from './img/liveLineLong2.svg'
 import lineImg from './img/Line.svg'
 
 const testPreview = () => {

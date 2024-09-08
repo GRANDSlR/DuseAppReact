@@ -1,13 +1,15 @@
 
 .wrapper{
     height: 800px;
+    position: relative;
+
 }
 
 #liveLineImg{
-    width: 100vw;
     position: absolute;
-    left: 0;
-    top: 860px;
+    left: -1800px;
+    top: -30px;
+    width: auto;
 }
 
 .blockHeader{
@@ -66,6 +68,7 @@
 
 .blockBox{
     position: relative;
+
 }
 
 .block{
@@ -73,7 +76,7 @@
 }
 
 .block.block1{
-    top: 224px;
+    top: 225px;
 }
 
 .block.block2{
@@ -95,7 +98,7 @@
 
 .block.block3{
     right: 0px;
-    top: 92px;
+    top: 98px;
     display: flex;
     flex-direction: column;
     align-items:flex-end;
