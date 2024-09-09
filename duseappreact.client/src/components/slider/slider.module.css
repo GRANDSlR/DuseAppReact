@@ -1,0 +1,41 @@
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow{
+    float: left;
+    width: 20px;
+    margin-right: 15px;
+}
+
+.arrow.right{
+    margin-right: 0;
+    margin-left: 15px;
+
+    float: right;
+    transform: rotate(180deg);
+}
+
+.sliderBar{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    /* overflow-x: auto; */
+}
+
+.sliderItem{
+    margin-right: 10px;
+
+    flex-shrink: 0;
+    /* width: 300px;
+    height: 356px;
+    background-color: black; */
+}
+
+.sliderItem:last-child{
+    margin-right: 0;
+}

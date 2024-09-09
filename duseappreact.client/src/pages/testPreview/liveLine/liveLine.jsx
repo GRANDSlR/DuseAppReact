@@ -7,7 +7,6 @@ const testPreview = () => {
     return (
         <div className={style.wrapper}>
             <img src={liveLineImg} alt="" id={style.liveLineImg}/>
-            <p className={style.blockHeader}>Как это работает?</p>
             <div className={style.blockBox}>
                 <div className={`${style.block} ${style.block1}`}>
                     <div className={style.numberBox}>

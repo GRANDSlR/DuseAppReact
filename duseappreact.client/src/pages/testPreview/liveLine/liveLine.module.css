@@ -1,6 +1,6 @@
 
 .wrapper{
-    height: 800px;
+    height: 630px;
     position: relative;
 
 }
@@ -8,13 +8,8 @@
 #liveLineImg{
     position: absolute;
     left: -1800px;
-    top: -30px;
+    top: -83px;
     width: auto;
-}
-
-.blockHeader{
-    font-size: 35px;
-    font-weight: 600;
 }
 
 .numberBox{

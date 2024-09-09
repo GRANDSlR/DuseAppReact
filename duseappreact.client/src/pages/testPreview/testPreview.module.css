@@ -8,6 +8,23 @@
     width: 1000px;
 }
 
+.blockHeader{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.blockDescription{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 140%;
+    color: var(--secondText-color);
+    margin-top: 10px;
+}
+
+.sliderBar{
+    margin-top: 30px;
+}
+
 .testPreviewBG {
     position: absolute;
     top: 0px;
@@ -30,9 +47,9 @@
 .pageDescription {
     margin-top: 30px;
     width: 380px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 120%;
+    line-height: 140%;
     color: var(--secondText-color);
 }
 
@@ -43,5 +60,9 @@
 .liveLine{
     /* position: relative; */
     margin-top: 100vh
+}
+
+.slider{
+    margin-bottom: 120px;
 }
 
