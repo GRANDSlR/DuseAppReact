@@ -16,9 +16,42 @@
 .blockDescription{
     font-size: 15px;
     font-weight: 500;
-    line-height: 140%;
+    line-height: 175%;
     color: var(--secondText-color);
     margin-top: 10px;
+    width: 650px;
+}
+
+.chartBox{
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.chart{
+    margin-right: 98px;
+}
+
+.chartDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chartDescription p{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 175%;
+    color: var(--secondText-color);
+    margin-bottom: 30px;
+}
+
+.chartDescription p:last-child{
+    margin-bottom: 0;
+}
+
+.slider{
+    margin-top: 90px;
 }
 
 .sliderBar{

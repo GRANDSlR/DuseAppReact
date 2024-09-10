@@ -14,6 +14,8 @@ import professionCards from './professionCards/professionCards.js';
 
 import ProfessionCard from '../../components/professionCard/professionCard.jsx';
 
+import chart from './img/chart.svg'
+
 const testPreview = () => {
 
     return (
@@ -27,12 +29,28 @@ const testPreview = () => {
                         <MainButton content={'Пройти тест'} />
                     </div>
                 </div>
-                
+
+                              
                 <div className={style.liveLine}>
 
                     <p className={style.blockHeader}>Как это работает?</p>
 
                     <LiveLine />
+                </div>
+
+                <div className={style.chartBlock}>
+
+                    <p className={style.blockHeader}>Что ты узнаешь о себе?</p>
+
+                    <div className={style.chartBox}>
+                        <img src={chart} className={style.chart} alt="" />
+
+                        <div className={style.chartDescription}>
+                            <p>Наибольшая сумма баллов в диаграмме указывает на наиболее подходящий вам тип профессии, который обозначен буквами П (природа), Т (техника), З (знак), И (искусство), Ч (человек).</p>
+                            <p>4-5 баллов – выраженный интерес, 2-3 – умеренный интерес; 0-1 – отсутствие интереса. </p>
+                        </div>
+                    
+                    </div>
                 </div>
 
                 <div className={style.slider}>
