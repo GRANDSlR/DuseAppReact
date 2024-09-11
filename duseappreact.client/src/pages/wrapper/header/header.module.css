@@ -13,7 +13,7 @@
     /* width: calc(100vw - 110px); */
     display: flex;
     align-items: center;
-    filter: drop-shadow(0 0px 10px rgba(187, 187, 187, 0.25));
+    filter: drop-shadow(0 0px 10px rgba(187, 187, 187, 0.10));
 }
 
 .linkBar{

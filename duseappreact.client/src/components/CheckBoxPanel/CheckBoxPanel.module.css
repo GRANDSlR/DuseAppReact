@@ -16,8 +16,8 @@
 .PanelItem p{
     margin: 0;
     font-size: 15px;
-    color: #757575;
-    font-weight: 500;
+    color: var(--secondText-color);
+    font-weight: 400;
     line-height: 1;
     text-align: start;
 }

@@ -3,7 +3,7 @@
   font-family: "Inter", sans-serif;
   /* font-family: 'Montserrat', sans-serif; */
   font-family: "Montserrat Alternates", sans-serif;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .montserrat-alternates-thin {
@@ -132,6 +132,7 @@
   --mainButtonText-color: #A5AAB4;
   --wrapperGrey-color: #787878;
   --blueBG-color: #FAF9FF;
+  --lightGrey-color: #E5E5EA;
 
   
 }
@@ -141,6 +142,7 @@ body p{
 }
 
 body {
+  background-color: var(--blueBG-color);
   /* padding: 80px 70px; */
   margin: 0;
   margin-top: 60px;

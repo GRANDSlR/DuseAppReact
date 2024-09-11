@@ -1,5 +1,5 @@
 import style from "./SearchPanel.module.css";
-import SearchIcon from "./img/SearchIconNew.svg";
+import SearchIcon from "./img/SearchIcon.png";
 
 const SearchPanel = ({title, CollegeTitleInputHandler}) =>{
 

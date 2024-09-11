@@ -49,7 +49,6 @@
 
 .WindowBack{
     /* position: relative; */
-    background-color: var(--light-gray-back-color);
     display: flex;
     justify-content: center;
     height: auto;
@@ -60,17 +59,19 @@
     transform: translateY(-45px);
     /* top: -40px; */
     width: 75vw;
-    width: 1050px;
+    width: 1000px;
     min-height: 200px;
     display: flex;
 }
 
 .Content{
-    box-shadow: 0 0px 2px 0px #dad9d9;
+    /* box-shadow: 0 0px 2px 0px #dad9d9; */
+    filter: drop-shadow(0 0px 10px rgba(187, 187, 187, 0.10));
     background-color: white;
     margin: 8px;
     padding: 24px;
     overflow: hidden;
+    border-radius: 15px;
 }
 
 .MainContent{
@@ -79,7 +80,7 @@
 
 .Content.Description{
     margin-bottom: 16px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .Content.Description:last-child{
@@ -94,19 +95,37 @@
     margin-top: 20px;
 }
 
+.costDescription{
+    font-size: 13px;
+    margin-top: 10px;
+    color: var(--secondText-color);
+
+}
+
+.ContactItemBox .ContactHeader{
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.costContent{
+    font-size: 15px;
+}
+
 .ContentPanel p{
-    margin: 0;
     line-height: 1;
 }
 
 .ContentPanel .collegeDescription{
-    line-height: 1.2;
+    line-height: 140%;
+    font-size: 13px;
+    color: var(--secondText-color);
 }
 
 .ContentPanel .Headers{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .AdminBoxBack{
@@ -127,6 +146,11 @@
     display: flex;
 }
 
+.AdminBox .Item p{
+    color: var(--secondText-color);
+    font-size: 13px;
+}
+
 .AdminBox .Item .ItemImg{
     margin-right: 15px;
     /* margin-top: 1px; */
@@ -142,11 +166,11 @@
 }
 
 
-
-p.MiniHeader{
+.AdminBox .Item .MiniHeader{
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 8px;
+    color: black;
 }
 
 .SpecialtyTable {
@@ -156,10 +180,12 @@ p.MiniHeader{
 }
 
 .SpecialtyTable th{
+    font-size: 15px;
     font-weight: 500;
 }
   
 .SpecialtyTable  td, th {
+    font-size: 15px;
     width: auto;
     text-align: center;
     padding: 10px;
@@ -195,8 +221,12 @@ p.MiniHeader{
 }
 
 .ContactItemBox p{
+    color: var(--secondText-color);
+    font-size: 13px;
     margin: 0;
     margin-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -213,6 +243,7 @@ p.MiniHeader{
 }
 
 .CommentInfoBox .HeaderDescription{
+    font-size: 15px;
     margin-top: 8px;
 }
 

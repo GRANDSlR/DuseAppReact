@@ -56,7 +56,7 @@ const testPreview = () => {
                 <div className={style.slider}>
 
                     <p className={style.blockHeader}>Какие бывают типы профессий?</p>
-                    <p className={style.blockDescription}>В соответствии с данной классификацией мир современных профессий можно разделить на 5 основных типов</p>
+                    <p className={style.blockDescription}>В соответствии с классификацией мир современных профессий можно разделить на 5 основных типов</p>
                     
                     <div className={style.sliderBar}>
                         <Slider Card={ProfessionCard} cardContent={professionCards}/>

@@ -151,7 +151,7 @@ export default function SearchPage() {
     return (
         <div>
             <div className={style.SearchBox}>
-                <SearchPanel title='поиск по названию' CollegeTitleInputHandler={CollegeTitleInputEvent}/> 
+                <SearchPanel title='Искать по названию' CollegeTitleInputHandler={CollegeTitleInputEvent}/> 
                 <img src={SearchBoxImageTop} id={style.SearchBoxImgTop}/>
                 <img src={SearchBoxImageBottom} id={style.SearchBoxImgBottom}/>
             </div>
@@ -174,13 +174,13 @@ export default function SearchPage() {
                     </div>
                 </div>
                 <div className={style.vertPanel}>
-                    <div className={style.InfoPanel}>
-                        {/* <p id={style.title}>Результаты поиска</p> */}
+                    {/* <div className={style.InfoPanel}>
+                        <p id={style.title}>Результаты поиска</p>
                         <div className={style.SortPanel}>
                             <p id={style.title}>Сортировка</p>
                             <SortFallingList defaultValue={sortValues[0]} data={sortValues} actionFunc={SortValueEvent}/>
                         </div>
-                    </div>
+                    </div> */}
                     <div className={style.ResultPanel}>
                         {/* <div className={style.Preloader}>
                             <CollegePreloader />

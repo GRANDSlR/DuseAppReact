@@ -1,6 +1,6 @@
 
 .MainBox{
-    margin: 20px 10px;
+    margin-bottom: 20px;
 }
 
 .AdminBox{
@@ -36,8 +36,9 @@
 }
 
 .UserInfo .UserName{
+    font-size: 15px;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .AdminBox .BoxUnderData{
@@ -47,8 +48,15 @@
 .DateOfCreationBox{
     margin-left: auto;
     font-weight: 500;
+    font-size: 13px;
+    color: var(--secondText-color);
+
+}
+
+.Comment{
     font-size: 15px;
-    color: #999;
+    color: var(--secondText-color);
+
 }
 
 .EditBox{

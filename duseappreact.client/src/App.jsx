@@ -23,6 +23,7 @@ const App = observer(() => {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="/page" element={<CollegePage/>} />
+        <Route path="/testPreview" element={<TestPage/>} />
         <Route path="/test" element={<TestPage/>} />
         <Route path="/guide" element={<GuidePage/>} />
       </Routes>

@@ -268,13 +268,13 @@ const CollegePage = observer(() => {
 
                         <div className={`${style.Content} ${style.Description}`}>
                             
-                            <div className={style.CommentInfoBox}>
+                            {/* <div className={style.CommentInfoBox}>
                                 <div>
                                     <p className={style.Headers}>Отзывы</p>
                                     <p className={style.HeaderDescription}>Оставьте здесь свой комментарий</p>
                                 </div>
                                 <button type='button' className={`${style.Button} ${style.NewSpecialty}`} onClick={() => {verifyUser(); }}>Оставить отзыв</button>
-                            </div>
+                            </div> */}
 
                             {!loading ? (comments != null && Array.isArray(comments) ? comments.map((comment, index) =>
                                 <CommentPanel comment={comment} deleteAction={setCommentDeleteStateAction}/>
@@ -303,8 +303,8 @@ const CollegePage = observer(() => {
                             <p className={style.Headers}>Стоимость</p>
 
                             <div className={style.Box}>
-                                <p className={style.MiniHeader}>~ {parseInt(getAvgCost(college)) === 0 ? 'Бюджет' : getAvgCost(college).toFixed(2)} BYN</p>
-                                <p>Средняя стоимоть обучения</p>
+                                <p className={style.costContent}>~ {parseInt(getAvgCost(college)) === 0 ? 'Бюджет' : getAvgCost(college).toFixed(2)} BYN</p>
+                                <p className={style.costDescription}>Средняя стоимоть обучения</p>
                             </div>
                         </div>
 
@@ -315,16 +315,16 @@ const CollegePage = observer(() => {
                             <div className={style.Box}>
                                 {/* <p className={style.MiniHeader}>{college.collegeHeader.title}</p> */}
                                 <div className={style.ContactItemBox}>
-                                    <p className={style.MiniHeader}>Сайт: </p>
+                                    <p className={style.ContactHeader}>Сайт: </p>
                                     <p>{college.collegeDescription.webSiteRef}</p>
                                 </div>
                                 <div  className={style.ContactItemBox}>
-                                    <p className={style.MiniHeader}>Локация: </p>
+                                    <p className={style.ContactHeader}>Локация: </p>
                                     <p>{college.collegeLocation.region}</p>
 
                                 </div>
                                 <div  className={style.ContactItemBox}>
-                                    <p className={style.MiniHeader}>От вас: </p>
+                                    <p className={style.ContactHeader}>От вас: </p>
                                     {userCoords != null ? 
                                         <p> {calculateDistance(
                                         parseFloat(userCoords.lat), 
@@ -336,9 +336,9 @@ const CollegePage = observer(() => {
                                     
                                 </div>
 
-                                <div className={style.ButtonCase}>
+                                {/* <div className={style.ButtonCase}>
                                     <a href={college.collegeDescription.webSiteRef} className={style.ConnectionButton}>Связаться с нами</a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

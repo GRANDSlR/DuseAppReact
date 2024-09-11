@@ -39,10 +39,12 @@
 
 .MenuLink {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 1px;
     text-decoration: inherit;
     position: relative;
     padding: 23px 0;
+    color: black;
 } 
 
 .MenuFooter{

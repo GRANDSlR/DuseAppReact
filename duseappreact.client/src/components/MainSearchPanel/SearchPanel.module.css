@@ -1,5 +1,5 @@
 
-.SearchPanelBorder{
+/* .SearchPanelBorder{
     height: 42px;
     width: calc(50vw + 34px);
     background-color: transparent;
@@ -8,30 +8,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .SearchPanelBox{
-    height: 38px;
+    z-index: 1;
+    height: 48px;
     width: 50vw;
     background-color: #fff;
     border-radius: 30px;
     display: flex;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 20px;
+    filter: drop-shadow(0 4px 4px rgba(187, 187, 187, 0.10));
+
 }
 
 .SearchIcon{
     width: 15px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .SearchInput{
-    z-index: 20;
     background-color: transparent;
     border: none;
-    color: #757575;
-    font-size: 16px;
-    font-weight: 500;
+    color: var(--secondText-color);
+    font-size: 15px;
+    font-weight: 400;
     width: 55vw;
     height: auto;
     margin-bottom: 2px;

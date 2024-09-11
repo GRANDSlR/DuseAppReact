@@ -24,7 +24,7 @@ function Header (){
           </li>
 
           <li>
-            <NavLink to={'/test'} className={ useIsActiveButton('test') ? `${style.MenuLink} ${style.active}` : style.MenuLink}>
+            <NavLink to={'/testPreview'} className={ useIsActiveButton('testPreview') ? `${style.MenuLink} ${style.active}` : style.MenuLink}>
               {'тесты'}
             </NavLink>
           </li>
@@ -57,7 +57,7 @@ function Footer (){
           </li>
 
           <li>
-            <NavLink to={'/test'} className={ style.MenuFooter }>
+            <NavLink to={'/testPreview'} className={ style.MenuFooter }>
               {'тесты'}
             </NavLink>
           </li>
