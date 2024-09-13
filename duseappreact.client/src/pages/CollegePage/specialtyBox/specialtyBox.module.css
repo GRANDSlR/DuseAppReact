@@ -1,0 +1,28 @@
+.wrapper{
+    margin-top: 20px;
+}
+
+.chips{
+    margin-bottom: 5px;
+}
+
+.descriptionItem{
+    height: 16px;
+    margin-bottom: 10px;
+}
+
+.descriptionItem:last-child{
+    margin-bottom: 0;
+}
+
+.descriptionItem .title{
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.descriptionItem span{
+    line-height: 1;
+    font-size: 13px;
+    font-weight: 400;
+}

@@ -3,7 +3,7 @@
     position: relative;
     width: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
 }
 
@@ -37,7 +37,7 @@
     /* font-family: 'Montserrat', sans-serif; */
     /* letter-spacing: 0.05cap; */
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 10px;
     line-height: 1;
     text-decoration: none;
@@ -48,7 +48,7 @@
 #collegeLocationHeader{
     margin-bottom: 20px;
     color: var(--secondText-color);
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1;
 }

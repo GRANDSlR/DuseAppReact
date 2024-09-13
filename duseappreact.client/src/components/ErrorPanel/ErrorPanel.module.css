@@ -4,6 +4,7 @@
     background-color: white;
     border-radius: 15px;
     width: 220px;
+    z-index: 1000;
 }
 
 .MainBox p{

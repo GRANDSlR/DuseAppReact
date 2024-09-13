@@ -4,6 +4,8 @@
     background-color: white;
     border-radius: 15px;
     animation: opacityAnim 1.5s infinite;
+    filter: drop-shadow(0 0px 10px rgba(187, 187, 187, 0.10));
+
 }
 
 .MainBox .Elem{

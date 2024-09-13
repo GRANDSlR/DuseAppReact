@@ -10,6 +10,7 @@ import {getGradeItems} from '../../components/CollegeHandler/CollegePanel.jsx';
 import CommentPanel from '../../components/CommentPanel/CommentPanel.jsx';
 import CommentPreloader from '../../components/CommentPreloader/CommentPreloader.jsx';
 import CommentHandler from '../../components/CommentHandler/CommentHandler.jsx';
+import SpecialtyBox from './specialtyBox/specialtyBox.jsx';
 //
 import {CollegeTypeFilterParams, Ownership, EducationFormFilterParams} from '../../services/DataCarrier.js';
 import calculateDistance from '../../processes/DistanceCalculationService.js';
@@ -250,7 +251,9 @@ const CollegePage = observer(() => {
 
                             <p className={style.Headers}>Специальности</p>
 
-                            {getSpecialtyItems(college) != null ? 
+                            <SpecialtyBox college={college}/>
+
+                            {/* {getSpecialtyItems(college) != null ? 
                             <table className={style.SpecialtyTable}>
                                 <tbody>
                                     <tr>
@@ -263,7 +266,7 @@ const CollegePage = observer(() => {
                                     {getSpecialtyItems(college)}
                                 </tbody>
                             </table>
-                            : <p>Совпадений не найдено</p>}
+                            : <p>Совпадений не найдено</p>} */}
                         </div>
 
                         <div className={`${style.Content} ${style.Description}`}>

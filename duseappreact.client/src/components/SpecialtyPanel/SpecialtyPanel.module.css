@@ -13,6 +13,10 @@
     border-radius: 15px; 
 }
 
+.specialtyItem.disabled{
+    opacity: 50%;
+}
+
 .specialtyItem p{
     color: var(--secondText-color);
     margin: 0;

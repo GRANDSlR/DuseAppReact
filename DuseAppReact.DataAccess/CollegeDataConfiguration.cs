@@ -212,10 +212,59 @@ namespace DuseAppReact.DataAccess.Configurations.College
         {
             
             int updatedCollegeId = await _collegeHeaderRepository.Update(collegeData.CollegeHeader);
+            int updatedDescriptionId = await _collegeDescriptionRepository.Update(collegeData.CollegeDescription);
+            int updatedLocationId = await _collegeLocationRepository.Update(collegeData.CollegeLocation);
+
+            var collegeSpecialties = await _college_SpecialtyRepository.GetById(collegeData.CollegeHeader.CollegeId);
+
+            if (collegeSpecialties.Count > collegeData.SpecialtyList.Count)
+            {
+                List<int> specialtiesToDelete = collegeSpecialties
+                    .Where(idFromDB => !collegeData.SpecialtyList.Any(newId => newId.SpecialtyId == idFromDB)).ToList();
+
+                foreach (int specialtyIdToDelete in specialtiesToDelete)
+                    await _speсialtyRepository.Delete(specialtyIdToDelete);
+            }
+
+            foreach (var updatedSpecialty in collegeData.SpecialtyList)
+            {
+                var updatedSpecialtyResult = await _speсialtyRepository.Update(updatedSpecialty, updatedCollegeId);
+
+                if (!updatedSpecialtyResult.IsSuccess)
+                {
+                    int specialtyId = await _speсialtyRepository.Create(updatedSpecialty);
+                    int college_SpecialtyId = await _college_SpecialtyRepository.Create(College_Specialty.Create(1, collegeId, specialtyId).Value);
+                }
+            }
+
+            return collegeId;
+        }
+
+        public async Task<int> UpdateGrade(int collegeId, int grade) 
+            => await _collegeDescriptionRepository.UpdateGrade(collegeId, grade);
+    }
+}
+
+
+
+
+/*
+             int updatedCollegeId = await _collegeHeaderRepository.Update(collegeData.CollegeHeader);
 
             int updatedDescriptionId = await _collegeDescriptionRepository.Update(collegeData.CollegeDescription);
 
             int updatedLocationId = await _collegeLocationRepository.Update(collegeData.CollegeLocation);
+
+            
+            if(_college_SpecialtyRepository
+                .GetById(collegeData.CollegeHeader.CollegeId).Result.Count > collegeData.SpecialtyList.Count)
+            {
+                List<int> specialtiesToDelete = _college_SpecialtyRepository.GetById(collegeData.CollegeHeader.CollegeId).Result
+                    .Where(idFromDB => !collegeData.SpecialtyList.Any(newId => newId.SpecialtyId == idFromDB)).ToList();
+
+                foreach(int specialtyIdToDelete in specialtiesToDelete)
+                    await _speсialtyRepository.Delete(specialtyIdToDelete);
+            }
 
 
             foreach (var updatedSpecialty in collegeData.SpecialtyList)
@@ -231,9 +280,4 @@ namespace DuseAppReact.DataAccess.Configurations.College
             }
 
             return collegeId;
-        }
-
-        public async Task<int> UpdateGrade(int collegeId, int grade) 
-            => await _collegeDescriptionRepository.UpdateGrade(collegeId, grade);
-    }
-}
+ */

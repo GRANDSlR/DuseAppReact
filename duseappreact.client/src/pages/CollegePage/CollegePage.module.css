@@ -49,6 +49,7 @@
 
 .WindowBack{
     /* position: relative; */
+    background-color: var(--lightGray-color);
     display: flex;
     justify-content: center;
     height: auto;
