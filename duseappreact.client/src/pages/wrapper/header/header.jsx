@@ -4,11 +4,12 @@ import style from "./header.module.css";
 import SearchPanel from "../../../components/SearchPanel/SearchPanel.jsx";
 import UserIcon from "./img/user2.png"
 import FavIcon from './img/fav2.png';
+import GuideIcon from './img/guide.png'
 import Menu from '../menu/menu.jsx';
 import React, { useState, useEffect } from 'react';
 import AuthHeader from '../../../components/AuthPanel/AuthPanel.jsx';
 // import AdditionButton from './img/AdditionButton.svg';
-import AdditionButton from '../../../components/SpecialtyFilterAdditionPanel/img/AdditionButtonNew.svg';
+import AdditionButton from './img/plus.png';
 import PopUpWindow from '../../../components/PopUpWindow/PopUpWindow.jsx';
 import {getCookies} from '../../../features/cookies/CookieService.js';
 import UserProfile from '../../../components/UserProfile/UserProfile.jsx';
@@ -79,17 +80,22 @@ const Header = observer(() => {
 
       </div>
 
-      {UserModel.userData != null && isVerifyUsersCookies && JSON.parse(UserModel.userData).role === 0 && (
+      
+
+      <div className={style.IconBar}>
+        {/* <img alt='favIcon' src={FavIcon}/> */}
+
+        {UserModel.userData != null && isVerifyUsersCookies && JSON.parse(UserModel.userData).role === 0 && (
         <div className={style.CollegeAdditionButtonBox}>
           <img src={AdditionButton} className={isOpenCollegeAddition ? `${style.AdditionButton} ${style.open}` : style.AdditionButton} onClick={() => setIsOpenCollegeAddition(!isOpenCollegeAddition)}/>
           <PopUpWindow handleCodeBlock={<CollegeAdditionForm collegeId={null} actionFunc={createCollegeAction} data={null} closeEvent={setIsOpenCollegeAddition}/>}  handleState={isOpenCollegeAddition}  handleCloseEnent={setIsOpenCollegeAddition} windowType={'not-full'}/>
         </div>
-      )}
+        )}
 
-      <div className={style.IconBar}>
-        <img alt='favIcon' src={FavIcon}/>
+        <img alt='guideIcon' src={GuideIcon}/>       
 
         <img alt='userIcon' src={UserIcon} onClick={() => setIsOpenAuth(true)}/>
+        
       </div>
 
       {UserModel.userData != null && isVerifyUsersCookies ? 

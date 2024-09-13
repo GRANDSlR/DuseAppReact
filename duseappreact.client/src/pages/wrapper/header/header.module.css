@@ -38,12 +38,15 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    justify-content: right;
 }
 
 .IconBar img{
-    margin-left: auto;
+    /* margin-left: auto; */
+    float: right;
     width: 20px;
     margin-right: 15px;
+
 }
 
 .IconBar img:last-child{
@@ -74,9 +77,9 @@
 }
 
 .AdditionButton{
-    margin-right: 15px;
+    /* margin-right: 15px;
     width: 42px; /* Зависимость c CollegeAdditionButtonBox */
-    transition: transform 0.2s;
+    transition: transform 0.2s; 
 }
 
 .AdditionButton.open{
@@ -84,5 +87,5 @@
 }
 
 .CollegeAdditionButtonBox{
-    height: 42px;
+    height: 20px;
 }

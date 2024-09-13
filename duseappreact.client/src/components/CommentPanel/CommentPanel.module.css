@@ -59,6 +59,12 @@
 
 }
 
+.Comment p{
+    font-size: 13px;
+    line-height: 140%;
+
+}
+
 .EditBox{
     display: flex;
     justify-content: end;
