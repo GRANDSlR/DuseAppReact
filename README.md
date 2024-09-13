@@ -32,35 +32,13 @@
 
 <a id="about-the-project"></a>
 
-<span style="color:blue;">DuseApp</span> — this is a web application designed to support applicants in preparing for admission to educational institutions. The service offers the opportunity to undergo psychological testing, which helps to determine the specialization and select the appropriate educational institutions.
-<br/>
+
 <div align="center">
   <img src="images/HomePage.jpg" align="center" alt="Logo" width="800">
 </div>
+<br/>
+<span style="color:blue;">DuseApp</span> — this is a web application designed to support applicants in preparing for admission to educational institutions. The service offers the opportunity to undergo psychological testing, which helps to determine the specialization and select the appropriate educational institutions.
 
-<br/>
-The search functions for educational institutions on our platform are comprehensive and intuitive. Users can easily find a suitable educational institution using advanced filters and sorting tools. In addition, our platform provides a convenient search by specialties and areas of training. Users can enter keywords or choose from suggested options to get a list of educational institutions offering programs of interest to them.
-<br/>
-<br/>
-<div align="center">
-  <img src="images/SearchPage.jpg" align="center" alt="Logo" width="800">
-</div>
-<br/>
-<div align="center">
-  <img src="images/CollegePage.jpg" align="center" alt="Logo" width="800">
-</div>
-
-<br/>
-The service offers the opportunity to undergo psychological testing, which helps to determine the specialization and select the appropriate educational institutions.
-<br/>
-<br/>
-<div align="center">
-  <img src="images/testPreview.jpg" align="center" alt="Logo" width="800">
-</div>
-<br/>
-<div align="center">
-  <img src="images/Test.jpg" align="center" alt="Logo" width="800">
-</div>
 
 <!--
 Функции поиска учебных заведений на нашей платформе являются всеобъемлющими и интуитивно понятными. Пользователи могут легко найти подходящее учебное заведение, используя расширенные фильтры и инструменты сортировки. Кроме того, на нашей платформе реализован удобный поиск по специальностям и направлениям подготовки. Пользователи могут вводить ключевые слова или выбирать из предлагаемых вариантов, чтобы получить список учебных заведений, предлагающих интересующие их программы.
@@ -84,10 +62,29 @@ The service offers the opportunity to undergo psychological testing, which helps
 
 <a id="features"></a>
 
+The search functions for educational institutions on our platform are comprehensive and intuitive. Users can easily find a suitable educational institution using advanced filters and sorting tools. In addition, our platform provides a convenient search by specialties and areas of training. Users can enter keywords or choose from suggested options to get a list of educational institutions offering programs of interest to them.
+<br/>
+<br/>
+<div align="center">
+  <img src="images/SearchPage.jpg" align="center" alt="Logo" width="800">
+</div>
+<br/>
+<div align="center">
+  <img src="images/CollegePage.jpg" align="center" alt="Logo" width="800">
+</div>
+
+<br/>
 The service offers the opportunity to undergo psychological testing, which helps to determine the specialization and select the appropriate educational institutions.
 <br/>
 <br/>
-<img src="images/logo.png" alt="Logo" width="80" height="80">
+<div align="center">
+  <img src="images/testPreview.jpg" align="center" alt="Logo" width="800">
+</div>
+<br/>
+<div align="center">
+  <img src="images/Test.jpg" align="center" alt="Logo" width="800">
+</div>
+
 
 
 <!-- CONTACT -->
@@ -95,9 +92,9 @@ The service offers the opportunity to undergo psychological testing, which helps
 
 <a id="contact"></a>
 
-Arthur - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+E-mail: lenkovets.arthur@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/GRANDSlR/DuseAppReact/tree/new_age](https://github.com/GRANDSlR/DuseAppReact/tree/new_age)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
